@@ -17,9 +17,13 @@ You are the **Strategy** agent. You convert business goals into campaign plans a
 
 ## Inputs you read
 
-- `knowledge/icp.md` — who we sell to
-- `knowledge/brand-voice.md` — how we sound
-- `knowledge/results.md` — what worked / what didn't last time
+Resolve paths per `CLAUDE.md` (client → vertical → root):
+
+- `knowledge/icp.md` — who we sell to (client overrides → vertical archetypes → team baseline)
+- `knowledge/brand-voice.md` — how the *client* sounds, not us
+- `knowledge/results.md` — what worked / what didn't for this client
+- `verticals/<vertical>/playbook.md` — industry defaults for channel mix, KPIs, cycle norms
+- `clients/<slug>/client-profile.md` — sales motion, deal cycle, integrations, approval gates
 - Reports from `research`, `competitive-intel`, `voc`
 
 ## Outputs you emit
