@@ -4,11 +4,25 @@ How POLYAI's agents are wired together.
 
 ## Design principles
 
-1. **Structured handoffs over prose.** Every agent-to-agent transfer is a populated template (`schemas/`). No "here's a paragraph, please figure it out."
-2. **Shared memory is the spine.** The `knowledge/` folder is the single source of truth for ICP, brand voice, decisions, and past results. Agents read from it and write to it via the `knowledge` agent.
-3. **Review is layered, not terminal.** Lightweight peer checks at each handoff plus a final QA pass. Compliance is a separate gate before anything goes external.
-4. **Human approval gates are explicit.** Anything that touches a real prospect, a real budget, or a real contract needs a human checkpoint until the team has been observed running for a while.
-5. **The Orchestrator is top-down for campaigns, reactive for deals.** Marketing campaigns are decomposed and assigned by the CEO. Sales work is mostly triggered by deal-state changes.
+1. **Multi-tenant by default.** POLYAI runs as a service for many clients across multiple verticals. Every artifact is tied to a `client` slug and a `vertical`.
+2. **Three-layer context, resolved most-specific first.** Client overrides → vertical defaults → team baseline. See "Context resolution" below.
+3. **Structured handoffs over prose.** Every agent-to-agent transfer is a populated template (`schemas/`). No "here's a paragraph, please figure it out."
+4. **Shared memory is the spine.** Memory is layered (per client, per vertical, team-wide) and curated only by the `knowledge` agent. Other agents request updates through it.
+5. **Review is layered, not terminal.** Lightweight peer checks at each handoff plus a final QA pass. Compliance is a separate gate before anything goes external.
+6. **Human approval gates are explicit, with per-client overrides.** Defaults below; per-client `approval_gates` in `clients/<slug>/client-profile.md` win.
+7. **The Orchestrator is top-down for campaigns, reactive for deals.** Marketing campaigns are decomposed and assigned by the CEO. Sales work is mostly triggered by deal-state changes.
+
+## Context resolution
+
+When any agent reads context, it consults sources in this order:
+
+1. **`clients/<client>/knowledge/...`** — client-specific overrides (their ICP, voice, decisions, results, playbooks)
+2. **`verticals/<vertical>/playbook.md`** — industry defaults (audience archetypes, trigger events, channel mix, KPIs, compliance flags, voice notes, common pitfalls)
+3. **`knowledge/...`** (root) — team-level cross-client baseline
+
+Writes always go to `clients/<client>/...`. Promotion to `verticals/...` or root `knowledge/...` happens only when a pattern appears across 2+ clients, with `orchestrator` approval, executed by the `knowledge` agent.
+
+This rule is also captured in `CLAUDE.md` so every agent inherits it as standing instruction.
 
 ## Pods
 
@@ -16,12 +30,19 @@ How POLYAI's agents are wired together.
                        ┌────────────────────┐
                        │    Orchestrator    │  (CEO)
                        └─────────┬──────────┘
+                                 │
+                       ┌─────────┴──────────┐
+                       │ client-onboarding  │  (intake → workspace)
+                       └─────────┬──────────┘
             ┌────────────────────┼────────────────────┐
             ▼                    ▼                    ▼
       Marketing Pod         Sales Pod            BD Pod
             │                    │                    │
             ▼                    ▼                    ▼
     Cross-cutting: review · compliance · pm · knowledge · ci · voc · localization
+
+  Memory layers (read by all):
+    clients/<slug>/  →  verticals/<vertical>/  →  knowledge/  (root)
 ```
 
 ## Marketing campaign flow
@@ -106,15 +127,22 @@ Agents that emit content must produce a `## Handoff` section using the relevant 
 
 ## Shared memory
 
-`knowledge/` holds:
+Three layers, owned by the `knowledge` agent:
 
-- `icp.md` — ideal customer profile(s)
-- `brand-voice.md` — tone, do/don't, vocabulary
-- `decisions.md` — append-only log of strategic decisions and why
-- `results.md` — campaign + deal post-mortems
-- `playbooks/` — reusable campaign and sales plays
+**Per-client** — `clients/<slug>/knowledge/`
+- `icp.md` — this client's ICP segments
+- `brand-voice.md` — this client's voice
+- `decisions.md` — append-only log of strategic decisions for this client
+- `results.md` — append-only campaign + deal outcomes for this client
+- `playbooks/` — plays tuned to this client (overrides vertical defaults)
 
-The `knowledge` agent is the only one that writes here directly. Other agents request updates through it so the log stays clean.
+**Per-vertical** — `verticals/<name>/playbook.md`
+Industry defaults: audience archetypes, trigger events, channel mix, KPI norms, compliance flags, voice notes, common pitfalls. Updated only via promotion when a pattern shows up across 2+ clients in that vertical.
+
+**Team-level** — `knowledge/` (root)
+Cross-client, cross-vertical baseline. System-level decisions and learnings only. Most plays should *not* live here; they belong in a vertical or client folder.
+
+The `knowledge` agent is the only one that writes anywhere in this stack. Other agents request updates through it so the log stays clean.
 
 ## Adding a new agent
 
@@ -123,4 +151,13 @@ The Orchestrator can author a new agent file in `.claude/agents/` when a recurri
 1. Have a single, clear responsibility (one job).
 2. Declare which schemas they read and which they emit.
 3. Declare their escalation rule (when to hand back to the Orchestrator).
-4. Be added to `README.md` roster and `ARCHITECTURE.md` flow.
+4. Honor the context-resolution rule from `CLAUDE.md`.
+5. Be added to `README.md` roster and `ARCHITECTURE.md` flow.
+
+## Adding a new vertical
+
+When the second client in a new industry needs different defaults than any existing vertical:
+
+1. Author `verticals/<name>/playbook.md` to the same shape as the existing two (`real-estate`, `automotive`) — audience archetypes, trigger events, sales motion, channel mix, KPIs, compliance flags, voice notes, VoC sources, common pitfalls, sub-vertical hints.
+2. Add the vertical name to `README.md` "Supported verticals" section.
+3. The `client-onboarding` agent will pick it up automatically next intake.

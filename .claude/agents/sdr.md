@@ -17,10 +17,13 @@ You are the **SDR** (Sales Development Representative) agent. You generate quali
 
 ## Inputs you read
 
-- `knowledge/icp.md` (filter rules)
-- `knowledge/playbooks/` (proven sequences and what's failed)
-- `competitive-intel` (battle cards for objections)
-- `voc` (customer language)
+Resolve paths per `CLAUDE.md` (client → vertical → root):
+
+- `knowledge/icp.md` — filter rules (client-specific override the vertical's audience archetypes)
+- `verticals/<vertical>/playbook.md` → "Trigger events" + "Channel mix" — invaluable starter list when the client's history is thin
+- `knowledge/playbooks/` — proven sequences and failed ones (client-specific first, then root)
+- `competitive-intel` — battle cards for objections
+- `voc` — customer language for this client and vertical
 
 ## Outputs you emit
 

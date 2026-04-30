@@ -1,15 +1,16 @@
 # POLYAI
 
-Polyphonic multi-agent AI system — a marketing, sales, and business development team built as Claude Code subagents.
+Polyphonic multi-agent AI system — a marketing, sales, and business development team built as Claude Code subagents, designed to be **adapted per client and per vertical**.
 
 ## What this is
 
-A team of specialized agents that work together to plan, execute, and review marketing and sales work. Each agent lives in `.claude/agents/` as a Markdown file with a YAML frontmatter header. The Orchestrator (CEO) routes work between them.
+A team of specialized agents that plan, execute, and review marketing and sales work for *any* client in *any* supported vertical. Each agent lives in `.claude/agents/` as a Markdown file. The Orchestrator (CEO) routes work between them; vertical playbooks supply industry defaults; per-client folders hold each engagement's memory.
 
 ## Team roster
 
 **Executive**
 - `orchestrator` — CEO. Decomposes goals, assigns work, runs handoffs, can author new agents.
+- `client-onboarding` — stands up a new client workspace from an intake brief plus the matching vertical playbook.
 
 **Marketing pod**
 - `strategy` — campaign plans, GTM, CRM strategy
@@ -36,35 +37,71 @@ A team of specialized agents that work together to plan, execute, and review mar
 - `review` — final QA against brief and brand
 - `compliance` — claims, regulated language, ad policy, privacy
 - `project-manager` — timelines, dependencies, blockers
-- `knowledge` — shared memory: ICP, brand voice, decisions, results
+- `knowledge` — curates shared memory across clients and verticals
 - `competitive-intel` — competitor pricing, launches, messaging, ads
 - `voc` — voice-of-customer: support tickets, reviews, calls
 - `localization` — multi-language, multi-region adaptation
 
+## Multi-client + multi-vertical model
+
+POLYAI is a service operator. Three layers of context, resolved most-specific first:
+
+```
+clients/<slug>/knowledge/...     ← client overrides (their ICP, voice, decisions, results)
+verticals/<vertical>/playbook.md ← industry defaults (real-estate, automotive, ...)
+knowledge/...                    ← team-level baseline (cross-client, cross-vertical)
+```
+
+- **Per-client** folders hold the engagement's memory. Writes always go here.
+- **Vertical playbooks** capture patterns that apply to most clients in an industry — audience archetypes, trigger events, channel mix, KPI norms, compliance flags, voice notes, common pitfalls.
+- **Root knowledge** is the team's cross-client baseline.
+
+Promotion (client → vertical → root) happens only when a pattern appears across 2+ clients, with `orchestrator` approval, executed by the `knowledge` agent.
+
+## Supported verticals (today)
+
+- `real-estate` — residential / investor / off-plan / commercial
+- `automotive` — OEM / dealer / used-car / fleet / aftersales
+
+Adding a new vertical means writing a `verticals/<name>/playbook.md` to the same shape as the existing two. The `orchestrator` can author one; you'd typically only do this when the second client in that industry needs different defaults than any existing vertical.
+
 ## How they work together
 
-1. The user gives the **Orchestrator** a goal.
-2. Orchestrator decomposes it into a campaign or deal plan and dispatches structured **briefs** (see `schemas/`) to the relevant pod agents.
-3. Pod agents produce structured outputs — never prose blobs — so the next agent can parse them.
-4. **Review** + **Compliance** check outputs before anything ships externally.
-5. **Knowledge** captures decisions, ICP updates, and results so future runs don't repeat work.
+1. A new engagement starts with `client-onboarding` — intake brief in, populated `clients/<slug>/` workspace out.
+2. For any goal, the **Orchestrator** identifies the active client + vertical, then decomposes into a sequenced plan.
+3. Pod agents execute against structured briefs (see `schemas/`) and emit structured outputs.
+4. **Review** + **Compliance** + (when relevant) **Localization** gate every external artifact.
+5. **Knowledge** captures decisions and results into the client folder, and promotes cross-client patterns up to the vertical playbook.
 6. **Project-manager** tracks who owes what to whom and surfaces blockers.
 
-See `ARCHITECTURE.md` for handoff flows and human-approval gates.
+See `ARCHITECTURE.md` for handoff flows, approval gates, and the resolution rules.
 
 ## Repo layout
 
 ```
-.claude/agents/   # one .md per agent (Claude Code subagent format)
-schemas/          # JSON-shaped templates for inter-agent handoffs
-knowledge/        # shared memory: ICP, brand voice, decision log, results
-ARCHITECTURE.md   # handoff flows, approval gates, design choices
+.claude/agents/        # one .md per agent (Claude Code subagent format)
+schemas/               # shared templates for inter-agent handoffs
+clients/               # per-client engagements (one folder per slug)
+  _template/           # scaffold copied for new clients
+verticals/             # industry defaults
+  real-estate/
+  automotive/
+knowledge/             # team-level cross-client baseline
+ARCHITECTURE.md        # handoff flows, approval gates, design choices
+CLAUDE.md              # project-wide rules every agent inherits
 ```
 
-## Using the team
+## Onboarding a new client
 
-Inside Claude Code, the Orchestrator is invoked first. Example:
+Inside Claude Code, give the Orchestrator a goal mentioning a new client. It will invoke `client-onboarding` first. Onboarding will:
 
-> Plan a 6-week launch campaign for our new B2B analytics product targeting Series-B SaaS companies.
+1. Ask for the minimum inputs (slug, vertical, what they sell, primary market, voice, integrations, approval gates, hard constraints).
+2. Pick the matching `verticals/<vertical>/playbook.md` as defaults.
+3. Copy `clients/_template/` to `clients/<slug>/` and seed `client-profile.md`, `icp.md`, `brand-voice.md`.
+4. Hand back to the Orchestrator with a status summary and a recommended first piece of work.
 
-The Orchestrator will pull from `knowledge/icp.md`, dispatch a Research brief, then a Strategy brief, then Creative briefs, etc. Outputs flow through Review and Compliance before anything is marked ready to ship.
+## Using the team after onboarding
+
+> "Plan a 6-week new-launch campaign for **acme-realty** — Q3 launch of an off-plan tower targeting investors in the GCC."
+
+The Orchestrator stamps `client: acme-realty, vertical: real-estate` on every handoff. Strategy reads `clients/acme-realty/knowledge/icp.md` first, falls back to `verticals/real-estate/playbook.md` for trigger events and channel mix, and dispatches Creative + SEO + Social briefs from there. Compliance is auto-included because off-plan investor marketing has regulatory weight in most markets.

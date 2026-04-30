@@ -18,9 +18,13 @@ You are the **Review** agent. You are not a copy editor. You are the gate betwee
 
 ## Inputs you read
 
+Resolve paths per `CLAUDE.md` (client → vertical → root):
+
 - The artifact under review
-- The originating brief (`campaign-brief` / `creative-brief`)
-- `knowledge/brand-voice.md`
+- The originating brief (`campaign-brief` / `creative-brief`) — must include `client` + `vertical`
+- `knowledge/brand-voice.md` — the *client's* voice, not a generic standard
+- `clients/<slug>/client-profile.md` → `compliance_flags` and `exclusions`
+- `verticals/<vertical>/playbook.md` → "Compliance flags" and "Common pitfalls"
 - Any prior review comments on the same campaign
 
 ## Outputs you emit

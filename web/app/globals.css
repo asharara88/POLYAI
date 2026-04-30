@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+}
+
+html, body {
+  background: #f7f7f8;
+  color: #15151a;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background: #0c0c10;
+    color: #eeeef0;
+  }
+}
+
+.prose-tight {
+  line-height: 1.55;
+}
+
+.prose-tight h1 { font-size: 1.5rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+.prose-tight h2 { font-size: 1.2rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+.prose-tight h3 { font-size: 1.05rem; font-weight: 600; margin-top: 1rem; margin-bottom: 0.4rem; }
+.prose-tight p { margin: 0.5rem 0; }
+.prose-tight ul, .prose-tight ol { margin: 0.5rem 0 0.5rem 1.25rem; }
+.prose-tight li { margin: 0.2rem 0; }
+.prose-tight code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85em; padding: 0.1rem 0.3rem; background: rgba(127,127,127,0.12); border-radius: 4px; }
+.prose-tight pre { background: rgba(127,127,127,0.08); padding: 0.85rem 1rem; border-radius: 8px; overflow: auto; font-size: 0.85rem; line-height: 1.5; margin: 0.75rem 0; }
+.prose-tight pre code { background: transparent; padding: 0; }
+.prose-tight blockquote { border-left: 3px solid rgba(127,127,127,0.3); padding-left: 0.85rem; color: rgba(127,127,127,0.95); margin: 0.75rem 0; }
+.prose-tight a { color: #3a8e7a; text-decoration: underline; text-underline-offset: 2px; }
+.prose-tight table { border-collapse: collapse; margin: 0.75rem 0; font-size: 0.9rem; }
+.prose-tight th, .prose-tight td { border: 1px solid rgba(127,127,127,0.25); padding: 0.4rem 0.65rem; text-align: left; }
+.prose-tight th { background: rgba(127,127,127,0.08); font-weight: 600; }
+.prose-tight hr { border: 0; border-top: 1px solid rgba(127,127,127,0.25); margin: 1.25rem 0; }
