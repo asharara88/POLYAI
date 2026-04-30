@@ -1,0 +1,14 @@
+# Default public sources scanned for any automotive client without their own
+# clients/<slug>/monitoring.yml override. Pure public — no auth needed.
+
+- url: https://www.reuters.com/business/autos-transportation/
+  name: Reuters — autos + transportation
+
+- url: https://www.cnbc.com/autos/
+  name: CNBC — autos
+
+- url: https://insideevs.com/news/
+  name: InsideEVs — EV news
+
+- url: https://www.autonews.com/
+  name: Automotive News

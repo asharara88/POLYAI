@@ -2,10 +2,13 @@ import Link from "next/link";
 
 const items = [
   { href: "/", label: "Overview" },
+  { href: "/chat", label: "Chat" },
   { href: "/clients", label: "Clients" },
   { href: "/agents", label: "Agents" },
   { href: "/verticals", label: "Verticals" },
   { href: "/schemas", label: "Schemas" },
+  { href: "/approvals", label: "Approvals" },
+  { href: "/search", label: "Search" },
 ];
 
 export default function Nav() {

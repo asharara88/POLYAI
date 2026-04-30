@@ -1,0 +1,18 @@
+# Default public sources scanned for any real-estate client without their own
+# clients/<slug>/monitoring.yml override. Pure public — no auth needed.
+#
+# These are intentionally generic; tune per client to capture neighborhood
+# competitors, specific portals in their market, and discussion forums their
+# investors use.
+
+- url: https://www.zerohedge.com/personal-finance
+  name: Zero Hedge — macro signal
+
+- url: https://www.reuters.com/world/middle-east/
+  name: Reuters MENA — regulatory + macro
+
+- url: https://www.bayut.com/mybayut/dubai-real-estate-news/
+  name: Bayut MyBayut — Dubai market news (overrides advised per client)
+
+- url: https://gulfnews.com/business/property
+  name: Gulf News — property section
