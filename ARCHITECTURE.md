@@ -17,12 +17,17 @@ How POLYAI's agents are wired together.
 When any agent reads context, it consults sources in this order:
 
 1. **`clients/<client>/knowledge/...`** — client-specific overrides (their ICP, voice, decisions, results, playbooks)
-2. **`verticals/<vertical>/playbook.md`** — industry defaults (audience archetypes, trigger events, channel mix, KPIs, compliance flags, voice notes, common pitfalls)
-3. **`knowledge/...`** (root) — team-level cross-client baseline
+2. **`verticals/<vertical>/sub-verticals/<sub-vertical>/playbook.md`** — sub-vertical specialization (when set on the client profile)
+3. **`verticals/<vertical>/playbook.md`** — industry defaults (audience archetypes, trigger events, channel mix, KPIs, compliance flags, voice notes, common pitfalls)
+4. **`knowledge/...`** (root) — team-level cross-client baseline
 
 Writes always go to `clients/<client>/...`. Promotion to `verticals/...` or root `knowledge/...` happens only when a pattern appears across 2+ clients, with `orchestrator` approval, executed by the `knowledge` agent.
 
 This rule is also captured in `CLAUDE.md` so every agent inherits it as standing instruction.
+
+## External-system writes
+
+Any agent action that touches an external system (CRM, ad platform, email, messaging, e-signature, BI) is wrapped in an `integration-action` envelope per `schemas/integration-action.md`. See `INTEGRATIONS.md` for the full architecture, the tier system (A: read-only → D: autonomous), and the phased rollout for typical engagements.
 
 ## Pods
 

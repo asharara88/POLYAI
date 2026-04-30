@@ -42,6 +42,11 @@ A team of specialized agents that plan, execute, and review marketing and sales 
 - `voc` — voice-of-customer: support tickets, reviews, calls
 - `localization` — multi-language, multi-region adaptation
 
+**Sub-vertical specialists** (loaded per client based on `client-profile.md`)
+- `agency-liaison` — manages external creative / media / digital / PR agencies (real-estate developer, larger B2C)
+- `broker-enablement` — broker network: training, materials, lead routing, performance, disputes (real-estate developer, channel-led B2B)
+- `inventory-manager` — source-of-truth for unit / vehicle / allocation availability, pricing, status; gates customer-facing artifacts that reference inventory (real-estate developer, automotive)
+
 ## Multi-client + multi-vertical model
 
 POLYAI is a service operator. Three layers of context, resolved most-specific first:
@@ -61,9 +66,16 @@ Promotion (client → vertical → root) happens only when a pattern appears acr
 ## Supported verticals (today)
 
 - `real-estate` — residential / investor / off-plan / commercial
+  - `real-estate / developer` (sub-vertical) — master developers + project developers running off-plan launches with agency partners and broker networks (Aldar / Emaar / Damac / Sobha class)
 - `automotive` — OEM / dealer / used-car / fleet / aftersales
 
-Adding a new vertical means writing a `verticals/<name>/playbook.md` to the same shape as the existing two. The `orchestrator` can author one; you'd typically only do this when the second client in that industry needs different defaults than any existing vertical.
+Sub-verticals layer on top of their parent vertical. A client whose profile has `vertical: real-estate, sub_vertical: developer` inherits both the real-estate playbook and the developer overlay. See `ARCHITECTURE.md` for the resolution rules.
+
+Adding a new vertical (or sub-vertical) means writing a `verticals/<name>/playbook.md` (or `verticals/<vertical>/sub-verticals/<sub-vertical>/playbook.md`) to the same shape as the existing ones. The `orchestrator` can author one; you'd typically only do this when the second client in that industry needs different defaults than any existing vertical.
+
+## Integrations
+
+POLYAI agents can read from and (with human approval) write to your existing tooling — Salesforce, HubSpot, Meta / Google Ads, Property Finder, Tableau, WhatsApp Business, DocuSign, etc. Every external write goes through an `integration-action` envelope (see `schemas/integration-action.md`) with explicit human approval until a per-client policy promotes it. See `INTEGRATIONS.md` for the full architecture and phased rollout.
 
 ## How they work together
 

@@ -7,6 +7,7 @@ from:                  # agent name
 to:                    # agent name(s)
 client:                # required — slug of the active client (matches clients/<slug>/)
 vertical:              # required — must match a verticals/<name>/ folder
+sub_vertical:          # optional — when set, must match verticals/<vertical>/sub-verticals/<name>/
 intent:                # "request" | "deliverable" | "review" | "escalation" | "knowledge-update"
 references:            # ids this relates to (campaign_id, deal_id, asset_id, etc.)
 schema:                # which schema the payload conforms to
