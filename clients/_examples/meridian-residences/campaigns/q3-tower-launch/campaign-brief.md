@@ -1,7 +1,15 @@
 # Campaign brief — Q3 Tower Launch
 
 > Owned by `strategy`. Conforms to `schemas/campaign-brief.md`.
-> Stamped with `client: meridian-residences, vertical: real-estate` per envelope rules.
+> Stamped with `client: meridian-residences, vertical: real-estate, sub_vertical: developer` per envelope rules.
+>
+> **Linked client artifacts (developer sub-vertical):**
+> - Inventory truth: `clients/_examples/meridian-residences/inventory/current.md` (gates every artifact referencing units)
+> - Broker network: `clients/_examples/meridian-residences/brokers/registry.md`
+> - Agency engagements: `clients/_examples/meridian-residences/agencies/`
+>   - Brand: `agencies/leo-burnett-mena/profile.md`
+>   - Media: `agencies/havas-mena/profile.md`
+> - Working surfaces: Canva (agency design files) + Miro (planning board) — see `integrations/canva/spec.md` and `integrations/miro/spec.md`
 
 ```yaml
 campaign_id: q3-tower-launch

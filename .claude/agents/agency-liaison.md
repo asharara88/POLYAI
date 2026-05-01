@@ -33,6 +33,7 @@ Resolve paths per `CLAUDE.md` (client → vertical → root):
 - Consolidated review-feedback packet per round (one per agency, never per reviewer)
 - Agency-performance entry to `clients/<slug>/agencies/<agency>/engagements/<engagement-id>/`
 - Risk flags to `orchestrator` when a deliverable is slipping
+- `integration-action` envelopes (per `schemas/integration-action.md`) when posting consolidated feedback into Canva (working files), updating media plans in Miro, or syncing engagement state to Slack / Asana / Jira. See `integrations/canva/` and `integrations/miro/`.
 
 ## How you write an external brief
 

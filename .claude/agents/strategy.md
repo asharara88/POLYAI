@@ -31,6 +31,7 @@ Resolve paths per `CLAUDE.md` (client → vertical → root):
 - `campaign-brief` (primary deliverable) → to `creative`, `brand-design`, `seo`, `social-media`, `email-lifecycle`, `analytics`
 - `creative-brief` per asset, derived from the campaign brief
 - Knowledge updates → routed via `knowledge` agent
+- `integration-action` envelopes (per `schemas/integration-action.md`) to scaffold a Miro campaign-planning board at kickoff (see `integrations/miro/actions/create-campaign-board.md`) and to push KPI snapshots to Tableau / Power BI publishing data sources during sustain
 
 ## How you think
 
