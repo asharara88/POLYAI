@@ -4,8 +4,16 @@ import Markdown from "@/components/Markdown";
 import InventoryDashboard from "@/components/InventoryDashboard";
 import BrokerRegistry from "@/components/BrokerRegistry";
 import WealthChannelRegistry from "@/components/WealthChannelRegistry";
+import VvipChannelRegistry from "@/components/VvipChannelRegistry";
 import RoutingSimulator from "./RoutingSimulator";
-import { getBrokers, getClient, getClients, getInventory, getWealthChannel } from "@/lib/content";
+import {
+  getBrokers,
+  getClient,
+  getClients,
+  getInventory,
+  getVvipChannel,
+  getWealthChannel,
+} from "@/lib/content";
 
 export const dynamicParams = false;
 
@@ -22,6 +30,7 @@ type Tab =
   | "inventory"
   | "brokers"
   | "wealth"
+  | "vvip"
   | "routing";
 
 const baseTabs: { key: Tab; label: string }[] = [
@@ -47,12 +56,14 @@ export default async function Page({
   const inventory = getInventory(slug);
   const brokers = getBrokers(slug);
   const wealth = getWealthChannel(slug);
+  const vvip = getVvipChannel(slug);
 
   const tabs = [
     ...baseTabs,
     ...(inventory ? [{ key: "inventory" as Tab, label: "Inventory" }] : []),
     ...(brokers ? [{ key: "brokers" as Tab, label: "Brokers" }] : []),
     ...(wealth ? [{ key: "wealth" as Tab, label: "Wealth channel" }] : []),
+    ...(vvip ? [{ key: "vvip" as Tab, label: "VVIP" }] : []),
     ...(brokers ? [{ key: "routing" as Tab, label: "Routing sim" }] : []),
   ];
 
@@ -126,6 +137,7 @@ export default async function Page({
         {activeTab === "inventory" && inventory && <InventoryDashboard inventory={inventory} />}
         {activeTab === "brokers" && brokers && <BrokerRegistry brokers={brokers} />}
         {activeTab === "wealth" && wealth && <WealthChannelRegistry channel={wealth} />}
+        {activeTab === "vvip" && vvip && <VvipChannelRegistry channel={vvip} />}
         {activeTab === "routing" && brokers && (
           <div className="space-y-4">
             <p className="text-sm text-ink-500 dark:text-ink-400 max-w-3xl">

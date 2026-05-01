@@ -46,7 +46,11 @@ A team of specialized agents that plan, execute, and review marketing and sales 
 - `agency-liaison` — manages external creative / media / digital / PR agencies (real-estate developer, larger B2C)
 - `broker-enablement` — broker channel: registry, materials, allocations, channel development (reactivation + new signings), performance, disputes (real-estate developer, channel-led B2B)
 - `wealth-channel-enablement` — parallel HNI / UHNI channel: private banks, family offices, independent introducers; confidential materials, principal-to-principal, multi-unit / floor / building deals (luxury / branded residences / ultra-prime)
+- `vvip-channel-enablement` — ruling families, ministers, senior officials, foreign dignitaries, sovereign-institution principals; protocol, gatekeepers, discretion, PEP / sanctions / FCPA screening (high-end / government-adjacent engagements)
 - `inventory-manager` — source-of-truth for unit / vehicle / allocation availability, pricing, status; gates customer-facing artifacts that reference inventory (real-estate developer, automotive)
+- `events` — end-to-end event ownership: planning, scheduling, headcount, invitations, RSVPs, partner / sponsor coordination, comms; coordinates external event agency + internal events team + channel agents for invitation lists; pairs with marketing-procurement and marketing-financial-manager for the commercial side
+- `marketing-procurement` — vendor selection, RFP / RFQ / sole-source processes, SOWs, contract terms, performance scorecards, renewal management for everything marketing buys
+- `marketing-financial-manager` — marketing-budget allocation, PO issuance + tracking, accruals, invoice approvals, period-close discipline, variance analysis, CFO / FP&A reporting
 
 ## Multi-client + multi-vertical model
 

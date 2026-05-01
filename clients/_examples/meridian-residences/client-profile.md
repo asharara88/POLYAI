@@ -65,6 +65,22 @@ wealth_channel_strategy:
     reactivations: 2
     new_signings: 6
 
+vvip_channel_strategy:
+  registry_ref: clients/_examples/meridian-residences/vvip-channel/registry.md
+  protocol_library_ref: clients/_examples/meridian-residences/vvip-channel/protocol-library.md
+  active_target_by_launch:
+    ruling_families: 4
+    government_officials: 6
+    foreign_dignitaries: 3
+    sovereign_institutions: 2
+  primary_outcome: relationship  # transactional outcome is bonus, not the goal
+  no_mention_list_propagated_to: [social-media, creative, pr, agency-liaison]
+  pep_screening_cadence: annual
+  channel_development_targets_quarterly:
+    cultivation_introductions: 3
+    reactivations: 1
+    protocol_library_refreshes: 1
+
 inventory:
   current_ref: clients/_examples/meridian-residences/inventory/current.md
   total_units: 280

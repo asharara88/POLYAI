@@ -83,19 +83,22 @@ Developer-specific agents (added with this sub-vertical):
 - `wealth-channel-enablement` → parallel to broker-enablement but for the discretion-led HNI / UHNI channel: private banks, family offices, independent wealth introducers. Confidential materials, principal-to-principal communication, multi-unit / floor / building deals. Critical for luxury / branded-residences sub-sub-vertical.
 - `inventory-manager` → maintains the source of truth for unit availability, pricing tiers, payment plans, floor-plan inventory; gates any creative or listing that references specific units; processes both broker- and wealth-channel allocation requests.
 
-Two channels, in parallel — not interchangeable:
+Three channels, in parallel — not interchangeable:
 
-| | Broker channel | Wealth channel |
-|---|---|---|
-| Buyer pool | retail HNI, end-user, mid-market investor | HNI / UHNI, family principals, family-office advised |
-| Owning agent | broker-enablement | wealth-channel-enablement |
-| Trust mechanism | listings + portal presence + broker-buyer relationship | named-principal trust + reciprocity + discretion |
-| Materials | public-grade fact sheets, calculators, FAQs | confidential watermarked investor packs, IRR + sensitivity, exit scenarios |
-| Communication | bulk possible (with approval) | always 1:1, principal-to-principal |
-| Cycle | 30–90 days | 7–60 days for HNI principal; longer for family office |
-| Volume | 60–80% of reservations | <10% of reservations, often >25% of revenue |
-| Deal size | typical-tier units | premium tier, multi-unit, floor, building |
-| Compliance lead | broker-disclosure, RERA | fiduciary rules, jurisdiction-specific securities, FCA/SEC/MAS/DFSA where applicable |
+| | Broker channel | Wealth channel | VVIP channel |
+|---|---|---|---|
+| Buyer / counterparty pool | retail HNI, end-user, mid-market investor | HNI / UHNI, family principals, family-office advised | Ruling families, ministers and senior officials, foreign dignitaries, sovereign-institution principals |
+| Owning agent | broker-enablement | wealth-channel-enablement | vvip-channel-enablement |
+| Trust mechanism | listings + portal presence + broker-buyer relationship | named-principal trust + reciprocity + discretion | protocol correctness + gatekeeper relationship + senior introduction |
+| Communication | bulk possible (with approval) | always 1:1, principal-to-principal | always through gatekeeper; never bypass |
+| Materials | public-grade fact sheets, calculators, FAQs | confidential watermarked investor packs | bespoke per-recipient; sometimes only verbal or in-person; never circulated |
+| Outreach pattern | broker requests allocations after their own marketing | introduction by named relationship | senior introduction via mutual relationship + formal letter |
+| Cycle | 30–90 days | 7–60 days for HNI principal; longer for family office | indefinite; relationship is the outcome, transaction is occasional |
+| Volume | 60–80% of reservations | <10% of reservations, often >25% of revenue | rare reservations; high prestige + future-opportunity value |
+| Deal size when transactional | typical-tier units | premium tier, multi-unit, floor, building | bespoke / off-market / special-allocation |
+| Public reference | yes, in marketing | discreet | **never** — invisible-to-public default |
+| Compliance lead | broker-disclosure, RERA | fiduciary, jurisdiction-specific securities (FCA / SEC / MAS / DFSA) | PEP, sanctions, FCPA / UK Bribery Act, public-official gift bans, diplomatic immunity, protocol accuracy |
+| Cadence | continuous | quarterly | rarely, on national / personal occasions |
 
 ## Approval gates (developer-specific overrides)
 

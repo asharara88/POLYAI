@@ -511,6 +511,106 @@ export const getWealthChannel = (clientSlug: string): ParsedWealthChannel | null
   return parseWealthChannelMarkdown(raw);
 };
 
+// ---------- VVIP channel ----------
+
+export type VvipEntity = {
+  segment: "ruling-families" | "government-officials" | "foreign-dignitaries" | "sovereign-institutions";
+  entityId: string;
+  household?: string;
+  role?: string;
+  institution?: string;
+  primaryPrincipalAnonymized: string;
+  preferredFormOfAddress?: string;
+  status: string;
+  primaryGatekeeper?: string;
+  pepScreeningStatus?: string;
+  notes?: string;
+};
+
+export type VvipSummary = {
+  segment: VvipEntity["segment"];
+  active: number | null;
+  dormant: number | null;
+  cultivating: number | null;
+};
+
+export type ParsedVvip = {
+  raw: string;
+  summaries: VvipSummary[];
+  entities: VvipEntity[];
+};
+
+const parseVvipMarkdown = (raw: string): ParsedVvip => {
+  const summaries: VvipSummary[] = [];
+  const summaryBlock = raw.match(/## Engagement health summary[\s\S]+?(?=\n## |$)/)?.[0] ?? "";
+  for (const line of summaryBlock.split("\n")) {
+    if (!line.startsWith("|")) continue;
+    if (line.includes("---")) continue;
+    const cells = line.split("|").map((c) => c.trim()).filter(Boolean);
+    if (cells.length < 4) continue;
+    const [seg, active, dormant, cultivating] = cells;
+    if (/sub.?channel/i.test(seg)) continue;
+    let key: VvipSummary["segment"];
+    if (/ruling/i.test(seg)) key = "ruling-families";
+    else if (/government/i.test(seg)) key = "government-officials";
+    else if (/foreign|dignitar/i.test(seg)) key = "foreign-dignitaries";
+    else if (/sovereign/i.test(seg)) key = "sovereign-institutions";
+    else continue;
+    summaries.push({
+      segment: key,
+      active: num(active),
+      dormant: num(dormant),
+      cultivating: num(cultivating),
+    });
+  }
+
+  const entities: VvipEntity[] = [];
+  const sectionFor = (headerPattern: string, segment: VvipEntity["segment"]) => {
+    const block = raw.match(new RegExp(`##\\s+${headerPattern}[\\s\\S]+?(?=\\n## |$)`, "i"))?.[0] ?? "";
+    const yamlBlocks = block.match(/```yaml[\s\S]*?```/g) ?? [];
+    for (const yb of yamlBlocks) {
+      const cleaned = yb.replace(/```yaml|```/g, "");
+      const items = cleaned.split(/\n-\s+/).map((s) => s.trim()).filter(Boolean);
+      for (const item of items) {
+        if (!item.includes("entity_id:")) continue;
+        const grab = (k: string) =>
+          item.match(new RegExp(`^\\s*${k}:\\s*"?(.+?)"?\\s*$`, "m"))?.[1]?.trim();
+        const entityId = grab("entity_id") ?? "";
+        if (!entityId) continue;
+        entities.push({
+          segment,
+          entityId,
+          household: grab("household"),
+          role: grab("role"),
+          institution: grab("institution"),
+          primaryPrincipalAnonymized: grab("primary_principal_anonymized") ?? "",
+          preferredFormOfAddress: grab("preferred_form_of_address"),
+          status: grab("status") ?? "unknown",
+          primaryGatekeeper: grab("primary_gatekeeper"),
+          pepScreeningStatus: grab("pep_screening_status"),
+          notes: grab("notes"),
+        });
+      }
+    }
+  };
+
+  sectionFor("Ruling families[^\\n]*", "ruling-families");
+  sectionFor("Government officials[^\\n]*", "government-officials");
+  sectionFor("Foreign dignitaries[^\\n]*", "foreign-dignitaries");
+  sectionFor("Sovereign[^\\n]*", "sovereign-institutions");
+
+  return { raw, summaries, entities };
+};
+
+export const getVvipChannel = (clientSlug: string): ParsedVvip | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const filePath = path.join(folder, "vvip-channel", "registry.md");
+  const raw = readFileSafe(filePath);
+  if (!raw) return null;
+  return parseVvipMarkdown(raw);
+};
+
 // ---------- Stats ----------
 
 export const getStats = () => {
