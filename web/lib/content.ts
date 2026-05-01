@@ -402,6 +402,115 @@ export const getSchemas = (): SchemaSummary[] =>
 export const getSchema = (name: string): SchemaSummary | null =>
   getSchemas().find((s) => s.name === name) ?? null;
 
+// ---------- Wealth channels ----------
+
+export type WealthCounterparty = {
+  segment: "private-banks" | "family-offices" | "introducers";
+  name: string;
+  status: string;
+  type?: string;
+  geography?: string[];
+  notes?: string;
+  fiduciaryRestricted?: boolean;
+  priorIntroductions?: number | null;
+  commissionStructure?: string;
+};
+
+export type WealthChannelSummary = {
+  segment: "private-banks" | "family-offices" | "introducers";
+  active: number | null;
+  dormant: number | null;
+  newTarget: number | null;
+};
+
+export type ParsedWealthChannel = {
+  raw: string;
+  summaries: WealthChannelSummary[];
+  counterparties: WealthCounterparty[];
+};
+
+const parseWealthChannelMarkdown = (raw: string): ParsedWealthChannel => {
+  // Engagement health summary table
+  const summaries: WealthChannelSummary[] = [];
+  const summaryBlock = raw.match(/## Engagement health summary[\s\S]+?(?=\n## |$)/)?.[0] ?? "";
+  for (const line of summaryBlock.split("\n")) {
+    if (!line.startsWith("|")) continue;
+    if (line.includes("---")) continue;
+    const cells = line.split("|").map((c) => c.trim()).filter(Boolean);
+    if (cells.length < 4) continue;
+    const [seg, active, dormant, newTarget] = cells;
+    if (/sub.?channel/i.test(seg)) continue;
+    let key: WealthChannelSummary["segment"];
+    if (/private banks?/i.test(seg)) key = "private-banks";
+    else if (/family offices?/i.test(seg)) key = "family-offices";
+    else if (/introducer/i.test(seg)) key = "introducers";
+    else continue;
+    summaries.push({
+      segment: key,
+      active: num(active),
+      dormant: num(dormant),
+      newTarget: num(newTarget),
+    });
+  }
+
+  // Counterparties — parse YAML blocks under each section
+  const counterparties: WealthCounterparty[] = [];
+
+  const sectionFor = (header: string, segment: WealthCounterparty["segment"]) => {
+    const block = raw.match(new RegExp(`##\\s+${header}[\\s\\S]+?(?=\\n## |$)`, "i"))?.[0] ?? "";
+    const yamlBlocks = block.match(/```yaml[\s\S]*?```/g) ?? [];
+    for (const yb of yamlBlocks) {
+      const cleaned = yb.replace(/```yaml|```/g, "");
+      const items = cleaned.split(/\n-\s+/).map((s) => s.trim()).filter(Boolean);
+      for (const item of items) {
+        if (!/(name|firm):/.test(item)) continue;
+        const name =
+          item.match(/^\s*name:\s*"?(.+?)"?\s*$/m)?.[1]?.trim() ??
+          item.match(/^\s*firm:\s*"?(.+?)"?\s*$/m)?.[1]?.trim() ??
+          "";
+        if (!name) continue;
+        const status = item.match(/^\s*status:\s*(.+)$/m)?.[1]?.trim() ?? "unknown";
+        const type = item.match(/^\s*type:\s*(.+)$/m)?.[1]?.trim();
+        const geoStr = item.match(/^\s*geography:\s*\[?(.+?)\]?\s*$/m)?.[1] ?? "";
+        const geography = geoStr
+          .split(",")
+          .map((s) => s.trim().replace(/^['"]|['"]$/g, ""))
+          .filter((s) => s && s !== "");
+        const fiduciary = item.match(/^\s*fiduciary_restricted:\s*(true|false)/m)?.[1];
+        const conv = num(item.match(/^\s*prior_introductions:\s*(.+)$/m)?.[1] ?? "");
+        const commission = item.match(/^\s*commission_structure:\s*"?(.+?)"?\s*$/m)?.[1]?.trim();
+        const notes = item.match(/^\s*notes:\s*"?(.+?)"?\s*$/m)?.[1]?.trim();
+        counterparties.push({
+          segment,
+          name,
+          status,
+          type,
+          geography: geography.length ? geography : undefined,
+          fiduciaryRestricted: fiduciary === "true",
+          priorIntroductions: conv,
+          commissionStructure: commission,
+          notes,
+        });
+      }
+    }
+  };
+
+  sectionFor("Private banks", "private-banks");
+  sectionFor("Family offices", "family-offices");
+  sectionFor("Independent introducers", "introducers");
+
+  return { raw, summaries, counterparties };
+};
+
+export const getWealthChannel = (clientSlug: string): ParsedWealthChannel | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const filePath = path.join(folder, "wealth-channels", "registry.md");
+  const raw = readFileSafe(filePath);
+  if (!raw) return null;
+  return parseWealthChannelMarkdown(raw);
+};
+
 // ---------- Stats ----------
 
 export const getStats = () => {

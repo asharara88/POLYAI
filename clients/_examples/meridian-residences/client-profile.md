@@ -49,6 +49,21 @@ broker_strategy:
     tier_3: 108
   speed_to_lead_sla_minutes: 5
   exclusive_period_weeks: 2  # tier-1 gets 2 weeks exclusive on premium-tier units
+  channel_development_targets_quarterly:
+    reactivations: 4
+    new_signings: 8
+
+wealth_channel_strategy:
+  registry_ref: clients/_examples/meridian-residences/wealth-channels/registry.md
+  active_target_by_launch:
+    private_banks: 6
+    family_offices: 12
+    independent_introducers: 18
+  expected_share_of_revenue: 0.30  # ~30% of revenue from <10% of reservations
+  expected_share_of_reservations: 0.08
+  channel_development_targets_quarterly:
+    reactivations: 2
+    new_signings: 6
 
 inventory:
   current_ref: clients/_examples/meridian-residences/inventory/current.md

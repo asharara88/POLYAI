@@ -3,8 +3,9 @@ import Link from "next/link";
 import Markdown from "@/components/Markdown";
 import InventoryDashboard from "@/components/InventoryDashboard";
 import BrokerRegistry from "@/components/BrokerRegistry";
+import WealthChannelRegistry from "@/components/WealthChannelRegistry";
 import RoutingSimulator from "./RoutingSimulator";
-import { getBrokers, getClient, getClients, getInventory } from "@/lib/content";
+import { getBrokers, getClient, getClients, getInventory, getWealthChannel } from "@/lib/content";
 
 export const dynamicParams = false;
 
@@ -12,7 +13,16 @@ export function generateStaticParams() {
   return getClients().map((c) => ({ slug: c.slug }));
 }
 
-type Tab = "profile" | "icp" | "voice" | "decisions" | "results" | "inventory" | "brokers" | "routing";
+type Tab =
+  | "profile"
+  | "icp"
+  | "voice"
+  | "decisions"
+  | "results"
+  | "inventory"
+  | "brokers"
+  | "wealth"
+  | "routing";
 
 const baseTabs: { key: Tab; label: string }[] = [
   { key: "profile", label: "Profile" },
@@ -36,11 +46,13 @@ export default async function Page({
 
   const inventory = getInventory(slug);
   const brokers = getBrokers(slug);
+  const wealth = getWealthChannel(slug);
 
   const tabs = [
     ...baseTabs,
     ...(inventory ? [{ key: "inventory" as Tab, label: "Inventory" }] : []),
     ...(brokers ? [{ key: "brokers" as Tab, label: "Brokers" }] : []),
+    ...(wealth ? [{ key: "wealth" as Tab, label: "Wealth channel" }] : []),
     ...(brokers ? [{ key: "routing" as Tab, label: "Routing sim" }] : []),
   ];
 
@@ -113,6 +125,7 @@ export default async function Page({
         {activeTab === "results" && <Markdown>{client.results || "_No results logged yet._"}</Markdown>}
         {activeTab === "inventory" && inventory && <InventoryDashboard inventory={inventory} />}
         {activeTab === "brokers" && brokers && <BrokerRegistry brokers={brokers} />}
+        {activeTab === "wealth" && wealth && <WealthChannelRegistry channel={wealth} />}
         {activeTab === "routing" && brokers && (
           <div className="space-y-4">
             <p className="text-sm text-ink-500 dark:text-ink-400 max-w-3xl">

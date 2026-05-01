@@ -79,8 +79,23 @@ Existing agents that map directly:
 
 Developer-specific agents (added with this sub-vertical):
 - `agency-liaison` → owns the relationship with each external agency: briefs, deliverables, approvals, deadlines, performance.
-- `broker-enablement` → manages the broker network: training, materials, lead routing, allocations, commission disputes, broker performance.
-- `inventory-manager` → maintains the source of truth for unit availability, pricing tiers, payment plans, floor-plan inventory; gates any creative or listing that references specific units.
+- `broker-enablement` → manages the broker channel: registry, materials, allocation processing, channel development (reactivation + new signings), commission coordination, broker performance, dispute escalation. Does NOT route the developer's direct-marketing leads to brokers (those go to in-house RM); broker channel processes broker-originated allocation requests.
+- `wealth-channel-enablement` → parallel to broker-enablement but for the discretion-led HNI / UHNI channel: private banks, family offices, independent wealth introducers. Confidential materials, principal-to-principal communication, multi-unit / floor / building deals. Critical for luxury / branded-residences sub-sub-vertical.
+- `inventory-manager` → maintains the source of truth for unit availability, pricing tiers, payment plans, floor-plan inventory; gates any creative or listing that references specific units; processes both broker- and wealth-channel allocation requests.
+
+Two channels, in parallel — not interchangeable:
+
+| | Broker channel | Wealth channel |
+|---|---|---|
+| Buyer pool | retail HNI, end-user, mid-market investor | HNI / UHNI, family principals, family-office advised |
+| Owning agent | broker-enablement | wealth-channel-enablement |
+| Trust mechanism | listings + portal presence + broker-buyer relationship | named-principal trust + reciprocity + discretion |
+| Materials | public-grade fact sheets, calculators, FAQs | confidential watermarked investor packs, IRR + sensitivity, exit scenarios |
+| Communication | bulk possible (with approval) | always 1:1, principal-to-principal |
+| Cycle | 30–90 days | 7–60 days for HNI principal; longer for family office |
+| Volume | 60–80% of reservations | <10% of reservations, often >25% of revenue |
+| Deal size | typical-tier units | premium tier, multi-unit, floor, building |
+| Compliance lead | broker-disclosure, RERA | fiduciary rules, jurisdiction-specific securities, FCA/SEC/MAS/DFSA where applicable |
 
 ## Approval gates (developer-specific overrides)
 

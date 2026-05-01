@@ -44,7 +44,8 @@ A team of specialized agents that plan, execute, and review marketing and sales 
 
 **Sub-vertical specialists** (loaded per client based on `client-profile.md`)
 - `agency-liaison` — manages external creative / media / digital / PR agencies (real-estate developer, larger B2C)
-- `broker-enablement` — broker network: training, materials, lead routing, performance, disputes (real-estate developer, channel-led B2B)
+- `broker-enablement` — broker channel: registry, materials, allocations, channel development (reactivation + new signings), performance, disputes (real-estate developer, channel-led B2B)
+- `wealth-channel-enablement` — parallel HNI / UHNI channel: private banks, family offices, independent introducers; confidential materials, principal-to-principal, multi-unit / floor / building deals (luxury / branded residences / ultra-prime)
 - `inventory-manager` — source-of-truth for unit / vehicle / allocation availability, pricing, status; gates customer-facing artifacts that reference inventory (real-estate developer, automotive)
 
 ## Multi-client + multi-vertical model
