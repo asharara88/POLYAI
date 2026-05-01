@@ -136,6 +136,200 @@ export const getCampaign = (clientSlug: string, campaignSlug: string) => {
   return { clientSlug, campaignSlug, files };
 };
 
+// ---------- Inventory ----------
+
+export type InventoryTotals = {
+  total: number | null;
+  available: number | null;
+  onHold: number | null;
+  reserved: number | null;
+  sold: number | null;
+  withdrawn: number | null;
+};
+
+export type InventoryUnitTypeRow = {
+  type: string;
+  count: number;
+  avgAedPerSqft: number | null;
+  rangeAed: string;
+  planDefault: string;
+};
+
+export type InventoryUnit = {
+  unitId: string;
+  type: string;
+  floor: number | null;
+  view: string;
+  areaSqft: number | null;
+  priceAed: number | null;
+  paymentPlan: string;
+  status: string;
+};
+
+export type ParsedInventory = {
+  raw: string;
+  totals: InventoryTotals;
+  unitTypes: InventoryUnitTypeRow[];
+  sampleUnits: InventoryUnit[];
+};
+
+const num = (s: string | undefined | null): number | null => {
+  if (s == null) return null;
+  const m = s.replace(/[, ]/g, "").match(/-?\d+(\.\d+)?/);
+  return m ? Number(m[0]) : null;
+};
+
+const parseInventoryMarkdown = (raw: string): ParsedInventory => {
+  const totals: InventoryTotals = {
+    total: null,
+    available: null,
+    onHold: null,
+    reserved: null,
+    sold: null,
+    withdrawn: null,
+  };
+  const totalsBlock = raw.match(/## Project totals[\s\S]+?(?=\n## |$)/)?.[0] ?? "";
+  totals.total = num(totalsBlock.match(/Total units:\s*(.+)/)?.[1]);
+  totals.available = num(totalsBlock.match(/Available:\s*(.+)/)?.[1]);
+  totals.onHold = num(totalsBlock.match(/On-hold:\s*(.+)/)?.[1]);
+  totals.reserved = num(totalsBlock.match(/Reserved:\s*(.+)/)?.[1]);
+  totals.sold = num(totalsBlock.match(/Sold:\s*(.+)/)?.[1]);
+  totals.withdrawn = num(totalsBlock.match(/Withdrawn:\s*(.+)/)?.[1]);
+
+  // Unit-type breakdown table
+  const unitTypes: InventoryUnitTypeRow[] = [];
+  const tableBlock = raw.match(/## Unit-type breakdown[\s\S]+?(?=\n## |$)/)?.[0] ?? "";
+  const rows = tableBlock.split("\n").filter((l) => l.startsWith("|") && !l.includes("---"));
+  for (const r of rows.slice(1)) {
+    const cells = r.split("|").map((c) => c.trim()).filter(Boolean);
+    if (cells.length < 5) continue;
+    const [type, count, avg, range, plan] = cells;
+    if (type.toLowerCase() === "type") continue;
+    unitTypes.push({
+      type,
+      count: num(count) ?? 0,
+      avgAedPerSqft: num(avg),
+      rangeAed: range,
+      planDefault: plan,
+    });
+  }
+
+  // Sample units in YAML
+  const sampleUnits: InventoryUnit[] = [];
+  const yamlBlocks = raw.match(/```yaml[\s\S]*?```/g) ?? [];
+  for (const block of yamlBlocks) {
+    const cleaned = block.replace(/```yaml|```/g, "");
+    const items = cleaned.split(/\n-\s+/).map((s) => s.trim()).filter(Boolean);
+    for (const item of items) {
+      if (!item.includes("unit_id:")) continue;
+      const grab = (k: string) => {
+        const m = item.match(new RegExp(`^\\s*${k}:\\s*(.+)$`, "m"));
+        return m ? m[1].trim().replace(/^['"]|['"]$/g, "").replace(/\s*#.*$/, "") : "";
+      };
+      sampleUnits.push({
+        unitId: grab("unit_id"),
+        type: grab("type"),
+        floor: num(grab("floor")),
+        view: grab("view"),
+        areaSqft: num(grab("area_sqft")),
+        priceAed: num(grab("price_aed")),
+        paymentPlan: grab("payment_plan"),
+        status: grab("status"),
+      });
+    }
+  }
+
+  return { raw, totals, unitTypes, sampleUnits };
+};
+
+export const getInventory = (clientSlug: string): ParsedInventory | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const filePath = path.join(folder, "inventory", "current.md");
+  const raw = readFileSafe(filePath);
+  if (!raw) return null;
+  return parseInventoryMarkdown(raw);
+};
+
+// ---------- Brokers ----------
+
+export type BrokerTier = {
+  tier: 1 | 2 | 3;
+  count: number | null;
+  description: string;
+};
+
+export type BrokerFirm = {
+  firm: string;
+  tier: number;
+  specializations: string[];
+  languages: string[];
+  priorLaunchConversion: number | null;
+  active: boolean;
+};
+
+export type ParsedBrokers = {
+  raw: string;
+  tiers: BrokerTier[];
+  sampleFirms: BrokerFirm[];
+  speedToLeadSlaMinutes: number | null;
+};
+
+const parseBrokerRegistryMarkdown = (raw: string): ParsedBrokers => {
+  const tiers: BrokerTier[] = [];
+  const tierBlock = raw.match(/## Tier structure[\s\S]+?(?=\n## |$)/)?.[0] ?? "";
+  for (const line of tierBlock.split("\n")) {
+    const m = line.match(/\*\*Tier\s+(\d)\s*\((\d+)\s*firms?\):\*\*\s*(.+)/i);
+    if (m) {
+      tiers.push({
+        tier: Number(m[1]) as 1 | 2 | 3,
+        count: Number(m[2]),
+        description: m[3].trim(),
+      });
+    }
+  }
+
+  const sampleFirms: BrokerFirm[] = [];
+  const yamlBlocks = raw.match(/```yaml[\s\S]*?```/g) ?? [];
+  for (const block of yamlBlocks) {
+    const cleaned = block.replace(/```yaml|```/g, "");
+    const items = cleaned.split(/\n-\s+/).map((s) => s.trim()).filter(Boolean);
+    for (const item of items) {
+      if (!item.includes("firm:")) continue;
+      const firm = item.match(/^\s*firm:\s*"?(.+?)"?\s*$/m)?.[1]?.trim() ?? "";
+      const tier = num(item.match(/^\s*tier:\s*(.+)$/m)?.[1] ?? "");
+      const specStr = item.match(/^\s*specializations:\s*\[(.*?)\]/m)?.[1] ?? "";
+      const langStr = item.match(/^\s*languages:\s*\[(.*?)\]/m)?.[1] ?? "";
+      const conv = num(item.match(/^\s*prior_launch_conversion:\s*(.+)$/m)?.[1] ?? "");
+      const active = (item.match(/^\s*active:\s*(true|false)/m)?.[1] ?? "true") === "true";
+      if (!firm) continue;
+      sampleFirms.push({
+        firm,
+        tier: tier ?? 0,
+        specializations: specStr.split(",").map((s) => s.trim()).filter(Boolean),
+        languages: langStr.split(",").map((s) => s.trim()).filter(Boolean),
+        priorLaunchConversion: conv,
+        active,
+      });
+    }
+  }
+
+  // Speed to lead SLA — try both broker registry and client profile
+  const slaMatch = raw.match(/(?:speed[-_ ]?to[-_ ]?lead|sla)[^0-9]*(\d+)\s*(?:min|minute)/i);
+  const speedToLeadSlaMinutes = slaMatch ? Number(slaMatch[1]) : null;
+
+  return { raw, tiers, sampleFirms, speedToLeadSlaMinutes };
+};
+
+export const getBrokers = (clientSlug: string): ParsedBrokers | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const filePath = path.join(folder, "brokers", "registry.md");
+  const raw = readFileSafe(filePath);
+  if (!raw) return null;
+  return parseBrokerRegistryMarkdown(raw);
+};
+
 // ---------- Agents ----------
 
 export type AgentSummary = {

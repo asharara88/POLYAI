@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Markdown from "@/components/Markdown";
-import { getClient, getClients } from "@/lib/content";
+import InventoryDashboard from "@/components/InventoryDashboard";
+import BrokerRegistry from "@/components/BrokerRegistry";
+import RoutingSimulator from "./RoutingSimulator";
+import { getBrokers, getClient, getClients, getInventory } from "@/lib/content";
 
 export const dynamicParams = false;
 
@@ -9,9 +12,9 @@ export function generateStaticParams() {
   return getClients().map((c) => ({ slug: c.slug }));
 }
 
-type Tab = "profile" | "icp" | "voice" | "decisions" | "results";
+type Tab = "profile" | "icp" | "voice" | "decisions" | "results" | "inventory" | "brokers" | "routing";
 
-const tabs: { key: Tab; label: string }[] = [
+const baseTabs: { key: Tab; label: string }[] = [
   { key: "profile", label: "Profile" },
   { key: "icp", label: "ICP" },
   { key: "voice", label: "Brand voice" },
@@ -31,17 +34,17 @@ export default async function Page({
   const client = getClient(slug);
   if (!client) notFound();
 
+  const inventory = getInventory(slug);
+  const brokers = getBrokers(slug);
+
+  const tabs = [
+    ...baseTabs,
+    ...(inventory ? [{ key: "inventory" as Tab, label: "Inventory" }] : []),
+    ...(brokers ? [{ key: "brokers" as Tab, label: "Brokers" }] : []),
+    ...(brokers ? [{ key: "routing" as Tab, label: "Routing sim" }] : []),
+  ];
+
   const activeTab = (tabs.find((t) => t.key === tabParam)?.key ?? "profile") as Tab;
-  const content =
-    activeTab === "profile"
-      ? client.profile
-      : activeTab === "icp"
-      ? client.icp
-      : activeTab === "voice"
-      ? client.brandVoice
-      : activeTab === "decisions"
-      ? client.decisions
-      : client.results;
 
   return (
     <div className="space-y-8">
@@ -103,10 +106,22 @@ export default async function Page({
           })}
         </div>
 
-        {content ? (
-          <Markdown>{content}</Markdown>
-        ) : (
-          <p className="text-sm text-ink-500">No content yet for this section.</p>
+        {activeTab === "profile" && <Markdown>{client.profile}</Markdown>}
+        {activeTab === "icp" && <Markdown>{client.icp || "_No ICP defined yet._"}</Markdown>}
+        {activeTab === "voice" && <Markdown>{client.brandVoice || "_No brand voice defined yet._"}</Markdown>}
+        {activeTab === "decisions" && <Markdown>{client.decisions || "_No decisions logged yet._"}</Markdown>}
+        {activeTab === "results" && <Markdown>{client.results || "_No results logged yet._"}</Markdown>}
+        {activeTab === "inventory" && inventory && <InventoryDashboard inventory={inventory} />}
+        {activeTab === "brokers" && brokers && <BrokerRegistry brokers={brokers} />}
+        {activeTab === "routing" && brokers && (
+          <div className="space-y-4">
+            <p className="text-sm text-ink-500 dark:text-ink-400 max-w-3xl">
+              Paste or shape a sample inbound lead. The orchestrator runs it through{" "}
+              <code className="font-mono">broker-enablement</code>'s routing logic against this
+              client's broker registry and returns the chosen firm with reasoning.
+            </p>
+            <RoutingSimulator clientSlug={slug} />
+          </div>
         )}
       </section>
     </div>
