@@ -511,6 +511,77 @@ export const getWealthChannel = (clientSlug: string): ParsedWealthChannel | null
   return parseWealthChannelMarkdown(raw);
 };
 
+// ---------- Sales (RM team + allocation rules) ----------
+
+export type RmEntry = {
+  rmId: string;
+  name: string;
+  tier: string;
+  specializations: string[];
+  languages: string[];
+  currentLoad: number | null;
+  capacity: number | null;
+  priorQuarterCloseRate: number | null;
+  active: boolean;
+};
+
+export type ParsedRmTeam = {
+  raw: string;
+  rms: RmEntry[];
+};
+
+const parseRmTeamMarkdown = (raw: string): ParsedRmTeam => {
+  const rms: RmEntry[] = [];
+  const yamlBlocks = raw.match(/```yaml[\s\S]*?```/g) ?? [];
+  for (const block of yamlBlocks) {
+    const cleaned = block.replace(/```yaml|```/g, "");
+    const items = cleaned.split(/\n-\s+/).map((s) => s.trim()).filter(Boolean);
+    for (const item of items) {
+      if (!item.includes("rm_id:")) continue;
+      const grab = (k: string) =>
+        item.match(new RegExp(`^\\s*${k}:\\s*"?(.+?)"?\\s*$`, "m"))?.[1]?.trim();
+      const arr = (k: string) => {
+        const m = item.match(new RegExp(`^\\s*${k}:\\s*\\[(.*?)\\]`, "m"));
+        return m
+          ? m[1]
+              .split(",")
+              .map((s) => s.trim().replace(/^['"]|['"]$/g, ""))
+              .filter(Boolean)
+          : [];
+      };
+      const rmId = grab("rm_id") ?? "";
+      if (!rmId) continue;
+      rms.push({
+        rmId,
+        name: grab("name") ?? "",
+        tier: grab("tier") ?? "",
+        specializations: arr("specializations"),
+        languages: arr("languages"),
+        currentLoad: num(grab("current_load") ?? ""),
+        capacity: num(grab("capacity") ?? ""),
+        priorQuarterCloseRate: num(grab("prior_quarter_close_rate") ?? ""),
+        active: (grab("active") ?? "true") === "true",
+      });
+    }
+  }
+  return { raw, rms };
+};
+
+export const getRmTeam = (clientSlug: string): ParsedRmTeam | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const filePath = path.join(folder, "sales", "rm-team.md");
+  const raw = readFileSafe(filePath);
+  if (!raw) return null;
+  return parseRmTeamMarkdown(raw);
+};
+
+export const getAllocationRules = (clientSlug: string): string | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  return readFileSafe(path.join(folder, "sales", "allocation-rules.md"));
+};
+
 // ---------- VVIP channel ----------
 
 export type VvipEntity = {

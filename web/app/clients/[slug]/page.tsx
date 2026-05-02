@@ -64,7 +64,7 @@ export default async function Page({
     ...(brokers ? [{ key: "brokers" as Tab, label: "Brokers" }] : []),
     ...(wealth ? [{ key: "wealth" as Tab, label: "Wealth channel" }] : []),
     ...(vvip ? [{ key: "vvip" as Tab, label: "VVIP" }] : []),
-    ...(brokers ? [{ key: "routing" as Tab, label: "Routing sim" }] : []),
+    ...(brokers ? [{ key: "routing" as Tab, label: "Simulators" }] : []),
   ];
 
   const activeTab = (tabs.find((t) => t.key === tabParam)?.key ?? "profile") as Tab;
@@ -141,9 +141,13 @@ export default async function Page({
         {activeTab === "routing" && brokers && (
           <div className="space-y-4">
             <p className="text-sm text-ink-500 dark:text-ink-400 max-w-3xl">
-              Paste or shape a sample inbound lead. The orchestrator runs it through{" "}
-              <code className="font-mono">broker-enablement</code>'s routing logic against this
-              client's broker registry and returns the chosen firm with reasoning.
+              Three simulator modes for the developer's sales motion:{" "}
+              <code className="font-mono">direct lead → in-house RM</code> (default for
+              direct-marketing leads),{" "}
+              <code className="font-mono">broker allocation request</code> (default for
+              broker-originated buyers), and{" "}
+              <code className="font-mono">overflow → broker</code> (exception when in-house
+              capacity is exceeded).
             </p>
             <RoutingSimulator clientSlug={slug} />
           </div>
