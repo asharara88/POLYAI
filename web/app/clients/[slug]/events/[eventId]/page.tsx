@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Markdown from "@/components/Markdown";
+import RsvpStaging from "./RsvpStaging";
 import { getClient, getClients, getEventDetail, getEvents } from "@/lib/content";
 
 export const dynamicParams = false;
@@ -123,6 +124,14 @@ export default async function Page({
           })}
         </div>
         {content ? <Markdown>{content}</Markdown> : <p className="text-sm text-ink-500">No content.</p>}
+
+        {activeTab === "rsvps" && detail.rsvpLog && (
+          <RsvpStaging
+            clientSlug={slug}
+            eventId={eventId}
+            filePath={`clients/${client.summary.isExample ? "_examples/" : ""}${slug}/events/${eventId}/rsvp-log.md`}
+          />
+        )}
       </section>
     </div>
   );

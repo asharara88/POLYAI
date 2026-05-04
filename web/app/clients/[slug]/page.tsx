@@ -8,6 +8,7 @@ import VvipChannelRegistry from "@/components/VvipChannelRegistry";
 import EventsDashboard from "@/components/EventsDashboard";
 import VendorsDashboard from "@/components/VendorsDashboard";
 import BudgetDashboard from "@/components/BudgetDashboard";
+import ReciprocityLedger from "@/components/ReciprocityLedger";
 import RoutingSimulator from "./RoutingSimulator";
 import {
   getBrokers,
@@ -16,6 +17,7 @@ import {
   getClients,
   getEvents,
   getInventory,
+  getReciprocity,
   getVendors,
   getVvipChannel,
   getWealthChannel,
@@ -39,6 +41,7 @@ type Tab =
   | "brokers"
   | "wealth"
   | "vvip"
+  | "reciprocity"
   | "events"
   | "vendors"
   | "budget"
@@ -73,6 +76,7 @@ export default async function Page({
   const vendors = getVendors(slug);
   const vendorsWithProfile = listVendorProfiles(slug);
   const budget = getBudget(slug);
+  const reciprocity = getReciprocity(slug);
 
   const tabs = [
     ...baseTabs,
@@ -80,6 +84,7 @@ export default async function Page({
     ...(brokers ? [{ key: "brokers" as Tab, label: "Brokers" }] : []),
     ...(wealth ? [{ key: "wealth" as Tab, label: "Wealth channel" }] : []),
     ...(vvip ? [{ key: "vvip" as Tab, label: "VVIP" }] : []),
+    ...(reciprocity ? [{ key: "reciprocity" as Tab, label: "Reciprocity" }] : []),
     ...(events.length > 0 ? [{ key: "events" as Tab, label: "Events" }] : []),
     ...(vendors ? [{ key: "vendors" as Tab, label: "Vendors" }] : []),
     ...(budget ? [{ key: "budget" as Tab, label: "Budget" }] : []),
@@ -163,6 +168,9 @@ export default async function Page({
         )}
         {activeTab === "wealth" && wealth && <WealthChannelRegistry channel={wealth} />}
         {activeTab === "vvip" && vvip && <VvipChannelRegistry channel={vvip} />}
+        {activeTab === "reciprocity" && reciprocity && (
+          <ReciprocityLedger ledger={reciprocity} />
+        )}
         {activeTab === "events" && events.length > 0 && (
           <EventsDashboard events={events} clientSlug={slug} />
         )}

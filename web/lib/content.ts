@@ -1052,6 +1052,114 @@ export const getVvipChannel = (clientSlug: string): ParsedVvip | null => {
   return parseVvipMarkdown(raw);
 };
 
+// ---------- Reciprocity ledger ----------
+
+export type ReciprocityEntry = {
+  entryId: string;
+  date: string;
+  counterpartyId: string;
+  counterpartyName: string;
+  channel: "vvip" | "wealth" | "other";
+  direction: "outbound" | "inbound";
+  type: string;
+  description: string;
+  valueImplied?: string;
+  status: string;
+  recordedBy?: string;
+  notes?: string;
+};
+
+export type ReciprocityCounterpartySummary = {
+  counterpartyId: string;
+  counterpartyName: string;
+  channel: string;
+  inbound: number;
+  outbound: number;
+  net: number; // outbound - inbound; negative means we owe
+  pendingAcknowledge: number;
+  pendingReciprocate: number;
+  lastTouchDate: string;
+};
+
+export type ParsedReciprocity = {
+  raw: string;
+  entries: ReciprocityEntry[];
+  summaries: ReciprocityCounterpartySummary[];
+};
+
+const parseReciprocity = (raw: string): ParsedReciprocity => {
+  const entries: ReciprocityEntry[] = [];
+  const yamlBlocks = raw.match(/```yaml[\s\S]*?```/g) ?? [];
+  for (const block of yamlBlocks) {
+    const cleaned = block.replace(/```yaml|```/g, "");
+    const items = cleaned.split(/\n-\s+/).map((s) => s.trim()).filter(Boolean);
+    for (const item of items) {
+      if (!item.includes("entry_id:")) continue;
+      const grab = (k: string) => {
+        const m = item.match(new RegExp(`^\\s*${k}:\\s*"?(.+?)"?\\s*$`, "m"));
+        return m ? m[1].trim().replace(/\s*#.*$/, "") : undefined;
+      };
+      const entryId = grab("entry_id") ?? "";
+      if (!entryId) continue;
+      entries.push({
+        entryId,
+        date: grab("date") ?? "",
+        counterpartyId: grab("counterparty_id") ?? "",
+        counterpartyName: grab("counterparty_name") ?? "",
+        channel: (grab("channel") as ReciprocityEntry["channel"]) ?? "other",
+        direction: (grab("direction") as ReciprocityEntry["direction"]) ?? "inbound",
+        type: grab("type") ?? "",
+        description: grab("description") ?? "",
+        valueImplied: grab("value_implied"),
+        status: grab("status") ?? "",
+        recordedBy: grab("recorded_by"),
+        notes: grab("notes"),
+      });
+    }
+  }
+
+  // Build per-counterparty summaries
+  const map: Record<string, ReciprocityCounterpartySummary> = {};
+  for (const e of entries) {
+    const key = e.counterpartyId || e.counterpartyName;
+    if (!map[key]) {
+      map[key] = {
+        counterpartyId: e.counterpartyId,
+        counterpartyName: e.counterpartyName,
+        channel: e.channel,
+        inbound: 0,
+        outbound: 0,
+        net: 0,
+        pendingAcknowledge: 0,
+        pendingReciprocate: 0,
+        lastTouchDate: e.date,
+      };
+    }
+    const s = map[key];
+    if (e.direction === "inbound") s.inbound++;
+    else s.outbound++;
+    if (e.status === "pending-acknowledge") s.pendingAcknowledge++;
+    if (e.status === "pending-reciprocate") s.pendingReciprocate++;
+    if (e.date > s.lastTouchDate) s.lastTouchDate = e.date;
+  }
+  const summaries = Object.values(map).map((s) => ({
+    ...s,
+    net: s.outbound - s.inbound,
+  }));
+  // Sort: most-debt first (net most negative), then by last-touch desc
+  summaries.sort((a, b) => a.net - b.net || b.lastTouchDate.localeCompare(a.lastTouchDate));
+
+  return { raw, entries, summaries };
+};
+
+export const getReciprocity = (clientSlug: string): ParsedReciprocity | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const raw = readFileSafe(path.join(folder, "reciprocity-ledger.md"));
+  if (!raw) return null;
+  return parseReciprocity(raw);
+};
+
 // ---------- Stats ----------
 
 export const getStats = () => {
