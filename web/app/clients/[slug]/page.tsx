@@ -19,6 +19,8 @@ import {
   getVendors,
   getVvipChannel,
   getWealthChannel,
+  listBrokerProfiles,
+  listVendorProfiles,
 } from "@/lib/content";
 
 export const dynamicParams = false;
@@ -64,10 +66,12 @@ export default async function Page({
 
   const inventory = getInventory(slug);
   const brokers = getBrokers(slug);
+  const brokersWithProfile = listBrokerProfiles(slug);
   const wealth = getWealthChannel(slug);
   const vvip = getVvipChannel(slug);
   const events = getEvents(slug);
   const vendors = getVendors(slug);
+  const vendorsWithProfile = listVendorProfiles(slug);
   const budget = getBudget(slug);
 
   const tabs = [
@@ -150,13 +154,25 @@ export default async function Page({
         {activeTab === "decisions" && <Markdown>{client.decisions || "_No decisions logged yet._"}</Markdown>}
         {activeTab === "results" && <Markdown>{client.results || "_No results logged yet._"}</Markdown>}
         {activeTab === "inventory" && inventory && <InventoryDashboard inventory={inventory} />}
-        {activeTab === "brokers" && brokers && <BrokerRegistry brokers={brokers} />}
+        {activeTab === "brokers" && brokers && (
+          <BrokerRegistry
+            brokers={brokers}
+            clientSlug={slug}
+            brokersWithProfile={brokersWithProfile}
+          />
+        )}
         {activeTab === "wealth" && wealth && <WealthChannelRegistry channel={wealth} />}
         {activeTab === "vvip" && vvip && <VvipChannelRegistry channel={vvip} />}
         {activeTab === "events" && events.length > 0 && (
           <EventsDashboard events={events} clientSlug={slug} />
         )}
-        {activeTab === "vendors" && vendors && <VendorsDashboard vendors={vendors} />}
+        {activeTab === "vendors" && vendors && (
+          <VendorsDashboard
+            vendors={vendors}
+            clientSlug={slug}
+            vendorsWithProfile={vendorsWithProfile}
+          />
+        )}
         {activeTab === "budget" && budget && <BudgetDashboard budget={budget} />}
         {activeTab === "routing" && brokers && (
           <div className="space-y-4">

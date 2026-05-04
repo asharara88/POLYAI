@@ -321,6 +321,35 @@ const parseBrokerRegistryMarkdown = (raw: string): ParsedBrokers => {
   return { raw, tiers, sampleFirms, speedToLeadSlaMinutes };
 };
 
+export const slugify = (s: string): string =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+export const getBrokerDetail = (
+  clientSlug: string,
+  firmSlug: string,
+): { firmName: string; raw: string } | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  // Try firm-slug folder match
+  const dir = path.join(folder, "brokers", firmSlug);
+  const profilePath = path.join(dir, "profile.md");
+  const raw = readFileSafe(profilePath);
+  if (raw) {
+    return { firmName: firmSlug, raw };
+  }
+  return null;
+};
+
+export const listBrokerProfiles = (clientSlug: string): string[] => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return [];
+  const dir = path.join(folder, "brokers");
+  return listDirs(dir);
+};
+
 export const getBrokers = (clientSlug: string): ParsedBrokers | null => {
   const folder = findClientFolder(clientSlug);
   if (!folder) return null;
@@ -707,6 +736,27 @@ export const getVendors = (clientSlug: string): ParsedVendors | null => {
   const raw = readFileSafe(filePath);
   if (!raw) return null;
   return parseVendorRegistry(raw);
+};
+
+export const getVendorDetail = (
+  clientSlug: string,
+  vendorSlug: string,
+): { vendorName: string; raw: string } | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const dir = path.join(folder, "vendors", vendorSlug);
+  const profilePath = path.join(dir, "profile.md");
+  const raw = readFileSafe(profilePath);
+  if (raw) {
+    return { vendorName: vendorSlug, raw };
+  }
+  return null;
+};
+
+export const listVendorProfiles = (clientSlug: string): string[] => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return [];
+  return listDirs(path.join(folder, "vendors"));
 };
 
 // ---------- Marketing budget ----------

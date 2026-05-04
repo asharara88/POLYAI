@@ -1,6 +1,21 @@
+import Link from "next/link";
 import type { ParsedBrokers } from "@/lib/content";
 
-export default function BrokerRegistry({ brokers }: { brokers: ParsedBrokers }) {
+const slugify = (s: string): string =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+export default function BrokerRegistry({
+  brokers,
+  clientSlug,
+  brokersWithProfile,
+}: {
+  brokers: ParsedBrokers;
+  clientSlug: string;
+  brokersWithProfile: string[];
+}) {
   const total = brokers.tiers.reduce((acc, t) => acc + (t.count ?? 0), 0);
 
   return (
@@ -68,12 +83,28 @@ export default function BrokerRegistry({ brokers }: { brokers: ParsedBrokers }) 
                 </tr>
               </thead>
               <tbody>
-                {brokers.sampleFirms.map((f) => (
+                {brokers.sampleFirms.map((f) => {
+                  const fSlug = slugify(f.firm);
+                  const hasProfile = brokersWithProfile.includes(fSlug);
+                  return (
                   <tr
                     key={f.firm}
-                    className="border-b border-ink-100 dark:border-ink-800/50 last:border-0"
+                    className={`border-b border-ink-100 dark:border-ink-800/50 last:border-0 ${
+                      hasProfile ? "hover:bg-ink-50 dark:hover:bg-ink-800/40" : ""
+                    }`}
                   >
-                    <td className="px-3 py-2 font-medium">{f.firm}</td>
+                    <td className="px-3 py-2 font-medium">
+                      {hasProfile ? (
+                        <Link
+                          href={`/clients/${clientSlug}/brokers/${fSlug}`}
+                          className="text-accent hover:underline"
+                        >
+                          {f.firm}
+                        </Link>
+                      ) : (
+                        f.firm
+                      )}
+                    </td>
                     <td className="px-3 py-2 font-mono text-xs">{f.tier}</td>
                     <td className="px-3 py-2 text-xs">
                       <div className="flex flex-wrap gap-1">
@@ -101,7 +132,8 @@ export default function BrokerRegistry({ brokers }: { brokers: ParsedBrokers }) 
                       />
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>

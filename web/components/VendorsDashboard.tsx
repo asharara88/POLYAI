@@ -1,4 +1,11 @@
+import Link from "next/link";
 import type { ParsedVendors } from "@/lib/content";
+
+const slugify = (s: string): string =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 
 const STATUS_COLOR: Record<string, string> = {
   active: "bg-emerald-500",
@@ -13,7 +20,15 @@ const fmtPct = (n: number | null | undefined) =>
 const fmtAed = (n: number | null | undefined) =>
   n == null ? "—" : `AED ${n.toLocaleString()}`;
 
-export default function VendorsDashboard({ vendors }: { vendors: ParsedVendors }) {
+export default function VendorsDashboard({
+  vendors,
+  clientSlug,
+  vendorsWithProfile,
+}: {
+  vendors: ParsedVendors;
+  clientSlug: string;
+  vendorsWithProfile: string[];
+}) {
   // Group by category
   const byCategory: Record<string, typeof vendors.vendors> = {};
   for (const v of vendors.vendors) {
@@ -66,13 +81,27 @@ export default function VendorsDashboard({ vendors }: { vendors: ParsedVendors }
                 </tr>
               </thead>
               <tbody>
-                {list.map((v) => (
+                {list.map((v) => {
+                  const vSlug = slugify(v.name);
+                  const hasProfile = vendorsWithProfile.includes(vSlug);
+                  return (
                   <tr
                     key={v.name}
-                    className="border-b border-ink-100 dark:border-ink-800/50 last:border-0"
+                    className={`border-b border-ink-100 dark:border-ink-800/50 last:border-0 ${
+                      hasProfile ? "hover:bg-ink-50 dark:hover:bg-ink-800/40 cursor-pointer" : ""
+                    }`}
                   >
                     <td className="px-3 py-2 font-medium">
-                      {v.name}
+                      {hasProfile ? (
+                        <Link
+                          href={`/clients/${clientSlug}/vendors/${vSlug}`}
+                          className="text-accent hover:underline"
+                        >
+                          {v.name}
+                        </Link>
+                      ) : (
+                        v.name
+                      )}
                       {v.notes && (
                         <div className="text-xs text-ink-500 dark:text-ink-400 mt-0.5">
                           {v.notes}
@@ -105,7 +134,8 @@ export default function VendorsDashboard({ vendors }: { vendors: ParsedVendors }
                       {fmtAed(v.totalSpendAedYtd)}
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>
