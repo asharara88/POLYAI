@@ -1,4 +1,4 @@
-import type { BudgetRow, ParsedBudget } from "@/lib/content";
+import type { BudgetRow, BudgetSnapshot, ParsedBudget } from "@/lib/content";
 
 const fmtAed = (n: number | null | undefined) =>
   n == null ? "—" : `AED ${(n / 1000).toLocaleString(undefined, { maximumFractionDigits: 0 })}k`;
@@ -9,7 +9,13 @@ const fmtAedFull = (n: number | null | undefined) =>
 const pct = (a: number | null | undefined, b: number | null | undefined) =>
   a != null && b != null && b > 0 ? Math.round((a / b) * 100) : 0;
 
-export default function BudgetDashboard({ budget }: { budget: ParsedBudget }) {
+export default function BudgetDashboard({
+  budget,
+  snapshots,
+}: {
+  budget: ParsedBudget;
+  snapshots: BudgetSnapshot[];
+}) {
   const t = budget.topline;
   const totalCommittedPct = pct(t.totalCommittedAed, t.totalPlannedAed);
   const totalActualPct = pct(t.totalActualAed, t.totalPlannedAed);
@@ -82,6 +88,9 @@ export default function BudgetDashboard({ budget }: { budget: ParsedBudget }) {
         </section>
       )}
 
+      {/* Burn-down */}
+      {snapshots.length > 0 && <BurnDownChart snapshots={snapshots} />}
+
       {/* By campaign */}
       {budget.byCampaign.length > 0 && (
         <BudgetSection title="By campaign" rows={budget.byCampaign} />
@@ -101,6 +110,203 @@ export default function BudgetDashboard({ budget }: { budget: ParsedBudget }) {
         Source: <code className="font-mono">clients/&lt;slug&gt;/marketing-budget.md</code> · Owned by the
         <code className="font-mono mx-1">marketing-financial-manager</code> agent.
       </div>
+    </div>
+  );
+}
+
+function BurnDownChart({ snapshots }: { snapshots: BudgetSnapshot[] }) {
+  // Build SVG line chart
+  const W = 720;
+  const H = 220;
+  const padL = 60;
+  const padR = 16;
+  const padT = 16;
+  const padB = 32;
+  const innerW = W - padL - padR;
+  const innerH = H - padT - padB;
+
+  const max = Math.max(
+    ...snapshots.flatMap((s) => [
+      s.cumulativePlannedAed ?? 0,
+      s.cumulativeCommittedAed ?? 0,
+      s.cumulativeActualAed ?? 0,
+    ]),
+  );
+  const x = (i: number) =>
+    padL + (snapshots.length === 1 ? 0 : (i / (snapshots.length - 1)) * innerW);
+  const y = (v: number) => padT + innerH - (v / max) * innerH;
+
+  const linePath = (key: keyof BudgetSnapshot): string => {
+    const points = snapshots
+      .map((s, i) => {
+        const v = s[key] as number | null;
+        return v == null ? null : `${x(i)},${y(v)}`;
+      })
+      .filter(Boolean);
+    if (points.length === 0) return "";
+    return "M " + points.join(" L ");
+  };
+
+  const yTicks = 4;
+  const tickValues = Array.from({ length: yTicks + 1 }, (_, i) => (max * i) / yTicks);
+
+  return (
+    <section>
+      <h3 className="text-sm font-mono uppercase tracking-wider text-ink-400 mb-3">
+        Burn-down (cumulative AED)
+      </h3>
+      <div className="rounded-md border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 p-4">
+        <div className="overflow-x-auto">
+          <svg
+            viewBox={`0 0 ${W} ${H}`}
+            className="w-full h-auto text-ink-400"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            {/* y-axis grid + labels */}
+            {tickValues.map((v, i) => (
+              <g key={i}>
+                <line
+                  x1={padL}
+                  y1={y(v)}
+                  x2={W - padR}
+                  y2={y(v)}
+                  stroke="currentColor"
+                  strokeOpacity={0.15}
+                  strokeWidth={1}
+                />
+                <text
+                  x={padL - 6}
+                  y={y(v) + 4}
+                  textAnchor="end"
+                  fontSize={10}
+                  fontFamily="ui-monospace, monospace"
+                  fill="currentColor"
+                >
+                  {(v / 1000000).toFixed(1)}M
+                </text>
+              </g>
+            ))}
+            {/* x-axis labels */}
+            {snapshots.map((s, i) => (
+              <text
+                key={s.month}
+                x={x(i)}
+                y={H - 10}
+                textAnchor="middle"
+                fontSize={10}
+                fontFamily="ui-monospace, monospace"
+                fill="currentColor"
+              >
+                {s.month.slice(5)}
+              </text>
+            ))}
+            {/* planned line — neutral */}
+            <path
+              d={linePath("cumulativePlannedAed")}
+              stroke="#65656f"
+              strokeWidth={1.5}
+              fill="none"
+              strokeDasharray="4 3"
+            />
+            {/* committed line — accent muted */}
+            <path
+              d={linePath("cumulativeCommittedAed")}
+              stroke="#3a8e7a"
+              strokeOpacity={0.45}
+              strokeWidth={2}
+              fill="none"
+            />
+            {/* actual line — accent */}
+            <path
+              d={linePath("cumulativeActualAed")}
+              stroke="#3a8e7a"
+              strokeWidth={2.5}
+              fill="none"
+            />
+            {/* point markers — actual */}
+            {snapshots.map((s, i) =>
+              s.cumulativeActualAed != null ? (
+                <circle
+                  key={`a-${s.month}`}
+                  cx={x(i)}
+                  cy={y(s.cumulativeActualAed)}
+                  r={3}
+                  fill="#3a8e7a"
+                />
+              ) : null,
+            )}
+          </svg>
+        </div>
+
+        {/* Legend */}
+        <div className="mt-3 flex flex-wrap gap-4 text-xs">
+          <LegendDot color="#3a8e7a" label="actual" solid />
+          <LegendDot color="#3a8e7a" label="committed" muted />
+          <LegendDot color="#65656f" label="planned" dashed />
+        </div>
+
+        {/* Last snapshot summary */}
+        {(() => {
+          const last = [...snapshots]
+            .reverse()
+            .find((s) => s.cumulativeActualAed != null);
+          if (!last) return null;
+          const variance =
+            last.cumulativePlannedAed != null && last.cumulativePlannedAed > 0
+              ? ((last.cumulativeActualAed! - last.cumulativePlannedAed) /
+                  last.cumulativePlannedAed) *
+                100
+              : 0;
+          const tone =
+            variance < -15
+              ? "text-amber-600 dark:text-amber-400"
+              : variance > 15
+                ? "text-red-600 dark:text-red-400"
+                : "text-ink-500";
+          return (
+            <div className="mt-3 text-xs font-mono">
+              <span className="text-ink-400">last actual ({last.month}): </span>
+              <span>AED {last.cumulativeActualAed?.toLocaleString()}</span>
+              <span className={`ml-3 ${tone}`}>
+                {variance >= 0 ? "+" : ""}
+                {Math.round(variance)}% vs. plan
+              </span>
+            </div>
+          );
+        })()}
+      </div>
+    </section>
+  );
+}
+
+function LegendDot({
+  color,
+  label,
+  solid,
+  muted,
+  dashed,
+}: {
+  color: string;
+  label: string;
+  solid?: boolean;
+  muted?: boolean;
+  dashed?: boolean;
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <svg width={20} height={8}>
+        <line
+          x1={0}
+          y1={4}
+          x2={20}
+          y2={4}
+          stroke={color}
+          strokeOpacity={muted ? 0.45 : 1}
+          strokeWidth={solid ? 2.5 : 2}
+          strokeDasharray={dashed ? "4 3" : undefined}
+        />
+      </svg>
+      <span className="font-mono text-ink-500">{label}</span>
     </div>
   );
 }

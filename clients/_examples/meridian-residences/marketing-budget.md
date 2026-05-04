@@ -164,3 +164,65 @@ up_to_aed_500000: CMO + CFO
 above_aed_500000: CMO + CFO + Board (where applicable)
 variance_alert_threshold_pct: 10
 ```
+
+## Monthly snapshots
+
+Cumulative-actual against cumulative-plan, per month-end. Used to render the burn-down trajectory.
+
+```yaml
+- month: 2026-01
+  cumulative_planned_aed: 700000
+  cumulative_committed_aed: 620000
+  cumulative_actual_aed: 380000
+- month: 2026-02
+  cumulative_planned_aed: 1400000
+  cumulative_committed_aed: 1240000
+  cumulative_actual_aed: 740000
+- month: 2026-03
+  cumulative_planned_aed: 2100000
+  cumulative_committed_aed: 1880000
+  cumulative_actual_aed: 1010000
+- month: 2026-04
+  cumulative_planned_aed: 2940000
+  cumulative_committed_aed: 2810000
+  cumulative_actual_aed: 1240000
+- month: 2026-05
+  cumulative_planned_aed: 3780000
+  cumulative_committed_aed: 4670000
+  cumulative_actual_aed: 1380000
+- month: 2026-06
+  cumulative_planned_aed: 4620000
+  cumulative_committed_aed: null
+  cumulative_actual_aed: null
+- month: 2026-07
+  cumulative_planned_aed: 5460000
+  cumulative_committed_aed: null
+  cumulative_actual_aed: null
+- month: 2026-08
+  cumulative_planned_aed: 6300000
+  cumulative_committed_aed: null
+  cumulative_actual_aed: null
+- month: 2026-09
+  cumulative_planned_aed: 6860000
+  cumulative_committed_aed: null
+  cumulative_actual_aed: null
+- month: 2026-10
+  cumulative_planned_aed: 7280000
+  cumulative_committed_aed: null
+  cumulative_actual_aed: null
+- month: 2026-11
+  cumulative_planned_aed: 7840000
+  cumulative_committed_aed: null
+  cumulative_actual_aed: null
+- month: 2026-12
+  cumulative_planned_aed: 8400000
+  cumulative_committed_aed: null
+  cumulative_actual_aed: null
+```
+
+## Burn-down narrative
+
+- Cumulative actual at end of May (AED 1.38M) is tracking ~36% under cumulative plan (AED 3.78M).
+- Cumulative committed at end of May (AED 4.67M) is 24% over cumulative plan — front-loaded commitments are normal pre-launch (agency SOWs, event vendor contracts, premium portal listings) and will smooth over June–August as actuals catch up.
+- June–August window is when the bulk of actual spend lands (launch period + sustain wave). Watch for actuals catching up to commitments without overshooting cumulative plan.
+- Q4 has built-in margin (AED 1.54M planned remaining over Sep–Dec) for sustain-wave reallocation.

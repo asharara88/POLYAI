@@ -1160,6 +1160,197 @@ export const getReciprocity = (clientSlug: string): ParsedReciprocity | null => 
   return parseReciprocity(raw);
 };
 
+// ---------- Sales pipeline ----------
+
+export type PipelineTopline = {
+  snapshotDate?: string;
+  totalOpenDeals: number | null;
+  totalOpenPipelineAed: number | null;
+  weightedForecastAed: number | null;
+  quarterlyTargetAed: number | null;
+  forecastVsTargetPct: number | null;
+  quarterlyTargetUnitCount: number | null;
+  unitsUnderActiveNegotiation: number | null;
+  unitsReservedToDate: number | null;
+};
+
+export type PipelineStage = {
+  stage: string;
+  count: number | null;
+  pipelineAed: number | null;
+  weightedCloseRate: number | null;
+  weightedForecastAed: number | null;
+};
+
+export type PipelineChannel = {
+  channel: string;
+  count: number | null;
+  pipelineAed: number | null;
+  weightedForecastAed: number | null;
+  notes?: string;
+};
+
+export type PipelineRm = {
+  rmId: string;
+  rmName: string;
+  openDeals: number | null;
+  pipelineAed: number | null;
+  weightedForecastAed: number | null;
+};
+
+export type SlippingDeal = {
+  dealId: string;
+  accountAnonymized?: string;
+  stage?: string;
+  rmId?: string;
+  amountAed?: number | null;
+  closeDatePlanned?: string;
+  closeDateRevised?: string;
+  daysSinceLastActivity?: number | null;
+  diagnosis?: string;
+  recommendedAction?: string;
+};
+
+export type ParsedPipeline = {
+  raw: string;
+  topline: PipelineTopline;
+  stages: PipelineStage[];
+  channels: PipelineChannel[];
+  rms: PipelineRm[];
+  slipping: SlippingDeal[];
+};
+
+const parsePipeline = (raw: string): ParsedPipeline => {
+  const grabFromBlock = (block: string, k: string) => {
+    const m = block.match(new RegExp(`^${k}:\\s*"?(.+?)"?\\s*$`, "m"));
+    return m ? m[1].trim().replace(/\s*#.*$/, "") : undefined;
+  };
+
+  // Topline
+  const topBlock = raw.match(/##\s+Topline[\s\S]+?(?=\n## |$)/)?.[0] ?? "";
+  const topYaml = topBlock.match(/```yaml([\s\S]*?)```/)?.[1] ?? "";
+  const topline: PipelineTopline = {
+    snapshotDate: grabFromBlock(topYaml, "snapshot_date"),
+    totalOpenDeals: numLoose(grabFromBlock(topYaml, "total_open_deals")),
+    totalOpenPipelineAed: numLoose(grabFromBlock(topYaml, "total_open_pipeline_aed")),
+    weightedForecastAed: numLoose(grabFromBlock(topYaml, "weighted_forecast_aed")),
+    quarterlyTargetAed: numLoose(grabFromBlock(topYaml, "quarterly_target_aed")),
+    forecastVsTargetPct: numLoose(grabFromBlock(topYaml, "forecast_vs_target_pct")),
+    quarterlyTargetUnitCount: numLoose(grabFromBlock(topYaml, "quarterly_target_unit_count")),
+    unitsUnderActiveNegotiation: numLoose(grabFromBlock(topYaml, "units_under_active_negotiation")),
+    unitsReservedToDate: numLoose(grabFromBlock(topYaml, "units_reserved_to_date")),
+  };
+
+  // Helper: parse a list section
+  const parseListSection = (header: string) => {
+    const block = raw.match(new RegExp(`##\\s+${header}[\\s\\S]+?(?=\\n## |$)`, "i"))?.[0] ?? "";
+    const yaml = block.match(/```yaml([\s\S]*?)```/)?.[1] ?? "";
+    return yaml.split(/\n-\s+/).map((s) => s.trim()).filter(Boolean);
+  };
+
+  const stages: PipelineStage[] = [];
+  for (const item of parseListSection("By stage")) {
+    const stage = grabFromBlock(item, "stage");
+    if (!stage) continue;
+    stages.push({
+      stage,
+      count: numLoose(grabFromBlock(item, "count")),
+      pipelineAed: numLoose(grabFromBlock(item, "pipeline_aed")),
+      weightedCloseRate: numLoose(grabFromBlock(item, "weighted_close_rate")),
+      weightedForecastAed: numLoose(grabFromBlock(item, "weighted_forecast_aed")),
+    });
+  }
+
+  const channels: PipelineChannel[] = [];
+  for (const item of parseListSection("By channel")) {
+    const channel = grabFromBlock(item, "channel");
+    if (!channel) continue;
+    channels.push({
+      channel,
+      count: numLoose(grabFromBlock(item, "count")),
+      pipelineAed: numLoose(grabFromBlock(item, "pipeline_aed")),
+      weightedForecastAed: numLoose(grabFromBlock(item, "weighted_forecast_aed")),
+      notes: grabFromBlock(item, "notes"),
+    });
+  }
+
+  const rms: PipelineRm[] = [];
+  for (const item of parseListSection("By RM \\(in-house\\)")) {
+    const rmId = grabFromBlock(item, "rm_id");
+    if (!rmId) continue;
+    rms.push({
+      rmId,
+      rmName: grabFromBlock(item, "rm_name") ?? "",
+      openDeals: numLoose(grabFromBlock(item, "open_deals")),
+      pipelineAed: numLoose(grabFromBlock(item, "pipeline_aed")),
+      weightedForecastAed: numLoose(grabFromBlock(item, "weighted_forecast_aed")),
+    });
+  }
+
+  const slipping: SlippingDeal[] = [];
+  for (const item of parseListSection("Slipping deals[^\\n]*")) {
+    const dealId = grabFromBlock(item, "deal_id");
+    if (!dealId) continue;
+    slipping.push({
+      dealId,
+      accountAnonymized: grabFromBlock(item, "account_anonymized"),
+      stage: grabFromBlock(item, "stage"),
+      rmId: grabFromBlock(item, "rm_id"),
+      amountAed: numLoose(grabFromBlock(item, "amount_aed")),
+      closeDatePlanned: grabFromBlock(item, "close_date_planned"),
+      closeDateRevised: grabFromBlock(item, "close_date_revised"),
+      daysSinceLastActivity: numLoose(grabFromBlock(item, "days_since_last_activity")),
+      diagnosis: grabFromBlock(item, "diagnosis"),
+      recommendedAction: grabFromBlock(item, "recommended_action"),
+    });
+  }
+
+  return { raw, topline, stages, channels, rms, slipping };
+};
+
+export const getPipeline = (clientSlug: string): ParsedPipeline | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const raw = readFileSafe(path.join(folder, "sales", "pipeline.md"));
+  if (!raw) return null;
+  return parsePipeline(raw);
+};
+
+// ---------- Budget snapshots (burn-down) ----------
+
+export type BudgetSnapshot = {
+  month: string;
+  cumulativePlannedAed: number | null;
+  cumulativeCommittedAed: number | null;
+  cumulativeActualAed: number | null;
+};
+
+export const getBudgetSnapshots = (clientSlug: string): BudgetSnapshot[] => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return [];
+  const raw = readFileSafe(path.join(folder, "marketing-budget.md"));
+  if (!raw) return [];
+  const block = raw.match(/##\s+Monthly snapshots[\s\S]+?(?=\n## |$)/)?.[0] ?? "";
+  const yaml = block.match(/```yaml([\s\S]*?)```/)?.[1] ?? "";
+  const items = yaml.split(/\n-\s+/).map((s) => s.trim()).filter(Boolean);
+  const out: BudgetSnapshot[] = [];
+  for (const item of items) {
+    const month = item.match(/^\s*month:\s*(.+)$/m)?.[1]?.trim();
+    if (!month) continue;
+    const grab = (k: string) => {
+      const m = item.match(new RegExp(`^\\s*${k}:\\s*(.+)$`, "m"));
+      return m ? m[1].trim().replace(/\s*#.*$/, "") : undefined;
+    };
+    out.push({
+      month,
+      cumulativePlannedAed: numLoose(grab("cumulative_planned_aed")),
+      cumulativeCommittedAed: numLoose(grab("cumulative_committed_aed")),
+      cumulativeActualAed: numLoose(grab("cumulative_actual_aed")),
+    });
+  }
+  return out;
+};
+
 // ---------- Stats ----------
 
 export const getStats = () => {

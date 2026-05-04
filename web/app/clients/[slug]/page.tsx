@@ -9,14 +9,18 @@ import EventsDashboard from "@/components/EventsDashboard";
 import VendorsDashboard from "@/components/VendorsDashboard";
 import BudgetDashboard from "@/components/BudgetDashboard";
 import ReciprocityLedger from "@/components/ReciprocityLedger";
+import ReciprocityStaging from "@/components/ReciprocityStaging";
+import PipelineDashboard from "@/components/PipelineDashboard";
 import RoutingSimulator from "./RoutingSimulator";
 import {
   getBrokers,
   getBudget,
+  getBudgetSnapshots,
   getClient,
   getClients,
   getEvents,
   getInventory,
+  getPipeline,
   getReciprocity,
   getVendors,
   getVvipChannel,
@@ -45,6 +49,7 @@ type Tab =
   | "events"
   | "vendors"
   | "budget"
+  | "pipeline"
   | "routing";
 
 const baseTabs: { key: Tab; label: string }[] = [
@@ -76,7 +81,9 @@ export default async function Page({
   const vendors = getVendors(slug);
   const vendorsWithProfile = listVendorProfiles(slug);
   const budget = getBudget(slug);
+  const budgetSnapshots = getBudgetSnapshots(slug);
   const reciprocity = getReciprocity(slug);
+  const pipeline = getPipeline(slug);
 
   const tabs = [
     ...baseTabs,
@@ -88,7 +95,22 @@ export default async function Page({
     ...(events.length > 0 ? [{ key: "events" as Tab, label: "Events" }] : []),
     ...(vendors ? [{ key: "vendors" as Tab, label: "Vendors" }] : []),
     ...(budget ? [{ key: "budget" as Tab, label: "Budget" }] : []),
+    ...(pipeline ? [{ key: "pipeline" as Tab, label: "Pipeline" }] : []),
     ...(brokers ? [{ key: "routing" as Tab, label: "Simulators" }] : []),
+  ];
+
+  // Build known counterparties list for the reciprocity staging form
+  const knownCounterparties = [
+    ...(wealth?.counterparties.map((c) => ({
+      id: c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""),
+      name: c.name,
+      channel: "wealth",
+    })) ?? []),
+    ...(vvip?.entities.map((e) => ({
+      id: e.entityId,
+      name: e.primaryPrincipalAnonymized,
+      channel: "vvip",
+    })) ?? []),
   ];
 
   const activeTab = (tabs.find((t) => t.key === tabParam)?.key ?? "profile") as Tab;
@@ -169,8 +191,17 @@ export default async function Page({
         {activeTab === "wealth" && wealth && <WealthChannelRegistry channel={wealth} />}
         {activeTab === "vvip" && vvip && <VvipChannelRegistry channel={vvip} />}
         {activeTab === "reciprocity" && reciprocity && (
-          <ReciprocityLedger ledger={reciprocity} />
+          <>
+            <ReciprocityLedger ledger={reciprocity} />
+            <ReciprocityStaging
+              clientSlug={slug}
+              isExample={client.summary.isExample}
+              existingSummaries={reciprocity.summaries}
+              knownCounterparties={knownCounterparties}
+            />
+          </>
         )}
+        {activeTab === "pipeline" && pipeline && <PipelineDashboard pipeline={pipeline} />}
         {activeTab === "events" && events.length > 0 && (
           <EventsDashboard events={events} clientSlug={slug} />
         )}
@@ -181,7 +212,9 @@ export default async function Page({
             vendorsWithProfile={vendorsWithProfile}
           />
         )}
-        {activeTab === "budget" && budget && <BudgetDashboard budget={budget} />}
+        {activeTab === "budget" && budget && (
+          <BudgetDashboard budget={budget} snapshots={budgetSnapshots} />
+        )}
         {activeTab === "routing" && brokers && (
           <div className="space-y-4">
             <p className="text-sm text-ink-500 dark:text-ink-400 max-w-3xl">
