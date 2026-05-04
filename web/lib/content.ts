@@ -511,6 +511,301 @@ export const getWealthChannel = (clientSlug: string): ParsedWealthChannel | null
   return parseWealthChannelMarkdown(raw);
 };
 
+// ---------- Events ----------
+
+export type EventPlan = {
+  eventId: string;
+  campaign?: string;
+  type?: string;
+  phase?: string;
+  status?: string;
+  date?: string;
+  venue?: string;
+  audience?: string;
+  capacity?: number | null;
+  invited?: number | null;
+  rsvpYes?: number | null;
+  rsvpNo?: number | null;
+  rsvpPending?: number | null;
+  expectedShow?: number | null;
+  actual?: number | null;
+  plannedAed?: number | null;
+  committedAed?: number | null;
+  actualAed?: number | null;
+  remainingAed?: number | null;
+  vendorCount?: number;
+  risks?: string[];
+  raw: string;
+};
+
+const parseEventPlan = (raw: string, eventId: string): EventPlan => {
+  const grab = (k: string): string | undefined => {
+    const m = raw.match(new RegExp(`^${k}:\\s*(.+)$`, "m"));
+    if (!m) return undefined;
+    return m[1].trim().replace(/^['"]|['"]$/g, "").replace(/\s*#.*$/, "");
+  };
+  const grabNested = (parent: string, k: string): string | undefined => {
+    const re = new RegExp(`^${parent}:[\\s\\S]*?^\\s+${k}:\\s*(.+)$`, "m");
+    const m = raw.match(re);
+    if (!m) return undefined;
+    return m[1].trim().replace(/^['"]|['"]$/g, "").replace(/\s*#.*$/, "");
+  };
+
+  const vendorBlock = raw.match(/^vendors:[\s\S]+?(?=^[a-z_]+:|^\s*$)/m)?.[0] ?? "";
+  const vendorCount = (vendorBlock.match(/^\s+\w+:/gm)?.length ?? 1) - 1;
+
+  const risksBlock = raw.match(/^risks:\s*\n([\s\S]+?)(?=^[a-z_]+:|$)/m)?.[1] ?? "";
+  const risks = risksBlock
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l.startsWith("-"))
+    .map((l) => l.replace(/^-\s*/, "").replace(/^['"]|['"]$/g, ""));
+
+  return {
+    eventId,
+    campaign: grab("campaign"),
+    type: grab("type"),
+    phase: grab("phase"),
+    status: grab("status"),
+    date: grab("date"),
+    venue: grab("venue"),
+    audience: grab("audience"),
+    capacity: numLoose(grabNested("headcount", "capacity")),
+    invited: numLoose(grabNested("headcount", "invited")),
+    rsvpYes: numLoose(grabNested("headcount", "rsvp_yes")),
+    rsvpNo: numLoose(grabNested("headcount", "rsvp_no")),
+    rsvpPending: numLoose(grabNested("headcount", "rsvp_pending")),
+    expectedShow: numLoose(grabNested("headcount", "expected_show")),
+    actual: numLoose(grabNested("headcount", "actual")),
+    plannedAed: numLoose(grabNested("budget", "planned_aed")),
+    committedAed: numLoose(grabNested("budget", "committed_aed")),
+    actualAed: numLoose(grabNested("budget", "actual_aed")),
+    remainingAed: numLoose(grabNested("budget", "remaining_aed")),
+    vendorCount: vendorCount > 0 ? vendorCount : 0,
+    risks,
+    raw,
+  };
+};
+
+const numLoose = (s: string | undefined | null): number | null => {
+  if (s == null) return null;
+  if (s.trim() === "null" || s.trim() === "") return null;
+  return num(s);
+};
+
+export const getEvents = (clientSlug: string): EventPlan[] => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return [];
+  const eventsDir = path.join(folder, "events");
+  const out: EventPlan[] = [];
+  for (const eventId of listDirs(eventsDir)) {
+    const planPath = path.join(eventsDir, eventId, "plan.md");
+    const raw = readFileSafe(planPath);
+    if (raw) out.push(parseEventPlan(raw, eventId));
+  }
+  return out.sort((a, b) => (a.date ?? "").localeCompare(b.date ?? ""));
+};
+
+// ---------- Vendors (marketing-procurement) ----------
+
+export type VendorEntry = {
+  category: string;
+  name: string;
+  status: string;
+  tier?: string;
+  engagedFor?: string;
+  contractThrough?: string;
+  sowValueAed?: number | null;
+  annualValueAed?: number | null;
+  totalSpendAedYtd?: number | null;
+  onSpecRate?: number | null;
+  onTimeRate?: number | null;
+  disputeCount?: number | null;
+  notes?: string;
+};
+
+export type ParsedVendors = {
+  raw: string;
+  vendors: VendorEntry[];
+};
+
+const parseVendorRegistry = (raw: string): ParsedVendors => {
+  const vendors: VendorEntry[] = [];
+  const yamlBlocks = raw.match(/```yaml[\s\S]*?```/g) ?? [];
+  for (const block of yamlBlocks) {
+    const cleaned = block.replace(/```yaml|```/g, "");
+
+    // Find each "- category: X" header and its child "vendors:" list
+    const catRegex = /^- category:\s*(.+)$/gm;
+    const catMatches = [...cleaned.matchAll(catRegex)];
+
+    for (let i = 0; i < catMatches.length; i++) {
+      const category = catMatches[i][1].trim();
+      const start = catMatches[i].index ?? 0;
+      const end = i + 1 < catMatches.length ? (catMatches[i + 1].index ?? cleaned.length) : cleaned.length;
+      const segment = cleaned.slice(start, end);
+      // Each "    - name:" entry inside this category
+      const entries = segment.split(/\n\s+-\s+name:/).slice(1);
+      for (const entry of entries) {
+        const item = "name:" + entry;
+        const grab = (k: string) => {
+          const m = item.match(new RegExp(`^\\s*${k}:\\s*"?(.+?)"?\\s*$`, "m"));
+          return m ? m[1].trim().replace(/\s*#.*$/, "") : undefined;
+        };
+        const name = grab("name");
+        if (!name) continue;
+        vendors.push({
+          category,
+          name,
+          status: grab("status") ?? "unknown",
+          tier: grab("tier"),
+          engagedFor: grab("engaged_for"),
+          contractThrough: grab("contract_through"),
+          sowValueAed: numLoose(grab("sow_value_aed")),
+          annualValueAed: numLoose(grab("annual_value_aed")),
+          totalSpendAedYtd: numLoose(grab("total_spend_aed_ytd")),
+          onSpecRate: numLoose(grab("on_spec_rate")),
+          onTimeRate: numLoose(grab("on_time_rate")),
+          disputeCount: numLoose(grab("dispute_count")),
+          notes: grab("notes"),
+        });
+      }
+    }
+  }
+  return { raw, vendors };
+};
+
+export const getVendors = (clientSlug: string): ParsedVendors | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const filePath = path.join(folder, "vendors", "registry.md");
+  const raw = readFileSafe(filePath);
+  if (!raw) return null;
+  return parseVendorRegistry(raw);
+};
+
+// ---------- Marketing budget ----------
+
+export type BudgetTopline = {
+  fiscalYear?: string;
+  totalPlannedAed: number | null;
+  totalCommittedAed: number | null;
+  totalActualAed: number | null;
+  totalRemainingAed: number | null;
+  nextClose?: string;
+};
+
+export type BudgetRow = {
+  dimension: "campaign" | "channel" | "event";
+  name: string;
+  plannedAed: number | null;
+  committedAed: number | null;
+  actualAed: number | null;
+  remainingAed: number | null;
+  notes?: string;
+};
+
+export type VarianceFlag = {
+  dimension: string;
+  item: string;
+  variancePct: number | null;
+  status: string;
+  note?: string;
+};
+
+export type ParsedBudget = {
+  raw: string;
+  topline: BudgetTopline;
+  byCampaign: BudgetRow[];
+  byChannel: BudgetRow[];
+  byEvent: BudgetRow[];
+  variances: VarianceFlag[];
+};
+
+const parseBudgetSection = (raw: string, header: string, dim: BudgetRow["dimension"]): BudgetRow[] => {
+  const block = raw.match(new RegExp(`##\\s+${header}[\\s\\S]+?(?=\\n## |$)`, "i"))?.[0] ?? "";
+  const yamlBlock = block.match(/```yaml([\s\S]*?)```/)?.[1] ?? "";
+  const items = yamlBlock.split(/\n-\s+/).map((s) => s.trim()).filter(Boolean);
+  const rows: BudgetRow[] = [];
+  for (const item of items) {
+    if (!item.includes("name:")) continue;
+    const grab = (k: string) => {
+      const m = item.match(new RegExp(`^\\s*${k}:\\s*"?(.+?)"?\\s*$`, "m"));
+      return m ? m[1].trim().replace(/\s*#.*$/, "") : undefined;
+    };
+    const name = grab("name");
+    if (!name) continue;
+    rows.push({
+      dimension: dim,
+      name,
+      plannedAed: numLoose(grab("planned_aed")),
+      committedAed: numLoose(grab("committed_aed")),
+      actualAed: numLoose(grab("actual_aed")),
+      remainingAed: numLoose(grab("remaining_aed")),
+      notes: grab("notes"),
+    });
+  }
+  return rows;
+};
+
+const parseBudget = (raw: string): ParsedBudget => {
+  const toplineBlock = raw.match(/##\s+Top-line[\s\S]+?(?=\n## |$)/)?.[0] ?? "";
+  const grabTopline = (k: string) => {
+    const m = toplineBlock.match(new RegExp(`^${k}:\\s*(.+)$`, "m"));
+    return m ? m[1].trim().replace(/\s*#.*$/, "") : undefined;
+  };
+  const grabToplineNested = (parent: string, k: string) => {
+    const re = new RegExp(`^${parent}:[\\s\\S]*?^\\s+${k}:\\s*(.+)$`, "m");
+    const m = toplineBlock.match(re);
+    return m ? m[1].trim().replace(/\s*#.*$/, "") : undefined;
+  };
+
+  const topline: BudgetTopline = {
+    fiscalYear: grabTopline("fiscal_year"),
+    totalPlannedAed: numLoose(grabTopline("total_planned_aed")),
+    totalCommittedAed: numLoose(grabTopline("total_committed_aed")),
+    totalActualAed: numLoose(grabTopline("total_actual_aed")),
+    totalRemainingAed: numLoose(grabTopline("total_remaining_aed")),
+    nextClose: grabToplineNested("period_close", "next_close"),
+  };
+
+  const variances: VarianceFlag[] = [];
+  const varBlock = raw.match(/##\s+Variance flags[\s\S]+?(?=\n## |$)/)?.[0] ?? "";
+  const yamlBlock = varBlock.match(/```yaml([\s\S]*?)```/)?.[1] ?? "";
+  const items = yamlBlock.split(/\n-\s+/).map((s) => s.trim()).filter(Boolean);
+  for (const item of items) {
+    if (!item.includes("dimension:")) continue;
+    const grab = (k: string) => {
+      const m = item.match(new RegExp(`^\\s*${k}:\\s*"?(.+?)"?\\s*$`, "m"));
+      return m ? m[1].trim().replace(/\s*#.*$/, "") : undefined;
+    };
+    variances.push({
+      dimension: grab("dimension") ?? "",
+      item: grab("item") ?? "",
+      variancePct: numLoose(grab("variance_pct")),
+      status: grab("status") ?? "",
+      note: grab("note"),
+    });
+  }
+
+  return {
+    raw,
+    topline,
+    byCampaign: parseBudgetSection(raw, "By campaign", "campaign"),
+    byChannel: parseBudgetSection(raw, "By channel[^\\n]*", "channel"),
+    byEvent: parseBudgetSection(raw, "By event[^\\n]*", "event"),
+    variances,
+  };
+};
+
+export const getBudget = (clientSlug: string): ParsedBudget | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const raw = readFileSafe(path.join(folder, "marketing-budget.md"));
+  if (!raw) return null;
+  return parseBudget(raw);
+};
+
 // ---------- Sales (RM team + allocation rules) ----------
 
 export type RmEntry = {

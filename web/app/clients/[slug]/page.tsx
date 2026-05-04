@@ -5,12 +5,18 @@ import InventoryDashboard from "@/components/InventoryDashboard";
 import BrokerRegistry from "@/components/BrokerRegistry";
 import WealthChannelRegistry from "@/components/WealthChannelRegistry";
 import VvipChannelRegistry from "@/components/VvipChannelRegistry";
+import EventsDashboard from "@/components/EventsDashboard";
+import VendorsDashboard from "@/components/VendorsDashboard";
+import BudgetDashboard from "@/components/BudgetDashboard";
 import RoutingSimulator from "./RoutingSimulator";
 import {
   getBrokers,
+  getBudget,
   getClient,
   getClients,
+  getEvents,
   getInventory,
+  getVendors,
   getVvipChannel,
   getWealthChannel,
 } from "@/lib/content";
@@ -31,6 +37,9 @@ type Tab =
   | "brokers"
   | "wealth"
   | "vvip"
+  | "events"
+  | "vendors"
+  | "budget"
   | "routing";
 
 const baseTabs: { key: Tab; label: string }[] = [
@@ -57,6 +66,9 @@ export default async function Page({
   const brokers = getBrokers(slug);
   const wealth = getWealthChannel(slug);
   const vvip = getVvipChannel(slug);
+  const events = getEvents(slug);
+  const vendors = getVendors(slug);
+  const budget = getBudget(slug);
 
   const tabs = [
     ...baseTabs,
@@ -64,6 +76,9 @@ export default async function Page({
     ...(brokers ? [{ key: "brokers" as Tab, label: "Brokers" }] : []),
     ...(wealth ? [{ key: "wealth" as Tab, label: "Wealth channel" }] : []),
     ...(vvip ? [{ key: "vvip" as Tab, label: "VVIP" }] : []),
+    ...(events.length > 0 ? [{ key: "events" as Tab, label: "Events" }] : []),
+    ...(vendors ? [{ key: "vendors" as Tab, label: "Vendors" }] : []),
+    ...(budget ? [{ key: "budget" as Tab, label: "Budget" }] : []),
     ...(brokers ? [{ key: "routing" as Tab, label: "Simulators" }] : []),
   ];
 
@@ -138,6 +153,9 @@ export default async function Page({
         {activeTab === "brokers" && brokers && <BrokerRegistry brokers={brokers} />}
         {activeTab === "wealth" && wealth && <WealthChannelRegistry channel={wealth} />}
         {activeTab === "vvip" && vvip && <VvipChannelRegistry channel={vvip} />}
+        {activeTab === "events" && events.length > 0 && <EventsDashboard events={events} />}
+        {activeTab === "vendors" && vendors && <VendorsDashboard vendors={vendors} />}
+        {activeTab === "budget" && budget && <BudgetDashboard budget={budget} />}
         {activeTab === "routing" && brokers && (
           <div className="space-y-4">
             <p className="text-sm text-ink-500 dark:text-ink-400 max-w-3xl">
