@@ -606,6 +606,31 @@ export const getEvents = (clientSlug: string): EventPlan[] => {
   return out.sort((a, b) => (a.date ?? "").localeCompare(b.date ?? ""));
 };
 
+export type EventDetail = {
+  eventId: string;
+  plan: EventPlan;
+  invitationList: string | null;
+  rsvpLog: string | null;
+  runOfShow: string | null;
+  debrief: string | null;
+};
+
+export const getEventDetail = (clientSlug: string, eventId: string): EventDetail | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const dir = path.join(folder, "events", eventId);
+  const planRaw = readFileSafe(path.join(dir, "plan.md"));
+  if (!planRaw) return null;
+  return {
+    eventId,
+    plan: parseEventPlan(planRaw, eventId),
+    invitationList: readFileSafe(path.join(dir, "invitation-list.md")),
+    rsvpLog: readFileSafe(path.join(dir, "rsvp-log.md")),
+    runOfShow: readFileSafe(path.join(dir, "run-of-show.md")),
+    debrief: readFileSafe(path.join(dir, "debrief.md")),
+  };
+};
+
 // ---------- Vendors (marketing-procurement) ----------
 
 export type VendorEntry = {

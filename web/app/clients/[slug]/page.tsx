@@ -153,7 +153,9 @@ export default async function Page({
         {activeTab === "brokers" && brokers && <BrokerRegistry brokers={brokers} />}
         {activeTab === "wealth" && wealth && <WealthChannelRegistry channel={wealth} />}
         {activeTab === "vvip" && vvip && <VvipChannelRegistry channel={vvip} />}
-        {activeTab === "events" && events.length > 0 && <EventsDashboard events={events} />}
+        {activeTab === "events" && events.length > 0 && (
+          <EventsDashboard events={events} clientSlug={slug} />
+        )}
         {activeTab === "vendors" && vendors && <VendorsDashboard vendors={vendors} />}
         {activeTab === "budget" && budget && <BudgetDashboard budget={budget} />}
         {activeTab === "routing" && brokers && (

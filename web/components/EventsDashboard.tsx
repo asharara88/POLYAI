@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { EventPlan } from "@/lib/content";
 
 const STATUS_COLOR: Record<string, string> = {
@@ -12,7 +13,13 @@ const fmt = (n: number | null | undefined) => (n == null ? "—" : n.toLocaleStr
 const pct = (a: number | null | undefined, b: number | null | undefined) =>
   a != null && b != null && b > 0 ? Math.round((a / b) * 100) : null;
 
-export default function EventsDashboard({ events }: { events: EventPlan[] }) {
+export default function EventsDashboard({
+  events,
+  clientSlug,
+}: {
+  events: EventPlan[];
+  clientSlug: string;
+}) {
   if (events.length === 0) {
     return (
       <div className="rounded-md border border-dashed border-ink-300/70 dark:border-ink-700 px-4 py-6 text-sm text-ink-500">
@@ -29,9 +36,10 @@ export default function EventsDashboard({ events }: { events: EventPlan[] }) {
           const showPct = pct(e.expectedShow, e.capacity);
           const budgetCommittedPct = pct(e.committedAed, e.plannedAed);
           return (
-            <div
+            <Link
               key={e.eventId}
-              className="rounded-lg border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 p-5 space-y-4"
+              href={`/clients/${clientSlug}/events/${e.eventId}`}
+              className="block rounded-lg border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 p-5 space-y-4 hover:border-accent/60 hover:shadow-sm transition-all"
             >
               <div>
                 <div className="flex items-start justify-between gap-3">
@@ -153,7 +161,7 @@ export default function EventsDashboard({ events }: { events: EventPlan[] }) {
                   ))}
                 </ul>
               )}
-            </div>
+            </Link>
           );
         })}
       </div>
