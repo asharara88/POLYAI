@@ -4,7 +4,7 @@ These are demonstration clients used to show how the team operates end-to-end. T
 
 ```
 _examples/
-  meridian-residences/   ← real-estate, off-plan luxury, GCC
+  aldar-developments/    ← real-estate, Abu Dhabi-anchored developer (worked example, not real Aldar data)
 ```
 
 If you're trying to understand how the system fits together — how onboarding flows into a populated workspace, how `client-profile.md` shapes routing, how a campaign brief gets decomposed into creative briefs — read through one of these end-to-end.
