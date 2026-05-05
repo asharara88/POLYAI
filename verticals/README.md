@@ -6,8 +6,6 @@ Industry-specific defaults that any client in the vertical inherits. Each vertic
 verticals/
   real-estate/
     playbook.md
-  automotive/
-    playbook.md
 ```
 
 A vertical playbook captures patterns that are common across most clients in that industry — audience archetypes, trigger events, channel mix, compliance flags, KPI norms, voice notes, common pitfalls. The client's own `clients/<slug>/knowledge/` overrides anything here.
@@ -18,7 +16,7 @@ Add a new vertical when the second client in that industry needs a substantively
 
 ## Sub-verticals
 
-When clients within a vertical split along a structural axis — e.g. real-estate brokers vs. real-estate developers, or automotive OEMs vs. dealers — add a sub-vertical instead of forcing one playbook to cover both:
+When clients within a vertical split along a structural axis — e.g. real-estate brokers vs. real-estate developers vs. real-estate portals — add a sub-vertical instead of forcing one playbook to cover both:
 
 ```
 verticals/

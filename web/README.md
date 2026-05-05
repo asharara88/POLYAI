@@ -42,7 +42,7 @@ vercel
 - **Overview** — counts of clients, agents, verticals, schemas; latest cards.
 - **Clients** — folder-per-client view, with a tabbed detail page (Profile / ICP / Brand voice / Decisions / Results) and per-campaign drill-down rendering all briefs in the campaign folder.
 - **Agents** — grouped by pod (Executive / Marketing / Sales / BD / Cross-cutting) with full system-prompt detail page.
-- **Verticals** — playbook view per vertical (real-estate, automotive).
+- **Verticals** — playbook view per vertical (real-estate).
 - **Schemas** — the inter-agent handoff shapes (campaign-brief, creative-brief, deal-record, etc.).
 
 ## What it's NOT yet

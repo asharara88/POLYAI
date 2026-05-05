@@ -6,7 +6,6 @@ Each client engagement gets its own folder under `clients/<slug>/`. This is wher
 clients/
   _template/        ← copy this when onboarding a new client
   acme-realty/      ← real-estate client example
-  northgate-motors/ ← automotive client example
 ```
 
 ## What's in a client folder
@@ -24,7 +23,7 @@ clients/<slug>/
 
 ## How client context flows through the team
 
-1. Every active engagement names a `client` slug and a `vertical` (e.g. `real-estate`, `automotive`).
+1. Every active engagement names a `client` slug and a `vertical` (e.g. `real-estate`).
 2. The `orchestrator` sets these at the top of any work session and passes them in every `handoff-envelope` to other agents.
 3. Agents read in this order (most-specific first):
    1. `clients/<slug>/knowledge/...` — client-specific overrides

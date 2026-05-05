@@ -163,6 +163,6 @@ The Orchestrator can author a new agent file in `.claude/agents/` when a recurri
 
 When the second client in a new industry needs different defaults than any existing vertical:
 
-1. Author `verticals/<name>/playbook.md` to the same shape as the existing two (`real-estate`, `automotive`) — audience archetypes, trigger events, sales motion, channel mix, KPIs, compliance flags, voice notes, VoC sources, common pitfalls, sub-vertical hints.
+1. Author `verticals/<name>/playbook.md` to the same shape as the existing one (`real-estate`) — audience archetypes, trigger events, sales motion, channel mix, KPIs, compliance flags, voice notes, VoC sources, common pitfalls, sub-vertical hints.
 2. Add the vertical name to `README.md` "Supported verticals" section.
 3. The `client-onboarding` agent will pick it up automatically next intake.

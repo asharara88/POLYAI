@@ -5,8 +5,8 @@ Conforms to `schemas/client-profile.md`. Populated by `client-onboarding` during
 ```yaml
 slug:                      # url-safe short name, used as folder name
 display_name:
-vertical:                  # "real-estate" | "automotive" | "saas" | ... — must match a verticals/<name>/ folder
-sub_vertical:              # optional, e.g. "luxury-residential", "used-cars"
+vertical:                  # "real-estate" | "saas" | ... — must match a verticals/<name>/ folder
+sub_vertical:              # optional, e.g. "developer", "luxury-residential"
 markets:
   primary:                 # country / region
   secondary: []

@@ -7,7 +7,7 @@ slug:                      # url-safe, used as folder name
 display_name:
 vertical:                  # must match a verticals/<name>/ folder
 sub_vertical:              # optional; must match a verticals/<vertical>/sub-verticals/<name>/ folder
-                           # when set. Examples: "developer" under real-estate; "dealer" under automotive.
+                           # when set. Example: "developer" under real-estate.
 markets:
   primary:
   secondary: []

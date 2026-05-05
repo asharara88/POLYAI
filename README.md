@@ -47,7 +47,7 @@ A team of specialized agents that plan, execute, and review marketing and sales 
 - `broker-enablement` — broker channel: registry, materials, allocations, channel development (reactivation + new signings), performance, disputes (real-estate developer, channel-led B2B)
 - `wealth-channel-enablement` — parallel HNI / UHNI channel: private banks, family offices, independent introducers; confidential materials, principal-to-principal, multi-unit / floor / building deals (luxury / branded residences / ultra-prime)
 - `vvip-channel-enablement` — ruling families, ministers, senior officials, foreign dignitaries, sovereign-institution principals; protocol, gatekeepers, discretion, PEP / sanctions / FCPA screening (high-end / government-adjacent engagements)
-- `inventory-manager` — source-of-truth for unit / vehicle / allocation availability, pricing, status; gates customer-facing artifacts that reference inventory (real-estate developer, automotive)
+- `inventory-manager` — source-of-truth for unit / allocation availability, pricing, status; gates customer-facing artifacts that reference inventory (real-estate developer)
 - `events` — end-to-end event ownership: planning, scheduling, headcount, invitations, RSVPs, partner / sponsor coordination, comms; coordinates external event agency + internal events team + channel agents for invitation lists; pairs with marketing-procurement and marketing-financial-manager for the commercial side
 - `marketing-procurement` — vendor selection, RFP / RFQ / sole-source processes, SOWs, contract terms, performance scorecards, renewal management for everything marketing buys
 - `marketing-financial-manager` — marketing-budget allocation, PO issuance + tracking, accruals, invoice approvals, period-close discipline, variance analysis, CFO / FP&A reporting
@@ -58,7 +58,7 @@ POLYAI is a service operator. Three layers of context, resolved most-specific fi
 
 ```
 clients/<slug>/knowledge/...     ← client overrides (their ICP, voice, decisions, results)
-verticals/<vertical>/playbook.md ← industry defaults (real-estate, automotive, ...)
+verticals/<vertical>/playbook.md ← industry defaults (real-estate, ...)
 knowledge/...                    ← team-level baseline (cross-client, cross-vertical)
 ```
 
@@ -72,11 +72,10 @@ Promotion (client → vertical → root) happens only when a pattern appears acr
 
 - `real-estate` — residential / investor / off-plan / commercial
   - `real-estate / developer` (sub-vertical) — master developers + project developers running off-plan launches with agency partners and broker networks (Aldar / Emaar / Damac / Sobha class)
-- `automotive` — OEM / dealer / used-car / fleet / aftersales
 
 Sub-verticals layer on top of their parent vertical. A client whose profile has `vertical: real-estate, sub_vertical: developer` inherits both the real-estate playbook and the developer overlay. See `ARCHITECTURE.md` for the resolution rules.
 
-Adding a new vertical (or sub-vertical) means writing a `verticals/<name>/playbook.md` (or `verticals/<vertical>/sub-verticals/<sub-vertical>/playbook.md`) to the same shape as the existing ones. The `orchestrator` can author one; you'd typically only do this when the second client in that industry needs different defaults than any existing vertical.
+Adding a new vertical (or sub-vertical) means writing a `verticals/<name>/playbook.md` (or `verticals/<vertical>/sub-verticals/<sub-vertical>/playbook.md`) to the same shape as the existing one. The `orchestrator` can author one; you'd typically only do this when the second client in that industry needs different defaults than any existing vertical.
 
 ## Integrations
 
@@ -102,7 +101,6 @@ clients/               # per-client engagements (one folder per slug)
   _template/           # scaffold copied for new clients
 verticals/             # industry defaults
   real-estate/
-  automotive/
 knowledge/             # team-level cross-client baseline
 ARCHITECTURE.md        # handoff flows, approval gates, design choices
 CLAUDE.md              # project-wide rules every agent inherits

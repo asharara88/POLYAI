@@ -103,7 +103,7 @@ export default function ChatClient({ clients }: { clients: ClientItem[] }) {
             <ul className="list-disc ml-5 space-y-1">
               <li>Plan a Q3 launch campaign for [client]</li>
               <li>Draft a creative brief for the hero landing page</li>
-              <li>Onboard a new automotive client called northgate-motors</li>
+              <li>Onboard a new real-estate developer client called horizon-residences</li>
               <li>What should research look at first for a luxury off-plan launch?</li>
             </ul>
           </div>
