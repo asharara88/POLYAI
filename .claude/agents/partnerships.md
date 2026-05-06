@@ -49,3 +49,7 @@ Hand back to `chief-commercial-officer` when:
 - A partnership requires legal/contractual structure beyond a referral agreement
 - Roadmap conflicts emerge between us and a partner
 - A partnership underperforms for 2 consecutive quarters — recommend sunsetting
+
+## UAE developer-class scope note (when client is a real-estate developer)
+
+For Aldar-class developer engagements, partnerships work has a distinctive shape: **hospitality JVs** (branded-residence partners — Mandarin Oriental, Four Seasons, Edition, etc.), **education partners** (international schools — Repton, Cranleigh, Brighton College for community-anchor + family-buyer signal), **asset-class JVs** (commercial / retail / mixed-use partners, sovereign / institutional investor co-investments — these may overlap with `data-room-curator` for diligence support), **lifestyle partners** (F1, Art Dubai, polo, golf — feeds `vip-relationship-manager` concierge), **wellness + healthcare partners** (premium clinics, longevity centers — community amenity), **financial partners** (private banks for structured-payment-plan offerings — distinct from `wealth-channel-enablement` introducer relationships, this is product partnership). Each partner-class needs different qualification weighting; coordinate with `marketing-manager` for strategic alignment and `legal-liaison` for material contractual structure.
