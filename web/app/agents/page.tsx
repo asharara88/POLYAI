@@ -2,22 +2,86 @@ import { Card } from "@/components/Card";
 import { getAgents } from "@/lib/content";
 
 const groups: { label: string; match: (name: string) => boolean }[] = [
-  { label: "Executive", match: (n) => ["orchestrator", "client-onboarding"].includes(n) },
+  { label: "C-level", match: (n) => ["chief-commercial-officer", "client-onboarding"].includes(n) },
+  {
+    label: "Pod managers",
+    match: (n) =>
+      ["sales-manager", "crm-manager", "marketing-manager", "wealth-vvip-manager"].includes(n),
+  },
   {
     label: "Marketing",
     match: (n) =>
-      ["strategy", "research", "creative", "brand-design", "seo", "social-media", "email-lifecycle", "analytics"].includes(n),
+      [
+        "strategy",
+        "research",
+        "creative",
+        "brand-design",
+        "seo",
+        "social-media",
+        "email-lifecycle",
+        "analytics",
+        "content-pr-specialist",
+        "martech-ops-specialist",
+      ].includes(n),
   },
   {
     label: "Sales",
     match: (n) =>
-      ["sdr", "inbound-qualifier", "account-executive", "proposal", "account-manager", "forecasting"].includes(n),
+      [
+        "sdr",
+        "inbound-qualifier",
+        "account-executive",
+        "proposal",
+        "account-manager",
+        "forecasting",
+        "deal-desk-analyst",
+        "secondary-market-specialist",
+        "international-sales-specialist",
+      ].includes(n),
+  },
+  {
+    label: "CRM",
+    match: (n) =>
+      ["service-recovery-specialist", "data-quality-steward"].includes(n),
   },
   { label: "BD", match: (n) => n === "partnerships" },
   {
+    label: "Relationship channels",
+    match: (n) =>
+      [
+        "broker-enablement",
+        "wealth-channel-enablement",
+        "vvip-channel-enablement",
+        "vip-relationship-manager",
+        "agency-liaison",
+        "events",
+        "inventory-manager",
+      ].includes(n),
+  },
+  {
+    label: "Compliance & legal",
+    match: (n) =>
+      [
+        "compliance",
+        "aml-kyc-compliance-specialist",
+        "regulatory-research-specialist",
+        "legal-liaison",
+        "data-room-curator",
+      ].includes(n),
+  },
+  {
     label: "Cross-cutting",
     match: (n) =>
-      ["review", "compliance", "project-manager", "knowledge", "competitive-intel", "voc", "localization"].includes(n),
+      [
+        "review",
+        "project-manager",
+        "knowledge",
+        "competitive-intel",
+        "voc",
+        "localization",
+        "marketing-procurement",
+        "marketing-financial-manager",
+      ].includes(n),
   },
 ];
 

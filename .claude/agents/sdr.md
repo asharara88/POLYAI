@@ -49,7 +49,7 @@ Resolve paths per `CLAUDE.md` (client → vertical → root):
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - Reply rate or qualification rate falls below the playbook threshold for two consecutive cohorts — the ICP, message, or list is wrong and needs `strategy`/`research` input
 - A prospect's reply requires technical or commercial expertise beyond your scope → route to `account-executive`

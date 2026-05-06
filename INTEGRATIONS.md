@@ -41,11 +41,11 @@ Default new integrations to Tier A, then promote one tier at a time.
 | **Email** (Gmail / Outlook / SES) | A → B | email-lifecycle, sdr, account-executive | Inbound, deliverability signals | Sends, with per-recipient or per-batch human approval (B) |
 | **DocuSign / Dropbox Sign** | A → B | proposal | Status of envelopes | Send envelopes (B always) |
 | **Bynder / DAM** (asset management) | A | brand-design, agency-liaison | Approved brand assets, current creative | — (writes go through DAM admin manually) |
-| **Slack / Teams** | A → B | orchestrator, project-manager | Channels for notification | Post approval requests, status updates, anomaly alerts (B for direct messages, C for #channel updates inside policy) |
+| **Slack / Teams** | A → B | chief-commercial-officer, project-manager | Channels for notification | Post approval requests, status updates, anomaly alerts (B for direct messages, C for #channel updates inside policy) |
 | **Asana / Monday / Jira** (project management) | A → C | project-manager, agency-liaison | Tasks, deadlines, status | Create / update tasks within policy (C) |
 | **Canva** (already MCP-available) | A → B | brand-design, creative, agency-liaison | Designs, brand kits, comments | Generate variants, post comments, request reviews (B for any export to live creative) |
 | **Miro** (already MCP-available) | A → C | strategy, project-manager, agency-liaison | Boards, items | Create planning boards, post sprint outputs (C) |
-| **GitHub** (already MCP-available, this repo) | A → C | orchestrator, agency-liaison, knowledge | Issues, PRs, files | Open PRs, post comments, update files (C, scoped to this repo) |
+| **GitHub** (already MCP-available, this repo) | A → C | chief-commercial-officer, agency-liaison, knowledge | Issues, PRs, files | Open PRs, post comments, update files (C, scoped to this repo) |
 
 ## Phased rollout for a developer engagement
 

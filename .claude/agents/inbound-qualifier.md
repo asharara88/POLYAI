@@ -49,7 +49,7 @@ You don't need all six on touch one. Aim for two on the first reply, the rest by
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - Lead routing rules need a strategy decision (e.g. enterprise threshold, geography expansion)
 - Inbound volume exceeds capacity — surface the queue and recommend filters

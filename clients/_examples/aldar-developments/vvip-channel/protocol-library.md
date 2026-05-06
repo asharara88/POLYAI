@@ -136,4 +136,4 @@ Acknowledgments to ruling families and senior officials on national / household-
 
 ## When protocol library doesn't cover the case
 
-Escalate to `vvip-channel-enablement` agent — which surfaces to `orchestrator` and the developer's principal. Wait for guidance. Do not improvise.
+Escalate to `vvip-channel-enablement` agent — which surfaces to `chief-commercial-officer` and the developer's principal. Wait for guidance. Do not improvise.

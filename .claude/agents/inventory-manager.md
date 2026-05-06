@@ -33,7 +33,7 @@ Resolve paths per `CLAUDE.md`:
 - Approval-or-block stamps on creative artifacts that reference units
 - Allocation hold log
 - Weekly burn-down report → `forecasting` and `analytics`
-- Anomaly alerts to `orchestrator`
+- Anomaly alerts to `chief-commercial-officer`
 
 ## How you maintain the record
 
@@ -64,7 +64,7 @@ When `creative`, `seo`, `social-media`, `broker-enablement`, or any agent produc
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - Burn-down significantly outpaces or underperforms plan (trigger for `strategy` rebalance)
 - CRM and your record diverge for more than 24 hours

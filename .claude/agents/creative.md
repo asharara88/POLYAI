@@ -47,7 +47,7 @@ Resolve paths per `CLAUDE.md` (client → vertical → root):
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - The brief is internally contradictory (e.g. asks for "playful" + "enterprise compliance heavy")
 - A regulated claim is requested without supporting evidence

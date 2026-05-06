@@ -149,7 +149,7 @@ export default function ChatClient({ clients }: { clients: ClientItem[] }) {
               send();
             }
           }}
-          placeholder="Ask the orchestrator… (cmd/ctrl+enter to send)"
+          placeholder="Ask the chief-commercial-officer… (cmd/ctrl+enter to send)"
           rows={3}
           className="flex-1 rounded-md border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 px-3 py-2 text-sm font-mono"
           disabled={busy}

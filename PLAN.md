@@ -12,8 +12,8 @@ The **highest-leverage gap** is UAE-specific compliance and AML/KYC infrastructu
 
 **Architectural decisions needed from you before I touch anything:**
 
-1. **Manager tier yes/no.** The prompt names `sales-manager`, `crm-manager`, `marketing-manager`, `wealth-vvip-manager`. The repo today has the orchestrator routing directly to specialists. Adding managers is an architectural shift, not a gap-fill. (Default recommendation: do not add — orchestrator + specialists is a clean pattern.)
-2. **`aldar-chief-of-staff` rename of orchestrator yes/no.** The repo's orchestrator is multi-tenant (works for any client). Renaming it ties it to one client. (Default recommendation: do not rename.)
+1. **Manager tier yes/no.** The prompt names `sales-manager`, `crm-manager`, `marketing-manager`, `wealth-vvip-manager`. The repo today has the chief-commercial-officer routing directly to specialists. Adding managers is an architectural shift, not a gap-fill. (Default recommendation: do not add — chief-commercial-officer + specialists is a clean pattern.)
+2. **`aldar-chief-of-staff` rename of chief-commercial-officer yes/no.** The repo's chief-commercial-officer is multi-tenant (works for any client). Renaming it ties it to one client. (Default recommendation: do not rename.)
 3. **Skills as a new concept.** The repo has no `.claude/skills/` directory. Introducing one is fine but it's a new pattern. (Default recommendation: create the directory and seed the highest-leverage skills.)
 
 ---
@@ -105,23 +105,23 @@ Subject to your approval, ordered by priority bucket:
 
 ## Files I considered changing and will LEAVE ALONE (with reason)
 
-- All ✅ solid agents (`orchestrator`, `social-media`, `events`, `partnerships` modulo the one-liner, `broker-enablement`, `vvip-channel-enablement`, the `creative` + `brand-design` pair) — they work, the §3-template gaps (Section 9 UAE-specifics, Section 11 examples) can be addressed via the new vertical-level skills + the regulatory-research-specialist agent's outputs without touching agent prompts.
+- All ✅ solid agents (`chief-commercial-officer`, `social-media`, `events`, `partnerships` modulo the one-liner, `broker-enablement`, `vvip-channel-enablement`, the `creative` + `brand-design` pair) — they work, the §3-template gaps (Section 9 UAE-specifics, Section 11 examples) can be addressed via the new vertical-level skills + the regulatory-research-specialist agent's outputs without touching agent prompts.
 - `client-onboarding` — works as-is; UAE specifics live in the vertical playbook it reads.
 - `proposal` — covered conceptually by the new `deal-desk-analyst` (different concern: generation vs. negotiation). Leave proposal alone.
 - `agency-liaison`, `inventory-manager`, `marketing-procurement`, `marketing-financial-manager`, `events`, `forecasting`, `knowledge` — all solid and operational.
 - `creative` and `brand-design` — keep the two-agent split per the §3 prompt's "do not rename for cosmetic conformity"; a merged `brand-creative-specialist` would dilute.
 - `voc` and `analytics` — keep the split per the same rule.
 - `wealth-channel-enablement` — keep absorbing private-banking-liaison + family-office-specialist; splitting them doubles management surface for marginal gain.
-- The orchestrator is **NOT** renamed to `aldar-chief-of-staff`. Multi-tenancy preserved.
+- The chief-commercial-officer is **NOT** renamed to `aldar-chief-of-staff`. Multi-tenancy preserved.
 - No managerial tier added unless explicitly approved.
 - Existing tools allowlists — not narrowed; agent operations depend on them.
 
 ## Questions blocking confident execution
 
-1. **Manager tier (sales-manager, crm-manager, marketing-manager, wealth-vvip-manager).** Add a managerial layer between orchestrator and specialists? My recommendation: NO (the orchestrator + specialists pattern is clean and the prompt's "leave it alone if it works" rule applies). But the prompt names them, so I want explicit confirmation either way.
+1. **Manager tier (sales-manager, crm-manager, marketing-manager, wealth-vvip-manager).** Add a managerial layer between chief-commercial-officer and specialists? My recommendation: NO (the chief-commercial-officer + specialists pattern is clean and the prompt's "leave it alone if it works" rule applies). But the prompt names them, so I want explicit confirmation either way.
 2. **Skills as a new pattern.** Confirm OK to introduce `.claude/skills/` as a new directory. Default skills shape: kebab-case markdown files with frontmatter (name, description, scope), citation-bearing references for regulatory skills.
 3. **Runbooks as a new directory.** Confirm OK to introduce `runbooks/` at the repo root. Runbook shape: kebab-case markdown with `## Trigger / ## Owner / ## Sequence / ## Hand-offs / ## Compliance gates / ## KPIs`.
-4. **`aldar-chief-of-staff`.** Confirm: do NOT rename `orchestrator`. (My strong recommendation.)
+4. **`aldar-chief-of-staff`.** Confirm: do NOT rename `chief-commercial-officer`. (My strong recommendation.)
 5. **Concierge.** Separate `concierge-coordinator` agent OR absorb into `vvip-channel-enablement`? My lean: absorb (lower management surface).
 6. **Scope of approval.** Approve P1 only? P1+P2? Everything? Selective list?
 7. **Real Aldar regulatory citations.** When I write the `uae-real-estate-regulatory` skill and `regulatory-disclosure-language` skill, do you want me to include actual citations (DLD circular numbers, ADGM regulation references, CBUAE Mortgage Regulation 31/2013 LTV caps), or stay abstract and route specifics to `regulatory-research-specialist` for confirmation? My lean: include known citations with confidence-level markers, but flag any uncertain reference and route to `regulatory-research-specialist`.

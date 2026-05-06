@@ -19,7 +19,7 @@ priority:              # "p0" | "p1" | "p2"
 
 Rules:
 
-1. **Client + vertical are mandatory.** No work happens without them. If either is missing, the receiving agent escalates back to the `orchestrator` instead of acting.
+1. **Client + vertical are mandatory.** No work happens without them. If either is missing, the receiving agent escalates back to the `chief-commercial-officer` instead of acting.
 2. **Path resolution.** Agents read context in this order: `clients/<client>/knowledge/...` → `verticals/<vertical>/playbook.md` → root `knowledge/...`. Writes go to `clients/<client>/...` only.
 3. If `needs_human_approval: true`, the receiving agent **must not** execute external actions until a human signs off.
 4. Escalations (`intent: escalation`) always go to the Orchestrator with a one-line reason.

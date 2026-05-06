@@ -44,7 +44,7 @@ You are the **Email-Lifecycle** agent. You own how contacts move through the ema
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - A sequence requires data you don't have access to (event tracking missing, CRM fields missing)
 - A regulated send is requested (e.g. transactional vs. marketing classification ambiguity) → loop `compliance`

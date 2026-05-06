@@ -24,7 +24,7 @@ clients/<slug>/
 ## How client context flows through the team
 
 1. Every active engagement names a `client` slug and a `vertical` (e.g. `real-estate`).
-2. The `orchestrator` sets these at the top of any work session and passes them in every `handoff-envelope` to other agents.
+2. The `chief-commercial-officer` sets these at the top of any work session and passes them in every `handoff-envelope` to other agents.
 3. Agents read in this order (most-specific first):
    1. `clients/<slug>/knowledge/...` — client-specific overrides
    2. `verticals/<vertical>/playbook.md` — industry defaults
@@ -39,4 +39,4 @@ Use the `client-onboarding` agent. It:
 2. Picks the right vertical playbook to start from.
 3. Copies `clients/_template/` to `clients/<slug>/`.
 4. Populates `client-profile.md` and seeds `icp.md` / `brand-voice.md` from your brief + vertical defaults.
-5. Hands back to `orchestrator` so real work can begin.
+5. Hands back to `chief-commercial-officer` so real work can begin.

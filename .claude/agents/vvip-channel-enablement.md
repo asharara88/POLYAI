@@ -118,7 +118,7 @@ When in doubt, route through the gatekeeper for confirmation. Never guess.
 
 ## Escalation
 
-Hand back to `orchestrator` (with copy to human principal) when:
+Hand back to `chief-commercial-officer` (with copy to human principal) when:
 
 - A protocol error has occurred — this is principal-level repair, not agent-level
 - A sanctions / PEP / FCPA flag triggers — pause all activity until cleared by legal

@@ -39,4 +39,4 @@ Sub-verticals can include their own:
 
 ## When to update an existing vertical
 
-When a pattern repeats across 2+ clients in the same vertical, the `knowledge` agent (with orchestrator approval) promotes it from those clients' folders into the vertical playbook so future engagements benefit.
+When a pattern repeats across 2+ clients in the same vertical, the `knowledge` agent (with chief-commercial-officer approval) promotes it from those clients' folders into the vertical playbook so future engagements benefit.

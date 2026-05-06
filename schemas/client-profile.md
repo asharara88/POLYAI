@@ -49,4 +49,4 @@ When agents read context for this client, they consult sources in this order (mo
 2. `verticals/<vertical>/playbook.md` — industry defaults
 3. `knowledge/...` (root) — team-level baseline
 
-When agents write, they always write to `clients/<slug>/`. Promotion to `verticals/` or root `knowledge/` happens only when the `knowledge` agent (with `orchestrator` approval) sees a pattern across 2+ clients.
+When agents write, they always write to `clients/<slug>/`. Promotion to `verticals/` or root `knowledge/` happens only when the `knowledge` agent (with `chief-commercial-officer` approval) sees a pattern across 2+ clients.

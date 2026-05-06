@@ -64,7 +64,7 @@ Miro MCP updates the table on the shared board
 project-manager reads Miro board weekly via board_list_items
     ↓ (compare against active-work.md state)
 diff surfaces external edits (new sticky notes, status changes from stakeholders)
-    ↓ (project-manager surfaces "outside-repo changes" to orchestrator)
+    ↓ (project-manager surfaces "outside-repo changes" to chief-commercial-officer)
 ```
 
 ## What we read regularly

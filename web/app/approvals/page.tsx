@@ -52,7 +52,7 @@ export default async function Page() {
           >
             {REPO}
           </a>
-          . The orchestrator opens PRs for human-gated work; review and merge there.
+          . The chief-commercial-officer opens PRs for human-gated work; review and merge there.
         </p>
       </header>
 

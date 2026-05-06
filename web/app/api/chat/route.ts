@@ -6,14 +6,14 @@ export const runtime = "nodejs";
 export const maxDuration = 60;
 
 const buildSystemPrompt = (clientSlug?: string) => {
-  const orchestrator = getAgent("orchestrator");
+  const cco = getAgent("chief-commercial-officer");
   const clients = getClients().filter((c) => !c.isTemplate);
   const verticals = getVerticals().map((v) => v.name).join(", ");
   const schemas = getSchemas().map((s) => s.name).join(", ");
   const activeClient = clientSlug ? clients.find((c) => c.slug === clientSlug) : undefined;
 
   return [
-    orchestrator?.body ?? "You are the POLYAI orchestrator.",
+    cco?.body ?? "You are the POLYAI Chief Commercial Officer (CCO).",
     "",
     "## Runtime context",
     "",

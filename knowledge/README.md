@@ -13,6 +13,6 @@ Shared memory for the POLYAI team. The `knowledge` agent is the only one that wr
 ## Discipline
 
 1. Treat this as the team's source of truth. If two agents disagree about ICP, this file resolves it.
-2. Don't quietly drift. If a finding contradicts existing content, the `knowledge` agent flags it to the `orchestrator` rather than overwriting silently.
+2. Don't quietly drift. If a finding contradicts existing content, the `knowledge` agent flags it to the `chief-commercial-officer` rather than overwriting silently.
 3. Keep entries dated. Markets and customers change.
 4. Archive failed playbooks rather than deleting them — past failures are signal.

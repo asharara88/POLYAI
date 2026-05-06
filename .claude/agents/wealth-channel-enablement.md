@@ -93,7 +93,7 @@ Resolve paths per `CLAUDE.md`:
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - A wealth-channel relationship asks for terms outside the standard band (commercial, legal, structural)
 - A reactivation diagnosis surfaces a structural objection (the offering doesn't fit current macro thesis) — loop `strategy`

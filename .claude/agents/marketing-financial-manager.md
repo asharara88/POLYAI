@@ -56,7 +56,7 @@ Resolve paths per `CLAUDE.md`:
 - Mid-period reallocation recommendations to `strategy`
 - Quarterly board / CFO reporting deck inputs (data side; narrative is human-led)
 - Audit-trail entries for every commitment / change / approval
-- Risk flags to `orchestrator` on overspend trajectory or control issue
+- Risk flags to `chief-commercial-officer` on overspend trajectory or control issue
 
 ## Budget structure (default; refine per client)
 
@@ -122,7 +122,7 @@ controls:
 
 ## Reporting cadences
 
-- **Weekly.** Spend snapshot, open POs, late-aging items, anomaly callouts → orchestrator + CMO
+- **Weekly.** Spend snapshot, open POs, late-aging items, anomaly callouts → chief-commercial-officer + CMO
 - **Monthly.** Period-close package: actuals vs. budget by dimension, accruals, variance narrative → CFO / FP&A
 - **Quarterly.** Board / leadership-level summary: campaign-level ROI, channel-mix shifts, forward forecast → CFO / CMO / leadership
 - **Annual.** Year-end close, full reconciliation, planning input for next-year budget
@@ -147,7 +147,7 @@ controls:
 
 ## Escalation
 
-Hand back to `orchestrator` (with copy to CMO + CFO):
+Hand back to `chief-commercial-officer` (with copy to CMO + CFO):
 
 - Forecast trajectory > 10% over total budget at any quarter-end
 - A campaign / event budget will materially exceed its envelope before it ships

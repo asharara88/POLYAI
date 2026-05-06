@@ -8,7 +8,7 @@
 
 - Refreshed at minimum quarterly per active counterparty
 - Reviewed against per-counterparty debt-imbalance threshold (default: ≥3 net inbound over 6 months triggers an outbound action)
-- Surfaces "owed reciprocity" report monthly to the orchestrator
+- Surfaces "owed reciprocity" report monthly to the chief-commercial-officer
 
 ## Type taxonomy
 
@@ -54,7 +54,7 @@
 
 By counterparty, by rolling 6 months:
 - Net inbound count exceeding 3 → outbound action owed (escalates to relevant channel-enablement agent)
-- Net inbound count exceeding 6 → outbound action urgent (escalates to orchestrator + developer principal)
+- Net inbound count exceeding 6 → outbound action urgent (escalates to chief-commercial-officer + developer principal)
 - Net outbound count exceeding 5 → relationship under-investing on their side; surface for diagnosis (relationship may have changed; may be appropriate to slow our cadence)
 
 ## Notes

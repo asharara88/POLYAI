@@ -48,7 +48,7 @@ Resolve paths per `CLAUDE.md` (client → vertical → root):
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - A claim is material (financial, health, security) and lacks documented support — needs human + legal sign-off
 - Platform policy ambiguity makes the call non-obvious — flag for human review with the policy text and your read

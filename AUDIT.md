@@ -6,12 +6,12 @@
 
 ### 1.1.1 Agents — `.claude/agents/` (32 files)
 
-All agent files use the same kebab-case naming. Frontmatter pattern: `name`, `description`, `tools` (comma-separated allowlist), `model` (sonnet by default, `orchestrator` is opus). No division prefix (it's just `compliance`, not `marketing-compliance`).
+All agent files use the same kebab-case naming. Frontmatter pattern: `name`, `description`, `tools` (comma-separated allowlist), `model` (sonnet by default, `chief-commercial-officer` is opus). No division prefix (it's just `compliance`, not `marketing-compliance`).
 
 **Executive (2)**
 | Agent | Mission (one line) | Tools | Model |
 |---|---|---|---|
-| `orchestrator` | CEO of the marketing/sales/BD team. Decomposes goals, assigns work, runs handoffs, authors new agents. | Read, Write, Edit, Bash, Agent, TodoWrite | opus |
+| `chief-commercial-officer` | CEO of the marketing/sales/BD team. Decomposes goals, assigns work, runs handoffs, authors new agents. | Read, Write, Edit, Bash, Agent, TodoWrite | opus |
 | `client-onboarding` | Intake → workspace scaffolding for new client engagements; populates client-profile, ICP, brand-voice from brief + vertical defaults. | Read, Write, Edit, Bash | sonnet |
 
 **Marketing pod (8)**
@@ -122,7 +122,7 @@ All agent files use the same kebab-case naming. Frontmatter pattern: `name`, `de
 
 ### 1.1.9 Web layer — `web/`
 
-Next.js 16 + React 19 + Tailwind + Anthropic SDK. Reads markdown content from the repo root at build time. Surfaces 14 client-detail tabs + per-event/per-vendor/per-broker detail pages + chat (Claude Sonnet 4.5 with orchestrator system prompt) + 3-mode simulator (direct-lead → in-house RM, broker allocation request, broker overflow exception) + new-client form + approvals (open-PR feed). 
+Next.js 16 + React 19 + Tailwind + Anthropic SDK. Reads markdown content from the repo root at build time. Surfaces 14 client-detail tabs + per-event/per-vendor/per-broker detail pages + chat (Claude Sonnet 4.5 with chief-commercial-officer system prompt) + 3-mode simulator (direct-lead → in-house RM, broker allocation request, broker overflow exception) + new-client form + approvals (open-PR feed). 
 
 **The web layer is dynamic against the repo content** — `lib/content.ts` walks directories. Adding/renaming agents, verticals, or playbooks does not require code changes.
 
@@ -136,13 +136,13 @@ Next.js 16 + React 19 + Tailwind + Anthropic SDK. Reads markdown content from th
 
 ## 1.2 Architectural Read (the repo's own pattern)
 
-- **Orchestrator:** `orchestrator` (frontmatter is `model: opus`). It is the top-level router and CEO. It dispatches `handoff-envelope` payloads to specialists. It can author new agents.
-- **Manager tier:** No explicit "manager" tier exists. The orchestrator routes directly to specialists. Some specialists (e.g. `events`, `agency-liaison`, `broker-enablement`, `wealth-channel-enablement`, `vvip-channel-enablement`, `inventory-manager`, `marketing-procurement`, `marketing-financial-manager`) are themselves coordinators that talk to multiple sub-agents and external counterparties — they function as managers in practice without being labeled as such.
+- **Orchestrator:** `chief-commercial-officer` (frontmatter is `model: opus`). It is the top-level router and CEO. It dispatches `handoff-envelope` payloads to specialists. It can author new agents.
+- **Manager tier:** No explicit "manager" tier exists. The chief-commercial-officer routes directly to specialists. Some specialists (e.g. `events`, `agency-liaison`, `broker-enablement`, `wealth-channel-enablement`, `vvip-channel-enablement`, `inventory-manager`, `marketing-procurement`, `marketing-financial-manager`) are themselves coordinators that talk to multiple sub-agents and external counterparties — they function as managers in practice without being labeled as such.
 - **Specialist tier:** All other agents (creative, brand-design, sdr, account-executive, etc.).
 - **Hand-off mechanism:** `schemas/handoff-envelope.md`. Every inter-agent message is a structured payload (not prose) with `client`, `vertical`, optional `sub_vertical`, `intent`, `references`, `schema`, `payload`, `needs_human_approval`, `deadline`, `priority`. Five canonical schemas (campaign-brief / creative-brief / research-brief / deal-record / qa-checklist) plus one envelope (integration-action) for any write to an external system.
 - **Logging / audit:** Implicit through git on the markdown layer; `decisions.md` and `results.md` are append-only by convention; `integration-action` envelopes carry `audit` fields (trace_id, retention_days, rollback). No explicit per-run agent log directory.
 - **Naming convention:** kebab-case across agents, schemas, runbook playbooks, and folders. Underscored conventions only inside YAML keys (e.g. `engagement_id`, `pep_screening_status`). No division prefix. Folder convention: `_template/`, `_examples/`, `_shared/` (the underscore prefix marks non-real engagements).
-- **Multi-tenant + multi-vertical:** Three-layer context resolution (`clients/<slug>/knowledge/...` → `verticals/<vertical>/sub-verticals/<sub>/playbook.md` → `verticals/<vertical>/playbook.md` → root `knowledge/`). Writes always go to the client folder; promotion to vertical or root requires `knowledge` agent + orchestrator approval. Sub-vertical exists for `real-estate/developer`.
+- **Multi-tenant + multi-vertical:** Three-layer context resolution (`clients/<slug>/knowledge/...` → `verticals/<vertical>/sub-verticals/<sub>/playbook.md` → `verticals/<vertical>/playbook.md` → root `knowledge/`). Writes always go to the client folder; promotion to vertical or root requires `knowledge` agent + chief-commercial-officer approval. Sub-vertical exists for `real-estate/developer`.
 - **Approval-gate model:** Per-client `approval_gates` block in `client-profile.md` overrides the global defaults in `ARCHITECTURE.md`. Four risk tiers in INTEGRATIONS.md: A (read-only), B (explicit human), C (policy-based), D (autonomous after observation).
 
 ---
@@ -155,7 +155,7 @@ The §3 template specifies 11 body sections. Most existing agents cover 1–5 we
 
 None of the existing agents fully meet the §3 template (none have all 11 sections, none have example invocations, almost none have a tabular handoff matrix). However, several are *operationally solid* and their gaps are mostly the template's "9. Compliance guardrails (UAE-specific)" and "11. Example invocations" — additions, not corrections. The prompt's spirit ("leave it alone if it works") suggests treating these as ✅ unless extension is approved.
 
-`orchestrator`, `client-onboarding`, `events`, `agency-liaison`, `broker-enablement`, `wealth-channel-enablement`, `vvip-channel-enablement`, `inventory-manager`, `marketing-procurement`, `marketing-financial-manager`, `knowledge`, `forecasting` — these have substantive missions, clear in/out-of-scope, KPIs, and escalation rules. They are "solid in mission, light in template-conformance."
+`chief-commercial-officer`, `client-onboarding`, `events`, `agency-liaison`, `broker-enablement`, `wealth-channel-enablement`, `vvip-channel-enablement`, `inventory-manager`, `marketing-procurement`, `marketing-financial-manager`, `knowledge`, `forecasting` — these have substantive missions, clear in/out-of-scope, KPIs, and escalation rules. They are "solid in mission, light in template-conformance."
 
 ### Light (🟡 — extend without rewriting)
 
@@ -178,7 +178,7 @@ The target roster in the prompt names ~28 agents across sales, CRM, marketing, w
 
 ### Not applicable
 
-- The "manager / specialist" two-tier structure implied by the prompt's roster (sales-manager, crm-manager, marketing-manager, wealth-vvip-manager) is **not how this repo is wired**. The orchestrator routes directly to specialists. Adding a per-pod manager tier is possible but it's an architectural change, not a gap-fill. Worth flagging for human decision.
+- The "manager / specialist" two-tier structure implied by the prompt's roster (sales-manager, crm-manager, marketing-manager, wealth-vvip-manager) is **not how this repo is wired**. The chief-commercial-officer routes directly to specialists. Adding a per-pod manager tier is possible but it's an architectural change, not a gap-fill. Worth flagging for human decision.
 
 ---
 
@@ -189,7 +189,7 @@ These are non-negotiable from CLAUDE.md + ARCHITECTURE.md and bind any new agent
 1. **Multi-tenant.** No agent embeds client-specific data. Aldar specifics live in `clients/_examples/aldar-developments/` and `verticals/real-estate/sub-verticals/developer/`.
 2. **Three-layer context resolution.** Any new agent must use the same path-resolution rule.
 3. **Knowledge agent is the only writer to `knowledge/`.** New agents that learn must route updates through it.
-4. **Writes outside the client folder need promotion.** Vertical-level playbook edits via `knowledge` + orchestrator approval, never directly.
+4. **Writes outside the client folder need promotion.** Vertical-level playbook edits via `knowledge` + chief-commercial-officer approval, never directly.
 5. **External writes wrapped in integration-action.** Tier-A default, promote one tier at a time.
 6. **No fabrication.** TODO markers + escalation, not invented details.
 7. **Naming.** kebab-case files, kebab-case agent names, no division prefix unless it's a managerial layer that the user explicitly approves.

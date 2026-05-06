@@ -1,6 +1,6 @@
 # Developer sub-vertical playbooks
 
-Reusable runbooks for the channel-development motions every developer marketing team runs alongside the launch-led campaign work. These plays are the spine of the "channel development standalone" routing pattern in the orchestrator.
+Reusable runbooks for the channel-development motions every developer marketing team runs alongside the launch-led campaign work. These plays are the spine of the "channel development standalone" routing pattern in the chief-commercial-officer.
 
 ## What's here
 

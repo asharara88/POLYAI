@@ -49,7 +49,7 @@ Resolve paths per `CLAUDE.md` (client → vertical → root):
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - The same revision pattern appears repeatedly — the brief is the problem, not the artifact
 - A required reviewer (`compliance`, `localization`) was skipped — block until routed

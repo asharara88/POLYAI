@@ -90,7 +90,7 @@ auto_export_to_dam: false # set true once Tier C is approved for this client
 
 ## Failure modes to handle
 
-- MCP disconnects (Canva MCP has been intermittent in our session). Agents must degrade gracefully: skip writes, log the gap, surface to `orchestrator` if the engagement depends on Canva availability.
+- MCP disconnects (Canva MCP has been intermittent in our session). Agents must degrade gracefully: skip writes, log the gap, surface to `chief-commercial-officer` if the engagement depends on Canva availability.
 - Concurrent edits by multiple agency contributors. Use start-editing-transaction / commit-editing-transaction when an agent does need to perform an operation, to prevent conflict.
 - Orphaned designs (created but never referenced in any brief). Surface in weekly agency-liaison report; prune via human action.
 

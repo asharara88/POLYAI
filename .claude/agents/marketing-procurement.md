@@ -116,7 +116,7 @@ recommended_action: continue | re-tender | off-board | escalate
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - A category has a single-supplier dependency that creates risk (loop with `strategy` for category strategy)
 - A vendor's financial / legal posture deteriorates such that mid-engagement risk is real

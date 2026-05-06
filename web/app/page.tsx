@@ -30,7 +30,7 @@ export default function Page() {
         <SectionHeader title="Clients" href="/clients" />
         {clients.length === 0 ? (
           <EmptyState
-            text="No client workspaces yet. The orchestrator will invoke client-onboarding when a new engagement begins."
+            text="No client workspaces yet. The chief-commercial-officer will invoke client-onboarding when a new engagement begins."
           />
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-3">

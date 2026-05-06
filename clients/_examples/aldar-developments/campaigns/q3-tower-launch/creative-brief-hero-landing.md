@@ -58,7 +58,7 @@ review_path:
   2. seo: on-page + schema + tracking
   3. compliance: ADGM + RERA + financial-promotion + GDPR (mandatory)
   4. review: final QA against this brief
-  5. orchestrator → human approval before publish
+  5. chief-commercial-officer → human approval before publish
 ```
 
 ## Notes for `creative` (the agent that will write the copy)

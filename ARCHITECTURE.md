@@ -21,7 +21,7 @@ When any agent reads context, it consults sources in this order:
 3. **`verticals/<vertical>/playbook.md`** — industry defaults (audience archetypes, trigger events, channel mix, KPIs, compliance flags, voice notes, common pitfalls)
 4. **`knowledge/...`** (root) — team-level cross-client baseline
 
-Writes always go to `clients/<client>/...`. Promotion to `verticals/...` or root `knowledge/...` happens only when a pattern appears across 2+ clients, with `orchestrator` approval, executed by the `knowledge` agent.
+Writes always go to `clients/<client>/...`. Promotion to `verticals/...` or root `knowledge/...` happens only when a pattern appears across 2+ clients, with `chief-commercial-officer` approval, executed by the `knowledge` agent.
 
 This rule is also captured in `CLAUDE.md` so every agent inherits it as standing instruction.
 

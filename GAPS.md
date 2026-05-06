@@ -8,7 +8,7 @@
 
 | Target agent | Status | Existing equivalent | Notes / specific gaps |
 |---|---|---|---|
-| sales-manager | 🔴 Missing | (orchestrator routes directly) | No managerial tier exists. Adding it is an architectural change — flag for decision. |
+| sales-manager | 🔴 Missing | (chief-commercial-officer routes directly) | No managerial tier exists. Adding it is an architectural change — flag for decision. |
 | crm-sales-specialist (existing clientele) | 🟡 Light | `account-manager` | Account-manager handles post-sale ownership generically. UAE-developer specifics (existing-owner reactivation for next-launch, prior-tower owner cross-sell, handover snagging cycle) are partially covered in `verticals/real-estate/sub-verticals/developer/playbook.md` but not formalized as the agent's standing remit. |
 | international-sales-specialist | 🔴 Missing | (none — `account-executive` is segment-agnostic) | International HNW handling needs jurisdiction-specific cadence (UK / India / KSA / Russia-CIS / China / Egypt / Pakistan / Nigeria), Golden Visa messaging, cross-time-zone discipline. RM team has a "Russia/CIS" specialist (rm-05) at the per-client level but no generic agent. |
 | new-business-sales-specialist | 🟡 Light | `inbound-qualifier` + `sdr` (top of funnel) + `account-executive` (qualified onward) | Three agents jointly cover the "new business" arc. Could be left as the existing trio if the user prefers. |
@@ -21,7 +21,7 @@
 
 | Target agent | Status | Existing equivalent | Notes |
 |---|---|---|---|
-| crm-manager | 🔴 Missing | (orchestrator + email-lifecycle + analytics + voc) | Same managerial-tier question as sales-manager. |
+| crm-manager | 🔴 Missing | (chief-commercial-officer + email-lifecycle + analytics + voc) | Same managerial-tier question as sales-manager. |
 | customer-success-specialist | 🟡 Light | `account-manager` | Equivalent in spirit. Light on UAE-developer customer-success specifics (handover snagging, owner-community ops, schools-adjacent family events). |
 | retention-loyalty-specialist | 🟡 Light | `email-lifecycle` (handles lifecycle and reactivation) | Email-lifecycle covers segments, drip, re-engagement — but loyalty programs (e.g. existing-owner referral mechanics, multi-tower portfolio benefits) aren't represented. |
 | customer-insights-analyst | 🟡 Light | `voc` (mining) + `analytics` (measurement) split | Two-agent split is reasonable. A merged "insights" agent would conflict with this. **Decision: keep the split.** |
@@ -32,7 +32,7 @@
 
 | Target agent | Status | Existing equivalent | Notes |
 |---|---|---|---|
-| marketing-manager | 🔴 Missing | (orchestrator + `strategy`) | Managerial-tier question. |
+| marketing-manager | 🔴 Missing | (chief-commercial-officer + `strategy`) | Managerial-tier question. |
 | social-media-specialist | ✅ Solid | `social-media` | Direct equivalent. |
 | events-specialist | ✅ Solid | `events` | Direct equivalent — already substantive (covers external event agency + internal events team + 3 channel agents). |
 | content-pr-specialist | 🔴 Missing | `creative` covers copy; PR not represented | Aldar runs press across architecture / lifestyle / financial / institutional press — different cadence and gates from `creative`. |
@@ -56,7 +56,7 @@
 
 | Target agent | Status | Existing equivalent | Notes |
 |---|---|---|---|
-| aldar-chief-of-staff (top-level router) | ✅ Solid | `orchestrator` | Functional equivalent. Renaming to "aldar-chief-of-staff" violates multi-tenancy (the orchestrator is generic). **Keep as orchestrator; do NOT rename.** |
+| aldar-chief-of-staff (top-level router) | ✅ Solid | `chief-commercial-officer` | Functional equivalent. Renaming to "aldar-chief-of-staff" violates multi-tenancy (the chief-commercial-officer is generic). **Keep as chief-commercial-officer; do NOT rename.** |
 | regulatory-research-specialist | 🔴 Missing | (none) | Tracks DLD/RERA/ADREC/CBUAE/PDPL circulars, advisories, fee changes. Real gap. The `compliance` agent enforces; this agent *researches* and feeds compliance + strategy. |
 | legal-liaison | 🔴 Missing | (none) | Counsel-facing role: SPA redlines, escrow disputes, regulatory complaint pathway. `compliance` does ad-claim and platform-policy review, not contract-level legal. |
 | data-room-curator | 🔴 Missing | (none) | Owner / investor / counterparty data-room management (RERA project pack, financial transparency packs, due-diligence kits for institutional buyers). Real gap. |
@@ -118,7 +118,7 @@ The repo has **no skills concept**. The closest in-repo equivalents are vertical
 
 | Status | Count |
 |---|---|
-| ✅ Present and solid | 8 (orchestrator, social-media, events, partnerships, broker-enablement, vvip-channel-enablement, creative+brand-design pair, canva + miro integrations) |
+| ✅ Present and solid | 8 (chief-commercial-officer, social-media, events, partnerships, broker-enablement, vvip-channel-enablement, creative+brand-design pair, canva + miro integrations) |
 | 🟡 Present but light | ~12 (account-manager, email-lifecycle, voc+analytics split, wealth-channel-enablement absorbs PB+FO, seo, off-plan-launch distributed, new-business arc, plus most skills) |
 | 🟠 Present with drift | 2 (compliance — UAE specifics; partnerships — mild on Aldar-class scope) |
 | 🔴 Missing | ~10 agents + ~5 skills + ~7 integrations + ~9 runbooks |

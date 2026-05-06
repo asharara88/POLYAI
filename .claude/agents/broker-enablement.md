@@ -77,7 +77,7 @@ When a broker submits an allocation request:
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - Broker network capacity is below what the launch needs (recommend recruiting or tier rebalancing)
 - A tier-1 firm threatens to walk

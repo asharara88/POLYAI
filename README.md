@@ -9,7 +9,7 @@ A team of specialized agents that plan, execute, and review marketing and sales 
 ## Team roster
 
 **Executive**
-- `orchestrator` — CEO. Decomposes goals, assigns work, runs handoffs, can author new agents.
+- `chief-commercial-officer` — CEO. Decomposes goals, assigns work, runs handoffs, can author new agents.
 - `client-onboarding` — stands up a new client workspace from an intake brief plus the matching vertical playbook.
 
 **Marketing pod**
@@ -66,7 +66,7 @@ knowledge/...                    ← team-level baseline (cross-client, cross-ve
 - **Vertical playbooks** capture patterns that apply to most clients in an industry — audience archetypes, trigger events, channel mix, KPI norms, compliance flags, voice notes, common pitfalls.
 - **Root knowledge** is the team's cross-client baseline.
 
-Promotion (client → vertical → root) happens only when a pattern appears across 2+ clients, with `orchestrator` approval, executed by the `knowledge` agent.
+Promotion (client → vertical → root) happens only when a pattern appears across 2+ clients, with `chief-commercial-officer` approval, executed by the `knowledge` agent.
 
 ## Supported verticals (today)
 
@@ -75,7 +75,7 @@ Promotion (client → vertical → root) happens only when a pattern appears acr
 
 Sub-verticals layer on top of their parent vertical. A client whose profile has `vertical: real-estate, sub_vertical: developer` inherits both the real-estate playbook and the developer overlay. See `ARCHITECTURE.md` for the resolution rules.
 
-Adding a new vertical (or sub-vertical) means writing a `verticals/<name>/playbook.md` (or `verticals/<vertical>/sub-verticals/<sub-vertical>/playbook.md`) to the same shape as the existing one. The `orchestrator` can author one; you'd typically only do this when the second client in that industry needs different defaults than any existing vertical.
+Adding a new vertical (or sub-vertical) means writing a `verticals/<name>/playbook.md` (or `verticals/<vertical>/sub-verticals/<sub-vertical>/playbook.md`) to the same shape as the existing one. The `chief-commercial-officer` can author one; you'd typically only do this when the second client in that industry needs different defaults than any existing vertical.
 
 ## Integrations
 

@@ -48,13 +48,13 @@ vercel
 ## What it's NOT yet
 
 - **No write actions.** Read-only view of the repo's markdown.
-- **No agent invocation.** No "run the orchestrator from the UI" yet.
+- **No agent invocation.** No "run the chief-commercial-officer from the UI" yet.
 - **No approval queue.** The human-approval gates still live in conversation, not in the UI.
 - **No auth.** Anyone with the URL can read everything. Add auth before deploying with real client data.
 
 ## Extending
 
-- **Run agents from the UI**: add an API route that posts to a Claude Agent SDK session with the orchestrator's system prompt as the agent identity.
+- **Run agents from the UI**: add an API route that posts to a Claude Agent SDK session with the chief-commercial-officer's system prompt as the agent identity.
 - **Approval queue**: write a `pending-approvals.md` per campaign with a structured frontmatter (`{action, requested_by, deadline}`); read and surface them on a `/approvals` page with approve/reject actions that write back to the file.
 - **Auth**: add Clerk / Auth.js / Vercel-managed auth before any non-demo deploy.
 - **Editing**: pair with a tiny commit-back service (or use a backed-by-Git CMS like TinaCMS) to let humans edit briefs in the UI and have changes commit to the repo.

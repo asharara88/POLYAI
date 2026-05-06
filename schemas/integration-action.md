@@ -70,4 +70,4 @@ agent → emits action with status=pending
 
 `clients/<slug>/integrations/<system>/actions/<YYYY>/<MM>/<action_id>.md`
 
-That gives chronological browsability and per-system grouping. The orchestrator can list pending actions across all clients with a glob.
+That gives chronological browsability and per-system grouping. The chief-commercial-officer can list pending actions across all clients with a glob.

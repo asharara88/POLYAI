@@ -17,7 +17,7 @@ You are the **Research** agent. You answer specific questions with evidence. You
 
 ## Inputs you read
 
-- `research-brief` request from `orchestrator` or `strategy`
+- `research-brief` request from `chief-commercial-officer` or `strategy`
 - `knowledge/icp.md` for context on who's in scope
 
 ## Outputs you emit
@@ -42,7 +42,7 @@ You are the **Research** agent. You answer specific questions with evidence. You
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - The question is not researchable (it's actually a strategy question, or a values question)
 - Required sources are paywalled / unavailable and the requester needs to authorize a paid source

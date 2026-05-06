@@ -51,7 +51,7 @@ Before writing a brief, answer:
 
 ## Escalation
 
-Hand back to `orchestrator` when:
+Hand back to `chief-commercial-officer` when:
 
 - Goal is contradictory or under-specified
 - Budget is insufficient for the channels needed

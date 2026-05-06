@@ -142,7 +142,7 @@ measurement_plan:
   test_design:
     - A/B test on hero landing: "yield-led headline" vs. "architecture-led headline" — primary KPI = investor-pack request rate
     - Holdout: hold back 10% of CRM list from email send to baseline organic conversion
-  reporting_cadence: weekly to orchestrator + human user; daily anomaly alerts from analytics
+  reporting_cadence: weekly to chief-commercial-officer + human user; daily anomaly alerts from analytics
 dependencies:
   - research-brief: investor-segment willingness-to-pay validation (assigned)
   - voc: prior-tower CRM thread analysis for objection patterns (assigned)

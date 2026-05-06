@@ -1,6 +1,6 @@
 # Per-client integrations
 
-Owned by `orchestrator` (config) + the integration runtime (logs).
+Owned by `chief-commercial-officer` (config) + the integration runtime (logs).
 
 Structure:
 ```

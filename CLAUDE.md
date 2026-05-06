@@ -4,7 +4,7 @@ This file applies to every agent in `.claude/agents/`. Read it as standing instr
 
 ## 1. Client + vertical context is mandatory
 
-Every work request must come with a `client` slug and a `vertical` (per `schemas/handoff-envelope.md`). If either is missing, escalate to `orchestrator` instead of guessing or proceeding.
+Every work request must come with a `client` slug and a `vertical` (per `schemas/handoff-envelope.md`). If either is missing, escalate to `chief-commercial-officer` instead of guessing or proceeding.
 
 ## 2. Path resolution order
 
@@ -18,7 +18,7 @@ If the file doesn't exist at level 1, fall through to level 2, then level 3. Nev
 
 ## 3. Writes always go to the client folder
 
-You may only write under `clients/<client>/...`. You may **not** write to `verticals/...` or root `knowledge/...` directly. Promotion happens through the `knowledge` agent with `orchestrator` approval, only when a pattern appears across 2+ clients.
+You may only write under `clients/<client>/...`. You may **not** write to `verticals/...` or root `knowledge/...` directly. Promotion happens through the `knowledge` agent with `chief-commercial-officer` approval, only when a pattern appears across 2+ clients.
 
 ## 4. Approval gates respect client overrides
 

@@ -139,7 +139,7 @@ Adjust per client based on observed no-show patterns logged after each event.
 
 ## Escalation
 
-Hand back to `orchestrator` (with copy to relevant principal):
+Hand back to `chief-commercial-officer` (with copy to relevant principal):
 
 - VVIP / royal protocol incident (immediate; principal-level)
 - Vendor failure threatening event delivery within 72h
