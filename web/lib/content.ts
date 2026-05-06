@@ -1363,3 +1363,380 @@ export const getStats = () => {
     schemas: getSchemas().length,
   };
 };
+
+// ---------- CCO daily surface ----------
+
+const splitMarkdownSections = (raw: string): { heading: string; body: string }[] => {
+  const out: { heading: string; body: string }[] = [];
+  const lines = raw.split("\n");
+  let current: { heading: string; body: string[] } | null = null;
+  for (const line of lines) {
+    const m = line.match(/^##\s+(.+?)\s*$/);
+    if (m) {
+      if (current) out.push({ heading: current.heading, body: current.body.join("\n").trim() });
+      current = { heading: m[1].trim(), body: [] };
+    } else if (current) {
+      current.body.push(line);
+    }
+  }
+  if (current) out.push({ heading: current.heading, body: current.body.join("\n").trim() });
+  return out;
+};
+
+const latestDateFolder = (root: string): string | null => {
+  if (!exists(root)) return null;
+  const dates = listDirs(root)
+    .filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d))
+    .sort()
+    .reverse();
+  return dates[0] ?? null;
+};
+
+// Morning brief
+
+export type ParsedBriefSection = { heading: string; body: string };
+
+export type ParsedMorningBrief = {
+  date: string;
+  assembledAt: string | null;
+  raw: string;
+  sections: ParsedBriefSection[];
+  attentionItems: string[];
+};
+
+export const getMorningBrief = (clientSlug: string, dateOverride?: string): ParsedMorningBrief | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const briefsRoot = path.join(folder, "cco", "briefs");
+  const date = dateOverride ?? latestDateFolder(briefsRoot);
+  if (!date) return null;
+  const briefPath = path.join(briefsRoot, date, "morning-brief.md");
+  const raw = readFileSafe(briefPath);
+  if (!raw) return null;
+  const assembledAt = raw.match(/Brief assembled at\s+(\S+)/)?.[1] ?? null;
+  const sections = splitMarkdownSections(raw);
+  const attention = sections.find((s) => /attention/i.test(s.heading));
+  const attentionItems = attention
+    ? attention.body
+        .split("\n")
+        .map((l) => l.replace(/^\d+\.\s+/, "").trim())
+        .filter((l) => l && !l.startsWith(">"))
+    : [];
+  return { date, assembledAt, raw, sections, attentionItems };
+};
+
+// Risk register
+
+export type ParsedRiskEntry = {
+  title: string;
+  class: string;
+  severity: string;
+  status: string;
+  ageDays: number | null;
+  opened: string | null;
+  ownerAgent: string | null;
+  ownerHuman: string | null;
+  description: string;
+  currentMitigation: string;
+  escalationThreshold: string;
+  evidence: string;
+  lastReviewed: string | null;
+};
+
+export type ParsedRiskRegister = {
+  raw: string;
+  lastUpdated: string | null;
+  open: ParsedRiskEntry[];
+  closedRecent: ParsedRiskEntry[];
+  watchlist: string[];
+};
+
+const parseRiskEntry = (block: string): ParsedRiskEntry => {
+  const title = block.match(/^###\s+(.+?)\s*$/m)?.[1]?.trim() ?? "";
+  const grab = (k: string) =>
+    block.match(new RegExp(`^-\\s+\\*\\*${k}:\\*\\*\\s+(.+?)\\s*$`, "m"))?.[1]?.trim() ?? "";
+  const ageRaw = grab("Age");
+  const ageMatch = ageRaw.match(/(\d+)/);
+  return {
+    title,
+    class: grab("Class"),
+    severity: grab("Severity"),
+    status: grab("Status").toLowerCase(),
+    ageDays: ageMatch ? Number(ageMatch[1]) : null,
+    opened: grab("Opened") || null,
+    ownerAgent: grab("Owner agent") || null,
+    ownerHuman: grab("Owner human") || null,
+    description: grab("Description"),
+    currentMitigation: grab("Current mitigation"),
+    escalationThreshold: grab("Escalation threshold"),
+    evidence: grab("Evidence"),
+    lastReviewed: grab("Last reviewed") || null,
+  };
+};
+
+export const getRiskRegister = (clientSlug: string): ParsedRiskRegister | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const raw = readFileSafe(path.join(folder, "risk-register.md"));
+  if (!raw) return null;
+  const lastUpdated = raw.match(/Last updated\s+(\S+)/)?.[1] ?? null;
+
+  const sections = splitMarkdownSections(raw);
+  const openSec = sections.find((s) => /^Open risks/i.test(s.heading))?.body ?? "";
+  const closedSec = sections.find((s) => /^Closed risks/i.test(s.heading))?.body ?? "";
+  const watchSec = sections.find((s) => /^Watchlist/i.test(s.heading))?.body ?? "";
+
+  const splitEntries = (body: string): ParsedRiskEntry[] => {
+    const blocks = body.split(/\n(?=###\s)/).filter((b) => b.trim().startsWith("###"));
+    return blocks.map(parseRiskEntry).filter((e) => e.title);
+  };
+  const watchlist = watchSec
+    .split("\n")
+    .map((l) => l.replace(/^-\s+/, "").trim())
+    .filter((l) => l && !l.startsWith("##"));
+
+  return {
+    raw,
+    lastUpdated,
+    open: splitEntries(openSec),
+    closedRecent: splitEntries(closedSec),
+    watchlist,
+  };
+};
+
+// Horizon scan
+
+export type HorizonItem = {
+  title: string;
+  class: string;
+  source: string;
+  date: string;
+  summary: string;
+  whySurfaced: string;
+  nextStep: string;
+};
+
+export type ParsedHorizonScan = {
+  date: string;
+  scannedAt: string | null;
+  raw: string;
+  surfaced: HorizonItem[];
+  watchlist: string[];
+  sourcesCount: number | null;
+  itemsCount: number | null;
+};
+
+const parseHorizonItem = (block: string): HorizonItem => {
+  const title = block.match(/^###\s+(.+?)\s*$/m)?.[1]?.trim() ?? "";
+  const grab = (k: string) =>
+    block.match(new RegExp(`^-\\s+\\*\\*${k}:\\*\\*\\s+(.+?)\\s*$`, "m"))?.[1]?.trim() ?? "";
+  return {
+    title,
+    class: grab("Class"),
+    source: grab("Source"),
+    date: grab("Date"),
+    summary: grab("Summary"),
+    whySurfaced: grab("Why surfaced"),
+    nextStep: grab("Suggested next step"),
+  };
+};
+
+export const getHorizonScan = (clientSlug: string, dateOverride?: string): ParsedHorizonScan | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const scansRoot = path.join(folder, "horizon-scan");
+  const date = dateOverride ?? latestDateFolder(scansRoot);
+  if (!date) return null;
+  const raw = readFileSafe(path.join(scansRoot, date, "scan.md"));
+  if (!raw) return null;
+  const scannedAt = raw.match(/Scan completed at\s+(\S+)/)?.[1] ?? null;
+  const sourcesCount = numLoose(raw.match(/Sources scanned:\s+(\d+)/)?.[1]);
+  const itemsCount = numLoose(raw.match(/Items surfaced:\s+(\d+)/)?.[1]);
+
+  const sections = splitMarkdownSections(raw);
+  const surfacedSec = sections.find((s) => /^Surfaced items/i.test(s.heading))?.body ?? "";
+  const watchSec = sections.find((s) => /^Watch list/i.test(s.heading))?.body ?? "";
+  const blocks = surfacedSec.split(/\n(?=###\s)/).filter((b) => b.trim().startsWith("###"));
+  const surfaced = blocks.map(parseHorizonItem).filter((it) => it.title);
+  const watchlist = watchSec
+    .split("\n")
+    .map((l) => l.replace(/^-\s+/, "").trim())
+    .filter((l) => l && !l.startsWith("##"));
+
+  return { date, scannedAt, raw, surfaced, watchlist, sourcesCount, itemsCount };
+};
+
+// Decision-asks
+
+export type DecisionAsk = {
+  id: string;
+  submittedAt: string;
+  submitter: string;
+  className: string;
+  urgency: string;
+  ask: string;
+  recommendation: string;
+  evidence: string;
+  alternatives: string;
+  sla: string;
+  status: string;
+};
+
+export type SignedAsk = {
+  id: string;
+  submitted: string;
+  decision: string;
+  decidedBy: string;
+  decidedAt: string;
+};
+
+export type ParsedDecisionAsks = {
+  date: string;
+  raw: string;
+  pending: DecisionAsk[];
+  recentlySigned: SignedAsk[];
+};
+
+const parseDecisionAsk = (block: string): DecisionAsk => {
+  const title = block.match(/^###\s+(.+?)\s*$/m)?.[1]?.trim() ?? "";
+  const id = title.split(/\s+—\s+/)[0]?.trim() ?? title;
+  const grab = (k: string) =>
+    block.match(new RegExp(`^-\\s+\\*\\*${k}:\\*\\*\\s+(.+?)\\s*$`, "m"))?.[1]?.trim() ?? "";
+  return {
+    id,
+    submittedAt: grab("Submitted"),
+    submitter: grab("Submitter"),
+    className: grab("Class"),
+    urgency: grab("Urgency"),
+    ask: grab("Ask"),
+    recommendation: grab("Recommendation"),
+    evidence: grab("Evidence"),
+    alternatives: grab("Alternatives considered"),
+    sla: grab("SLA"),
+    status: grab("Status"),
+  };
+};
+
+export const getDecisionAsks = (clientSlug: string, dateOverride?: string): ParsedDecisionAsks | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const root = path.join(folder, "cco", "decision-asks");
+  const date = dateOverride ?? latestDateFolder(root);
+  if (!date) return null;
+  const raw = readFileSafe(path.join(root, date, "queue.md"));
+  if (!raw) return null;
+
+  const sections = splitMarkdownSections(raw);
+  const pendingSec = sections.find((s) => /^Pending/i.test(s.heading))?.body ?? "";
+  const signedSec = sections.find((s) => /^Recently signed/i.test(s.heading))?.body ?? "";
+
+  const blocks = pendingSec.split(/\n(?=###\s)/).filter((b) => b.trim().startsWith("###"));
+  const pending = blocks.map(parseDecisionAsk).filter((a) => a.id);
+
+  const recentlySigned: SignedAsk[] = [];
+  const tableRows = signedSec.split("\n").filter((l) => l.startsWith("|") && !l.includes("---"));
+  for (const r of tableRows.slice(1)) {
+    const cells = r.split("|").map((c) => c.trim()).filter(Boolean);
+    if (cells.length < 5) continue;
+    const [id, submitted, decision, decidedBy, decidedAt] = cells;
+    if (id.toLowerCase().startsWith("decision-ask")) continue;
+    recentlySigned.push({ id, submitted, decision, decidedBy, decidedAt });
+  }
+
+  return { date, raw, pending, recentlySigned };
+};
+
+// CCO calendar
+
+export type CalendarEntry = {
+  date: string;
+  time: string;
+  event: string;
+  counterparty: string;
+  decisionNeeded: string;
+  briefOwner: string;
+};
+
+export type StandingEntry = {
+  cadence: string;
+  item: string;
+  owner: string;
+  notes: string;
+};
+
+export type DeadlineEntry = {
+  deadline: string;
+  what: string;
+  owner: string;
+  reference: string;
+};
+
+export type ParsedCcoCalendar = {
+  raw: string;
+  lastUpdated: string | null;
+  thisWeek: CalendarEntry[];
+  nextWeek: CalendarEntry[];
+  standing: StandingEntry[];
+  deadlines: DeadlineEntry[];
+};
+
+const parseCalendarTable = (body: string): CalendarEntry[] => {
+  const out: CalendarEntry[] = [];
+  const rows = body.split("\n").filter((l) => l.startsWith("|") && !l.includes("---"));
+  for (const r of rows.slice(1)) {
+    const cells = r.split("|").map((c) => c.trim()).filter(Boolean);
+    if (cells.length < 5) continue;
+    const [date, time, event, counterparty, decisionNeeded, briefOwner] = cells;
+    if (date.toLowerCase() === "date") continue;
+    out.push({
+      date,
+      time,
+      event,
+      counterparty,
+      decisionNeeded,
+      briefOwner: briefOwner ?? "",
+    });
+  }
+  return out;
+};
+
+export const getCcoCalendar = (clientSlug: string): ParsedCcoCalendar | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const raw = readFileSafe(path.join(folder, "cco", "calendar.md"));
+  if (!raw) return null;
+  const lastUpdated = raw.match(/Last updated\s+(\S+)/)?.[1] ?? null;
+
+  const sections = splitMarkdownSections(raw);
+  const thisWeekBody = sections.find((s) => /^This week/i.test(s.heading))?.body ?? "";
+  const nextWeekBody = sections.find((s) => /^Next week/i.test(s.heading))?.body ?? "";
+  const standingBody = sections.find((s) => /^Standing items/i.test(s.heading))?.body ?? "";
+  const deadlinesBody = sections.find((s) => /^Upcoming decision-deadline/i.test(s.heading))?.body ?? "";
+
+  const standing: StandingEntry[] = [];
+  for (const r of standingBody.split("\n").filter((l) => l.startsWith("|") && !l.includes("---"))) {
+    const cells = r.split("|").map((c) => c.trim()).filter(Boolean);
+    if (cells.length < 4) continue;
+    const [cadence, item, owner, notes] = cells;
+    if (cadence.toLowerCase() === "cadence") continue;
+    standing.push({ cadence, item, owner, notes });
+  }
+
+  const deadlines: DeadlineEntry[] = [];
+  for (const r of deadlinesBody.split("\n").filter((l) => l.startsWith("|") && !l.includes("---"))) {
+    const cells = r.split("|").map((c) => c.trim()).filter(Boolean);
+    if (cells.length < 4) continue;
+    const [deadline, what, owner, reference] = cells;
+    if (deadline.toLowerCase() === "deadline") continue;
+    deadlines.push({ deadline, what, owner, reference });
+  }
+
+  return {
+    raw,
+    lastUpdated,
+    thisWeek: parseCalendarTable(thisWeekBody),
+    nextWeek: parseCalendarTable(nextWeekBody),
+    standing,
+    deadlines,
+  };
+};

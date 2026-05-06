@@ -98,8 +98,17 @@ export default function ChatClient({ clients }: { clients: ClientItem[] }) {
 
       <div className="rounded-lg border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 min-h-[40vh] max-h-[65vh] overflow-y-auto p-4">
         {messages.length === 0 ? (
-          <div className="text-sm text-ink-400 font-mono space-y-2">
-            <div>try:</div>
+          <div className="text-sm text-ink-400 font-mono space-y-3">
+            <div>CCO presets — try:</div>
+            <ul className="list-disc ml-5 space-y-1">
+              <li>Brief me on this morning</li>
+              <li>What needs my attention today?</li>
+              <li>Brief me for the Driven Properties senior-partner meeting</li>
+              <li>Show me deals stuck more than 14 days</li>
+              <li>Channel-mix shift this week vs. last</li>
+              <li>Aged risks open more than 30 days</li>
+            </ul>
+            <div className="pt-2">team presets:</div>
             <ul className="list-disc ml-5 space-y-1">
               <li>Plan a Q3 launch campaign for [client]</li>
               <li>Draft a creative brief for the hero landing page</li>

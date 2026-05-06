@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const items = [
   { href: "/", label: "Overview" },
+  { href: "/cco", label: "CCO Daily", primary: true },
   { href: "/chat", label: "Chat" },
   { href: "/clients", label: "Clients" },
   { href: "/agents", label: "Agents" },
@@ -23,7 +24,11 @@ export default function Nav() {
             <Link
               key={it.href}
               href={it.href}
-              className="text-ink-600 dark:text-ink-300 hover:text-ink-900 dark:hover:text-ink-50 transition-colors"
+              className={
+                it.primary
+                  ? "text-accent font-medium hover:text-accent/80 transition-colors"
+                  : "text-ink-600 dark:text-ink-300 hover:text-ink-900 dark:hover:text-ink-50 transition-colors"
+              }
             >
               {it.label}
             </Link>
