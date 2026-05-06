@@ -40,6 +40,7 @@ references:
   campaign_brief:          # path
   creative_brief:          # path (if creative-driven)
   deal_record:             # path (if deal-driven)
+  decision_memo_ref:       # decision-ask id (DA-YYYY-MM-DD-NNN) when CCO approval gate fired; per schemas/decision-memo.md
   source_evidence: []      # paths to artifacts/data backing this action
 ```
 

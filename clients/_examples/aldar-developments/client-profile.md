@@ -137,6 +137,31 @@ approval_gates:
   rera_filing: always-approve
   adgm_filing: always-approve
 
+  # Phase 5B — depth gates (route via decision-router per schemas/decision-memo.md)
+  deal_desk_exception:
+    deal_above_aed: 50000000              # any deal > AED 50M routes to CCO
+    discount_above_pct: 8                  # any discount > 8% routes to CCO
+    non_standard_payment_plan: route-cco   # any plan beyond Structures A-D in payment-plan-structures skill
+  channel_development_spend:
+    broker_event_above_aed: 100000
+    wealth_channel_hospitality_above_aed: 75000
+    vvip_event_above_aed: 250000
+  marketing_budget_reallocation:
+    within_quarter_pct: 15                 # > 15% reallocation within a quarter routes to CCO + CMO
+  international_roadshow:
+    above_aed: 200000                       # every roadshow > AED 200k OR > 1 corridor
+    multi_corridor: route-cco
+  aml_kyc_edd_elevation:
+    pep_edd_continuation: route-cco-and-head-of-compliance
+    russia_cis_corridor_continuation: route-cco-and-head-of-compliance
+  vvip_relationship_activation:
+    new_vvip_account: restricted-route-vvip-channel-enablement-and-wealth-vvip-manager-and-cco
+    dormant_vvip_reactivation: restricted-route-vvip-channel-enablement-and-wealth-vvip-manager-and-cco
+  decision_memo_required:
+    quarterly_exec_brief_material_risks_section: cco-sign-off
+    monthly_board_prep_summary: cco-sign-off
+    annual_commercial_plan_targets: cco-and-cfo-and-ceo
+
 compliance_flags:
   - ADGM
   - RERA
