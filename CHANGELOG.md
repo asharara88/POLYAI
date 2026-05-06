@@ -2,6 +2,68 @@
 
 All notable changes to POLYAI. Most-recent first. Each entry references the commit that landed it.
 
+## 2026-05-06 — Phase 5: Completely serve the Aldar CCO
+
+The audit (`AUDIT.md`), gap analysis (`GAPS.md`), and plan (per `/root/.claude/plans/instead-of-meidian-residences-async-lark.md`) identified that the system was strong on weekly cadenced reports but light on **daily situational awareness**, **decision-asks workflow**, **operational-crisis coverage**, and **integration wiring**. Phase 5 closes those gaps.
+
+**Headline:** 4 new agents + 1 new schema + 1 new skill + 12 new runbooks + a dedicated `/cco` route + native CCO decision-asks queue + Aldar approval-gates depth + Aldar populated `kpi-targets.md`.
+
+### Phase 5A — CCO daily situational awareness · `fbcd33b`
+
+- **3 new agents** — `cco-morning-brief` [opus], `horizon-scanner` [sonnet, WebFetch+WebSearch], `risk-register-curator` [sonnet]
+- **1 new skill** — `cco-kpi-framework.md` (5-family taxonomy)
+- **3 new runbooks** — `cco-daily-brief`, `horizon-scan-daily`, `risk-register-update`
+- **Web `/cco` route** — multi-client picker, anchor nav across Brief / Decisions / Risks / Horizon / Calendar
+- **5 new web components** — `CcoMorningBrief`, `RiskRegister` (red/amber/green visual hierarchy), `HorizonScan` (class-coded items), `DecisionAsksQueue` (urgency-coded expandable cards with audit table), `CcoCalendar`
+- **Nav update** — CCO Daily promoted to primary slot
+- **Chat presets** — 6 CCO-specific
+- **`web/lib/content.ts` parsers** — `getMorningBrief`, `getRiskRegister`, `getHorizonScan`, `getDecisionAsks`, `getCcoCalendar`
+- **Aldar populate** — risk register (5 open + 1 closed + 3 watchlist), CCO calendar (this week + next week + standing + 8 deadlines), horizon scan 2026-05-06 (4 surfaced + 5 watchlist), decision-asks queue 2026-05-06 (4 pending + 3 signed), morning brief 2026-05-06
+
+### Phase 5B — Decision-asks workflow + approval-gates depth · `1013184`
+
+- **1 new agent** — `decision-router` [sonnet]
+- **1 new schema** — `schemas/decision-memo.md` (canonical CCO-bound decision shape)
+- **`schemas/integration-action.md`** — added `decision_memo_ref` to references
+- **Aldar `client-profile.md` `approval_gates`** — added depth thresholds for deal-desk exception, channel-development spend, marketing-budget reallocation, international roadshow, AML/KYC EDD elevation, VVIP relationship activation, decision-memo required
+- **`/approvals` split-view** — native CCO decision-asks queue (top) + GitHub PR mirror (bottom); each client section deep-links to `/cco?client=<slug>`
+
+### `e310292` — `.gitignore` housekeeping
+
+Removed accidentally-committed `.next/` build artifacts and added `.gitignore` to prevent recurrence.
+
+### Phase 5C + 5D + 5E + 5F — runbooks completion + Aldar kpi-targets
+
+12 new runbooks closing the operational-crisis, strategic-planning, and integration-go-live gaps.
+
+**Phase 5C — operational crisis (5):**
+- `construction-delay-handover-slip` · `tier-1-broker-collapse` · `regulator-inquiry-non-complaint` · `project-safety-press-crisis` · `key-rm-departure`
+
+**Phase 5D — strategic planning (3):**
+- `annual-commercial-plan` · `monthly-board-prep` · `strategic-bet-evaluation`
+
+**Phase 5E — integration go-live (4):**
+- `integration-go-live-salesforce` · `integration-go-live-sumsub` · `integration-go-live-calendar` · `integration-go-live-news-scan`
+
+**Phase 5F — Aldar populate:**
+- `clients/_examples/aldar-developments/cco/kpi-targets.md` — full year-2026 targets across 5 KPI families with quarterly cadence; Q3 spike reflects Saadiyat Reserve Heights launch; signed CCO + CFO + CEO
+
+`runbooks/README.md` catalog refreshed with 6 categories.
+
+### Total Phase-5 deltas
+
+| Layer | Before Phase 5 | After Phase 5 | Delta |
+|---|---|---|---|
+| Agents | 41 | 45 | +4 |
+| Skills | 14 | 15 | +1 |
+| Schemas | 8 | 9 | +1 |
+| Runbooks | 10 | 22 | +12 |
+| Web routes | 12 | 13 | +1 (`/cco`) |
+| Web components | (existing dashboards) | +5 | new CCO components |
+| Aldar populated CCO surface | 0 | 6 files | morning-brief / decision-asks / risk-register / calendar / horizon-scan / kpi-targets |
+
+---
+
 ## 2026-05-06 — Skills coverage completion (Phase 4F)
 
 7 additional skills authored to fully cover the cross-agent reference surface for the developer engagement. Skills total: 14 (was 7 after Phase 4D).

@@ -39,6 +39,12 @@ A team of specialized agents that plan, execute, and review marketing and sales 
 **Business development**
 - `partnerships` — partner identification, outreach, co-marketing
 
+**CCO daily**
+- `cco-morning-brief` — daily 07:00 morning-brief synthesis; pulls from the seven weekly cadenced reports + live data + risk register + horizon scan + decision-asks queue
+- `horizon-scanner` — daily 06:00 outward-looking scan: regulator + press + sanctions + corridor + competitor; curates 3-5 action-relevant items
+- `risk-register-curator` — owns clients/<client>/risk-register.md; receives risk-flags from any agent; classifies, ages, escalates per threshold
+- `decision-router` — receives any agent's decision-ask, classifies (urgency × decision-type × counterparty-tier), routes per client `approval_gates`, tracks SLA, escalates on breach
+
 **Cross-cutting**
 - `review` — final QA against brief and brand
 - `compliance` — claims, regulated language, ad policy, privacy
@@ -123,6 +129,7 @@ See `ARCHITECTURE.md` for handoff flows, approval gates, and the resolution rule
                        #   crm-data-model · off-plan-launch-mechanics
                        #   owner-community-governance · dispute-resolution-uae
                        #   payment-plan-structures · diaspora-corridor-marketing
+                       #   cco-kpi-framework
 schemas/               # shared templates for inter-agent handoffs
 clients/               # per-client engagements (one folder per slug)
   _template/           # scaffold copied for new clients
@@ -131,12 +138,23 @@ verticals/             # industry defaults
     sub-verticals/developer/  # off-plan + secondary-market overlay
 integrations/          # per-system specs + actions (canva, miro, salesforce,
                        #   sumsub, trakheesi)
-runbooks/              # multi-agent choreography for recurring scenarios
-                       #   resale-with-noc · complaint-rera-exposure
-                       #   pep-sanctions-hit · international-roadshow
-                       #   inbound-hnw-private-bank · broker-onboarding-to-first-deal
-                       #   handover-snagging · quarterly-exec-brief
-                       #   press-sensitive-uhnw-transaction
+runbooks/              # multi-agent choreography for recurring scenarios.
+                       #   compliance + counterparty crisis: resale-with-noc ·
+                       #   complaint-rera-exposure · pep-sanctions-hit ·
+                       #   regulator-inquiry-non-complaint
+                       #   operational crisis: construction-delay-handover-slip ·
+                       #   tier-1-broker-collapse · project-safety-press-crisis ·
+                       #   key-rm-departure
+                       #   customer + channel lifecycle: international-roadshow ·
+                       #   inbound-hnw-private-bank · broker-onboarding-to-first-deal ·
+                       #   handover-snagging · press-sensitive-uhnw-transaction
+                       #   CCO daily + cadenced: cco-daily-brief · horizon-scan-daily ·
+                       #   risk-register-update · monthly-board-prep ·
+                       #   quarterly-exec-brief · annual-commercial-plan
+                       #   strategic: strategic-bet-evaluation
+                       #   integration go-live: integration-go-live-salesforce ·
+                       #   integration-go-live-sumsub · integration-go-live-calendar ·
+                       #   integration-go-live-news-scan
 knowledge/             # team-level cross-client baseline
 ARCHITECTURE.md        # handoff flows, approval gates, design choices
 CLAUDE.md              # project-wide rules every agent inherits

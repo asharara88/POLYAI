@@ -4,15 +4,24 @@ This document is the post-extension companion to `AUDIT.md` (pre-state), `GAPS.m
 
 ## What changed (executive summary)
 
-| Layer | Before | After | Delta |
-|---|---|---|---|
-| Agents | 32 | 41 | +9 (4 managers, 2 P1, 5 P2, 4 P3 — 1 was the rename, not net) |
-| Skills | 0 | 7 | +7 (3 P1 + 4 P3) |
-| Integrations (specs) | 2 (canva, miro) | 5 (canva, miro, salesforce, sumsub, trakheesi) | +3 |
-| Runbooks | 0 | 10 (1 README + 9 scenarios) | +9 |
-| Schemas | 8 | 8 | 0 (existing schemas were sound) |
-| Verticals | 1 (real-estate) + 1 sub-vertical (developer) | unchanged | 0 |
-| Web layer | 1 chat surface + dashboards + pages | unchanged structurally; pod groupings updated on agents page | content-only |
+Across Phase 4 (audit-driven extension) and Phase 5 (completely serve the CCO):
+
+| Layer | Pre-audit | After Phase 4 | After Phase 5 | Total delta |
+|---|---|---|---|---|
+| Agents | 32 | 41 | 45 | +13 |
+| Skills | 0 | 14 | 15 | +15 |
+| Schemas | 8 | 8 | 9 | +1 (decision-memo) |
+| Integrations (specs) | 2 (canva, miro) | 5 | 5 | +3 |
+| Runbooks | 0 | 10 | 22 | +22 |
+| Web routes | 12 | 12 | 13 | +1 (`/cco`) |
+| Web components | (existing) | (existing) | +5 | 5 CCO components |
+
+**Phase 5 specifically** delivered:
+- A daily morning brief, native risk register, daily horizon scan, decision-asks queue, CCO calendar — all rendered at `/cco` and surfaced via chat presets and the client-detail tab
+- Decision-asks workflow at `/approvals` (native CCO queue + GitHub PR mirror split-view)
+- Aldar `client-profile.md` `approval_gates` extended with the depth thresholds the audit identified as missing
+- 12 new runbooks (5 operational-crisis + 3 strategic-planning + 4 integration-go-live)
+- Aldar `kpi-targets.md` for plan year 2026 across 5 KPI families
 
 Total new files: 33. Total modified files: 6. Total deleted files: 0. All changes are reversible via `git revert` of the four phase commits (`6f407e4`, `89c19cb`, `46a8847`, `4381750`) plus the Phase 4E doc commit.
 
