@@ -2,6 +2,20 @@
 
 All notable changes to POLYAI. Most-recent first. Each entry references the commit that landed it.
 
+## 2026-05-06 — Skills coverage completion (Phase 4F)
+
+7 additional skills authored to fully cover the cross-agent reference surface for the developer engagement. Skills total: 14 (was 7 after Phase 4D).
+
+- `.claude/skills/crm-data-model.md` — system-agnostic data model (deal-record ↔ CRM-object mapping); the Salesforce-specific operational mapping at `integrations/salesforce/schema-mapping.md` is the system-level layer underneath.
+- `.claude/skills/wealth-channel-operations.md` — parallel to `broker-operations` for private banks / family offices / independent introducers; introducer-agreement framework, ADGM-FSRA + DIFC-DFSA + foreign-jurisdiction overlay, fee structure, dispute escalation, channel-development cadence.
+- `.claude/skills/off-plan-launch-mechanics.md` — consolidates Trustee Account opening, RERA / ADREC project registration, Oqood, Trakheesi / ADREC permit, reservation-form mechanics, disclosure currency, and the regulatory-clock vs. marketing-clock alignment problem.
+- `.claude/skills/owner-community-governance.md` — Dubai Law 27/2007 + AD equivalent, OAM operations, AGM cadence, service-charge transparency, post-handover developer-side touchpoint cadence, VVIP overlay.
+- `.claude/skills/dispute-resolution-uae.md` — pathway map (RERA RDC, REDRC, ADREC consumer-protection, Dubai/AD courts, DIFC/ADGM courts + arbitration), matter-type → pathway, time-and-cost tradeoffs, internal-resolution-first principle.
+- `.claude/skills/payment-plan-structures.md` — standard structures A-D + bespoke E-I; cash-flow + IRR implications; mortgage-overlay; post-handover collection; escrow-coverage adequacy; disclosure framework.
+- `.claude/skills/diaspora-corridor-marketing.md` — corridor patterns for India NRI, KSA, UK, Russia/CIS, Egypt, Pakistan, Nigeria, Singapore, US: language, cultural calendar, regulatory overlay, preferred channels, content angles, decision cycle, pitfalls.
+
+`README.md` repo-layout updated to enumerate all 14 skills.
+
 ## 2026-05-06 — Audit, gap-analyze, surgical extension
 
 The repo was audited end-to-end (`AUDIT.md`), gaps identified (`GAPS.md`), priorities ranked (`PLAN.md`), and a four-phase extension executed in priority order. The headline shift: from a 32-agent, 2-integration, no-skills, no-runbooks system into a 41-agent, 5-integration-spec'd (3 newly added), 7-skill, 10-runbook system with a manager-tier added between the CCO and specialists.

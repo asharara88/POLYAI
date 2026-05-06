@@ -118,8 +118,11 @@ See `ARCHITECTURE.md` for handoff flows, approval gates, and the resolution rule
 .claude/skills/        # framework + reference skills loaded by agents
                        #   uae-real-estate-regulatory · aml-kyc-uae-real-estate
                        #   regulatory-disclosure-language · broker-operations
-                       #   marketing-attribution · project-fact-pack
-                       #   vvip-protocol-uae
+                       #   wealth-channel-operations · marketing-attribution
+                       #   project-fact-pack · vvip-protocol-uae
+                       #   crm-data-model · off-plan-launch-mechanics
+                       #   owner-community-governance · dispute-resolution-uae
+                       #   payment-plan-structures · diaspora-corridor-marketing
 schemas/               # shared templates for inter-agent handoffs
 clients/               # per-client engagements (one folder per slug)
   _template/           # scaffold copied for new clients
