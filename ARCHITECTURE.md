@@ -166,3 +166,15 @@ When the second client in a new industry needs different defaults than any exist
 1. Author `verticals/<name>/playbook.md` to the same shape as the existing one (`real-estate`) — audience archetypes, trigger events, sales motion, channel mix, KPIs, compliance flags, voice notes, VoC sources, common pitfalls, sub-vertical hints.
 2. Add the vertical name to `README.md` "Supported verticals" section.
 3. The `client-onboarding` agent will pick it up automatically next intake.
+
+## Skills directory (`.claude/skills/`)
+
+Skills are framework references loaded by multiple agents — they capture the *shape* of a domain (UAE real-estate regulatory framework, AML/KYC operational mechanics, approved disclosure templates, broker operations, attribution doctrine, project-fact-pack assembly, VVIP protocol). Skills are deliberately framework-only: specific current rules, current circular numbers, current thresholds route through `regulatory-research-specialist` for per-request confirmation. Skills are written by domain-owner agents (e.g., `regulatory-research-specialist` proposes regulatory-skill updates) and curated through the `knowledge` agent with `chief-commercial-officer` approval. Per-client overrides live at `clients/<slug>/skills-overrides/<skill>.md`.
+
+## Runbooks directory (`runbooks/`)
+
+Runbooks are multi-agent choreography for recurring scenarios — the off-the-shelf playbook the team pulls when a known event fires (resale with NOC, RERA-exposure complaint, PEP/sanctions hit, international roadshow, inbound HNW from private bank, broker onboarding, handover snagging, quarterly exec brief, press-sensitive UHNW). Each runbook follows a fixed shape: trigger → owner (single accountable agent or human) → numbered sequence with named hand-offs and SLAs → compliance gates → KPIs → close-out + learning loop → related runbooks. Per-client overrides live at `clients/<slug>/runbooks/<scenario>-overrides.md`. See `runbooks/README.md` for the catalog and authoring rules.
+
+## Pod managers (manager tier between CCO and specialists)
+
+Above the pod-specialist agents but below the `chief-commercial-officer`, four pod managers orchestrate within their pod and route exceptions to the CCO: `marketing-manager`, `sales-manager`, `crm-manager`, `wealth-vvip-manager`. Specialists' day-to-day handoffs go through their pod manager; cross-pod or escalation paths go through the CCO. This was added to manage the agent-count load on the CCO without compromising single-point-of-truth orchestration.

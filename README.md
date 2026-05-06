@@ -8,9 +8,15 @@ A team of specialized agents that plan, execute, and review marketing and sales 
 
 ## Team roster
 
-**Executive**
-- `chief-commercial-officer` — CEO. Decomposes goals, assigns work, runs handoffs, can author new agents.
+**C-level (orchestration)**
+- `chief-commercial-officer` — CEO of marketing/sales/BD. Decomposes goals, assigns work, runs handoffs, can author new agents. Sibling C-level orchestrators (CHRO, CPO, CFO-agent) reserved for future expansion to other departments.
 - `client-onboarding` — stands up a new client workspace from an intake brief plus the matching vertical playbook.
+
+**Pod managers** (route within their pod; report to `chief-commercial-officer`)
+- `marketing-manager` — orchestrates the marketing pod (strategy, creative, brand-design, SEO, social, email-lifecycle, analytics, agency-liaison, content-pr-specialist)
+- `sales-manager` — orchestrates the sales pod (sdr, inbound-qualifier, account-executive, proposal, deal-desk-analyst, secondary-market-specialist, forecasting)
+- `crm-manager` — orchestrates CRM + lifecycle (account-manager, voc, data-quality-steward, service-recovery-specialist, email-lifecycle CRM-side)
+- `wealth-vvip-manager` — orchestrates relationship channels (broker-enablement, wealth-channel-enablement, vvip-channel-enablement, vip-relationship-manager, aml-kyc-compliance-specialist coordination)
 
 **Marketing pod**
 - `strategy` — campaign plans, GTM, CRM strategy
@@ -41,6 +47,19 @@ A team of specialized agents that plan, execute, and review marketing and sales 
 - `competitive-intel` — competitor pricing, launches, messaging, ads
 - `voc` — voice-of-customer: support tickets, reviews, calls
 - `localization` — multi-language, multi-region adaptation
+
+**Compliance + legal + data**
+- `regulatory-research-specialist` — single source of truth for "what does the regulator currently say"; tracks DLD/RERA/ADREC/ADGM/DIFC/CBUAE/PDPL/federal AML circulars; returns citation-bearing answers
+- `aml-kyc-compliance-specialist` — operational PEP/sanctions screening, source-of-funds documentation, EDD coordination, STR drafting (with legal-liaison)
+- `legal-liaison` — counsel-facing triage; SPA redlines, escrow disputes, regulator pathway, broker-agreement template management; routes to in-house + panel firms
+- `data-quality-steward` — Salesforce hygiene; dedup; stage-evidence diff; broker-attribution accuracy
+- `martech-ops-specialist` — tag governance, identity resolution, deliverability, consent management, attribution-pipeline integrity
+- `data-room-curator` — access-controlled data rooms for institutional / JV / lender / regulator diligence
+- `service-recovery-specialist` — complaint triage, RERA/ADREC pathway, reputation defense
+- `content-pr-specialist` — earned-media + thought-leadership; embargo, spokesperson briefing, no-mention enforcement
+- `deal-desk-analyst` — non-standard commercial structure analysis (multi-unit, custom payment plan, broker over-commission, VVIP bespoke)
+- `secondary-market-specialist` — UAE secondary-market resale: NOC, Form-F (Dubai), ADREC equivalent (AD), Oqood-to-title, Trustee Account release
+- `vip-relationship-manager` — HNW/UHNW concierge layer (distinct from VVIP protocol)
 
 **Sub-vertical specialists** (loaded per client based on `client-profile.md`)
 - `agency-liaison` — manages external creative / media / digital / PR agencies (real-estate developer, larger B2C)
@@ -96,14 +115,29 @@ See `ARCHITECTURE.md` for handoff flows, approval gates, and the resolution rule
 
 ```
 .claude/agents/        # one .md per agent (Claude Code subagent format)
+.claude/skills/        # framework + reference skills loaded by agents
+                       #   uae-real-estate-regulatory · aml-kyc-uae-real-estate
+                       #   regulatory-disclosure-language · broker-operations
+                       #   marketing-attribution · project-fact-pack
+                       #   vvip-protocol-uae
 schemas/               # shared templates for inter-agent handoffs
 clients/               # per-client engagements (one folder per slug)
   _template/           # scaffold copied for new clients
 verticals/             # industry defaults
   real-estate/
+    sub-verticals/developer/  # off-plan + secondary-market overlay
+integrations/          # per-system specs + actions (canva, miro, salesforce,
+                       #   sumsub, trakheesi)
+runbooks/              # multi-agent choreography for recurring scenarios
+                       #   resale-with-noc · complaint-rera-exposure
+                       #   pep-sanctions-hit · international-roadshow
+                       #   inbound-hnw-private-bank · broker-onboarding-to-first-deal
+                       #   handover-snagging · quarterly-exec-brief
+                       #   press-sensitive-uhnw-transaction
 knowledge/             # team-level cross-client baseline
 ARCHITECTURE.md        # handoff flows, approval gates, design choices
 CLAUDE.md              # project-wide rules every agent inherits
+CHANGELOG.md           # versioned change log
 ```
 
 ## Onboarding a new client

@@ -31,3 +31,19 @@ If `clients/<client>/client-profile.md` lists `compliance_flags`, every external
 ## 6. Don't fabricate
 
 If you don't know something about the client, leave a `# TODO: <what's missing>` marker and escalate the gap. Inventing ICP details, customer quotes, or trigger events poisons every downstream brief.
+
+## 7. Skills are framework, not current truth
+
+When a skill in `.claude/skills/` carries a regulatory citation (DLD circular number, RERA Trakheesi requirement, ADREC clause, CBUAE LTV cap, sanctions list cadence, FATF status, Golden Visa threshold), treat it as **framework-level reference** — not as today's truth. For any artifact that depends on the current rule, route to `regulatory-research-specialist` for per-request confirmation. The skill describes *what the regulator regulates and how the rule generally works*; the agent confirms *what the rule says today*.
+
+## 8. Runbooks have a single owner
+
+When you reference a runbook in `runbooks/`, the named owner agent runs the case end-to-end. Do not parallel-fork — if you are not the owner, your role is supporting per the hand-off matrix in the runbook. Switch runbooks (per "related runbooks" sections) when the scenario shape changes mid-flight, but only one runbook is primary at a time.
+
+## 9. Pod-manager routing
+
+Specialists route their day-to-day handoffs through their pod manager (`marketing-manager`, `sales-manager`, `crm-manager`, `wealth-vvip-manager`). Cross-pod handoffs and escalations go through the `chief-commercial-officer`. Do not bypass the manager tier for routine work; do bypass for true escalations.
+
+## 10. Discretion stance
+
+For VVIP-touching artifacts and any matter referencing the per-client `vvip-channel/no-mention-list.md`, restricted-access discipline applies: case files in restricted folders, Salesforce records under restricted-access sharing rules, no general-team visibility, no press reference (ever). Discretion is the contract, not a suggestion.
