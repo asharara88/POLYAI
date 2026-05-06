@@ -184,3 +184,37 @@ Deliverables:
 | Launch | T-2 to T0 | strategy + analytics | CMO + Head of Sales (go-live) |
 | Sustain | T0 to T+8 | analytics + forecasting | CMO (rebalance > 20%) |
 | Construction marketing | T+ongoing | social-media + email-lifecycle | Per artifact |
+
+---
+
+## Regulatory-milestone overlay
+
+The campaign-workflow phases above are the **commercial cadence**. Layered on top is a **regulatory cadence** that gates whether the campaign can lawfully proceed at each step. This overlay reframes the same timeline using the regulator-side T-90 / T-30 / T0 / T+30 vocabulary alongside the marketing-side T-16/T-12/etc. above.
+
+**Critical principle:** Every specific regulator timing or form below is a *framework reference*. Confirm current per case via `regulatory-research-specialist` — DLD/RERA/ADREC update circulars frequently and yesterday's truth is not always today's.
+
+### Regulatory milestone table
+
+| Reg-clock | Marketing-clock | Milestone | Owner | Hand-off | Without it |
+|---|---|---|---|---|---|
+| **T-90 days from public launch** | ~T-16 to T-12 | Project escrow / Trustee Account opened (Dubai Law 8/2007 / Abu Dhabi Law No. 3/2015 — verify applicable per project location) | Developer's regulatory-operations team + `marketing-financial-manager` (commercial coordination) | `regulatory-research-specialist` confirms current process; trustee-bank reference recorded for use in payment-plan disclosure | No public-facing payment-plan reference can ship; full launch blocks |
+| **T-90 to T-60 days** | ~T-16 to T-10 | RERA project registration (Dubai) / ADREC project registration (Abu Dhabi) | Developer's regulatory-operations team | `compliance` for project-registration-number capture; flows into Template 4 (permit / registration display) | No public-facing project reference can ship |
+| **T-60 days** | ~T-10 to T-8 | Oqood off-plan registration system enabled for the project (Dubai-side) | Developer's regulatory-operations team + `inventory-manager` | `account-executive` for reservation-form wiring | Reservations cannot be booked into the regulator-recognized system |
+| **T-45 to T-30 days** | ~T-8 to T-6 | **Trakheesi advertising-permit application** initiated for Dubai-side ads (per `integrations/trakheesi/spec.md`) | `agency-liaison` (chase) + developer's regulatory-operations team | `compliance` blocks any Dubai-side artifact ship until permit number on file | No Dubai-side ad can lawfully run; channels reject artifacts without permit |
+| **T-45 to T-30 days** | ~T-8 to T-6 | ADREC advertising-permit equivalent application (Abu Dhabi-side) — verify current per case via `regulatory-research-specialist` | `agency-liaison` + developer's regulatory-operations team | `compliance` mirrors Trakheesi gate for AD-side | No AD-side ad can lawfully run |
+| **T-30 days** | ~T-6 to T-4 | Compliance review of all customer-facing creative against `.claude/skills/regulatory-disclosure-language.md` templates 1-7 | `compliance` + `regulatory-research-specialist` (current-wording confirmation) | `creative` + `agency-liaison` for required revisions | Forbidden phrasing or missing required disclosures cause platform-policy + regulator exposure |
+| **T-30 days** | ~T-6 to T-4 | Arabic substantive-equivalence review of all customer-facing creative | `localization` (translation) → `compliance` (substantive-equivalence) | Re-loop `compliance` + `regulatory-research-specialist` | Arabic-EN drift creates per-language disclosure inconsistency — material regulatory risk |
+| **T-21 days** | ~T-4 to T-2 | Tier-1 broker pre-briefing materials cleared for use (must include current Trakheesi permit reference + escrow / payment-plan disclosure) | `broker-enablement` + `compliance` | `agency-liaison` distributes to broker network | Broker-side ad / WhatsApp / email use of pre-cleared materials with stale permit triggers regulator exposure |
+| **T-14 days** | ~T-2 | AML/KYC capacity check: `aml-kyc-compliance-specialist` ready to handle launch-volume incoming-buyer screening within SLA; Sumsub levels configured per `integrations/sumsub/spec.md` per-client config | `aml-kyc-compliance-specialist` + `chief-commercial-officer` | Commercial pod for any pre-launch reservation-flow tests | Launch-day buyer flow stalls in pre-clearance; revenue-recognition lag and customer-experience hit |
+| **T-7 days** | ~T-2 to T0 | Permit-display verification across all in-flight artifacts (microsite footer, OOH bottom-bar, paid-social caption, paid-search ad-extension) | `compliance` + `data-quality-steward` (audit-pass) | `agency-liaison` for any remediation | Any one missing-permit artifact in market triggers pull-down within 24h per `runbooks/trakheesi-permit.md` (P3) |
+| **T0 launch day** | T0 | Final go-live confirmation: all permits valid + all disclosures current + escrow reference live + AML/KYC ready | `compliance` (chair) + `chief-commercial-officer` (sign-off) | Launch proceeds | Launch is held |
+| **T+30 days** | ~T+4 | First sustain-phase compliance audit: any artifact that drifted (rotated copy, new variants, broker re-issued packs) revalidated | `compliance` + `data-quality-steward` | Remediation loop with relevant agency / pod | Drift accumulates and surfaces as a regulator inquiry weeks later |
+| **T+90 days** | ~T+12 | Permit-renewal initiation if any in-flight permit will expire within 30-day buffer per `integrations/trakheesi/spec.md` config | `agency-liaison` + developer's regulatory-operations team | `compliance` for renewed-permit verification | Mid-flight permit expiry forces pull-down |
+| **T+ongoing** | T+ongoing | Re-screening cadence on cleared counterparties per risk-rating in `.claude/skills/aml-kyc-uae-real-estate.md` | `aml-kyc-compliance-specialist` | Any new hit triggers `runbooks/pep-sanctions-hit.md` | Continuous-monitoring obligation under DNFBP rules; lapse exposes the developer |
+
+### Cross-runbook coordination during launch
+
+- **Resale activity** during the launch window (existing-tower owners selling to upgrade into the new tower) follows `runbooks/resale-with-noc.md` in parallel — coordinate via `secondary-market-specialist`.
+- **Customer complaints** that surface during sustain follow `runbooks/complaint-rera-exposure.md` if regulator-exposure flag fires.
+- **VVIP-touching creative** (e.g., a special-edition penthouse marketed via `vvip-channel-enablement`) follows the discretion stance — `compliance` references the no-mention list before sign-off.
+- **Sanctions-surface corridor activity** (Russia/CIS, etc.) — pre-commercial-conversation screening per `.claude/skills/aml-kyc-uae-real-estate.md`; do not allow a sales-gallery walk-in from a corridor counterparty to advance to commercial conversation without screening cleared.
