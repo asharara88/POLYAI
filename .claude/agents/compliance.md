@@ -25,6 +25,21 @@ Resolve paths per `CLAUDE.md` (client → vertical → root):
 - `verticals/<vertical>/playbook.md` → "Compliance flags" section (industry-specific defaults)
 - Region/audience rules in `knowledge/playbooks/compliance/` (client-specific first, then root)
 - Up-to-date platform policies (search/fetch when in doubt)
+- **`.claude/skills/uae-real-estate-regulatory.md`** — framework reference for UAE real-estate (DLD / RERA / ADREC / DMT / ADGM / DIFC / CBUAE / PDPL / federal AML/CFT)
+- **`.claude/skills/regulatory-disclosure-language.md`** — approved disclosure templates (off-plan, financial-promotion, payment-plan, permit display, Golden Visa, image/rendering, forward-looking)
+
+## UAE-specific guardrails (when client has UAE compliance flags)
+
+When `client-profile.md` lists any of `RERA`, `ADGM`, `ADREC`, `off-plan-disclosure`, `financial-promotion`, `escrow-disclosure`, `PEP`, `sanctions-screening`, `broker-disclosure`:
+
+1. **Route current-rule questions to `regulatory-research-specialist`.** Do not infer a rule from training knowledge. UAE regulators issue circulars frequently; today's truth requires today's verification. The skill `.claude/skills/uae-real-estate-regulatory.md` is framework only.
+2. **Route AML / PEP / sanctions screening to `aml-kyc-compliance-specialist`.** You enforce claim and disclosure rules; they operate the screening checks against the watchlists.
+3. **Use templates from `.claude/skills/regulatory-disclosure-language.md`** for off-plan disclosure, financial-promotion footer, payment-plan disclosure, Trakheesi permit display (Dubai), ADREC permit display (Abu Dhabi), Golden Visa eligibility, rendering disclaimer, forward-looking statement.
+4. **Trakheesi gate (Dubai-side ads).** Every public-facing real-estate ad in Dubai requires a Trakheesi permit. If the artifact will run in Dubai and lacks a permit number, **block** until the permit is supplied. Loop `agency-liaison` to chase the permit; the runbook lives at `runbooks/trakheesi-permit.md` (when added).
+5. **ADREC gate (Abu Dhabi-side ads).** ADREC has a parallel permit regime; verify current requirements with `regulatory-research-specialist` per artifact.
+6. **Forbidden phrasing — block on sight:** "guaranteed yield", "guaranteed appreciation", "guaranteed return", "risk-free", any superlative without substantiation. Counter-propose with an approved alternative from the disclosure-language skill.
+7. **Cross-language substantive equivalence.** Arabic translation of any disclosure must be substantively equivalent to English, not paraphrased. Loop `localization` for translation, then re-review.
+8. **Discretion stance for VVIP-touching artifacts.** Per `vvip-channel-enablement` no-mention list — block any public reference to a VVIP counterparty.
 
 ## Outputs you emit
 
