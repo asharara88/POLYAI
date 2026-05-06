@@ -67,21 +67,51 @@ When to switch to a different runbook mid-flight.
 
 ## Catalog
 
-### P2 (active)
+### Compliance + counterparty crisis
 
 - `resale-with-noc.md` — Secondary-market resale flow: NOC issuance → AML/KYC pre-clearance on incoming buyer → RERA Form-F (Dubai) / ADREC equivalent (Abu Dhabi) → Trustee Account release → owner-record update
 - `complaint-rera-exposure.md` — Customer complaint that names or threatens RERA Rental Dispute Centre filing
 - `pep-sanctions-hit.md` — A counterparty surfaces as a PEP (any class) or as a sanctions-list match
+- `regulator-inquiry-non-complaint.md` — Regulator opens inquiry / audit / thematic review without underlying buyer complaint
 
-### P3 (planned — see PLAN.md)
+### Operational crisis
+
+- `construction-delay-handover-slip.md` — Material construction delay with buyer-notification obligation analysis
+- `tier-1-broker-collapse.md` — Tier-1 broker firm experiences material continuity event
+- `project-safety-press-crisis.md` — On-premises incident (safety / fatality / system-failure) with crisis-comms posture
+- `key-rm-departure.md` — Key Relationship Manager / pod-manager departure with portfolio + relationship continuity
+
+### Customer + channel lifecycle
 
 - `international-roadshow.md` — 14-day post-roadshow cadence in buyer's local time-zone with jurisdiction-specific Golden Visa messaging
 - `inbound-hnw-private-bank.md` — Discreet inbound from private bank: KYC pre-clearance, principal-to-principal escalation
 - `broker-onboarding-to-first-deal.md` — From signed broker agreement to first allocation approved
 - `handover-snagging.md` — Owner experience during the snagging window; CSAT capture
-- `quarterly-exec-brief.md` — Brief cadence + format + data sources for board / CMO / CFO
 - `press-sensitive-uhnw-transaction.md` — Discretion-first; coordinates vvip-channel-enablement, content-pr-specialist, legal-liaison
-- `trakheesi-permit.md` — Dubai advertising-permit application flow (referenced from `compliance` and `agency-liaison`)
+
+### CCO daily + cadenced reporting
+
+- `cco-daily-brief.md` — Daily 06:00 → 07:00 morning-brief synthesis choreography
+- `horizon-scan-daily.md` — Daily 06:00 horizon-scan (regulator + press + sanctions + corridor + competitor) for `cco-morning-brief`
+- `risk-register-update.md` — Risk-register receive / age / escalate / close cycle; daily cadence + per-input-event
+- `monthly-board-prep.md` — Monthly board-prep brief (lighter than quarterly; 8-section template)
+- `quarterly-exec-brief.md` — Brief cadence + format + data sources for board / CMO / CFO
+- `annual-commercial-plan.md` — Annual planning cycle (Q4 → Q1): inputs → synthesis → board-decision-gate → cascade
+
+### Strategic-bet evaluation
+
+- `strategic-bet-evaluation.md` — Structured evaluation for new launch / partnership / corridor / M&A / structural channel investment
+
+### Integration go-live (per-integration gate)
+
+- `integration-go-live-salesforce.md` — Salesforce wiring per `integrations/salesforce/spec.md`
+- `integration-go-live-sumsub.md` — Sumsub (KYC/AML) wiring per `integrations/sumsub/spec.md`
+- `integration-go-live-calendar.md` — CCO-personal calendar OAuth (Google / Microsoft 365)
+- `integration-go-live-news-scan.md` — Daily news + regulator + sanctions feed ingestion for `horizon-scanner`
+
+### Planned
+
+- `trakheesi-permit.md` — Dubai advertising-permit application flow (referenced from `compliance` and `agency-liaison`); pending
 
 ## Authoring rules
 
