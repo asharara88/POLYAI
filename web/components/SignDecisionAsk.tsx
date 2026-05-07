@@ -2,6 +2,17 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import {
+  Check,
+  CheckCircle2,
+  ChevronDown,
+  ExternalLink,
+  Send,
+  X,
+  XCircle,
+} from "lucide-react";
+import { Button } from "@/components/ui";
 
 type Decision = "approve" | "approve-with-modifications" | "decline" | "send-back";
 
@@ -12,11 +23,18 @@ const DECISION_LABEL: Record<Decision, string> = {
   "send-back": "Send back",
 };
 
-const DECISION_TONE: Record<Decision, string> = {
-  approve: "bg-emerald-600 hover:bg-emerald-700 text-white",
-  "approve-with-modifications": "bg-blue-600 hover:bg-blue-700 text-white",
-  decline: "bg-red-600 hover:bg-red-700 text-white",
-  "send-back": "bg-amber-600 hover:bg-amber-700 text-white",
+const DECISION_VARIANT: Record<Decision, "success" | "primary" | "danger" | "warning"> = {
+  approve: "success",
+  "approve-with-modifications": "primary",
+  decline: "danger",
+  "send-back": "warning",
+};
+
+const DECISION_ICON: Record<Decision, React.ReactNode> = {
+  approve: <Check className="w-3.5 h-3.5" />,
+  "approve-with-modifications": <CheckCircle2 className="w-3.5 h-3.5" />,
+  decline: <XCircle className="w-3.5 h-3.5" />,
+  "send-back": <Send className="w-3.5 h-3.5" />,
 };
 
 export default function SignDecisionAsk({
@@ -32,22 +50,16 @@ export default function SignDecisionAsk({
   const [comment, setComment] = useState("");
   const [signer, setSigner] = useState("");
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<{
-    decision: string;
-    mode?: string;
-    commitUrl?: string;
-    note?: string;
-  } | null>(null);
 
   const submit = async () => {
     if (!signer.trim()) {
-      setError("signer name required");
+      toast.error("Signer name required", {
+        description: "Enter the human signer (e.g. CCO name).",
+      });
       return;
     }
     setBusy(true);
-    setError(null);
-    setSuccess(null);
+    const toastId = toast.loading(`Signing ${askId}…`);
     try {
       const res = await fetch("/api/decision-ask/sign", {
         method: "POST",
@@ -58,16 +70,39 @@ export default function SignDecisionAsk({
       if (!res.ok) {
         throw new Error(j.error ?? `HTTP ${res.status}`);
       }
-      setSuccess({
-        decision: j.decision,
-        mode: j.mode,
-        commitUrl: j.commitUrl,
-        note: j.note,
+      const description = j.commitUrl ? (
+        <span>
+          Persisted via GitHub commit ·{" "}
+          <a
+            href={j.commitUrl}
+            target="_blank"
+            rel="noopener"
+            className="underline hover:no-underline"
+          >
+            view commit ↗
+          </a>
+        </span>
+      ) : j.note ? (
+        j.note
+      ) : (
+        `Persisted to ${j.queuePath ?? "queue.md"}`
+      );
+      toast.success(`${askId}: ${j.decision}`, {
+        id: toastId,
+        description,
+        duration: 8000,
       });
-      // Refresh the route to re-read the queue
-      setTimeout(() => router.refresh(), 800);
+      setOpen(false);
+      setComment("");
+      setSigner("");
+      // Refresh server data
+      setTimeout(() => router.refresh(), 600);
     } catch (e) {
-      setError((e as Error).message);
+      toast.error(`Sign failed for ${askId}`, {
+        id: toastId,
+        description: (e as Error).message,
+        duration: 10000,
+      });
     } finally {
       setBusy(false);
     }
@@ -76,14 +111,16 @@ export default function SignDecisionAsk({
   if (!open) {
     return (
       <div className="flex items-center gap-2 pt-2 border-t border-ink-100 dark:border-ink-800">
-        <button
-          type="button"
+        <Button
+          size="sm"
+          variant="success"
+          startIcon={<Check className="w-3.5 h-3.5" />}
           onClick={() => setOpen(true)}
-          className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 text-xs font-medium transition-colors"
+          aria-label={`Open sign form for ${askId}`}
         >
           Sign
-        </button>
-        <span className="text-[10px] font-mono text-ink-400">
+        </Button>
+        <span className="text-label-xs font-mono text-ink-400">
           opens form · POST /api/decision-ask/sign
         </span>
       </div>
@@ -91,27 +128,31 @@ export default function SignDecisionAsk({
   }
 
   return (
-    <div className="pt-3 border-t border-ink-100 dark:border-ink-800 space-y-3">
+    <div className="pt-3 border-t border-ink-100 dark:border-ink-800 space-y-3 animate-fade-in">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <label className="text-xs">
-          <div className="font-mono uppercase tracking-wider text-ink-400 mb-1">
+        <label className="text-body-xs">
+          <div className="font-mono uppercase tracking-wider text-label-xs text-ink-400 mb-1">
             decision
           </div>
-          <select
-            value={decision}
-            onChange={(e) => setDecision(e.target.value as Decision)}
-            disabled={busy}
-            className="w-full bg-transparent border border-ink-200 dark:border-ink-700 rounded px-2 py-1.5 text-sm"
-          >
-            {(Object.keys(DECISION_LABEL) as Decision[]).map((d) => (
-              <option key={d} value={d}>
-                {DECISION_LABEL[d]}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={decision}
+              onChange={(e) => setDecision(e.target.value as Decision)}
+              disabled={busy}
+              aria-label="Decision type"
+              className="w-full appearance-none bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-700 rounded-md px-3 py-2 pr-8 text-body-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
+            >
+              {(Object.keys(DECISION_LABEL) as Decision[]).map((d) => (
+                <option key={d} value={d}>
+                  {DECISION_LABEL[d]}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-400 pointer-events-none" />
+          </div>
         </label>
-        <label className="text-xs">
-          <div className="font-mono uppercase tracking-wider text-ink-400 mb-1">
+        <label className="text-body-xs">
+          <div className="font-mono uppercase tracking-wider text-label-xs text-ink-400 mb-1">
             signer
           </div>
           <input
@@ -120,13 +161,14 @@ export default function SignDecisionAsk({
             onChange={(e) => setSigner(e.target.value)}
             disabled={busy}
             placeholder="e.g. CCO (Aldar)"
-            className="w-full bg-transparent border border-ink-200 dark:border-ink-700 rounded px-2 py-1.5 text-sm font-mono"
+            aria-label="Signer name"
+            className="w-full bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-700 rounded-md px-3 py-2 text-body-sm font-mono focus:outline-none focus:ring-2 focus:ring-accent/40"
           />
         </label>
       </div>
-      <label className="text-xs block">
-        <div className="font-mono uppercase tracking-wider text-ink-400 mb-1">
-          comment (optional — one line; will appear in audit trail)
+      <label className="text-body-xs block">
+        <div className="font-mono uppercase tracking-wider text-label-xs text-ink-400 mb-1">
+          comment (optional — appears in audit trail)
         </div>
         <textarea
           value={comment}
@@ -134,66 +176,34 @@ export default function SignDecisionAsk({
           disabled={busy}
           placeholder="Reasoning, conditions, modifications…"
           rows={2}
-          className="w-full bg-transparent border border-ink-200 dark:border-ink-700 rounded px-2 py-1.5 text-sm"
+          aria-label="Comment"
+          className="w-full bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-700 rounded-md px-3 py-2 text-body-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
         />
       </label>
 
-      {error && (
-        <div className="rounded-md bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/40 px-3 py-2 text-xs text-red-700 dark:text-red-300">
-          {error}
-        </div>
-      )}
-      {success && (
-        <div className="rounded-md bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 px-3 py-2 text-xs text-emerald-700 dark:text-emerald-300 space-y-1">
-          <div>
-            <strong>Signed: {success.decision}</strong>
-            {success.mode && (
-              <span className="ml-1.5 font-mono text-[10px] opacity-80">
-                · {success.mode === "github" ? "persisted via GitHub commit" : "filesystem write"}
-              </span>
-            )}
-          </div>
-          {success.commitUrl && (
-            <div>
-              <a
-                href={success.commitUrl}
-                target="_blank"
-                rel="noopener"
-                className="font-mono text-[11px] underline hover:no-underline"
-              >
-                view commit ›
-              </a>
-            </div>
-          )}
-          {success.note && (
-            <div className="text-[11px] opacity-80">{success.note}</div>
-          )}
-        </div>
-      )}
-
       <div className="flex items-center gap-2">
-        <button
-          type="button"
+        <Button
+          size="sm"
+          variant={DECISION_VARIANT[decision]}
           onClick={submit}
-          disabled={busy || !signer.trim()}
-          className={`rounded-md px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-50 ${DECISION_TONE[decision]}`}
+          disabled={!signer.trim()}
+          loading={busy}
+          startIcon={busy ? undefined : DECISION_ICON[decision]}
         >
-          {busy ? "…" : DECISION_LABEL[decision]}
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setOpen(false);
-            setError(null);
-            setSuccess(null);
-          }}
+          {DECISION_LABEL[decision]}
+        </Button>
+        <Button
+          size="sm"
+          variant="ghost"
+          startIcon={<X className="w-3.5 h-3.5" />}
+          onClick={() => setOpen(false)}
           disabled={busy}
-          className="rounded-md bg-ink-100 hover:bg-ink-200 dark:bg-ink-800 dark:hover:bg-ink-700 text-ink-700 dark:text-ink-300 px-3 py-1.5 text-xs font-medium"
         >
           Cancel
-        </button>
-        <span className="ml-auto text-[10px] font-mono text-ink-400">
-          persistence: server-resolved (local FS or GitHub)
+        </Button>
+        <span className="ml-auto text-label-xs font-mono text-ink-400 inline-flex items-center gap-1">
+          <ExternalLink className="w-3 h-3" aria-hidden />
+          server-resolved persistence
         </span>
       </div>
     </div>

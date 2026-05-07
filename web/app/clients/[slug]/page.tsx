@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Building2 } from "lucide-react";
 import Markdown from "@/components/Markdown";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import InventoryDashboard from "@/components/InventoryDashboard";
 import BrokerRegistry from "@/components/BrokerRegistry";
 import WealthChannelRegistry from "@/components/WealthChannelRegistry";
@@ -135,24 +137,36 @@ export default async function Page({
 
   return (
     <div className="space-y-8">
-      <header>
-        <div className="flex items-center gap-2 text-xs font-mono text-ink-400">
-          <Link href="/clients" className="hover:underline">clients</Link>
-          <span>/</span>
-          <span>{slug}</span>
-          {client.summary.isExample && (
-            <span className="ml-2 px-1.5 py-0.5 rounded bg-ink-100 dark:bg-ink-800 text-ink-500">
-              example
-            </span>
-          )}
-        </div>
-        <h1 className="text-2xl font-semibold tracking-tight mt-1">
-          {client.summary.displayName ?? slug}
-        </h1>
-        <div className="text-sm text-ink-500 dark:text-ink-400 mt-1">
-          {[client.summary.vertical, client.summary.primaryMarket, client.summary.status]
-            .filter(Boolean)
-            .join(" · ")}
+      <header className="space-y-3">
+        <Breadcrumbs
+          crumbs={[
+            { label: "POLYAI", href: "/" },
+            { label: "Clients", href: "/clients", icon: <Building2 className="w-3 h-3" /> },
+            { label: client.summary.displayName ?? slug },
+          ]}
+        />
+        <div className="flex items-baseline justify-between flex-wrap gap-3">
+          <div>
+            <h1 className="text-title-lg font-semibold tracking-tight flex items-center gap-2">
+              {client.summary.displayName ?? slug}
+              {client.summary.isExample && (
+                <span className="text-label-xs font-mono uppercase tracking-wider px-1.5 py-0.5 rounded bg-ink-100 dark:bg-ink-800 text-ink-500">
+                  example
+                </span>
+              )}
+            </h1>
+            <p className="text-body-sm text-ink-500 mt-1">
+              {[client.summary.vertical, client.summary.primaryMarket, client.summary.status]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          </div>
+          <Link
+            href={`/cco?client=${slug}`}
+            className="text-label-xs font-mono uppercase tracking-wider text-accent hover:underline"
+          >
+            CCO Daily ›
+          </Link>
         </div>
       </header>
 

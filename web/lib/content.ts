@@ -1361,7 +1361,46 @@ export const getStats = () => {
     agents: getAgents().length,
     verticals: getVerticals().length,
     schemas: getSchemas().length,
+    skills: getSkills().length,
+    runbooks: getRunbooks().length,
   };
+};
+
+// ---------- Skills + Runbooks (markdown list helpers) ----------
+
+export type DocFile = { slug: string; title: string; description?: string };
+
+const SKILLS_ROOT = path.join(REPO_ROOT, ".claude", "skills");
+const RUNBOOKS_ROOT = path.join(REPO_ROOT, "runbooks");
+
+const parseDocFile = (root: string, file: string): DocFile | null => {
+  const slug = file.replace(/\.md$/, "");
+  if (slug === "README") return null;
+  const raw = readFileSafe(path.join(root, file));
+  if (!raw) return null;
+  const fm = matter(raw);
+  const fmTitle = (fm.data.name as string | undefined) ?? null;
+  const fmDesc = (fm.data.description as string | undefined) ?? null;
+  const headingTitle = raw.match(/^#\s+(.+?)\s*$/m)?.[1]?.trim();
+  return {
+    slug,
+    title: fmTitle ?? headingTitle ?? slug,
+    description: fmDesc ?? undefined,
+  };
+};
+
+export const getSkills = (): DocFile[] => {
+  return listFiles(SKILLS_ROOT, ".md")
+    .map((f) => parseDocFile(SKILLS_ROOT, f))
+    .filter((d): d is DocFile => d !== null)
+    .sort((a, b) => a.slug.localeCompare(b.slug));
+};
+
+export const getRunbooks = (): DocFile[] => {
+  return listFiles(RUNBOOKS_ROOT, ".md")
+    .map((f) => parseDocFile(RUNBOOKS_ROOT, f))
+    .filter((d): d is DocFile => d !== null)
+    .sort((a, b) => a.slug.localeCompare(b.slug));
 };
 
 // ---------- CCO daily surface ----------

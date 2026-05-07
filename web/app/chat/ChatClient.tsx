@@ -1,18 +1,28 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Markdown from "@/components/Markdown";
 
 type Msg = { role: "user" | "assistant"; content: string };
 type ClientItem = { slug: string; displayName: string; vertical: string | null };
 
 export default function ChatClient({ clients }: { clients: ClientItem[] }) {
+  const searchParams = useSearchParams();
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [activeClient, setActiveClient] = useState<string>("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
+
+  // Prefill from ?q= deep link (used by command palette presets)
+  useEffect(() => {
+    const q = searchParams?.get("q");
+    if (q && messages.length === 0) {
+      setInput(q);
+    }
+  }, [searchParams, messages.length]);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
