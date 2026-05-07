@@ -217,7 +217,7 @@ export default async function Page({
             {ccoBrief && (
               <CcoMorningBrief brief={ccoBrief} clientName={client.summary.displayName ?? slug} />
             )}
-            {ccoAsks && <DecisionAsksQueue asks={ccoAsks} />}
+            {ccoAsks && <DecisionAsksQueue asks={ccoAsks} client={slug} />}
             {ccoRisks && <RiskRegister register={ccoRisks} />}
             {ccoHorizon && <HorizonScan scan={ccoHorizon} />}
             {ccoCalendar && <CcoCalendar calendar={ccoCalendar} />}

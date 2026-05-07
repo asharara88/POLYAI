@@ -92,7 +92,7 @@ export default async function Page() {
                   open in CCO Daily ›
                 </Link>
               </div>
-              <DecisionAsksQueue asks={q.asks!} />
+              <DecisionAsksQueue asks={q.asks!} client={q.client.slug} />
             </div>
           ))
         )}

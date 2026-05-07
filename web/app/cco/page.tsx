@@ -136,7 +136,7 @@ export default async function CcoPage({
 
         <section id="asks" className="scroll-mt-20">
           {asks ? (
-            <DecisionAsksQueue asks={asks} />
+            <DecisionAsksQueue asks={asks} client={activeSlug} />
           ) : (
             <EmptyCard label="No decision-asks queued." />
           )}

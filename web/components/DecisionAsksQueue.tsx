@@ -1,4 +1,5 @@
 import type { ParsedDecisionAsks, DecisionAsk } from "@/lib/content";
+import SignDecisionAsk from "@/components/SignDecisionAsk";
 
 function urgencyTone(urgency: string): string {
   const u = urgency.toLowerCase();
@@ -20,7 +21,7 @@ function classTone(className: string): string {
   return "bg-ink-100 text-ink-700 dark:bg-ink-800 dark:text-ink-300";
 }
 
-function AskCard({ ask }: { ask: DecisionAsk }) {
+function AskCard({ ask, client }: { ask: DecisionAsk; client: string }) {
   return (
     <details className="rounded-md border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 group">
       <summary className="cursor-pointer p-4 list-none">
@@ -75,41 +76,19 @@ function AskCard({ ask }: { ask: DecisionAsk }) {
             <div className="text-ink-500 leading-relaxed font-mono text-xs">{ask.evidence}</div>
           </div>
         )}
-        <div className="flex items-center gap-2 pt-2 border-t border-ink-100 dark:border-ink-800">
-          <button
-            type="button"
-            disabled
-            className="rounded-md bg-emerald-600 text-white px-3 py-1.5 text-xs font-medium disabled:opacity-50"
-            title="Native sign workflow ships in Phase 5B"
-          >
-            Sign
-          </button>
-          <button
-            type="button"
-            disabled
-            className="rounded-md bg-ink-100 text-ink-700 dark:bg-ink-800 dark:text-ink-300 px-3 py-1.5 text-xs font-medium disabled:opacity-50"
-            title="Native comment workflow ships in Phase 5B"
-          >
-            Comment
-          </button>
-          <button
-            type="button"
-            disabled
-            className="rounded-md bg-ink-100 text-ink-700 dark:bg-ink-800 dark:text-ink-300 px-3 py-1.5 text-xs font-medium disabled:opacity-50"
-            title="Send back to submitter for revision"
-          >
-            Send back
-          </button>
-          <span className="ml-auto text-[10px] font-mono text-ink-400">
-            sign workflow: phase 5B
-          </span>
-        </div>
+        <SignDecisionAsk client={client} askId={ask.id} />
       </div>
     </details>
   );
 }
 
-export default function DecisionAsksQueue({ asks }: { asks: ParsedDecisionAsks }) {
+export default function DecisionAsksQueue({
+  asks,
+  client,
+}: {
+  asks: ParsedDecisionAsks;
+  client: string;
+}) {
   return (
     <div className="space-y-5">
       <div className="flex items-baseline justify-between gap-3 flex-wrap">
@@ -124,7 +103,7 @@ export default function DecisionAsksQueue({ asks }: { asks: ParsedDecisionAsks }
 
       <div className="space-y-2">
         {asks.pending.map((a) => (
-          <AskCard key={a.id} ask={a} />
+          <AskCard key={a.id} ask={a} client={client} />
         ))}
       </div>
 
