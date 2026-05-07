@@ -11,17 +11,27 @@ import BudgetDashboard from "@/components/BudgetDashboard";
 import ReciprocityLedger from "@/components/ReciprocityLedger";
 import ReciprocityStaging from "@/components/ReciprocityStaging";
 import PipelineDashboard from "@/components/PipelineDashboard";
+import CcoMorningBrief from "@/components/CcoMorningBrief";
+import RiskRegister from "@/components/RiskRegister";
+import HorizonScan from "@/components/HorizonScan";
+import DecisionAsksQueue from "@/components/DecisionAsksQueue";
+import CcoCalendar from "@/components/CcoCalendar";
 import RoutingSimulator from "./RoutingSimulator";
 import {
   getBrokers,
   getBudget,
   getBudgetSnapshots,
+  getCcoCalendar,
   getClient,
   getClients,
+  getDecisionAsks,
   getEvents,
+  getHorizonScan,
   getInventory,
+  getMorningBrief,
   getPipeline,
   getReciprocity,
+  getRiskRegister,
   getVendors,
   getVvipChannel,
   getWealthChannel,
@@ -41,6 +51,7 @@ type Tab =
   | "voice"
   | "decisions"
   | "results"
+  | "cco"
   | "inventory"
   | "brokers"
   | "wealth"
@@ -84,9 +95,16 @@ export default async function Page({
   const budgetSnapshots = getBudgetSnapshots(slug);
   const reciprocity = getReciprocity(slug);
   const pipeline = getPipeline(slug);
+  const ccoBrief = getMorningBrief(slug);
+  const ccoRisks = getRiskRegister(slug);
+  const ccoHorizon = getHorizonScan(slug);
+  const ccoAsks = getDecisionAsks(slug);
+  const ccoCalendar = getCcoCalendar(slug);
+  const hasCcoSurface = Boolean(ccoBrief || ccoRisks || ccoAsks);
 
   const tabs = [
     ...baseTabs,
+    ...(hasCcoSurface ? [{ key: "cco" as Tab, label: "CCO Daily" }] : []),
     ...(inventory ? [{ key: "inventory" as Tab, label: "Inventory" }] : []),
     ...(brokers ? [{ key: "brokers" as Tab, label: "Brokers" }] : []),
     ...(wealth ? [{ key: "wealth" as Tab, label: "Wealth channel" }] : []),
@@ -180,6 +198,31 @@ export default async function Page({
         {activeTab === "voice" && <Markdown>{client.brandVoice || "_No brand voice defined yet._"}</Markdown>}
         {activeTab === "decisions" && <Markdown>{client.decisions || "_No decisions logged yet._"}</Markdown>}
         {activeTab === "results" && <Markdown>{client.results || "_No results logged yet._"}</Markdown>}
+        {activeTab === "cco" && hasCcoSurface && (
+          <div className="space-y-12">
+            <div className="flex items-baseline justify-between gap-3 flex-wrap">
+              <div>
+                <p className="text-sm text-ink-500 dark:text-ink-400 max-w-2xl">
+                  CCO daily surface scoped to this client. Open in full at{" "}
+                  <Link
+                    href={`/cco?client=${slug}`}
+                    className="text-accent hover:underline"
+                  >
+                    /cco
+                  </Link>
+                  .
+                </p>
+              </div>
+            </div>
+            {ccoBrief && (
+              <CcoMorningBrief brief={ccoBrief} clientName={client.summary.displayName ?? slug} />
+            )}
+            {ccoAsks && <DecisionAsksQueue asks={ccoAsks} />}
+            {ccoRisks && <RiskRegister register={ccoRisks} />}
+            {ccoHorizon && <HorizonScan scan={ccoHorizon} />}
+            {ccoCalendar && <CcoCalendar calendar={ccoCalendar} />}
+          </div>
+        )}
         {activeTab === "inventory" && inventory && <InventoryDashboard inventory={inventory} />}
         {activeTab === "brokers" && brokers && (
           <BrokerRegistry

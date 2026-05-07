@@ -37,3 +37,95 @@ html, body {
 .prose-tight th, .prose-tight td { border: 1px solid rgba(127,127,127,0.25); padding: 0.4rem 0.65rem; text-align: left; }
 .prose-tight th { background: rgba(127,127,127,0.08); font-weight: 600; }
 .prose-tight hr { border: 0; border-top: 1px solid rgba(127,127,127,0.25); margin: 1.25rem 0; }
+
+/* Print stylesheet — optimized for board / regulator briefings */
+@media print {
+  /* Force white background, black ink, no dark-mode */
+  html, body {
+    background: white !important;
+    color: black !important;
+    color-scheme: light !important;
+  }
+
+  /* Hide nav + interactive controls */
+  header.sticky,
+  nav,
+  form,
+  button,
+  details > summary > div:last-child,
+  [role="navigation"] {
+    display: none !important;
+  }
+
+  /* Page-level layout */
+  main, article, section {
+    page-break-inside: avoid;
+    background: white !important;
+  }
+
+  /* Force expanded state on details */
+  details {
+    page-break-inside: avoid;
+  }
+  details > summary {
+    list-style: none;
+    cursor: default;
+  }
+  details[open] > div {
+    display: block !important;
+  }
+
+  /* Remove backgrounds + borders that print poorly */
+  .bg-ink-50, .bg-ink-900, .bg-ink-950\/40, .bg-ink-50\/40,
+  .bg-white, .dark\:bg-ink-900, .dark\:bg-ink-950 {
+    background: white !important;
+  }
+
+  /* Status badges keep their color via printColorAdjust */
+  span[class*="bg-red-"],
+  span[class*="bg-amber-"],
+  span[class*="bg-emerald-"],
+  span[class*="bg-blue-"],
+  span[class*="bg-purple-"],
+  span[class*="bg-pink-"],
+  span[class*="bg-accent"] {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Section headers + page titles */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    color: black !important;
+  }
+
+  /* Compress spacing for paper */
+  .space-y-12 > * + * { margin-top: 1.5rem !important; }
+  .space-y-8 > * + * { margin-top: 1rem !important; }
+  .space-y-6 > * + * { margin-top: 0.75rem !important; }
+
+  /* Add page-bottom URL footer for citation */
+  body::after {
+    content: "POLYAI — printed " attr(data-print-date);
+    display: block;
+    margin-top: 2rem;
+    font-size: 9pt;
+    font-family: ui-monospace, monospace;
+    color: #666;
+    text-align: center;
+  }
+
+  /* Ensure links are readable in print */
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: "";
+  }
+
+  /* Remove disabled-button styling */
+  button[disabled] {
+    display: none !important;
+  }
+}
