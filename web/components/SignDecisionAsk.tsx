@@ -33,7 +33,12 @@ export default function SignDecisionAsk({
   const [signer, setSigner] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
+  const [success, setSuccess] = useState<{
+    decision: string;
+    mode?: string;
+    commitUrl?: string;
+    note?: string;
+  } | null>(null);
 
   const submit = async () => {
     if (!signer.trim()) {
@@ -53,8 +58,13 @@ export default function SignDecisionAsk({
       if (!res.ok) {
         throw new Error(j.error ?? `HTTP ${res.status}`);
       }
-      setSuccess(`Signed: ${j.decision}${j.note ? ` · ${j.note}` : ""}`);
-      // Refresh the page to re-read the queue file
+      setSuccess({
+        decision: j.decision,
+        mode: j.mode,
+        commitUrl: j.commitUrl,
+        note: j.note,
+      });
+      // Refresh the route to re-read the queue
       setTimeout(() => router.refresh(), 800);
     } catch (e) {
       setError((e as Error).message);
@@ -134,8 +144,30 @@ export default function SignDecisionAsk({
         </div>
       )}
       {success && (
-        <div className="rounded-md bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 px-3 py-2 text-xs text-emerald-700 dark:text-emerald-300">
-          {success}
+        <div className="rounded-md bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900/40 px-3 py-2 text-xs text-emerald-700 dark:text-emerald-300 space-y-1">
+          <div>
+            <strong>Signed: {success.decision}</strong>
+            {success.mode && (
+              <span className="ml-1.5 font-mono text-[10px] opacity-80">
+                · {success.mode === "github" ? "persisted via GitHub commit" : "filesystem write"}
+              </span>
+            )}
+          </div>
+          {success.commitUrl && (
+            <div>
+              <a
+                href={success.commitUrl}
+                target="_blank"
+                rel="noopener"
+                className="font-mono text-[11px] underline hover:no-underline"
+              >
+                view commit ›
+              </a>
+            </div>
+          )}
+          {success.note && (
+            <div className="text-[11px] opacity-80">{success.note}</div>
+          )}
         </div>
       )}
 
@@ -161,9 +193,7 @@ export default function SignDecisionAsk({
           Cancel
         </button>
         <span className="ml-auto text-[10px] font-mono text-ink-400">
-          {process.env.NEXT_PUBLIC_VERCEL_ENV
-            ? "ephemeral on Vercel — durable persistence in 5B-3"
-            : "writes to local filesystem"}
+          persistence: server-resolved (local FS or GitHub)
         </span>
       </div>
     </div>

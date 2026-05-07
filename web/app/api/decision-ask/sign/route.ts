@@ -1,6 +1,11 @@
 import { NextRequest } from "next/server";
 import fs from "node:fs";
 import path from "node:path";
+import {
+  isGithubConfigured,
+  mutateFileOnGithub,
+  persistenceMode,
+} from "@/lib/github-write";
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -48,6 +53,75 @@ const decisionLabel = (d: SignBody["decision"]): string => {
   }
 };
 
+/**
+ * Pure mutation: given a queue.md, an ask id, a decision, a comment, and a signer,
+ * returns the updated queue.md content. Throws if the ask is not found in pending.
+ */
+function mutateQueue({
+  raw,
+  askId,
+  decision,
+  comment,
+  signer,
+}: {
+  raw: string;
+  askId: string;
+  decision: SignBody["decision"];
+  comment: string;
+  signer: string;
+}): { next: string; auditRow: string; decidedAt: string; submittedDate: string } {
+  // Locate the ### <askId> ... block (ends at next ### , next ## , or EOF)
+  const escaped = askId.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const blockRe = new RegExp(`### ${escaped}[\\s\\S]+?(?=\\n### |\\n## |$)`);
+  const blockMatch = raw.match(blockRe);
+  if (!blockMatch) {
+    throw new Error(`ask ${askId} not found in pending queue`);
+  }
+  const askBlock = blockMatch[0];
+
+  const submittedAtMatch = askBlock.match(/^-\s+\*\*Submitted:\*\*\s+(\S+)/m);
+  const submittedAt = submittedAtMatch ? submittedAtMatch[1] : "";
+  const submittedDate = submittedAt.split("T")[0] || "—";
+
+  const decidedAt = new Date().toISOString().slice(0, 16);
+  const decisionText = decisionLabel(decision);
+  const commentSuffix = comment ? ` — ${comment.replace(/\|/g, "/").replace(/\n/g, " ")}` : "";
+  const auditRow = `| ${askId} | ${submittedDate} | ${decisionText}${commentSuffix} | ${signer} | ${decidedAt} |`;
+
+  // Remove the ask block + collapse triple newlines
+  let next = raw.replace(askBlock, "").replace(/\n{3,}/g, "\n\n");
+
+  // Insert audit row in Recently signed table
+  const recentSectionRe = /## Recently signed[^\n]*\n[\s\S]*?(?=\n## |$)/;
+  const recentMatch = next.match(recentSectionRe);
+  if (recentMatch) {
+    const recentSection = recentMatch[0];
+    const tableHeaderRe = /(\| -+ \|[\s\S]*?)(?=\n\n|$)/;
+    const tableMatch = recentSection.match(tableHeaderRe);
+    if (tableMatch) {
+      const updatedSection = recentSection.replace(
+        tableMatch[1],
+        tableMatch[1].trimEnd() + "\n" + auditRow,
+      );
+      next = next.replace(recentSection, updatedSection);
+    } else {
+      const sectionWithTable = recentSection.replace(
+        /(## Recently signed[^\n]*\n)/,
+        `$1\n| Decision-Ask ID | Submitted | Decision | Decided by | Decided at |\n|---|---|---|---|---|\n${auditRow}\n`,
+      );
+      next = next.replace(recentSection, sectionWithTable);
+    }
+  } else {
+    next +=
+      `\n## Recently signed (last 7 days — audit trail)\n\n` +
+      `| Decision-Ask ID | Submitted | Decision | Decided by | Decided at |\n` +
+      `|---|---|---|---|---|\n` +
+      `${auditRow}\n`;
+  }
+
+  return { next, auditRow, decidedAt, submittedDate };
+}
+
 export async function POST(req: NextRequest) {
   const body = (await req.json().catch(() => ({}))) as Partial<SignBody>;
   const { client, askId, decision, comment, signer } = body;
@@ -60,6 +134,61 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const mode = persistenceMode();
+  const decisionText = decisionLabel(decision);
+
+  // GitHub mode: read from GitHub, mutate, commit back.
+  if (mode === "github") {
+    const folder = findClientFolder(client);
+    if (!folder) {
+      return Response.json(
+        { error: `client ${client} not found in repo` },
+        { status: 404 },
+      );
+    }
+
+    // Date discovery: when github mode + no override, infer from local FS
+    // (the deployed snapshot reflects the structure at deploy time; date folders
+    // are stable post-creation).
+    const root = path.join(folder, "cco", "decision-asks");
+    const targetDate = date ?? latestDateFolder(root);
+    if (!targetDate) {
+      return Response.json({ error: "no decision-asks queue date found" }, { status: 404 });
+    }
+
+    const repoRelativePath = path.relative(REPO_ROOT, path.join(root, targetDate, "queue.md"));
+
+    try {
+      const result = await mutateFileOnGithub({
+        filePath: repoRelativePath,
+        mutate: (raw) =>
+          mutateQueue({ raw, askId, decision, comment: comment ?? "", signer }).next,
+        message: `CCO sign: ${askId} — ${decisionText} by ${signer}\n\nDecision: ${decisionText}\nSigner: ${signer}\nClient: ${client}\nDecided at: ${new Date().toISOString()}\nComment: ${(comment ?? "").trim() || "—"}\n\nvia decision-router · POST /api/decision-ask/sign`,
+      });
+      return Response.json({
+        ok: true,
+        mode: "github",
+        askId,
+        decision: decisionText,
+        signer,
+        commitSha: result.commitSha,
+        commitUrl: result.commitUrl,
+        note:
+          "Persisted via GitHub commit. Page refresh after a moment will show updated queue (read-time depends on next deploy / static-revalidation cadence).",
+      });
+    } catch (e) {
+      return Response.json(
+        {
+          error: "GitHub write-back failed",
+          detail: (e as Error).message,
+          mode: "github",
+        },
+        { status: 500 },
+      );
+    }
+  }
+
+  // Local-FS mode: read + write filesystem.
   const folder = findClientFolder(client);
   if (!folder) {
     return Response.json({ error: `client ${client} not found` }, { status: 404 });
@@ -76,72 +205,24 @@ export async function POST(req: NextRequest) {
   }
 
   const raw = fs.readFileSync(queuePath, "utf8");
-
-  // Locate the ask block
-  const blockRe = new RegExp(`### ${askId.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\$&")}[\\s\\S]+?(?=\\n### |\\n## |$)`);
-  const blockMatch = raw.match(blockRe);
-  if (!blockMatch) {
-    return Response.json(
-      { error: `ask ${askId} not found in pending queue` },
-      { status: 404 },
-    );
-  }
-  const askBlock = blockMatch[0];
-
-  // Extract submitted date for the audit row
-  const submittedAtMatch = askBlock.match(/^-\s+\*\*Submitted:\*\*\s+(\S+)/m);
-  const submittedAt = submittedAtMatch ? submittedAtMatch[1] : "";
-  const submittedDate = submittedAt.split("T")[0] || "—";
-
-  // Build the recently-signed audit row
-  const decidedAt = new Date().toISOString().slice(0, 16).replace("T", "T");
-  const decisionText = decisionLabel(decision);
-  const auditRow = `| ${askId} | ${submittedDate} | ${decisionText}${comment ? ` — ${comment.replace(/\|/g, "/")}` : ""} | ${signer} | ${decidedAt} |`;
-
-  // Remove the ask block from Pending decisions section
-  let next = raw.replace(askBlock, "").replace(/\n{3,}/g, "\n\n");
-
-  // Insert audit row into the Recently-signed table.
-  // Find the table; if not present, create it.
-  const recentSignedHeaderRe = /## Recently signed[^\n]*\n[\s\S]*?(?=\n## |$)/;
-  const recentMatch = next.match(recentSignedHeaderRe);
-  if (recentMatch) {
-    // The table is inside this section. Insert auditRow after the existing rows.
-    const recentSection = recentMatch[0];
-    const tableRowsMatch = recentSection.match(/(\| -+ \|[\s\S]*?)(?=\n\n|$)/);
-    if (tableRowsMatch) {
-      const updatedSection = recentSection.replace(
-        tableRowsMatch[1],
-        tableRowsMatch[1].trimEnd() + "\n" + auditRow,
-      );
-      next = next.replace(recentSection, updatedSection);
-    } else {
-      // No table yet; create a fresh one with header
-      const tableHeader = `\n| Decision-Ask ID | Submitted | Decision | Decided by | Decided at |\n|---|---|---|---|---|\n${auditRow}\n`;
-      const sectionWithTable = recentSection.replace(
-        /## Recently signed[^\n]*\n/,
-        `$&\n| Decision-Ask ID | Submitted | Decision | Decided by | Decided at |\n|---|---|---|---|---|\n${auditRow}\n`,
-      );
-      next = next.replace(recentSection, sectionWithTable);
-    }
-  } else {
-    // No recently-signed section; append one
-    next +=
-      `\n## Recently signed (last 7 days — audit trail)\n\n` +
-      `| Decision-Ask ID | Submitted | Decision | Decided by | Decided at |\n` +
-      `|---|---|---|---|---|\n` +
-      `${auditRow}\n`;
-  }
-
-  // Persistence: filesystem write. Works in dev; ephemeral on Vercel until 5B-3 adds GitHub write-back.
+  let mutated;
   try {
-    fs.writeFileSync(queuePath, next, "utf8");
+    mutated = mutateQueue({ raw, askId, decision, comment: comment ?? "", signer });
+  } catch (e) {
+    return Response.json({ error: (e as Error).message }, { status: 404 });
+  }
+
+  try {
+    fs.writeFileSync(queuePath, mutated.next, "utf8");
   } catch (e) {
     return Response.json(
       {
         error: "filesystem write failed",
         detail: (e as Error).message,
-        note: "production durable persistence requires GitHub write-back (Phase 5B-3)",
+        mode: "local",
+        note: isGithubConfigured()
+          ? "GITHUB_TOKEN is set — set PERSISTENCE_MODE=github to use durable GitHub write-back."
+          : "Set GITHUB_TOKEN + PERSISTENCE_MODE=github (or auto) for durable persistence.",
       },
       { status: 500 },
     );
@@ -149,13 +230,15 @@ export async function POST(req: NextRequest) {
 
   return Response.json({
     ok: true,
+    mode: "local",
     askId,
     decision: decisionText,
     signer,
-    decidedAt,
+    decidedAt: mutated.decidedAt,
     queuePath: queuePath.replace(REPO_ROOT, ""),
-    note: process.env.VERCEL
-      ? "Vercel filesystem is ephemeral; sign persists for this deploy only. Phase 5B-3 will add GitHub write-back."
-      : undefined,
+    note:
+      process.env.VERCEL && !isGithubConfigured()
+        ? "Vercel filesystem is ephemeral — sign will not persist after this request. Set GITHUB_TOKEN to enable durable GitHub write-back."
+        : undefined,
   });
 }

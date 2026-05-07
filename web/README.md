@@ -26,8 +26,9 @@ The app is at `web/`; Vercel needs to know that.
 1. Push the repo to GitHub.
 2. In Vercel: **New Project** → import the repo.
 3. Set **Root Directory** to `web`.
-4. Framework preset: **Next.js** (auto-detected). No environment variables required.
-5. Deploy.
+4. Framework preset: **Next.js** (auto-detected).
+5. Configure env vars (see below).
+6. Deploy.
 
 Alternatively, with the Vercel CLI:
 
@@ -36,6 +37,20 @@ cd web
 vercel
 # follow prompts; set the project's root directory to "web" if asked
 ```
+
+## Environment variables
+
+| Var | Required? | Purpose |
+|---|---|---|
+| `ANTHROPIC_API_KEY` | only for `/chat`, `/api/route-lead`, `/api/simulate-*` | Claude API for live agent runs |
+| `GITHUB_TOKEN` | required for durable CCO sign persistence on Vercel | Token with `repo:contents:write` on the configured repo. Used by `/api/decision-ask/sign` to commit queue updates back to the repo when the deployment is on ephemeral infra (Vercel). |
+| `GITHUB_REPO` | optional (default `asharara88/polyai`) | `owner/repo` slug for GitHub read + write |
+| `GITHUB_BRANCH` | optional (default `main`) | Branch the sign action commits to. Set to a dedicated branch (e.g. `cco-approvals`) if you want PR-style review per sign instead of direct-to-main. |
+| `PERSISTENCE_MODE` | optional (default `auto`) | `local` = filesystem only · `github` = GitHub commits only · `auto` = github if `GITHUB_TOKEN` set, else local |
+
+**Local dev:** No env vars needed for read-only browsing. Set `ANTHROPIC_API_KEY` for `/chat` to work. CCO sign writes to local filesystem by default.
+
+**Vercel production:** Set `GITHUB_TOKEN` (server-side env var, never expose to client). Optionally set `GITHUB_BRANCH=cco-approvals` to keep main clean. CCO sign actions become commits with messages like `CCO sign: DA-… — Approve by <signer>`; audit trail = git history.
 
 ## What it does today
 
