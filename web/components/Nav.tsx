@@ -16,6 +16,7 @@ import {
 import { ReactNode } from "react";
 import DensityToggle from "@/components/DensityToggle";
 import ThemeToggle from "@/components/ThemeToggle";
+import UserMenu from "@/components/UserMenu";
 import { FlowMark } from "@/components/FlowLogo";
 
 type NavItem = {
@@ -90,6 +91,8 @@ export default function Nav() {
         <div className="flex items-center gap-1 flex-shrink-0">
           <DensityToggle />
           <ThemeToggle />
+          <span className="w-px h-5 bg-ink-200 dark:bg-ink-800 mx-1" aria-hidden />
+          <UserMenu />
         </div>
       </div>
     </header>

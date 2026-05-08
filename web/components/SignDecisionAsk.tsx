@@ -8,11 +8,14 @@ import {
   CheckCircle2,
   ChevronDown,
   ExternalLink,
+  LogIn,
   Send,
   X,
   XCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui";
+import { useIdentity } from "@/lib/identity";
+import SignInModal from "@/components/SignInModal";
 
 type Decision = "approve" | "approve-with-modifications" | "decline" | "send-back";
 
@@ -45,16 +48,22 @@ export default function SignDecisionAsk({
   askId: string;
 }) {
   const router = useRouter();
+  const { identity } = useIdentity();
   const [open, setOpen] = useState(false);
+  const [signInOpen, setSignInOpen] = useState(false);
   const [decision, setDecision] = useState<Decision>("approve");
   const [comment, setComment] = useState("");
   const [signer, setSigner] = useState("");
   const [busy, setBusy] = useState(false);
 
   const submit = async () => {
-    if (!signer.trim()) {
-      toast.error("Signer name required", {
-        description: "Enter the human signer (e.g. CCO name).",
+    // Prefer authenticated identity; fall back to free-text signer (demo mode)
+    const effectiveSigner = identity
+      ? `${identity.name}${identity.organization ? ` (${identity.organization})` : ""}`
+      : signer.trim();
+    if (!effectiveSigner) {
+      toast.error("Signer required", {
+        description: "Sign in or enter a signer name to attribute this decision.",
       });
       return;
     }
@@ -64,7 +73,7 @@ export default function SignDecisionAsk({
       const res = await fetch("/api/decision-ask/sign", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ client, askId, decision, comment, signer }),
+        body: JSON.stringify({ client, askId, decision, comment, signer: effectiveSigner }),
       });
       const j = await res.json();
       if (!res.ok) {
@@ -110,20 +119,35 @@ export default function SignDecisionAsk({
 
   if (!open) {
     return (
-      <div className="flex items-center gap-2 pt-2 border-t border-ink-100 dark:border-ink-800">
-        <Button
-          size="sm"
-          variant="success"
-          startIcon={<Check className="w-3.5 h-3.5" />}
-          onClick={() => setOpen(true)}
-          aria-label={`Open sign form for ${askId}`}
-        >
-          Sign
-        </Button>
-        <span className="text-label-xs font-mono text-ink-400">
-          opens form · POST /api/decision-ask/sign
-        </span>
-      </div>
+      <>
+        <div className="flex items-center gap-2 pt-2 border-t border-ink-100 dark:border-ink-800 flex-wrap">
+          <Button
+            size="sm"
+            variant="success"
+            startIcon={<Check className="w-3.5 h-3.5" />}
+            onClick={() => setOpen(true)}
+            aria-label={`Open sign form for ${askId}`}
+          >
+            Sign
+          </Button>
+          {identity ? (
+            <span className="text-label-xs font-mono text-ink-400 inline-flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-success-500" aria-hidden />
+              signed in as {identity.name}
+            </span>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setSignInOpen(true)}
+              className="text-label-xs font-mono uppercase tracking-wider text-accent hover:underline inline-flex items-center gap-1"
+            >
+              <LogIn className="w-3 h-3" aria-hidden />
+              sign in to sign
+            </button>
+          )}
+        </div>
+        <SignInModal open={signInOpen} onClose={() => setSignInOpen(false)} />
+      </>
     );
   }
 
@@ -153,17 +177,26 @@ export default function SignDecisionAsk({
         </label>
         <label className="text-body-xs">
           <div className="font-mono uppercase tracking-wider text-label-xs text-ink-400 mb-1">
-            signer
+            signer {identity && <span className="text-success-600 dark:text-success-400 normal-case">· authenticated</span>}
           </div>
-          <input
-            type="text"
-            value={signer}
-            onChange={(e) => setSigner(e.target.value)}
-            disabled={busy}
-            placeholder="e.g. CCO (Aldar)"
-            aria-label="Signer name"
-            className="w-full bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-700 rounded-md px-3 py-2 text-body-sm font-mono focus:outline-none focus:ring-2 focus:ring-accent/40"
-          />
+          {identity ? (
+            <div className="w-full bg-ink-50 dark:bg-ink-900 border border-ink-200 dark:border-ink-700 rounded-md px-3 py-2 text-body-sm font-mono text-ink-700 dark:text-ink-200 truncate">
+              {identity.name}
+              {identity.organization && (
+                <span className="text-ink-400"> · {identity.organization}</span>
+              )}
+            </div>
+          ) : (
+            <input
+              type="text"
+              value={signer}
+              onChange={(e) => setSigner(e.target.value)}
+              disabled={busy}
+              placeholder="e.g. CCO (Aldar) — or sign in to autofill"
+              aria-label="Signer name"
+              className="w-full bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-700 rounded-md px-3 py-2 text-body-sm font-mono focus:outline-none focus:ring-2 focus:ring-accent/40"
+            />
+          )}
         </label>
       </div>
       <label className="text-body-xs block">
@@ -181,12 +214,12 @@ export default function SignDecisionAsk({
         />
       </label>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 flex-wrap">
         <Button
           size="sm"
           variant={DECISION_VARIANT[decision]}
           onClick={submit}
-          disabled={!signer.trim()}
+          disabled={!identity && !signer.trim()}
           loading={busy}
           startIcon={busy ? undefined : DECISION_ICON[decision]}
         >
