@@ -109,9 +109,9 @@ When to switch to a different runbook mid-flight.
 - `integration-go-live-calendar.md` — CCO-personal calendar OAuth (Google / Microsoft 365)
 - `integration-go-live-news-scan.md` — Daily news + regulator + sanctions feed ingestion for `horizon-scanner`
 
-### Planned
+### Regulatory operations
 
-- `trakheesi-permit.md` — Dubai advertising-permit application flow (referenced from `compliance` and `agency-liaison`); pending
+- `trakheesi-permit.md` — Dubai DLD/RERA advertising-permit lifecycle: application initiation (T-45) → issuance (T-30 to T-21) → creative integration (T-21 to T-7) → launch (T0) → sustain audit → renewal → pull-down. Owned by `agency-liaison`.
 
 ## Authoring rules
 
