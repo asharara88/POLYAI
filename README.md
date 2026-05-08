@@ -1,4 +1,4 @@
-# POLYAI
+# Flow
 
 Polyphonic multi-agent AI system — a marketing, sales, and business development team built as Claude Code subagents, designed to be **adapted per client and per vertical**.
 
@@ -79,7 +79,7 @@ A team of specialized agents that plan, execute, and review marketing and sales 
 
 ## Multi-client + multi-vertical model
 
-POLYAI is a service operator. Three layers of context, resolved most-specific first:
+Flow is a service operator. Three layers of context, resolved most-specific first:
 
 ```
 clients/<slug>/knowledge/...     ← client overrides (their ICP, voice, decisions, results)
@@ -104,7 +104,7 @@ Adding a new vertical (or sub-vertical) means writing a `verticals/<name>/playbo
 
 ## Integrations
 
-POLYAI agents can read from and (with human approval) write to your existing tooling — Salesforce, HubSpot, Meta / Google Ads, Property Finder, Tableau, WhatsApp Business, DocuSign, etc. Every external write goes through an `integration-action` envelope (see `schemas/integration-action.md`) with explicit human approval until a per-client policy promotes it. See `INTEGRATIONS.md` for the full architecture and phased rollout.
+Flow agents can read from and (with human approval) write to your existing tooling — Salesforce, HubSpot, Meta / Google Ads, Property Finder, Tableau, WhatsApp Business, DocuSign, etc. Every external write goes through an `integration-action` envelope (see `schemas/integration-action.md`) with explicit human approval until a per-client policy promotes it. See `INTEGRATIONS.md` for the full architecture and phased rollout.
 
 ## How they work together
 

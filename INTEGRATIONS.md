@@ -1,6 +1,6 @@
 # Integrations
 
-POLYAI agents can read from, and (with human-approval gates) write to, the systems your team already runs in. This document is the architecture and the wiring plan.
+Flow agents can read from, and (with human-approval gates) write to, the systems your team already runs in. This document is the architecture and the wiring plan.
 
 ## Principle: agents recommend, integrations execute, humans approve
 
@@ -97,7 +97,7 @@ integrations/
 Each integration has:
 
 1. **`spec.md`** — auth model (OAuth / API key / service account), endpoints used, rate-limit behavior, retry policy.
-2. **`schema-mapping.md`** — how the system's data model maps onto POLYAI schemas (deal-record, campaign-brief, etc.).
+2. **`schema-mapping.md`** — how the system's data model maps onto Flow schemas (deal-record, campaign-brief, etc.).
 3. **`actions/`** — one `.md` per supported write action, conforming to `schemas/integration-action.md`.
 4. **Per-client config** at `clients/<slug>/integrations/<system>/` — credentials reference (NEVER actual credentials), sandbox vs. production, custom field mappings.
 

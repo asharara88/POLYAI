@@ -4,7 +4,7 @@
 
 **Every public-facing real-estate advertisement in Dubai requires a Trakheesi permit.** Without the permit, the ad cannot lawfully run — and any agency, channel, or platform that publishes it without a displayed permit number is in violation. Trakheesi is operated by Dubai Land Department / RERA and gates the advertising surface for the entire emirate.
 
-POLYAI does not own permit issuance — that's a developer-side regulatory operations function. POLYAI integrates so:
+Flow does not own permit issuance — that's a developer-side regulatory operations function. Flow integrates so:
 
 - `compliance` can verify a permit number is on file before approving any Dubai-side artifact for ship
 - `agency-liaison` can chase the permit application status with the responsible team and the regulator
@@ -15,7 +15,7 @@ The Abu Dhabi equivalent (current ADREC permit regime) is a sibling spec — ver
 
 ## Auth
 
-The Trakheesi system is operated by DLD; the developer's regulatory-operations team holds the credentials. POLYAI does not directly call Trakheesi APIs (which are limited and developer-portal-mediated). Instead:
+The Trakheesi system is operated by DLD; the developer's regulatory-operations team holds the credentials. Flow does not directly call Trakheesi APIs (which are limited and developer-portal-mediated). Instead:
 
 - Permit numbers are recorded in the repo at `clients/<client>/regulatory/trakheesi/permits/<permit_number>.md`
 - Application status is tracked manually by `agency-liaison` + the human regulatory-operations contact
@@ -25,7 +25,7 @@ When/if DLD opens an automated developer-portal API, this spec will extend to in
 
 ## Tier model
 
-Because there is no direct API call from POLYAI to Trakheesi, the tier model applies to internal write actions:
+Because there is no direct API call from Flow to Trakheesi, the tier model applies to internal write actions:
 
 | Operation class | Tier | Default policy |
 |---|---|---|

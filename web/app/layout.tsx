@@ -32,7 +32,7 @@ const themeInitScript = `
     html.classList.toggle('dark', dark);
     html.style.colorScheme = dark ? 'dark' : 'light';
     html.dataset.theme = t;
-    var d = localStorage.getItem('polyai-density') || 'comfortable';
+    var d = localStorage.getItem('flow-density') || localStorage.getItem('polyai-density') || 'comfortable';
     html.dataset.density = d;
   } catch (_) {}
 })();

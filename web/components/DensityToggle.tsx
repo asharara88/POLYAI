@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Layers3 } from "lucide-react";
 
 type Density = "compact" | "cozy" | "comfortable";
-const STORAGE_KEY = "polyai-density";
+const STORAGE_KEY = "flow-density";
 
 const DENSITY_LABEL: Record<Density, string> = {
   compact: "Compact",
@@ -24,9 +24,19 @@ export default function DensityToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const saved = (localStorage.getItem(STORAGE_KEY) as Density | null) ?? "comfortable";
-    setDensity(saved);
-    applyDensity(saved);
+    // Graceful migration from the previous brand's storage key
+    let saved = localStorage.getItem(STORAGE_KEY) as Density | null;
+    if (!saved) {
+      const legacy = localStorage.getItem("polyai-density") as Density | null;
+      if (legacy) {
+        saved = legacy;
+        localStorage.setItem(STORAGE_KEY, legacy);
+        localStorage.removeItem("polyai-density");
+      }
+    }
+    const next = saved ?? "comfortable";
+    setDensity(next);
+    applyDensity(next);
     setMounted(true);
   }, []);
 

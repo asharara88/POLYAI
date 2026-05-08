@@ -70,7 +70,7 @@ export default function ReciprocityStaging({
   existingSummaries: ReciprocityCounterpartySummary[];
   knownCounterparties: { id: string; name: string; channel: string }[];
 }) {
-  const storageKey = `polyai:reciprocity-staging:${clientSlug}`;
+  const storageKey = `flow:reciprocity-staging:${clientSlug}`;
   const [entries, setEntries] = useState<StagedEntry[]>([]);
   const [draft, setDraft] = useState<Omit<StagedEntry, "id">>(EMPTY);
 

@@ -1,4 +1,4 @@
-# POLYAI — project-wide rules
+# Flow — project-wide rules
 
 This file applies to every agent in `.claude/agents/`. Read it as standing instructions on top of your individual agent prompt.
 

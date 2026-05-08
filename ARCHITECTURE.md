@@ -1,10 +1,10 @@
 # Architecture
 
-How POLYAI's agents are wired together.
+How Flow's agents are wired together.
 
 ## Design principles
 
-1. **Multi-tenant by default.** POLYAI runs as a service for many clients across multiple verticals. Every artifact is tied to a `client` slug and a `vertical`.
+1. **Multi-tenant by default.** Flow runs as a service for many clients across multiple verticals. Every artifact is tied to a `client` slug and a `vertical`.
 2. **Three-layer context, resolved most-specific first.** Client overrides → vertical defaults → team baseline. See "Context resolution" below.
 3. **Structured handoffs over prose.** Every agent-to-agent transfer is a populated template (`schemas/`). No "here's a paragraph, please figure it out."
 4. **Shared memory is the spine.** Memory is layered (per client, per vertical, team-wide) and curated only by the `knowledge` agent. Other agents request updates through it.

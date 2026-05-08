@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to POLYAI. Most-recent first. Each entry references the commit that landed it.
+All notable changes to Flow. Most-recent first. Each entry references the commit that landed it.
 
 ## 2026-05-06 — Phase 5: Completely serve the Aldar CCO
 

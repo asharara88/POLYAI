@@ -34,7 +34,7 @@ You almost never communicate directly with a VVIP principal. You communicate thr
 | **Wealth manager / family-office principal** | Investment + financial decisions | Channel for commercial-touching matters; overlaps with `wealth-channel-enablement` |
 | **Court / royal-protocol staff** | Royal-protocol-specific arrangements | Channel for ruling-family-specific matters |
 
-Per principal, the developer's chief-of-protocol maintains the gatekeeper map. POLYAI agents reference; they do not maintain.
+Per principal, the developer's chief-of-protocol maintains the gatekeeper map. Flow agents reference; they do not maintain.
 
 ## Communication register
 

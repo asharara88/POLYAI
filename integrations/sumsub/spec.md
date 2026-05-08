@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Sumsub is the operational AML/KYC screening surface for any new counterparty (buyer, broker, wealth-channel intermediary, family office, VVIP). POLYAI does not run the screening logic itself — it orchestrates intake, calls Sumsub for verification, and consumes the verdict for downstream gating.
+Sumsub is the operational AML/KYC screening surface for any new counterparty (buyer, broker, wealth-channel intermediary, family office, VVIP). Flow does not run the screening logic itself — it orchestrates intake, calls Sumsub for verification, and consumes the verdict for downstream gating.
 
 The screening evidence (passport scans, EIDA, source-of-funds documents) **lives in Sumsub's audit log, not in this repo**. The repo holds verdicts, audit reference IDs, and the operational decisions made on top of those verdicts.
 

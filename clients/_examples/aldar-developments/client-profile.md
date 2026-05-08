@@ -1,6 +1,6 @@
 # Client profile — Aldar Developments
 
-> **Worked example — illustrative.** Fictional data demonstrating how POLYAI structures a developer-class engagement. Not real Aldar Properties PJSC data; no claim of partnership or endorsement. Names of real broker firms, agencies, and institutions appear because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships.
+> **Worked example — illustrative.** Fictional data demonstrating how Flow structures a developer-class engagement. Not real Aldar Properties PJSC data; no claim of partnership or endorsement. Names of real broker firms, agencies, and institutions appear because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships.
 >
 > Populated by `client-onboarding` from a fictional intake brief, with vertical defaults pulled from `verticals/real-estate/sub-verticals/developer/playbook.md`.
 

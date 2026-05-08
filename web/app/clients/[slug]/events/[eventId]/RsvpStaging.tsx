@@ -46,7 +46,7 @@ export default function RsvpStaging({
   eventId: string;
   filePath: string;
 }) {
-  const storageKey = `polyai:rsvp-staging:${clientSlug}:${eventId}`;
+  const storageKey = `flow:rsvp-staging:${clientSlug}:${eventId}`;
   const [entries, setEntries] = useState<Entry[]>([]);
   const [draft, setDraft] = useState<Omit<Entry, "id" | "timestamp">>(EMPTY);
 

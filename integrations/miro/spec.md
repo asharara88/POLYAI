@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Miro is the planning surface where strategy, project management, and stakeholder alignment happen visually. POLYAI integrates with Miro so:
+Miro is the planning surface where strategy, project management, and stakeholder alignment happen visually. Flow integrates with Miro so:
 
 - `strategy` can scaffold a campaign-planning board (channels, timeline, dependencies) at kickoff
 - `project-manager` can sync tasks and milestones bidirectionally
@@ -23,7 +23,7 @@ When the Miro MCP is connected, the following tools are available to agents:
 | `diagram_get_dsl`, `table_list_rows` | A — read |
 | `doc_create`, `doc_update` | C — write within policy (planning surfaces only, never customer-facing) |
 | `diagram_create` | C — write within policy |
-| `table_create`, `table_sync_rows` | C — write within policy (sync POLYAI markdown tables to Miro tables for stakeholder visibility) |
+| `table_create`, `table_sync_rows` | C — write within policy (sync Flow markdown tables to Miro tables for stakeholder visibility) |
 
 ## Used by
 

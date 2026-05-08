@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Salesforce is the system-of-record for the developer's commercial pipeline — leads, contacts, accounts (buyers, brokers, wealth-channel intermediaries), and opportunities (deals). POLYAI does not replace Salesforce; it integrates so:
+Salesforce is the system-of-record for the developer's commercial pipeline — leads, contacts, accounts (buyers, brokers, wealth-channel intermediaries), and opportunities (deals). Flow does not replace Salesforce; it integrates so:
 
 - `account-executive`, `inbound-qualifier`, `sdr`, `forecasting`, and `data-quality-steward` can read pipeline state without context-switching
 - `account-executive` can log activity (calls, emails, meetings, viewings) into Salesforce after the work happens, never instead of it

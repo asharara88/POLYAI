@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Canva is the design surface where external brand agencies and the in-house brand team co-edit working files. POLYAI doesn't replace the design tool; it integrates with it so:
+Canva is the design surface where external brand agencies and the in-house brand team co-edit working files. Flow doesn't replace the design tool; it integrates with it so:
 
 - `brand-design` and `creative` can pull design state for review without context-switching
 - `agency-liaison` can post structured, consolidated review feedback as comments inside Canva — where the designer is already working

@@ -1,6 +1,6 @@
 # Knowledge
 
-Shared memory for the POLYAI team. The `knowledge` agent is the only one that writes here directly. Other agents request updates through it.
+Shared memory for the Flow team. The `knowledge` agent is the only one that writes here directly. Other agents request updates through it.
 
 ## Files
 

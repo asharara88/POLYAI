@@ -1,12 +1,12 @@
 # Salesforce — schema mapping
 
-This file maps Salesforce standard + custom objects to the POLYAI repo schemas (`schemas/deal-record.md`, `schemas/handoff-envelope.md`, etc.). When agents read or write Salesforce data, they translate through this mapping.
+This file maps Salesforce standard + custom objects to the Flow repo schemas (`schemas/deal-record.md`, `schemas/handoff-envelope.md`, etc.). When agents read or write Salesforce data, they translate through this mapping.
 
 **Source-of-truth doctrine:** Salesforce is the system-of-record for the commercial pipeline. The repo is mirror. When they conflict, `crm-manager` rules; resolution is logged and one side is updated to match.
 
 ## Object map
 
-| POLYAI concept | Salesforce object | Notes |
+| Flow concept | Salesforce object | Notes |
 |---|---|---|
 | Lead | `Lead` | New inbound contact pre-qualification. Converts to Contact + Account + Opportunity on qualification. |
 | Buyer / counterparty | `Account` (record type: `buyer`) | Individual or corporate buyer. UBO captured via related contacts where corporate. |
@@ -25,7 +25,7 @@ This file maps Salesforce standard + custom objects to the POLYAI repo schemas (
 
 ## Field map — Opportunity
 
-| POLYAI field | Salesforce field | Type | Notes |
+| Flow field | Salesforce field | Type | Notes |
 |---|---|---|---|
 | `deal_id` | `Id` | Standard | |
 | `client` | (implicit by org) | n/a | One client per Salesforce org |
@@ -52,7 +52,7 @@ This file maps Salesforce standard + custom objects to the POLYAI repo schemas (
 
 ## Field map — Account (Buyer)
 
-| POLYAI field | Salesforce field | Type | Notes |
+| Flow field | Salesforce field | Type | Notes |
 |---|---|---|---|
 | `account_id` | `Id` | Standard | |
 | `name` | `Name` | Standard | Individual: full legal name; corporate: registered entity name |
@@ -73,7 +73,7 @@ This file maps Salesforce standard + custom objects to the POLYAI repo schemas (
 
 ## Field map — Activity (Task / Event)
 
-| POLYAI activity field | Salesforce field | Type | Notes |
+| Flow activity field | Salesforce field | Type | Notes |
 |---|---|---|---|
 | `activity_id` | `Id` | Standard | |
 | `activity_type` | `Type` (for Event) or `TaskSubtype` | Standard | `call`, `email`, `meeting`, `viewing` |
@@ -91,7 +91,7 @@ This file maps Salesforce standard + custom objects to the POLYAI repo schemas (
 2. **Dates:** Salesforce uses local-org timezone; the repo uses UTC ISO-8601. Translate at the integration boundary.
 3. **Picklist values:** When the repo and Salesforce drift on picklist labels, Salesforce wins (system-of-record).
 4. **Custom fields:** Per-client API names captured in `clients/<slug>/integrations/salesforce/config.md`. Never hard-code an API name in agent prompts.
-5. **Restricted records:** VVIP-flagged Accounts use a Salesforce sharing rule that limits visibility to the named team. Reads from POLYAI agents respect that — `vvip-channel-enablement` and `wealth-vvip-manager` only.
+5. **Restricted records:** VVIP-flagged Accounts use a Salesforce sharing rule that limits visibility to the named team. Reads from Flow agents respect that — `vvip-channel-enablement` and `wealth-vvip-manager` only.
 6. **Soft-deletes:** Salesforce uses recycle-bin; the repo treats `IsDeleted=true` as gone. Do not surface deleted records in any rollup.
 
 ## Drift detection

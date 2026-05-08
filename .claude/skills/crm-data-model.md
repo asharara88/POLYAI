@@ -1,6 +1,6 @@
 ---
 name: crm-data-model
-description: System-agnostic data model for the developer's commercial pipeline — leads, contacts, accounts, opportunities, allocations, activities, attribution. Maps the POLYAI repo schemas (deal-record, handoff-envelope) to the major CRM systems (Salesforce, HubSpot, Dynamics) so any agent reading or writing CRM data uses a consistent vocabulary. The Salesforce-specific mapping lives at integrations/salesforce/schema-mapping.md; this skill is the system-agnostic layer above. Used by data-quality-steward, account-executive, forecasting, analytics, broker-enablement, wealth-channel-enablement, secondary-market-specialist, and any agent that touches commercial-pipeline records.
+description: System-agnostic data model for the developer's commercial pipeline — leads, contacts, accounts, opportunities, allocations, activities, attribution. Maps the Flow repo schemas (deal-record, handoff-envelope) to the major CRM systems (Salesforce, HubSpot, Dynamics) so any agent reading or writing CRM data uses a consistent vocabulary. The Salesforce-specific mapping lives at integrations/salesforce/schema-mapping.md; this skill is the system-agnostic layer above. Used by data-quality-steward, account-executive, forecasting, analytics, broker-enablement, wealth-channel-enablement, secondary-market-specialist, and any agent that touches commercial-pipeline records.
 scope: CRM data model — system-agnostic
 maintained_by: data-quality-steward + crm-manager (writes via knowledge agent)
 ---
@@ -25,7 +25,7 @@ maintained_by: data-quality-steward + crm-manager (writes via knowledge agent)
 
 ## Field model — Opportunity (system-agnostic)
 
-| POLYAI field | Type | Required at stage | Notes |
+| Flow field | Type | Required at stage | Notes |
 |---|---|---|---|
 | `deal_id` | identifier | Always | System-of-record id |
 | `client` | enum | Always | Client slug (one client per CRM org typical) |
@@ -51,7 +51,7 @@ maintained_by: data-quality-steward + crm-manager (writes via knowledge agent)
 
 ## Field model — Account (Buyer)
 
-| POLYAI field | Type | Notes |
+| Flow field | Type | Notes |
 |---|---|---|
 | `account_id` | identifier | |
 | `name` | text | Individual: legal name; corporate: registered entity name |
@@ -72,7 +72,7 @@ maintained_by: data-quality-steward + crm-manager (writes via knowledge agent)
 
 ## Field model — Activity
 
-| POLYAI activity field | Type | Notes |
+| Flow activity field | Type | Notes |
 |---|---|---|
 | `activity_id` | identifier | |
 | `activity_type` | enum | `call` / `email` / `meeting` / `viewing` / `note` |
@@ -125,7 +125,7 @@ Lead ──qualified──▶ Contact ◀───── Account
 When the developer's CRM is *not* Salesforce (a different engagement uses HubSpot, Dynamics, Pipedrive, custom):
 
 1. Create `integrations/<system>/schema-mapping.md` following the same shape as `integrations/salesforce/schema-mapping.md`
-2. Map each POLYAI field above to the system's API name
+2. Map each Flow field above to the system's API name
 3. Document any system-specific custom-field requirements
 4. Document the system's audit trail mechanism
 5. Create per-action specs (`integrations/<system>/actions/`) for activity-log, stage-advance, lead-create
