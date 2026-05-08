@@ -89,7 +89,7 @@ export default async function CcoPage({
       <header className="mb-8 space-y-3">
         <Breadcrumbs
           crumbs={[
-            { label: "POLYAI", href: "/" },
+            { label: "Flow", href: "/" },
             { label: "CCO Daily", icon: <Sparkles className="w-3 h-3" /> },
             { label: displayName },
           ]}

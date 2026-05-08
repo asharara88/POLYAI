@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Card, StatCard } from "@/components/Card";
+import { FlowMark } from "@/components/FlowLogo";
 import { getAgents, getClients, getStats, getVerticals } from "@/lib/content";
 
 export default function Page() {
@@ -10,20 +11,32 @@ export default function Page() {
 
   return (
     <div className="space-y-10">
-      <section>
-        <h1 className="text-2xl font-semibold tracking-tight">Control plane</h1>
-        <p className="text-ink-500 dark:text-ink-400 mt-2 max-w-2xl">
-          Browse the multi-agent team's clients, agent roster, vertical playbooks, and handoff schemas.
-          Read-only today; the next iteration will let you trigger agents and approve human-gated actions.
-        </p>
+      <section className="flex items-start gap-4 flex-wrap">
+        <span className="text-accent flex-shrink-0 mt-1">
+          <FlowMark size={48} />
+        </span>
+        <div className="flex-1 min-w-0">
+          <div className="text-label-xs font-mono uppercase tracking-wider text-accent">
+            AI Driven Solutions
+          </div>
+          <h1 className="text-display font-semibold tracking-tight mt-0.5">
+            Flow — control plane
+          </h1>
+          <p className="text-body text-ink-500 dark:text-ink-400 mt-2 max-w-2xl">
+            Multi-agent commercial orchestration: marketing, sales, and BD. Browse
+            the agent roster, client workspaces, vertical playbooks, runbooks,
+            skills, and handoff schemas — and approve human-gated CCO decisions
+            from a single control plane.
+          </p>
+        </div>
       </section>
 
-      <section className="grid grid-cols-2 md:grid-cols-5 gap-3">
+      <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
         <StatCard label="Active clients" value={stats.realClients} />
         <StatCard label="Examples" value={stats.exampleClients} />
         <StatCard label="Agents" value={stats.agents} />
-        <StatCard label="Verticals" value={stats.verticals} />
-        <StatCard label="Schemas" value={stats.schemas} />
+        <StatCard label="Skills" value={stats.skills} />
+        <StatCard label="Runbooks" value={stats.runbooks} />
       </section>
 
       <section>

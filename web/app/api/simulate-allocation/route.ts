@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
     "",
     "## Runtime context",
     "",
-    "You are running inside POLYAI's broker-allocation simulator. A broker has submitted an allocation request: a specific unit + payment plan for a named prospect. Run the allocation logic per the client's allocation rules and return a strict JSON decision (approve / decline / counter / escalate).",
+    "You are running inside Flow's broker-allocation simulator. A broker has submitted an allocation request: a specific unit + payment plan for a named prospect. Run the allocation logic per the client's allocation rules and return a strict JSON decision (approve / decline / counter / escalate).",
     "",
     `Client: ${clientSlug} (${client.summary.displayName ?? "—"})`,
     "",

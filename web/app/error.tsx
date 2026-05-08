@@ -13,7 +13,7 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("[POLYAI error boundary]", error);
+    console.error("[Flow error boundary]", error);
   }, [error]);
 
   return (

@@ -1,4 +1,4 @@
-# POLYAI — web control plane
+# Flow — web control plane
 
 Next.js (App Router, React 19, Tailwind) UI that renders the multi-agent workspace: clients, agents, vertical playbooks, schemas, and per-client campaigns. Reads the markdown files at the repo root at build time and ships as a static site.
 

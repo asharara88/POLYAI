@@ -14,6 +14,9 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ReactNode } from "react";
+import DensityToggle from "@/components/DensityToggle";
+import ThemeToggle from "@/components/ThemeToggle";
+import { FlowMark } from "@/components/FlowLogo";
 
 type NavItem = {
   href: string;
@@ -43,18 +46,23 @@ export default function Nav() {
   };
 
   return (
-    <header className="border-b border-ink-200/70 dark:border-ink-800 bg-white/80 dark:bg-ink-950/80 backdrop-blur-md sticky top-0 z-30 print:hidden">
-      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-6">
+    <header className="border-b border-ink-200/70 dark:border-ink-800 bg-white/85 dark:bg-ink-950/85 backdrop-blur-md sticky top-0 z-30 print:hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3 lg:gap-6">
         <Link
           href="/"
-          className="font-mono text-body-sm tracking-tight font-semibold flex items-center gap-1"
-          aria-label="POLYAI home"
+          className="flex items-center gap-2 flex-shrink-0 group"
+          aria-label="Flow home"
         >
-          POLYAI<span className="text-accent">.</span>
+          <span className="text-accent group-hover:scale-105 transition-transform">
+            <FlowMark size={26} />
+          </span>
+          <span className="font-semibold tracking-tight text-title-sm text-ink-900 dark:text-ink-50 hidden sm:inline">
+            Flow
+          </span>
         </Link>
         <nav
           aria-label="Primary"
-          className="flex gap-1 text-body-sm overflow-x-auto scrollbar-thin"
+          className="flex gap-0.5 text-body-sm overflow-x-auto flex-1 -mx-1 px-1 scrollbar-thin"
         >
           {items.map((it) => {
             const active = isActive(it.href);
@@ -65,22 +73,24 @@ export default function Nav() {
                 aria-current={active ? "page" : undefined}
                 className={[
                   "inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md transition-colors whitespace-nowrap",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40",
                   active
-                    ? "bg-ink-100 dark:bg-ink-800 text-ink-900 dark:text-ink-50"
+                    ? "bg-accent/10 text-accent"
                     : it.primary
-                      ? "text-accent hover:bg-accent-50 dark:hover:bg-accent-900/30"
+                      ? "text-accent hover:bg-accent/10"
                       : "text-ink-600 dark:text-ink-300 hover:bg-ink-100 dark:hover:bg-ink-800 hover:text-ink-900 dark:hover:text-ink-50",
                 ].join(" ")}
               >
                 <span aria-hidden>{it.icon}</span>
-                <span className="hidden sm:inline">{it.label}</span>
+                <span className="hidden md:inline">{it.label}</span>
               </Link>
             );
           })}
         </nav>
-        <span className="ml-auto text-body-xs font-mono text-ink-400 hidden md:inline">
-          multi-agent control plane
-        </span>
+        <div className="flex items-center gap-1 flex-shrink-0">
+          <DensityToggle />
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

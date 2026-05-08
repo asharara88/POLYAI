@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     "",
     "## Runtime context",
     "",
-    "You are running inside POLYAI's direct-lead routing simulator. A direct lead from the developer's own marketing arrives. Route it to the correct in-house RM, NEVER to an external broker. Return a strict JSON routing decision.",
+    "You are running inside Flow's direct-lead routing simulator. A direct lead from the developer's own marketing arrives. Route it to the correct in-house RM, NEVER to an external broker. Return a strict JSON routing decision.",
     "",
     `Client: ${clientSlug} (${client.summary.displayName ?? "—"}) — vertical: ${client.summary.vertical ?? "?"}`,
     "",

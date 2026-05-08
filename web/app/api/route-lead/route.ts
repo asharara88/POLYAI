@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
     "",
     "## Runtime context",
     "",
-    "You are running inside POLYAI's lead-routing simulator. Given a lead and the active client's broker registry, return a routing decision in strict JSON. Do not include prose outside the JSON.",
+    "You are running inside Flow's lead-routing simulator. Given a lead and the active client's broker registry, return a routing decision in strict JSON. Do not include prose outside the JSON.",
     "",
     `Client: ${clientSlug} (${client.summary.displayName ?? "—"}) — vertical: ${client.summary.vertical ?? "?"}`,
     "",

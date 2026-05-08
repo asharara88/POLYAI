@@ -13,11 +13,11 @@ const buildSystemPrompt = (clientSlug?: string) => {
   const activeClient = clientSlug ? clients.find((c) => c.slug === clientSlug) : undefined;
 
   return [
-    cco?.body ?? "You are the POLYAI Chief Commercial Officer (CCO).",
+    cco?.body ?? "You are the Flow Chief Commercial Officer (CCO).",
     "",
     "## Runtime context",
     "",
-    "You are running inside POLYAI's web control plane. You can plan, route, and draft — but you cannot directly invoke other subagents from this surface (those are Claude Code tools). Treat your output as a plan or a draft the user can copy into a Claude Code session, into a brief, or into a file in the repo.",
+    "You are running inside Flow's web control plane. You can plan, route, and draft — but you cannot directly invoke other subagents from this surface (those are Claude Code tools). Treat your output as a plan or a draft the user can copy into a Claude Code session, into a brief, or into a file in the repo.",
     "",
     `Available clients: ${clients.length === 0 ? "(none yet)" : clients.map((c) => `${c.slug} [${c.vertical ?? "?"}]`).join(", ")}`,
     `Available verticals: ${verticals}`,
