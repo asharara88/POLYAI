@@ -52,7 +52,7 @@ export default function LivePulse({ autoMs = 60_000, label = "fresh" }: Props) {
   const isFresh = elapsed < 5000;
 
   return (
-    <span className="inline-flex items-center gap-2 text-label-xs font-mono uppercase tracking-wider text-ink-400">
+    <span className="inline-flex items-center gap-1.5 text-body-xs text-ink-500 dark:text-ink-400">
       <span
         className={[
           "inline-block w-1.5 h-1.5 rounded-full",
@@ -61,7 +61,7 @@ export default function LivePulse({ autoMs = 60_000, label = "fresh" }: Props) {
         aria-hidden
       />
       <span>
-        {label} · {relTime(elapsed)}
+        {label === "fresh" ? "Updated" : label} {relTime(elapsed)}
       </span>
       <button
         type="button"

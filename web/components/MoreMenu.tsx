@@ -3,17 +3,24 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Bot, FileCode, Layers, MoreHorizontal, Search } from "lucide-react";
+import { useAdvancedMode } from "@/lib/advanced-mode";
 
-const items = [
+const advancedItems = [
   { href: "/agents", label: "Agents", icon: Bot },
   { href: "/verticals", label: "Verticals", icon: Layers },
   { href: "/schemas", label: "Schemas", icon: FileCode },
   { href: "/search", label: "Search", icon: Search },
 ];
 
+const simpleItems = [
+  { href: "/search", label: "Search", icon: Search },
+];
+
 export default function MoreMenu() {
+  const { advanced } = useAdvancedMode();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const items = advanced ? advancedItems : simpleItems;
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
@@ -58,10 +65,10 @@ export default function MoreMenu() {
               );
             })}
           </div>
-          <div className="px-3 py-2 border-t border-ink-100 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 text-label-xs font-mono text-ink-400 flex items-center justify-between">
-            <span>Power-user</span>
+          <div className="px-3 py-2 border-t border-ink-100 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 text-body-xs text-ink-500 flex items-center justify-between">
+            <span>{advanced ? "Advanced view" : "Simple view"}</span>
             <span>
-              press <kbd className="px-1 py-0.5 rounded bg-ink-100 dark:bg-ink-800 text-ink-500">⌘ K</kbd>
+              <kbd className="px-1 py-0.5 rounded bg-ink-100 dark:bg-ink-800 text-ink-500 font-mono">⌘ K</kbd> to search
             </span>
           </div>
         </div>

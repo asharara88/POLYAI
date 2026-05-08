@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 import CommandPalette from "@/components/CommandPalette";
 import { buildPaletteEntries } from "@/lib/palette-entries";
 import { IdentityProvider } from "@/lib/identity";
+import { AdvancedModeProvider } from "@/lib/advanced-mode";
 
 export const metadata: Metadata = {
   title: "Flow — AI-driven control plane",
@@ -34,6 +35,8 @@ const themeInitScript = `
     html.dataset.theme = t;
     var d = localStorage.getItem('flow-density') || localStorage.getItem('polyai-density') || 'comfortable';
     html.dataset.density = d;
+    var adv = localStorage.getItem('flow-advanced') === 'true';
+    html.dataset.advanced = adv ? 'true' : 'false';
   } catch (_) {}
 })();
 `;
@@ -50,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-screen antialiased pb-[72px] md:pb-0 selection:bg-accent/30">
         <IdentityProvider>
+        <AdvancedModeProvider>
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-accent focus:text-white focus:px-3 focus:py-2 focus:rounded-md focus:text-body-sm focus:font-medium"
@@ -83,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               },
             }}
           />
+        </AdvancedModeProvider>
         </IdentityProvider>
       </body>
     </html>

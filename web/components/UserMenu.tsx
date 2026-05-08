@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { LogIn, LogOut, Monitor, Moon, Sun, User, Layers3 } from "lucide-react";
+import { LogIn, LogOut, Monitor, Moon, Sun, User } from "lucide-react";
 import { useIdentity, ROLE_LABEL } from "@/lib/identity";
+import { useAdvancedMode } from "@/lib/advanced-mode";
 import SignInModal from "@/components/SignInModal";
 
 type Theme = "light" | "dark" | "system";
@@ -93,6 +94,7 @@ function SegmentedPicker<T extends string>({
 
 export default function UserMenu() {
   const { identity, hydrated, signOut } = useIdentity();
+  const { advanced, setAdvanced } = useAdvancedMode();
   const [open, setOpen] = useState(false);
   const [signInOpen, setSignInOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>("system");
@@ -230,6 +232,21 @@ export default function UserMenu() {
             ]}
             onChange={onDensity}
           />
+
+          <SegmentedPicker<"simple" | "advanced">
+            label="View"
+            value={advanced ? "advanced" : "simple"}
+            options={[
+              { value: "simple", label: "Simple" },
+              { value: "advanced", label: "Advanced" },
+            ]}
+            onChange={(v) => setAdvanced(v === "advanced")}
+          />
+          <div className="px-3 pb-2 text-body-xs text-ink-500 dark:text-ink-400">
+            {advanced
+              ? "Advanced shows agents, runbooks, skills, schemas."
+              : "Simple hides power-user surfaces."}
+          </div>
 
           {identity && (
             <div className="border-t border-ink-100 dark:border-ink-800 py-1">

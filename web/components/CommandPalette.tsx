@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
+import { useAdvancedMode } from "@/lib/advanced-mode";
 import {
   Bot,
   Building2,
@@ -77,6 +78,7 @@ const NAV_ICON_OVERRIDE: Record<string, React.ReactNode> = {
 
 export default function CommandPalette({ entries = [] }: { entries?: PaletteEntry[] }) {
   const router = useRouter();
+  const { advanced } = useAdvancedMode();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -92,7 +94,21 @@ export default function CommandPalette({ entries = [] }: { entries?: PaletteEntr
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const all = [...STATIC_ITEMS, ...entries];
+  // In Simple mode, hide power-user kinds (agent / skill / runbook / schema / vertical)
+  // Keep navigate, ask-cco presets, and clients.
+  const visibleEntries = advanced
+    ? entries
+    : entries.filter((e) => e.kind === "client");
+  const visibleStatic = advanced
+    ? STATIC_ITEMS
+    : STATIC_ITEMS.filter(
+        (e) =>
+          e.kind === "ask-cco" ||
+          ["nav-today", "nav-decisions", "nav-clients", "nav-ask", "nav-overview", "nav-search"].includes(
+            e.id,
+          ),
+      );
+  const all = [...visibleStatic, ...visibleEntries];
 
   const onSelect = (item: PaletteEntry) => {
     setOpen(false);
@@ -128,7 +144,11 @@ export default function CommandPalette({ entries = [] }: { entries?: PaletteEntr
           <div className="flex items-center gap-2 px-4 py-3 border-b border-ink-100 dark:border-ink-800">
             <Search className="w-4 h-4 text-ink-400 flex-shrink-0" aria-hidden />
             <Command.Input
-              placeholder="Type a command or search clients, agents, runbooks…"
+              placeholder={
+                advanced
+                  ? "Search anywhere — clients, agents, runbooks, skills…"
+                  : "Where do you want to go?"
+              }
               value={query}
               onValueChange={setQuery}
               className="flex-1 bg-transparent border-0 outline-none text-body placeholder:text-ink-400"
