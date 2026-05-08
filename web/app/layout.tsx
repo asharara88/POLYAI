@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import BottomNav from "@/components/BottomNav";
@@ -12,10 +12,15 @@ export const metadata: Metadata = {
   description:
     "Flow — AI-driven multi-agent commercial control plane. Marketing, sales, and BD orchestration.",
   applicationName: "Flow",
+};
+
+export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0c0c10" },
   ],
+  width: "device-width",
+  initialScale: 1,
 };
 
 const themeInitScript = `
