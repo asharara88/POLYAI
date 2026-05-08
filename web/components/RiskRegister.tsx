@@ -72,17 +72,23 @@ export default function RiskRegister({ register }: { register: ParsedRiskRegiste
   return (
     <Stack gap="6">
       <Section
-        title="Risk register"
-        description={`${reds.length} red · ${ambers.length} amber · ${greens.length} green`}
+        title="Risks to watch"
+        description={
+          reds.length > 0
+            ? `${reds.length} need attention · ${ambers.length} watching · ${greens.length} on track`
+            : ambers.length > 0
+              ? `${ambers.length} watching · ${greens.length} on track`
+              : `${greens.length} on track`
+        }
         meta={<span>updated {register.lastUpdated ?? "—"}</span>}
       >
         <Stack gap="6">
           {reds.length > 0 && (
             <section>
               <SectionHeader tone="danger">
-                <span className="inline-flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-1.5 normal-case tracking-normal">
                   <AlertOctagon className="w-3.5 h-3.5" aria-hidden />
-                  Red — escalation triggered
+                  Need attention now
                 </span>
               </SectionHeader>
               <Stack gap="3">
@@ -95,9 +101,9 @@ export default function RiskRegister({ register }: { register: ParsedRiskRegiste
           {ambers.length > 0 && (
             <section>
               <SectionHeader tone="warning">
-                <span className="inline-flex items-center gap-1.5">
+                <span className="inline-flex items-center gap-1.5 normal-case tracking-normal">
                   <AlertTriangle className="w-3.5 h-3.5" aria-hidden />
-                  Amber — actively monitored
+                  Watching
                 </span>
               </SectionHeader>
               <Stack gap="3">
@@ -108,33 +114,33 @@ export default function RiskRegister({ register }: { register: ParsedRiskRegiste
             </section>
           )}
           {greens.length > 0 && (
-            <section>
-              <SectionHeader tone="success">
-                <span className="inline-flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5" aria-hidden />
-                  Green — mitigation in place
-                </span>
-              </SectionHeader>
-              <Stack gap="3">
+            <details className="group">
+              <summary className="cursor-pointer list-none inline-flex items-center gap-1.5 text-body-sm text-success-600 dark:text-success-400 hover:text-success-700 dark:hover:text-success-300 transition-colors">
+                <ShieldCheck className="w-3.5 h-3.5" aria-hidden />
+                <span>{greens.length} on track</span>
+                <span className="text-ink-400 group-open:hidden">· show</span>
+                <span className="text-ink-400 hidden group-open:inline">· hide</span>
+              </summary>
+              <Stack gap="3" className="mt-3">
                 {greens.map((r) => (
                   <RiskCard key={r.title} risk={r} />
                 ))}
               </Stack>
-            </section>
+            </details>
           )}
         </Stack>
       </Section>
 
       {register.watchlist.length > 0 && (
-        <section>
-          <SectionHeader>
-            <span className="inline-flex items-center gap-1.5">
-              <Eye className="w-3.5 h-3.5" aria-hidden />
-              Watchlist (not yet a risk)
-            </span>
-          </SectionHeader>
-          <Card padded={false}>
-            <ul className="px-4 py-3 text-body-sm text-ink-600 dark:text-ink-400 space-y-1.5">
+        <details className="group">
+          <summary className="cursor-pointer list-none inline-flex items-center gap-1.5 text-body-sm text-ink-500 hover:text-ink-700 dark:hover:text-ink-200 transition-colors">
+            <Eye className="w-3.5 h-3.5" aria-hidden />
+            <span>{register.watchlist.length} on the watchlist</span>
+            <span className="text-ink-400 group-open:hidden">· show</span>
+            <span className="text-ink-400 hidden group-open:inline">· hide</span>
+          </summary>
+          <Card padded={false} className="mt-3">
+            <ul className="px-4 py-3 text-body-sm text-ink-600 dark:text-ink-300 space-y-1.5">
               {register.watchlist.map((w, i) => (
                 <li key={i} className="leading-snug">
                   {w}
@@ -142,7 +148,7 @@ export default function RiskRegister({ register }: { register: ParsedRiskRegiste
               ))}
             </ul>
           </Card>
-        </section>
+        </details>
       )}
     </Stack>
   );

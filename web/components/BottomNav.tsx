@@ -5,17 +5,17 @@ import { usePathname } from "next/navigation";
 import {
   Sparkles,
   CheckCircle2,
-  Search,
   Building2,
   MessageSquare,
+  MoreHorizontal,
 } from "lucide-react";
 
 const items = [
-  { href: "/cco", label: "CCO", icon: Sparkles },
-  { href: "/approvals", label: "Approvals", icon: CheckCircle2 },
+  { href: "/cco", label: "Today", icon: Sparkles },
+  { href: "/approvals", label: "Decisions", icon: CheckCircle2 },
   { href: "/clients", label: "Clients", icon: Building2 },
-  { href: "/chat", label: "Chat", icon: MessageSquare },
-  { href: "/search", label: "Search", icon: Search },
+  { href: "/chat", label: "Ask", icon: MessageSquare },
+  { href: "/agents", label: "More", icon: MoreHorizontal },
 ];
 
 export default function BottomNav() {
@@ -38,7 +38,7 @@ export default function BottomNav() {
               href={it.href}
               aria-current={active ? "page" : undefined}
               className={[
-                "flex flex-col items-center gap-0.5 py-2.5 text-label-xs font-mono uppercase tracking-wider transition-colors",
+                "flex flex-col items-center gap-0.5 py-2.5 text-label-xs font-medium transition-colors",
                 "min-h-[48px] focus-visible:outline-none focus-visible:bg-ink-100 dark:focus-visible:bg-ink-800",
                 active
                   ? "text-accent"

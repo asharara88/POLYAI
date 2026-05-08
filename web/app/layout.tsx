@@ -60,14 +60,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="main" className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
             {children}
           </main>
-          <footer className="max-w-6xl mx-auto px-4 sm:px-6 py-10 text-body-xs font-mono text-ink-400 flex items-center justify-between flex-wrap gap-2 print:hidden">
-            <span>Flow · AI-driven control plane</span>
-            <span className="opacity-70 hidden sm:inline">
-              press{" "}
+          <footer className="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-body-xs text-ink-400 dark:text-ink-500 flex items-center justify-between flex-wrap gap-2 print:hidden">
+            <span>Flow · AI-driven solutions</span>
+            <span className="hidden sm:inline">
+              Tip:{" "}
               <kbd className="px-1.5 py-0.5 rounded bg-ink-100 dark:bg-ink-800 text-ink-600 dark:text-ink-300 font-mono">
                 ⌘ K
               </kbd>{" "}
-              for command palette
+              opens search
             </span>
           </footer>
           <CommandPalette entries={paletteEntries} />

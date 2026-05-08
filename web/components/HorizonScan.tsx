@@ -95,12 +95,12 @@ export default function HorizonScan({ scan }: { scan: ParsedHorizonScan }) {
         title={
           <span className="inline-flex items-center gap-2">
             <Telescope className="w-5 h-5 text-ink-500" aria-hidden />
-            Horizon scan
+            What's new today
           </span>
         }
-        description={`${scan.itemsCount ?? scan.surfaced.length} items surfaced · ${
+        description={`${scan.itemsCount ?? scan.surfaced.length} things worth knowing · scanned ${
           scan.sourcesCount ?? "—"
-        } sources scanned`}
+        } sources`}
         meta={<span>{scan.scannedAt ?? scan.date}</span>}
       >
         <Stack gap="3">
@@ -111,15 +111,15 @@ export default function HorizonScan({ scan }: { scan: ParsedHorizonScan }) {
       </Section>
 
       {scan.watchlist.length > 0 && (
-        <section>
-          <SectionHeader>
-            <span className="inline-flex items-center gap-1.5">
-              <Eye className="w-3.5 h-3.5" aria-hidden />
-              Watch list (no action yet)
-            </span>
-          </SectionHeader>
-          <Card padded={false}>
-            <ul className="px-4 py-3 text-body-sm text-ink-600 dark:text-ink-400 space-y-1.5">
+        <details className="group">
+          <summary className="cursor-pointer list-none inline-flex items-center gap-1.5 text-body-sm text-ink-500 hover:text-ink-700 dark:hover:text-ink-200 transition-colors">
+            <Eye className="w-3.5 h-3.5" aria-hidden />
+            <span>{scan.watchlist.length} more on the watchlist</span>
+            <span className="text-ink-400 group-open:hidden">· show</span>
+            <span className="text-ink-400 hidden group-open:inline">· hide</span>
+          </summary>
+          <Card padded={false} className="mt-3">
+            <ul className="px-4 py-3 text-body-sm text-ink-600 dark:text-ink-300 space-y-1.5">
               {scan.watchlist.map((w, i) => (
                 <li key={i} className="leading-snug">
                   {w}
@@ -127,7 +127,7 @@ export default function HorizonScan({ scan }: { scan: ParsedHorizonScan }) {
               ))}
             </ul>
           </Card>
-        </section>
+        </details>
       )}
     </Stack>
   );

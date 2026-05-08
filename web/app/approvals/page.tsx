@@ -57,29 +57,26 @@ export default async function Page() {
 
   return (
     <div className="space-y-12">
-      {/* CCO native queue (top) */}
+      {/* Decisions queue (top) */}
       <section className="space-y-5">
         <header>
           <div className="flex items-baseline justify-between gap-3 flex-wrap">
             <div>
-              <h1 className="text-title-lg font-semibold tracking-tight">
-                CCO decision-asks
+              <h1 className="text-display font-semibold tracking-tight">
+                Decisions
               </h1>
-              <p className="text-body-sm text-ink-500 dark:text-ink-400 mt-1.5 max-w-2xl">
-                Decisions routed to the CCO by{" "}
-                <code className="font-mono text-body-xs">decision-router</code> per client{" "}
-                <code className="font-mono text-body-xs">approval_gates</code>. Filters
-                persist per device. Sign action commits via GitHub when{" "}
-                <code className="font-mono text-body-xs">GITHUB_TOKEN</code> is set.
+              <p className="text-body text-ink-600 dark:text-ink-300 mt-1.5 max-w-2xl">
+                Sign, send back, or decline. Each decision is queued by the team
+                and waiting on you. Your filters are remembered.
               </p>
             </div>
             <div className="flex items-center gap-3 flex-wrap">
-              <LivePulse autoMs={60_000} label="queue" />
+              <LivePulse autoMs={60_000} label="updated" />
               <Link
                 href="/cco"
-                className="text-label-xs font-mono uppercase tracking-wider text-accent hover:underline"
+                className="text-body-sm text-ink-600 dark:text-ink-300 hover:text-accent transition-colors"
               >
-                CCO Daily ›
+                Today →
               </Link>
             </div>
           </div>
@@ -88,14 +85,16 @@ export default async function Page() {
         <ApprovalsClientView groups={ccoQueues} />
       </section>
 
-      {/* GitHub PRs (bottom — code-side approvals) */}
-      <section className="space-y-4">
-        <header>
-          <h2 className="text-title font-semibold tracking-tight inline-flex items-center gap-2">
-            <GitPullRequest className="w-5 h-5 text-ink-500" aria-hidden />
-            Code-side approvals (GitHub)
-          </h2>
-          <p className="text-body-sm text-ink-500 dark:text-ink-400 mt-1.5 max-w-2xl">
+      {/* GitHub PRs (collapsed by default — power users only) */}
+      <details className="group space-y-4">
+        <summary className="cursor-pointer list-none inline-flex items-center gap-2 text-body-sm text-ink-500 hover:text-ink-800 dark:hover:text-ink-100 transition-colors">
+          <GitPullRequest className="w-4 h-4" aria-hidden />
+          <span>Code changes (GitHub PRs)</span>
+          <span className="text-ink-400 group-open:hidden">· show</span>
+          <span className="text-ink-400 hidden group-open:inline">· hide</span>
+        </summary>
+        <div className="mt-4">
+          <p className="text-body-sm text-ink-600 dark:text-ink-300 mb-3 max-w-2xl">
             Open PRs on{" "}
             <a
               href={`https://github.com/${REPO}`}
@@ -108,7 +107,6 @@ export default async function Page() {
             </a>{" "}
             for changes to agents, skills, runbooks, schemas, or web layer.
           </p>
-        </header>
 
         {"error" in ghResult ? (
           <div className="rounded-card border border-warning-300/40 bg-warning-50/40 dark:bg-warning-950/20 px-4 py-3 text-body-sm">
@@ -157,7 +155,8 @@ export default async function Page() {
             ))}
           </ul>
         )}
-      </section>
+        </div>
+      </details>
     </div>
   );
 }

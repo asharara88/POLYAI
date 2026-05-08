@@ -87,10 +87,14 @@ export default function DecisionAsksQueue({
         title={
           <span className="inline-flex items-center gap-2">
             <Inbox className="w-5 h-5 text-ink-500" aria-hidden />
-            Decision-asks queue
+            Decisions to make
           </span>
         }
-        description={`${asks.pending.length} pending · ${asks.recentlySigned.length} signed last 7 days`}
+        description={
+          asks.pending.length === 0
+            ? `All caught up · ${asks.recentlySigned.length} signed in the last week`
+            : `${asks.pending.length} waiting on you · ${asks.recentlySigned.length} signed in the last week`
+        }
         meta={<span>{asks.date}</span>}
       >
         {asks.pending.length === 0 ? (
@@ -107,13 +111,13 @@ export default function DecisionAsksQueue({
       </Section>
 
       {asks.recentlySigned.length > 0 && (
-        <section>
-          <SectionHeader>
-            <span className="inline-flex items-center gap-1.5">
-              <History className="w-3.5 h-3.5" aria-hidden />
-              Recently signed (audit trail)
-            </span>
-          </SectionHeader>
+        <details className="group">
+          <summary className="cursor-pointer list-none inline-flex items-center gap-1.5 text-body-sm text-ink-500 hover:text-ink-700 dark:hover:text-ink-200 transition-colors mb-3">
+            <History className="w-3.5 h-3.5" aria-hidden />
+            <span>{asks.recentlySigned.length} recently signed</span>
+            <span className="text-ink-400 group-open:hidden">· show</span>
+            <span className="text-ink-400 hidden group-open:inline">· hide</span>
+          </summary>
           <Card padded={false} className="overflow-hidden">
             <table className="w-full text-body-xs">
               <thead>
@@ -149,7 +153,7 @@ export default function DecisionAsksQueue({
               </tbody>
             </table>
           </Card>
-        </section>
+        </details>
       )}
     </Stack>
   );

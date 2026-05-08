@@ -34,10 +34,10 @@ const SECTIONS: {
   anchor: string;
   icon: React.ReactNode;
 }[] = [
-  { key: "brief", label: "Morning brief", anchor: "brief", icon: <FileText className="w-3.5 h-3.5" /> },
+  { key: "brief", label: "Today's brief", anchor: "brief", icon: <FileText className="w-3.5 h-3.5" /> },
   { key: "asks", label: "Decisions", anchor: "asks", icon: <CheckCircle2 className="w-3.5 h-3.5" /> },
   { key: "risks", label: "Risks", anchor: "risks", icon: <AlertTriangle className="w-3.5 h-3.5" /> },
-  { key: "horizon", label: "Horizon", anchor: "horizon", icon: <Telescope className="w-3.5 h-3.5" /> },
+  { key: "horizon", label: "What's new", anchor: "horizon", icon: <Telescope className="w-3.5 h-3.5" /> },
   { key: "calendar", label: "Calendar", anchor: "calendar", icon: <CalendarDays className="w-3.5 h-3.5" /> },
 ];
 
@@ -90,19 +90,17 @@ export default async function CcoPage({
       <header className="mb-8 space-y-3">
         <Breadcrumbs
           crumbs={[
-            { label: "Flow", href: "/" },
-            { label: "CCO Daily", icon: <Sparkles className="w-3 h-3" /> },
+            { label: "Today", icon: <Sparkles className="w-3 h-3" /> },
             { label: displayName },
           ]}
         />
         <div className="flex items-baseline justify-between flex-wrap gap-3">
           <div>
-            <h1 className="text-display font-semibold tracking-tight flex items-center gap-2">
-              <Sparkles className="w-7 h-7 text-accent" aria-hidden />
-              {displayName}
+            <h1 className="text-display font-semibold tracking-tight">
+              Today
             </h1>
-            <p className="text-body-sm text-ink-500 mt-1">
-              CCO daily control plane · what needs your attention today
+            <p className="text-body text-ink-600 dark:text-ink-300 mt-1">
+              {displayName} — what needs you today
             </p>
           </div>
           <div className="flex items-center gap-3 flex-wrap">
@@ -134,23 +132,23 @@ export default async function CcoPage({
             )}
             <Link
               href={`/clients/${activeSlug}`}
-              className="text-label-xs font-mono uppercase tracking-wider text-ink-500 hover:text-accent transition-colors"
+              className="text-body-sm text-ink-600 dark:text-ink-300 hover:text-accent transition-colors"
             >
-              client workspace ›
+              Client workspace →
             </Link>
           </div>
         </div>
 
-        {/* Section nav */}
+        {/* Jump-to nav */}
         <nav
-          aria-label="CCO sections"
+          aria-label="Jump to section"
           className="flex flex-wrap gap-0.5 border-b border-ink-200/70 dark:border-ink-800 pb-0"
         >
           {SECTIONS.map((s) => (
             <a
               key={s.key}
               href={`#${s.anchor}`}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-label-sm font-mono uppercase tracking-wider text-ink-500 hover:text-ink-900 dark:hover:text-ink-100 border-b-2 border-transparent hover:border-accent transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-body-sm text-ink-600 dark:text-ink-300 hover:text-ink-900 dark:hover:text-ink-50 border-b-2 border-transparent hover:border-accent transition-colors"
             >
               <span aria-hidden>{s.icon}</span>
               {s.label}

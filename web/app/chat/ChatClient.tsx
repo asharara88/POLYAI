@@ -106,25 +106,35 @@ export default function ChatClient({ clients }: { clients: ClientItem[] }) {
         )}
       </div>
 
-      <div className="rounded-lg border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 min-h-[40vh] max-h-[65vh] overflow-y-auto p-4">
+      <div className="rounded-card border border-ink-200/70 dark:border-ink-800 dark:ring-1 dark:ring-white/[0.06] bg-white dark:bg-ink-900 min-h-[40vh] max-h-[65vh] overflow-y-auto p-5 shadow-card">
         {messages.length === 0 ? (
-          <div className="text-sm text-ink-400 font-mono space-y-3">
-            <div>CCO presets — try:</div>
-            <ul className="list-disc ml-5 space-y-1">
-              <li>Brief me on this morning</li>
-              <li>What needs my attention today?</li>
-              <li>Brief me for the Driven Properties senior-partner meeting</li>
-              <li>Show me deals stuck more than 14 days</li>
-              <li>Channel-mix shift this week vs. last</li>
-              <li>Aged risks open more than 30 days</li>
-            </ul>
-            <div className="pt-2">team presets:</div>
-            <ul className="list-disc ml-5 space-y-1">
-              <li>Plan a Q3 launch campaign for [client]</li>
-              <li>Draft a creative brief for the hero landing page</li>
-              <li>Onboard a new real-estate developer client called horizon-residences</li>
-              <li>What should research look at first for a luxury off-plan launch?</li>
-            </ul>
+          <div className="text-body-sm text-ink-600 dark:text-ink-300 space-y-4">
+            <div className="font-medium text-ink-700 dark:text-ink-200">Try one of these</div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {[
+                "What needs me today?",
+                "Brief me on this morning",
+                "Show me stuck deals",
+                "How's our channel mix?",
+                "Aged risks I should know about",
+                "Plan a Q3 launch campaign",
+                "Draft a creative brief for the hero landing page",
+                "Onboard a new real-estate developer client",
+              ].map((prompt) => (
+                <button
+                  key={prompt}
+                  type="button"
+                  onClick={() => setInput(prompt)}
+                  disabled={busy}
+                  className="text-left rounded-md border border-ink-200/70 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 hover:border-accent/40 hover:bg-accent/5 dark:hover:bg-accent/10 px-3 py-2 text-body-sm text-ink-700 dark:text-ink-200 transition-colors"
+                >
+                  {prompt}
+                </button>
+              ))}
+            </div>
+            <p className="text-body-xs text-ink-400 pt-2">
+              Cmd / Ctrl + Enter to send. Pick a client above to scope the answer.
+            </p>
           </div>
         ) : (
           <div className="space-y-6">

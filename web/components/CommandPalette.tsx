@@ -36,21 +36,21 @@ export type PaletteEntry = {
 };
 
 const STATIC_ITEMS: PaletteEntry[] = [
-  { id: "nav-cco", label: "CCO Daily", group: "Navigate", href: "/cco", kind: "navigate" },
-  { id: "nav-overview", label: "Overview", group: "Navigate", href: "/", kind: "navigate" },
-  { id: "nav-chat", label: "Chat with the CCO", group: "Navigate", href: "/chat", kind: "navigate" },
-  { id: "nav-clients", label: "Clients", group: "Navigate", href: "/clients", kind: "navigate" },
-  { id: "nav-agents", label: "Agents", group: "Navigate", href: "/agents", kind: "navigate" },
-  { id: "nav-approvals", label: "Approvals", group: "Navigate", href: "/approvals", kind: "navigate" },
-  { id: "nav-verticals", label: "Verticals", group: "Navigate", href: "/verticals", kind: "navigate" },
-  { id: "nav-schemas", label: "Schemas", group: "Navigate", href: "/schemas", kind: "navigate" },
-  { id: "nav-search", label: "Global search", group: "Navigate", href: "/search", kind: "navigate" },
+  { id: "nav-today", label: "Today", group: "Go to", href: "/cco", kind: "navigate" },
+  { id: "nav-decisions", label: "Decisions", group: "Go to", href: "/approvals", kind: "navigate" },
+  { id: "nav-clients", label: "Clients", group: "Go to", href: "/clients", kind: "navigate" },
+  { id: "nav-ask", label: "Ask Flow", group: "Go to", href: "/chat", kind: "navigate" },
+  { id: "nav-overview", label: "Overview", group: "Go to", href: "/", kind: "navigate" },
+  { id: "nav-agents", label: "Agents", group: "Go to", href: "/agents", kind: "navigate" },
+  { id: "nav-verticals", label: "Verticals", group: "Go to", href: "/verticals", kind: "navigate" },
+  { id: "nav-schemas", label: "Schemas", group: "Go to", href: "/schemas", kind: "navigate" },
+  { id: "nav-search", label: "Search", group: "Go to", href: "/search", kind: "navigate" },
 
-  { id: "chat-brief", label: "Brief me on this morning", hint: "preset", group: "Ask the CCO", href: "/chat?q=Brief%20me%20on%20this%20morning", kind: "ask-cco" },
-  { id: "chat-attention", label: "What needs my attention?", hint: "preset", group: "Ask the CCO", href: "/chat?q=What%20needs%20my%20attention%20today%3F", kind: "ask-cco" },
-  { id: "chat-deals-stuck", label: "Deals stuck more than 14 days", hint: "preset", group: "Ask the CCO", href: "/chat?q=Show%20me%20deals%20stuck%20more%20than%2014%20days", kind: "ask-cco" },
-  { id: "chat-channel-mix", label: "Channel-mix shift this week", hint: "preset", group: "Ask the CCO", href: "/chat?q=Channel-mix%20shift%20this%20week%20vs.%20last", kind: "ask-cco" },
-  { id: "chat-aged-risks", label: "Aged risks open more than 30 days", hint: "preset", group: "Ask the CCO", href: "/chat?q=Aged%20risks%20open%20more%20than%2030%20days", kind: "ask-cco" },
+  { id: "chat-brief", label: "Brief me on this morning", hint: "preset", group: "Ask", href: "/chat?q=Brief%20me%20on%20this%20morning", kind: "ask-cco" },
+  { id: "chat-attention", label: "What needs me today?", hint: "preset", group: "Ask", href: "/chat?q=What%20needs%20me%20today%3F", kind: "ask-cco" },
+  { id: "chat-deals-stuck", label: "Show me stuck deals", hint: "preset", group: "Ask", href: "/chat?q=Show%20me%20deals%20stuck%20more%20than%2014%20days", kind: "ask-cco" },
+  { id: "chat-channel-mix", label: "How's our channel mix?", hint: "preset", group: "Ask", href: "/chat?q=How%20has%20channel-mix%20shifted%20this%20week%20vs%20last%3F", kind: "ask-cco" },
+  { id: "chat-aged-risks", label: "Show me aged risks", hint: "preset", group: "Ask", href: "/chat?q=Aged%20risks%20open%20more%20than%2030%20days", kind: "ask-cco" },
 ];
 
 const ICON_BY_KIND: Record<PaletteEntry["kind"], React.ReactNode> = {
