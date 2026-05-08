@@ -14,6 +14,7 @@ import HorizonScan from "@/components/HorizonScan";
 import DecisionAsksQueue from "@/components/DecisionAsksQueue";
 import CcoCalendar from "@/components/CcoCalendar";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import LivePulse from "@/components/LivePulse";
 import {
   AlertTriangle,
   CalendarDays,
@@ -104,7 +105,8 @@ export default async function CcoPage({
               CCO daily control plane · what needs your attention today
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-wrap">
+            <LivePulse autoMs={120_000} label="brief" />
             {clientsWithCco.length > 1 && (
               <form className="flex items-center gap-2">
                 <label htmlFor="client-switch" className="text-label-xs font-mono uppercase tracking-wider text-ink-400">

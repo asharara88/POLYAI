@@ -1,11 +1,13 @@
-import { getClients, getDecisionAsks } from "@/lib/content";
-import DecisionAsksQueue from "@/components/DecisionAsksQueue";
 import Link from "next/link";
+import { ExternalLink, GitPullRequest } from "lucide-react";
+import { getClients, getDecisionAsks } from "@/lib/content";
+import ApprovalsClientView from "@/components/ApprovalsClientView";
+import LivePulse from "@/components/LivePulse";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 60;
 
-const REPO = "asharara88/polyai";
+const REPO = process.env.GITHUB_REPO ?? "asharara88/polyai";
 
 type GhPR = {
   number: number;
@@ -42,7 +44,11 @@ async function fetchOpenPRs(): Promise<GhPR[] | { error: string }> {
 function clientsWithPendingAsks() {
   return getClients()
     .map((c) => ({ client: c, asks: getDecisionAsks(c.slug) }))
-    .filter((x) => x.asks && x.asks.pending.length > 0);
+    .filter((x) => x.asks && x.asks.pending.length > 0)
+    .map((x) => ({
+      client: { slug: x.client.slug, displayName: x.client.displayName },
+      asks: x.asks!,
+    }));
 }
 
 export default async function Page() {
@@ -52,76 +58,64 @@ export default async function Page() {
   return (
     <div className="space-y-12">
       {/* CCO native queue (top) */}
-      <section className="space-y-6">
+      <section className="space-y-5">
         <header>
           <div className="flex items-baseline justify-between gap-3 flex-wrap">
             <div>
-              <h1 className="text-2xl font-semibold tracking-tight">CCO decision-asks</h1>
-              <p className="text-ink-500 dark:text-ink-400 mt-2 max-w-2xl text-sm">
+              <h1 className="text-title-lg font-semibold tracking-tight">
+                CCO decision-asks
+              </h1>
+              <p className="text-body-sm text-ink-500 dark:text-ink-400 mt-1.5 max-w-2xl">
                 Decisions routed to the CCO by{" "}
-                <code className="font-mono text-xs">decision-router</code> per client{" "}
-                <code className="font-mono text-xs">approval_gates</code>. Per{" "}
-                <code className="font-mono text-xs">schemas/decision-memo.md</code>. Sign workflow
-                Phase 5B-2.
+                <code className="font-mono text-body-xs">decision-router</code> per client{" "}
+                <code className="font-mono text-body-xs">approval_gates</code>. Filters
+                persist per device. Sign action commits via GitHub when{" "}
+                <code className="font-mono text-body-xs">GITHUB_TOKEN</code> is set.
               </p>
             </div>
-            <Link
-              href="/cco"
-              className="text-xs font-mono text-accent hover:text-accent/80"
-            >
-              CCO Daily ›
-            </Link>
+            <div className="flex items-center gap-3 flex-wrap">
+              <LivePulse autoMs={60_000} label="queue" />
+              <Link
+                href="/cco"
+                className="text-label-xs font-mono uppercase tracking-wider text-accent hover:underline"
+              >
+                CCO Daily ›
+              </Link>
+            </div>
           </div>
         </header>
 
-        {ccoQueues.length === 0 ? (
-          <div className="rounded-md border border-dashed border-ink-300/70 dark:border-ink-700 px-4 py-8 text-center text-sm text-ink-500">
-            No pending CCO decision-asks across active clients.
-          </div>
-        ) : (
-          ccoQueues.map((q) => (
-            <div key={q.client.slug} className="space-y-3">
-              <div className="flex items-baseline justify-between gap-3">
-                <h2 className="text-base font-medium">
-                  {q.client.displayName ?? q.client.slug}
-                </h2>
-                <Link
-                  href={`/cco?client=${q.client.slug}`}
-                  className="text-xs font-mono text-ink-400 hover:text-accent"
-                >
-                  open in CCO Daily ›
-                </Link>
-              </div>
-              <DecisionAsksQueue asks={q.asks!} client={q.client.slug} />
-            </div>
-          ))
-        )}
+        <ApprovalsClientView groups={ccoQueues} />
       </section>
 
       {/* GitHub PRs (bottom — code-side approvals) */}
       <section className="space-y-4">
         <header>
-          <h2 className="text-lg font-semibold tracking-tight">Code-side approvals (GitHub)</h2>
-          <p className="text-ink-500 dark:text-ink-400 mt-1 max-w-2xl text-sm">
+          <h2 className="text-title font-semibold tracking-tight inline-flex items-center gap-2">
+            <GitPullRequest className="w-5 h-5 text-ink-500" aria-hidden />
+            Code-side approvals (GitHub)
+          </h2>
+          <p className="text-body-sm text-ink-500 dark:text-ink-400 mt-1.5 max-w-2xl">
             Open PRs on{" "}
             <a
               href={`https://github.com/${REPO}`}
-              className="text-accent hover:underline"
+              className="text-accent hover:underline inline-flex items-center gap-1"
               target="_blank"
               rel="noopener"
             >
               {REPO}
+              <ExternalLink className="w-3 h-3" aria-hidden />
             </a>{" "}
             for changes to agents, skills, runbooks, schemas, or web layer.
           </p>
         </header>
 
         {"error" in ghResult ? (
-          <div className="rounded-md border border-amber-300/40 bg-amber-50/40 dark:bg-amber-950/20 px-4 py-3 text-sm">
+          <div className="rounded-card border border-warning-300/40 bg-warning-50/40 dark:bg-warning-950/20 px-4 py-3 text-body-sm">
             {ghResult.error}
           </div>
         ) : ghResult.length === 0 ? (
-          <div className="rounded-md border border-dashed border-ink-300/70 dark:border-ink-700 px-4 py-6 text-sm text-ink-500">
+          <div className="rounded-card border border-dashed border-ink-300/70 dark:border-ink-700 px-4 py-6 text-body-sm text-ink-500">
             No open PRs.
           </div>
         ) : (
@@ -129,7 +123,7 @@ export default async function Page() {
             {ghResult.map((pr) => (
               <li
                 key={pr.number}
-                className="rounded-md border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 px-4 py-3"
+                className="rounded-card border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 px-4 py-3 shadow-card"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
@@ -137,11 +131,12 @@ export default async function Page() {
                       href={pr.html_url}
                       target="_blank"
                       rel="noopener"
-                      className="font-medium hover:underline"
+                      className="font-medium hover:underline inline-flex items-center gap-1"
                     >
                       #{pr.number} · {pr.title}
+                      <ExternalLink className="w-3 h-3 text-ink-400" aria-hidden />
                     </a>
-                    <div className="mt-1 text-xs font-mono text-ink-400">
+                    <div className="mt-1 text-label-xs font-mono text-ink-400">
                       {pr.user.login} · {pr.head.ref} → {pr.base.ref} · opened{" "}
                       {new Date(pr.created_at).toLocaleDateString()}
                       {pr.draft ? " · draft" : ""}
@@ -151,7 +146,7 @@ export default async function Page() {
                     {pr.labels.map((l) => (
                       <span
                         key={l.name}
-                        className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-ink-100 dark:bg-ink-800 text-ink-600 dark:text-ink-300"
+                        className="text-label-xs font-mono px-1.5 py-0.5 rounded bg-ink-100 dark:bg-ink-800 text-ink-600 dark:text-ink-300"
                       >
                         {l.name}
                       </span>

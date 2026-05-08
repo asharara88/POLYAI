@@ -1,3 +1,5 @@
+"use client";
+
 import type { ParsedDecisionAsks, DecisionAsk } from "@/lib/content";
 import SignDecisionAsk from "@/components/SignDecisionAsk";
 import { Section, SectionHeader, Stack, Card, ClassBadge, UrgencyBadge } from "@/components/ui";
