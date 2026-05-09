@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { ReactNode } from "react";
 
@@ -9,15 +12,34 @@ export type Crumb = {
 };
 
 export default function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
-  if (crumbs.length === 0) return null;
+  const pathname = usePathname() ?? "";
+  const isWorkspace = pathname.startsWith("/workspace");
+
+  // When the URL is /workspace/* (middleware-rewritten from /clients/<slug>/*),
+  // replace the "Clients > <slug>" prefix with a single "Workspace" crumb.
+  let displayCrumbs = crumbs;
+  if (
+    isWorkspace &&
+    crumbs.length > 0 &&
+    (crumbs[0].label === "Clients" || crumbs[0].label === "Workspaces")
+  ) {
+    const skipSlugCrumb =
+      crumbs.length > 1 && (crumbs[1].href ?? "").startsWith("/clients/");
+    displayCrumbs = [
+      { label: "Workspace", href: "/workspace", icon: crumbs[0].icon },
+      ...crumbs.slice(skipSlugCrumb ? 2 : 1),
+    ];
+  }
+
+  if (displayCrumbs.length === 0) return null;
 
   return (
     <nav
       aria-label="Breadcrumb"
-      className="flex items-center gap-1 text-body-xs font-mono text-ink-400 flex-wrap"
+      className="flex items-center gap-1 text-body-xs text-ink-500 dark:text-ink-400 flex-wrap"
     >
-      {crumbs.map((c, i) => {
-        const last = i === crumbs.length - 1;
+      {displayCrumbs.map((c, i) => {
+        const last = i === displayCrumbs.length - 1;
         const node = (
           <span className="inline-flex items-center gap-1">
             {c.icon && (

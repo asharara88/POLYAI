@@ -8,19 +8,25 @@ import {
   MessageSquare,
   Sparkles,
 } from "lucide-react";
-import UserMenu from "@/components/UserMenu";
+import UserMenu, { type WorkspaceOption } from "@/components/UserMenu";
 import MoreMenu from "@/components/MoreMenu";
 import { FlowMark } from "@/components/FlowLogo";
+import { useIdentity } from "@/lib/identity";
 
-const items = [
+const baseItems = [
   { href: "/cco", label: "Today", icon: Sparkles },
   { href: "/approvals", label: "Decisions", icon: CheckCircle2 },
-  { href: "/clients", label: "Clients", icon: Building2 },
-  { href: "/chat", label: "Ask", icon: MessageSquare },
 ];
 
-export default function Nav() {
+const projectsItem = { href: "/workspace/projects", label: "Projects", icon: Building2 };
+const clientsItem = { href: "/clients", label: "Clients", icon: Building2 };
+const askItem = { href: "/chat", label: "Ask", icon: MessageSquare };
+
+export default function Nav({ workspaces = [] }: { workspaces?: WorkspaceOption[] }) {
   const pathname = usePathname() ?? "/";
+  const { identity } = useIdentity();
+  const isAdmin = identity?.role === "admin";
+  const items = [...baseItems, isAdmin ? clientsItem : projectsItem, askItem];
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
@@ -69,7 +75,7 @@ export default function Nav() {
         <div className="flex items-center gap-1 flex-shrink-0">
           <MoreMenu />
           <span className="w-px h-5 bg-ink-200 dark:bg-ink-800 mx-1" aria-hidden />
-          <UserMenu />
+          <UserMenu workspaces={workspaces} />
         </div>
       </div>
     </header>

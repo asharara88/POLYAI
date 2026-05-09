@@ -7,6 +7,7 @@ import CommandPalette from "@/components/CommandPalette";
 import { buildPaletteEntries } from "@/lib/palette-entries";
 import { IdentityProvider } from "@/lib/identity";
 import { AdvancedModeProvider } from "@/lib/advanced-mode";
+import { getClients } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Flow — AI-driven control plane",
@@ -37,12 +38,19 @@ const themeInitScript = `
     html.dataset.density = d;
     var adv = localStorage.getItem('flow-advanced') === 'true';
     html.dataset.advanced = adv ? 'true' : 'false';
+    // Workspace cookie default — middleware uses this to rewrite /workspace/* → /clients/<slug>/*
+    if (!document.cookie.split('; ').some(function(c){return c.indexOf('flow-workspace=')===0;})) {
+      document.cookie = 'flow-workspace=aldar-developments; path=/; max-age=31536000; SameSite=Lax';
+    }
   } catch (_) {}
 })();
 `;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const paletteEntries = buildPaletteEntries();
+  const workspaces = getClients()
+    .filter((c) => !c.isTemplate)
+    .map((c) => ({ slug: c.slug, name: c.displayName ?? c.slug, isExample: c.isExample }));
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -60,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
             Skip to main content
           </a>
-          <Nav />
+          <Nav workspaces={workspaces} />
           <main id="main" className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
             {children}
           </main>
