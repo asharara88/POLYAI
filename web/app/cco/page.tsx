@@ -13,12 +13,14 @@ import RiskRegister from "@/components/RiskRegister";
 import HorizonScan from "@/components/HorizonScan";
 import DecisionAsksQueue from "@/components/DecisionAsksQueue";
 import CcoCalendar from "@/components/CcoCalendar";
+import CcoNow from "@/components/CcoNow";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LivePulse from "@/components/LivePulse";
 import {
   AlertTriangle,
   CalendarDays,
   CheckCircle2,
+  ChevronDown,
   FileText,
   Sparkles,
   Telescope,
@@ -26,7 +28,7 @@ import {
 
 export const dynamic = "force-static";
 
-type Section = "brief" | "asks" | "risks" | "horizon" | "calendar";
+type Section = "now" | "asks" | "risks" | "brief" | "horizon" | "calendar";
 
 const SECTIONS: {
   key: Section;
@@ -34,9 +36,10 @@ const SECTIONS: {
   anchor: string;
   icon: React.ReactNode;
 }[] = [
-  { key: "brief", label: "Today's brief", anchor: "brief", icon: <FileText className="w-3.5 h-3.5" /> },
+  { key: "now", label: "Now", anchor: "now", icon: <Sparkles className="w-3.5 h-3.5" /> },
   { key: "asks", label: "Decisions", anchor: "asks", icon: <CheckCircle2 className="w-3.5 h-3.5" /> },
   { key: "risks", label: "Risks", anchor: "risks", icon: <AlertTriangle className="w-3.5 h-3.5" /> },
+  { key: "brief", label: "Brief", anchor: "brief", icon: <FileText className="w-3.5 h-3.5" /> },
   { key: "horizon", label: "What's new", anchor: "horizon", icon: <Telescope className="w-3.5 h-3.5" /> },
   { key: "calendar", label: "Calendar", anchor: "calendar", icon: <CalendarDays className="w-3.5 h-3.5" /> },
 ];
@@ -105,36 +108,11 @@ export default async function CcoPage({
           </div>
           <div className="flex items-center gap-3 flex-wrap">
             <LivePulse autoMs={120_000} label="brief" />
-            {clientsWithCco.length > 1 && (
-              <form className="flex items-center gap-2">
-                <label htmlFor="client-switch" className="text-label-xs font-mono uppercase tracking-wider text-ink-400">
-                  client
-                </label>
-                <select
-                  id="client-switch"
-                  name="client"
-                  defaultValue={activeSlug}
-                  className="bg-white dark:bg-ink-900 text-body-sm border border-ink-200 dark:border-ink-700 rounded-md px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-accent/40"
-                >
-                  {clientsWithCco.map((c) => (
-                    <option key={c.slug} value={c.slug}>
-                      {c.displayName ?? c.slug}
-                    </option>
-                  ))}
-                </select>
-                <button
-                  type="submit"
-                  className="text-label-xs font-mono uppercase tracking-wider text-ink-500 hover:text-accent transition-colors"
-                >
-                  switch ›
-                </button>
-              </form>
-            )}
             <Link
-              href={`/clients/${activeSlug}`}
+              href="/workspace"
               className="text-body-sm text-ink-600 dark:text-ink-300 hover:text-accent transition-colors"
             >
-              Client workspace →
+              Open workspace →
             </Link>
           </div>
         </div>
@@ -157,55 +135,114 @@ export default async function CcoPage({
         </nav>
       </header>
 
-      {/* Body */}
-      <div className="space-y-12">
-        <section id="brief" className="scroll-mt-20">
-          {brief ? (
-            <CcoMorningBrief brief={brief} clientName={displayName} />
-          ) : (
-            <EmptyCard label="No morning brief on file." />
-          )}
+      {/* Body — Now hero first, then Decisions + Risks visible, dense sections collapsed */}
+      <div className="space-y-10">
+        {/* Now: top items needing attention */}
+        <section id="now" className="scroll-mt-20">
+          <CcoNow asks={asks} risks={risks} calendar={calendar} />
         </section>
 
+        {/* Decisions queue — primary actionable section */}
         <section id="asks" className="scroll-mt-20">
           {asks ? (
             <DecisionAsksQueue asks={asks} client={activeSlug} />
           ) : (
-            <EmptyCard label="No decision-asks queued." />
+            <EmptyCard label="No decisions queued." />
           )}
         </section>
 
+        {/* Risk register — primary monitoring section */}
         <section id="risks" className="scroll-mt-20">
           {risks ? (
             <RiskRegister register={risks} />
           ) : (
-            <EmptyCard label="Risk register empty." />
+            <EmptyCard label="No risks tracked." />
           )}
         </section>
 
-        <section id="horizon" className="scroll-mt-20">
-          {horizon ? (
-            <HorizonScan scan={horizon} />
-          ) : (
-            <EmptyCard label="No horizon scan today." />
-          )}
-        </section>
+        {/* Below the fold: dense reading sections — collapsed by default */}
+        <CollapsedSection
+          id="brief"
+          summary={
+            brief
+              ? `Today's brief — about 90 seconds to read`
+              : "No morning brief on file."
+          }
+          disabled={!brief}
+        >
+          {brief && <CcoMorningBrief brief={brief} clientName={displayName} />}
+        </CollapsedSection>
 
-        <section id="calendar" className="scroll-mt-20">
-          {calendar ? (
-            <CcoCalendar calendar={calendar} />
-          ) : (
-            <EmptyCard label="No calendar entries." />
-          )}
-        </section>
+        <CollapsedSection
+          id="horizon"
+          summary={
+            horizon
+              ? `What's new — ${horizon.surfaced.length} surfaced item${horizon.surfaced.length === 1 ? "" : "s"}, ${horizon.watchlist.length} on watchlist`
+              : "No horizon scan today."
+          }
+          disabled={!horizon}
+        >
+          {horizon && <HorizonScan scan={horizon} />}
+        </CollapsedSection>
+
+        <CollapsedSection
+          id="calendar"
+          summary={
+            calendar
+              ? `Calendar — ${calendar.thisWeek.length} this week, ${calendar.nextWeek.length} next week`
+              : "No calendar entries."
+          }
+          disabled={!calendar}
+        >
+          {calendar && <CcoCalendar calendar={calendar} />}
+        </CollapsedSection>
       </div>
     </div>
   );
 }
 
+function CollapsedSection({
+  id,
+  summary,
+  disabled = false,
+  children,
+}: {
+  id: string;
+  summary: string;
+  disabled?: boolean;
+  children: React.ReactNode;
+}) {
+  if (disabled) {
+    return (
+      <section id={id} className="scroll-mt-20">
+        <EmptyCard label={summary} />
+      </section>
+    );
+  }
+  return (
+    <section id={id} className="scroll-mt-20">
+      <details className="group rounded-card border border-ink-200/70 dark:border-ink-800 dark:ring-1 dark:ring-white/[0.06] bg-white dark:bg-ink-900 shadow-card overflow-hidden">
+        <summary className="cursor-pointer list-none px-5 py-4 flex items-center justify-between gap-3 hover:bg-ink-50/40 dark:hover:bg-ink-950/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40">
+          <span className="text-body font-semibold text-ink-800 dark:text-ink-100">
+            {summary}
+          </span>
+          <span className="inline-flex items-center gap-1 text-body-xs text-ink-500 dark:text-ink-400">
+            <span className="group-open:hidden">Show</span>
+            <span className="hidden group-open:inline">Hide</span>
+            <ChevronDown className="w-3.5 h-3.5 transition-transform group-open:rotate-180" aria-hidden />
+          </span>
+        </summary>
+        <div className="px-5 py-5 border-t border-ink-100 dark:border-ink-800">
+          {children}
+        </div>
+      </details>
+    </section>
+  );
+}
+
 function EmptyCard({ label }: { label: string }) {
   return (
-    <div className="rounded-md border border-dashed border-ink-200 dark:border-ink-800 p-8 text-center text-sm text-ink-400 font-mono">
+    <div className="rounded-card border border-dashed border-ink-200 dark:border-ink-800 p-6 text-center text-body-sm text-ink-500 dark:text-ink-400">
       {label}
     </div>
   );

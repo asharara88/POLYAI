@@ -5,9 +5,20 @@ import SignDecisionAsk from "@/components/SignDecisionAsk";
 import { Section, SectionHeader, Stack, Card, ClassBadge, UrgencyBadge } from "@/components/ui";
 import { ChevronDown, ChevronUp, History, Inbox } from "lucide-react";
 
-function AskCard({ ask, client }: { ask: DecisionAsk; client: string }) {
+function AskCard({
+  ask,
+  client,
+  defaultOpen = false,
+}: {
+  ask: DecisionAsk;
+  client: string;
+  defaultOpen?: boolean;
+}) {
   return (
-    <details className="group rounded-card border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 shadow-card overflow-hidden">
+    <details
+      open={defaultOpen}
+      className="group rounded-card border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 shadow-card overflow-hidden"
+    >
       <summary className="cursor-pointer p-4 list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded-card">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div className="flex-1 min-w-0">
@@ -100,8 +111,8 @@ export default function DecisionAsksQueue({
           </Card>
         ) : (
           <Stack gap="2">
-            {asks.pending.map((a) => (
-              <AskCard key={a.id} ask={a} client={client} />
+            {asks.pending.map((a, i) => (
+              <AskCard key={a.id} ask={a} client={client} defaultOpen={i === 0} />
             ))}
           </Stack>
         )}
