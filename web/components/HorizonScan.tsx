@@ -62,7 +62,7 @@ function ScanItem({ item }: { item: HorizonItem }) {
           {meta.label}
         </span>
       </div>
-      <div className="text-body-xs text-ink-500 font-mono">
+      <div className="text-body-xs text-ink-500 dark:text-ink-400">
         {item.source} · {item.date}
       </div>
       <p className="text-body-sm text-ink-700 dark:text-ink-300 leading-relaxed">
@@ -70,16 +70,16 @@ function ScanItem({ item }: { item: HorizonItem }) {
       </p>
       {item.whySurfaced && (
         <div className="text-body-xs text-ink-600 dark:text-ink-400">
-          <span className="font-mono uppercase tracking-wider text-label-xs text-ink-400 mr-1">
-            why surfaced
+          <span className="font-semibold text-ink-700 dark:text-ink-200 mr-1">
+            Why this matters:
           </span>
           {item.whySurfaced}
         </div>
       )}
       {item.nextStep && (
         <div className="text-body-xs text-ink-600 dark:text-ink-400">
-          <span className="font-mono uppercase tracking-wider text-label-xs text-ink-400 mr-1">
-            next step
+          <span className="font-semibold text-ink-700 dark:text-ink-200 mr-1">
+            Next step:
           </span>
           {item.nextStep}
         </div>

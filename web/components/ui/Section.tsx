@@ -29,7 +29,7 @@ export function Section({
               <p className="text-body-sm text-ink-500 mt-0.5">{description}</p>
             )}
           </div>
-          <div className="flex items-center gap-3 text-body-xs font-mono text-ink-400">
+          <div className="flex items-center gap-3 text-body-xs text-ink-500 dark:text-ink-400">
             {meta}
             {action}
           </div>
@@ -48,7 +48,7 @@ export function SectionHeader({
   tone?: "default" | "danger" | "warning" | "success";
 }) {
   const tones: Record<string, string> = {
-    default: "text-ink-500",
+    default: "text-ink-700 dark:text-ink-200",
     danger: "text-danger-600 dark:text-danger-400",
     warning: "text-warning-600 dark:text-warning-400",
     success: "text-success-600 dark:text-success-400",
@@ -56,7 +56,7 @@ export function SectionHeader({
   return (
     <h3
       className={[
-        "text-label-sm font-mono uppercase tracking-wider mb-3",
+        "text-body-sm font-semibold tracking-tight mb-3",
         tones[tone],
       ].join(" ")}
     >
