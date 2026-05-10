@@ -140,8 +140,8 @@ export default async function Page({
       <header className="space-y-3">
         <Breadcrumbs
           crumbs={[
-            { label: "Flow", href: "/" },
-            { label: "Clients", href: "/clients", icon: <Building2 className="w-3 h-3" /> },
+            { label: "Operator", href: "/operator" },
+            { label: "Workspaces", href: "/clients", icon: <Building2 className="w-3 h-3" /> },
             { label: client.summary.displayName ?? slug },
           ]}
         />

@@ -158,7 +158,7 @@ html[data-density="cozy"] .p-5 { padding: 1rem !important; }
   .space-y-6 > * + * { margin-top: 0.75rem !important; }
 
   body::after {
-    content: "Flow — printed " attr(data-print-date);
+    content: "Aldar Developments — printed " attr(data-print-date);
     display: block;
     margin-top: 2rem;
     font-size: 9pt;

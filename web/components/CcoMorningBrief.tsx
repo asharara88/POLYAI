@@ -61,16 +61,18 @@ export default function CcoMorningBrief({
   const sections = brief.sections.filter((s) => classifySection(s.heading) !== "attention");
 
   return (
-    <article className="space-y-6">
+    <article>
       <BriefHeader
         date={brief.date}
         clientName={clientName}
         assembledAt={brief.assembledAt}
       />
 
-      {sections.map((s) => (
-        <BriefSection key={s.heading} section={s} />
-      ))}
+      <div className="mt-6 space-y-6">
+        {sections.map((s) => (
+          <BriefSection key={s.heading} section={s} />
+        ))}
+      </div>
 
       {sources.length > 0 && <SourcesFooter sources={sources} />}
     </article>
@@ -157,9 +159,11 @@ function SectionFrame({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-card border border-ink-200/70 dark:border-ink-800 dark:ring-1 dark:ring-white/[0.06] bg-white dark:bg-ink-900 shadow-card overflow-hidden">
-      <header className="px-5 py-3 border-b border-ink-100 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 flex items-center gap-2.5">
-        <span className="text-accent flex-shrink-0">{icon}</span>
+    <section className="border-t border-ink-100 dark:border-ink-800 pt-6 first-of-type:border-t-0 first-of-type:pt-0">
+      <header className="flex items-center gap-2.5 mb-4">
+        <span className="inline-flex items-center justify-center w-7 h-7 rounded-md bg-accent/10 text-accent flex-shrink-0">
+          {icon}
+        </span>
         <div className="min-w-0">
           <h3 className="text-body-sm font-semibold tracking-tight text-ink-800 dark:text-ink-100">
             {title}
@@ -171,7 +175,7 @@ function SectionFrame({
           )}
         </div>
       </header>
-      <div className="px-5 py-4">{children}</div>
+      <div>{children}</div>
     </section>
   );
 }
@@ -939,30 +943,37 @@ function parseSources(raw: string): string[] {
 
 function SourcesFooter({ sources }: { sources: string[] }) {
   return (
-    <details className="group rounded-card border border-ink-200/70 dark:border-ink-800 bg-ink-50/30 dark:bg-ink-950/30 overflow-hidden">
-      <summary className="cursor-pointer list-none px-5 py-3 flex items-center justify-between gap-3 hover:bg-ink-100/40 dark:hover:bg-ink-900/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40">
-        <span className="inline-flex items-center gap-2 text-body-sm text-ink-600 dark:text-ink-300">
-          <FileText className="w-4 h-4 text-ink-400" aria-hidden />
-          <span>Sources cited</span>
-          <span className="text-label-xs font-mono text-ink-400">{sources.length}</span>
-        </span>
-        <span className="inline-flex items-center gap-1 text-body-xs text-ink-500 dark:text-ink-400">
-          <span className="group-open:hidden">Show</span>
-          <span className="hidden group-open:inline">Hide</span>
-          <ChevronDown className="w-3.5 h-3.5 transition-transform group-open:rotate-180" aria-hidden />
-        </span>
-      </summary>
-      <div className="px-5 py-4 border-t border-ink-100 dark:border-ink-800 flex flex-wrap gap-2">
-        {sources.map((s, i) => (
-          <span
-            key={i}
-            className="inline-flex items-center gap-1 px-2 py-1 rounded text-label-xs font-mono bg-white dark:bg-ink-900 border border-ink-200/70 dark:border-ink-800 text-ink-600 dark:text-ink-300"
-          >
-            <ArrowRight className="w-3 h-3 text-ink-400" aria-hidden />
-            {s}
+    <div className="mt-8 pt-6 border-t border-ink-100 dark:border-ink-800">
+      <details className="group">
+        <summary className="cursor-pointer list-none flex items-center justify-between gap-3 hover:text-ink-900 dark:hover:text-ink-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded">
+          <span className="inline-flex items-center gap-2 text-body-sm text-ink-600 dark:text-ink-300">
+            <FileText className="w-4 h-4 text-ink-400" aria-hidden />
+            <span>Sources cited</span>
+            <span className="text-label-xs font-mono text-ink-400 tabular-nums">
+              {sources.length}
+            </span>
           </span>
-        ))}
-      </div>
-    </details>
+          <span className="inline-flex items-center gap-1 text-body-xs text-ink-500 dark:text-ink-400">
+            <span className="group-open:hidden">Show</span>
+            <span className="hidden group-open:inline">Hide</span>
+            <ChevronDown
+              className="w-3.5 h-3.5 transition-transform group-open:rotate-180"
+              aria-hidden
+            />
+          </span>
+        </summary>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {sources.map((s, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-1 px-2 py-1 rounded text-label-xs font-mono bg-ink-50 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-800 text-ink-600 dark:text-ink-300"
+            >
+              <ArrowRight className="w-3 h-3 text-ink-400" aria-hidden />
+              {s}
+            </span>
+          ))}
+        </div>
+      </details>
+    </div>
   );
 }

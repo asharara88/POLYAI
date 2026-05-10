@@ -17,8 +17,8 @@ export const dynamic = "force-static";
 const FRAMEWORK_LINKS = [
   {
     href: "/clients",
-    label: "Clients",
-    description: "Workspace picker — every configured engagement.",
+    label: "Workspaces",
+    description: "Every configured developer workspace.",
     icon: Building2,
   },
   {
@@ -70,10 +70,10 @@ export default function AdminPortalPage() {
               Super-admin
             </div>
             <h1 className="text-display font-semibold tracking-tight mt-1">
-              Flow operator portal
+              Operator portal
             </h1>
             <p className="text-body text-ink-600 dark:text-ink-300 mt-2 max-w-2xl leading-relaxed">
-              Back-of-house tools for the Flow team and Aldar IT. Workspace
+              Back-of-house tools for the platform team and Aldar IT. Workspace
               switcher, framework views, identity state. Not part of the Aldar
               workspace and not surfaced in nav, palette, or sitemap.
             </p>
@@ -91,12 +91,9 @@ export default function AdminPortalPage() {
             Workspace
           </h2>
           <p className="text-body-sm text-ink-600 dark:text-ink-300 mt-1 leading-relaxed">
-            Single-tenant deployment is pinned to Aldar Developments. Switching
-            here updates the workspace cookie used by the proxy to resolve{" "}
-            <code className="font-mono text-label-xs px-1 py-0.5 rounded bg-ink-100 dark:bg-ink-800">
-              /workspace/*
-            </code>{" "}
-            routes.
+            The live deployment is pinned to Aldar Developments. Pick a different
+            workspace below to operate against another engagement, or switch to
+            cross-engagement view.
           </p>
           <div className="mt-4">
             <AdminWorkspaceSwitcher workspaces={workspaces} />
@@ -111,8 +108,8 @@ export default function AdminPortalPage() {
             Framework views
           </h2>
           <p className="text-body-sm text-ink-600 dark:text-ink-300 mt-1 leading-relaxed">
-            The cross-engagement reference surfaces. Reachable directly via URL
-            but intentionally not linked from the public Aldar workspace.
+            Shared reference surfaces — agents, runbooks, skills, schemas. Reachable
+            directly via URL but intentionally not linked from the Aldar workspace.
           </p>
           <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {FRAMEWORK_LINKS.map((l) => {
