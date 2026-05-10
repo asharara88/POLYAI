@@ -1,19 +1,12 @@
-import { getAgents, getClients, getRunbooks, getSchemas, getSkills, getVerticals } from "@/lib/content";
+import { getAgents, getRunbooks, getSchemas, getSkills, getVerticals } from "@/lib/content";
 import type { PaletteEntry } from "@/components/CommandPalette";
 
+// Single-tenant: client entries are not surfaced in the public palette.
+// The /clients picker still exists for super-admin (reachable via /operator),
+// but we deliberately do not list workspaces here.
 export function buildPaletteEntries(): PaletteEntry[] {
   const out: PaletteEntry[] = [];
 
-  for (const c of getClients()) {
-    out.push({
-      id: `client-${c.slug}`,
-      label: c.displayName ?? c.slug,
-      hint: c.isExample ? "example" : c.vertical,
-      group: "Clients",
-      href: `/clients/${c.slug}`,
-      kind: "client",
-    });
-  }
   for (const a of getAgents()) {
     out.push({
       id: `agent-${a.name}`,

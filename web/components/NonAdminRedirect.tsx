@@ -9,7 +9,7 @@ import { useIdentity } from "@/lib/identity";
  * identities. Reads identity from context (localStorage-backed) after
  * hydration, then replaces the current route with the target.
  */
-export default function NonAdminRedirect({ to }: { to: string }) {
+export default function NonAdminRedirect({ to = "/" }: { to?: string }) {
   const router = useRouter();
   const { identity, hydrated } = useIdentity();
 

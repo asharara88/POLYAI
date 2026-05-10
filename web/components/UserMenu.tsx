@@ -9,8 +9,6 @@ import SignInModal from "@/components/SignInModal";
 type Theme = "light" | "dark" | "system";
 type Density = "compact" | "cozy" | "comfortable";
 
-export type WorkspaceOption = { slug: string; name: string; isExample: boolean };
-
 const THEME_KEY = "flow-theme";
 const DENSITY_KEY = "flow-density";
 
@@ -94,14 +92,9 @@ function SegmentedPicker<T extends string>({
   );
 }
 
-export default function UserMenu({
-  workspaces = [],
-}: {
-  workspaces?: WorkspaceOption[];
-}) {
-  const { identity, hydrated, signOut, setWorkspace } = useIdentity();
+export default function UserMenu() {
+  const { identity, hydrated, signOut } = useIdentity();
   const { advanced, setAdvanced } = useAdvancedMode();
-  const isAdmin = identity?.role === "admin";
   const [open, setOpen] = useState(false);
   const [signInOpen, setSignInOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>("system");
@@ -214,7 +207,7 @@ export default function UserMenu({
               className="w-full flex items-center gap-2.5 px-3 py-3 border-b border-ink-100 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 text-body-sm font-medium hover:bg-ink-100 dark:hover:bg-ink-800 transition-colors"
             >
               <LogIn className="w-4 h-4 text-accent" aria-hidden />
-              <span>Sign in to Flow</span>
+              <span>Sign in to Aldar</span>
             </button>
           )}
 
@@ -254,27 +247,6 @@ export default function UserMenu({
               ? "Advanced shows agents, runbooks, skills, schemas."
               : "Simple hides power-user surfaces."}
           </div>
-
-          {isAdmin && workspaces.length > 0 && (
-            <>
-              <SegmentedPicker<string>
-                label="Workspace"
-                value={identity?.workspace ?? "__all"}
-                options={[
-                  ...workspaces.slice(0, 2).map((w) => ({ value: w.slug, label: w.name })),
-                  { value: "__all", label: "All" },
-                ]}
-                onChange={(v) => {
-                  setWorkspace(v === "__all" ? null : v);
-                }}
-              />
-              <div className="px-3 pb-2 text-body-xs text-ink-500 dark:text-ink-400">
-                {identity?.workspace
-                  ? "Bound to one engagement."
-                  : "Cross-engagement view."}
-              </div>
-            </>
-          )}
 
           {identity && (
             <div className="border-t border-ink-100 dark:border-ink-800 py-1">

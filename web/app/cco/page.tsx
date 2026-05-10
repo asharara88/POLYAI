@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   getCcoCalendar,
   getClients,
@@ -103,17 +102,11 @@ export default async function CcoPage({
               Today
             </h1>
             <p className="text-body text-ink-600 dark:text-ink-300 mt-1">
-              {displayName} — what needs you today
+              What needs you today
             </p>
           </div>
           <div className="flex items-center gap-3 flex-wrap">
             <LivePulse autoMs={120_000} label="brief" />
-            <Link
-              href="/workspace"
-              className="text-body-sm text-ink-600 dark:text-ink-300 hover:text-accent transition-colors"
-            >
-              Open workspace →
-            </Link>
           </div>
         </div>
 

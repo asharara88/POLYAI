@@ -9,7 +9,7 @@ export default function Page() {
 
   return (
     <div className="space-y-10">
-      <NonAdminRedirect to="/workspace" />
+      <NonAdminRedirect to="/" />
       <header>
         <h1 className="text-2xl font-semibold tracking-tight">Workspaces</h1>
         <p className="text-ink-500 dark:text-ink-400 mt-2">

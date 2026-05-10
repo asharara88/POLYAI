@@ -8,25 +8,19 @@ import {
   MessageSquare,
   Sparkles,
 } from "lucide-react";
-import UserMenu, { type WorkspaceOption } from "@/components/UserMenu";
+import UserMenu from "@/components/UserMenu";
 import MoreMenu from "@/components/MoreMenu";
-import { FlowMark } from "@/components/FlowLogo";
-import { useIdentity } from "@/lib/identity";
+import { AldarMark } from "@/components/AldarMark";
 
-const baseItems = [
+const items = [
   { href: "/cco", label: "Today", icon: Sparkles },
   { href: "/approvals", label: "Decisions", icon: CheckCircle2 },
+  { href: "/workspace/projects", label: "Projects", icon: Building2 },
+  { href: "/chat", label: "Ask", icon: MessageSquare },
 ];
 
-const projectsItem = { href: "/workspace/projects", label: "Projects", icon: Building2 };
-const clientsItem = { href: "/clients", label: "Clients", icon: Building2 };
-const askItem = { href: "/chat", label: "Ask", icon: MessageSquare };
-
-export default function Nav({ workspaces = [] }: { workspaces?: WorkspaceOption[] }) {
+export default function Nav() {
   const pathname = usePathname() ?? "/";
-  const { identity } = useIdentity();
-  const isAdmin = identity?.role === "admin";
-  const items = [...baseItems, isAdmin ? clientsItem : projectsItem, askItem];
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
@@ -37,13 +31,13 @@ export default function Nav({ workspaces = [] }: { workspaces?: WorkspaceOption[
         <Link
           href="/"
           className="flex items-center gap-2 flex-shrink-0 group"
-          aria-label="Flow home"
+          aria-label="Aldar Developments — home"
         >
           <span className="text-accent group-hover:scale-105 transition-transform">
-            <FlowMark size={26} />
+            <AldarMark size={26} />
           </span>
           <span className="font-semibold tracking-tight text-title-sm text-ink-900 dark:text-ink-50 hidden sm:inline">
-            Flow
+            Aldar Developments
           </span>
         </Link>
         <nav
@@ -75,7 +69,7 @@ export default function Nav({ workspaces = [] }: { workspaces?: WorkspaceOption[
         <div className="flex items-center gap-1 flex-shrink-0">
           <MoreMenu />
           <span className="w-px h-5 bg-ink-200 dark:bg-ink-800 mx-1" aria-hidden />
-          <UserMenu workspaces={workspaces} />
+          <UserMenu />
         </div>
       </div>
     </header>
