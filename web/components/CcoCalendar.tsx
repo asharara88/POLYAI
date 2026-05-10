@@ -97,10 +97,12 @@ function CalendarFrame({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-card border border-ink-200/70 dark:border-ink-800 dark:ring-1 dark:ring-white/[0.06] bg-white dark:bg-ink-900 shadow-card overflow-hidden">
-      <header className="px-5 py-3 border-b border-ink-100 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 flex items-center justify-between gap-3">
+    <section className="border-t border-ink-100 dark:border-ink-800 pt-6 first:border-t-0 first:pt-0">
+      <header className="flex items-center justify-between gap-3 mb-4">
         <div className="flex items-center gap-2.5 min-w-0">
-          <span className="text-accent flex-shrink-0">{icon}</span>
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-md bg-accent/10 text-accent flex-shrink-0">
+            {icon}
+          </span>
           <h3 className="text-body-sm font-semibold tracking-tight text-ink-800 dark:text-ink-100 truncate">
             {label}
           </h3>
@@ -114,7 +116,7 @@ function CalendarFrame({
           {count}
         </span>
       </header>
-      <div className="px-5 py-4">{children}</div>
+      <div>{children}</div>
     </section>
   );
 }

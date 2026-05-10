@@ -19,11 +19,15 @@ export function AldarMark({ className = "", size = 26 }: Props) {
       role="img"
       aria-label="Aldar Developments"
     >
-      <g fill="none" stroke="currentColor" strokeWidth="6" strokeLinejoin="round">
-        <path d="M 18 82 L 50 12 L 82 82 Z" />
-      </g>
-      <g fill="currentColor">
-        <rect x="36" y="62" width="28" height="6" rx="1" />
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="11"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M 22 80 L 50 22 L 78 80" />
+        <path d="M 35 60 L 65 60" />
       </g>
     </svg>
   );

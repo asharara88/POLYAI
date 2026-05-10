@@ -11,10 +11,11 @@ export default function Page() {
     <div className="space-y-10">
       <NonAdminRedirect to="/" />
       <header>
-        <h1 className="text-2xl font-semibold tracking-tight">Workspaces</h1>
-        <p className="text-ink-500 dark:text-ink-400 mt-2">
-          One workspace per developer engagement. Switch between them or open
-          one to see its pipeline, channels, events, and decisions.
+        <h1 className="text-title-lg font-semibold tracking-tight">Workspaces</h1>
+        <p className="text-body-sm text-ink-500 dark:text-ink-400 mt-2 max-w-2xl">
+          Operator-only view of every configured workspace. Each workspace is
+          one developer engagement. Open one to see its pipeline, channels,
+          events, and decisions. The live deployment is pinned to Aldar Developments.
         </p>
       </header>
 
@@ -22,8 +23,8 @@ export default function Page() {
         <h2 className="text-title-sm font-semibold tracking-tight">Active</h2>
         {real.length === 0 ? (
           <p className="mt-3 text-body-sm text-ink-500 dark:text-ink-400">
-            No active engagements yet. New engagements are scaffolded from a
-            brief plus the matching vertical playbook.
+            No active workspaces yet. New workspaces are scaffolded from a brief
+            plus the matching vertical playbook.
           </p>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-3">

@@ -96,7 +96,7 @@ export default function AdminWorkspaceSwitcher({
             Cross-engagement (all)
           </span>
           <span className="block text-label-xs font-mono text-ink-400">
-            clears workspace cookie
+            no workspace pinned
           </span>
         </span>
       </button>
