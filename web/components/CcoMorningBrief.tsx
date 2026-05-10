@@ -159,7 +159,7 @@ function SectionFrame({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-ink-100 dark:border-ink-800 pt-6 first:border-t-0 first:pt-0">
+    <section className="border-t border-ink-100 dark:border-ink-800 pt-6 first-of-type:border-t-0 first-of-type:pt-0">
       <header className="flex items-center gap-2.5 mb-4">
         <span className="inline-flex items-center justify-center w-7 h-7 rounded-md bg-accent/10 text-accent flex-shrink-0">
           {icon}
