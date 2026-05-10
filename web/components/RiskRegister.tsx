@@ -40,25 +40,24 @@ function RiskCard({ risk }: { risk: ParsedRiskEntry }) {
       </p>
       {risk.currentMitigation && (
         <div className="text-body-xs text-ink-600 dark:text-ink-400">
-          <span className="font-mono uppercase tracking-wider text-label-xs text-ink-400 mr-1">
-            mitigation
+          <span className="font-semibold text-ink-700 dark:text-ink-200 mr-1">
+            What we're doing:
           </span>
           {risk.currentMitigation}
         </div>
       )}
       {risk.escalationThreshold && (
         <div className="text-body-xs text-ink-600 dark:text-ink-400">
-          <span className="font-mono uppercase tracking-wider text-label-xs text-ink-400 mr-1">
-            threshold
+          <span className="font-semibold text-ink-700 dark:text-ink-200 mr-1">
+            Escalates if:
           </span>
           {risk.escalationThreshold}
         </div>
       )}
-      <div className="text-label-xs font-mono text-ink-400 pt-1.5 border-t border-ink-100 dark:border-ink-800/80 flex flex-wrap gap-x-3 gap-y-0.5">
-        {risk.ownerAgent && <span>agent: {risk.ownerAgent}</span>}
-        {risk.ownerHuman && <span>human: {risk.ownerHuman}</span>}
-        {risk.opened && <span>opened: {risk.opened}</span>}
-        {risk.lastReviewed && <span>reviewed: {risk.lastReviewed}</span>}
+      <div className="text-body-xs text-ink-500 dark:text-ink-400 pt-1.5 border-t border-ink-100 dark:border-ink-800/80 flex flex-wrap gap-x-3 gap-y-0.5">
+        {risk.ownerHuman && <span>Owner: {risk.ownerHuman}</span>}
+        {risk.opened && <span>· Opened {risk.opened}</span>}
+        {risk.lastReviewed && <span>· Reviewed {risk.lastReviewed}</span>}
       </div>
     </div>
   );

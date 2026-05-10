@@ -39,9 +39,8 @@ export type PaletteEntry = {
 const STATIC_ITEMS: PaletteEntry[] = [
   { id: "nav-today", label: "Today", group: "Go to", href: "/cco", kind: "navigate" },
   { id: "nav-decisions", label: "Decisions", group: "Go to", href: "/approvals", kind: "navigate" },
-  { id: "nav-clients", label: "Clients", group: "Go to", href: "/clients", kind: "navigate" },
-  { id: "nav-ask", label: "Ask Flow", group: "Go to", href: "/chat", kind: "navigate" },
-  { id: "nav-overview", label: "Overview", group: "Go to", href: "/", kind: "navigate" },
+  { id: "nav-projects", label: "Projects", group: "Go to", href: "/workspace/projects", kind: "navigate" },
+  { id: "nav-ask", label: "Ask", group: "Go to", href: "/chat", kind: "navigate" },
   { id: "nav-agents", label: "Agents", group: "Go to", href: "/agents", kind: "navigate" },
   { id: "nav-verticals", label: "Verticals", group: "Go to", href: "/verticals", kind: "navigate" },
   { id: "nav-schemas", label: "Schemas", group: "Go to", href: "/schemas", kind: "navigate" },
@@ -53,6 +52,8 @@ const STATIC_ITEMS: PaletteEntry[] = [
   { id: "chat-channel-mix", label: "How's our channel mix?", hint: "preset", group: "Ask", href: "/chat?q=How%20has%20channel-mix%20shifted%20this%20week%20vs%20last%3F", kind: "ask-cco" },
   { id: "chat-aged-risks", label: "Show me aged risks", hint: "preset", group: "Ask", href: "/chat?q=Aged%20risks%20open%20more%20than%2030%20days", kind: "ask-cco" },
 ];
+
+const SIMPLE_NAV_IDS = ["nav-today", "nav-decisions", "nav-projects", "nav-ask", "nav-search"];
 
 const ICON_BY_KIND: Record<PaletteEntry["kind"], React.ReactNode> = {
   navigate: <LayoutDashboard className="w-4 h-4" />,
@@ -66,11 +67,11 @@ const ICON_BY_KIND: Record<PaletteEntry["kind"], React.ReactNode> = {
 };
 
 const NAV_ICON_OVERRIDE: Record<string, React.ReactNode> = {
-  "nav-cco": <Sparkles className="w-4 h-4" />,
-  "nav-chat": <MessageSquare className="w-4 h-4" />,
-  "nav-clients": <Building2 className="w-4 h-4" />,
+  "nav-today": <Sparkles className="w-4 h-4" />,
+  "nav-ask": <MessageSquare className="w-4 h-4" />,
+  "nav-projects": <Building2 className="w-4 h-4" />,
   "nav-agents": <Bot className="w-4 h-4" />,
-  "nav-approvals": <CheckCircle2 className="w-4 h-4" />,
+  "nav-decisions": <CheckCircle2 className="w-4 h-4" />,
   "nav-verticals": <Layers className="w-4 h-4" />,
   "nav-schemas": <FileCode className="w-4 h-4" />,
   "nav-search": <Search className="w-4 h-4" />,
@@ -94,20 +95,14 @@ export default function CommandPalette({ entries = [] }: { entries?: PaletteEntr
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // In Simple mode, hide power-user kinds (agent / skill / runbook / schema / vertical)
-  // Keep navigate, ask-cco presets, and clients.
+  // Single-tenant: client-kind entries are not surfaced in the public palette.
+  // In Simple mode, hide power-user kinds (agent / skill / runbook / schema / vertical).
   const visibleEntries = advanced
-    ? entries
-    : entries.filter((e) => e.kind === "client");
+    ? entries.filter((e) => e.kind !== "client")
+    : [];
   const visibleStatic = advanced
     ? STATIC_ITEMS
-    : STATIC_ITEMS.filter(
-        (e) =>
-          e.kind === "ask-cco" ||
-          ["nav-today", "nav-decisions", "nav-clients", "nav-ask", "nav-overview", "nav-search"].includes(
-            e.id,
-          ),
-      );
+    : STATIC_ITEMS.filter((e) => e.kind === "ask-cco" || SIMPLE_NAV_IDS.includes(e.id));
   const all = [...visibleStatic, ...visibleEntries];
 
   const onSelect = (item: PaletteEntry) => {
@@ -146,7 +141,7 @@ export default function CommandPalette({ entries = [] }: { entries?: PaletteEntr
             <Command.Input
               placeholder={
                 advanced
-                  ? "Search anywhere — clients, agents, runbooks, skills…"
+                  ? "Search anywhere — agents, runbooks, skills…"
                   : "Where do you want to go?"
               }
               value={query}

@@ -207,7 +207,7 @@ export default function UserMenu() {
               className="w-full flex items-center gap-2.5 px-3 py-3 border-b border-ink-100 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 text-body-sm font-medium hover:bg-ink-100 dark:hover:bg-ink-800 transition-colors"
             >
               <LogIn className="w-4 h-4 text-accent" aria-hidden />
-              <span>Sign in to Flow</span>
+              <span>Sign in to Aldar</span>
             </button>
           )}
 

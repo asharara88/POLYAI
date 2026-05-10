@@ -136,6 +136,96 @@ export const getCampaign = (clientSlug: string, campaignSlug: string) => {
   return { clientSlug, campaignSlug, files };
 };
 
+// ---------- Projects ----------
+
+export type ProjectSummary = {
+  id: string;
+  displayName: string;
+  masterplan?: string;
+  emirate?: string;
+  status?: string;
+  launchQuarter?: string;
+  assetClass?: string;
+  totalUnits?: number;
+  priceBandAed?: string;
+  campaigns: string[];
+};
+
+export type ProjectDetail = {
+  summary: ProjectSummary;
+  body: string; // markdown body (everything after the yaml fence)
+};
+
+const parseProjectFile = (filePath: string, fileBaseName: string): ProjectDetail | null => {
+  const raw = readFileSafe(filePath);
+  if (!raw) return null;
+  const yamlBlock = raw.match(/```yaml([\s\S]*?)```/)?.[1] ?? "";
+
+  const grab = (key: string): string | undefined => {
+    const re = new RegExp(`^${key}:\\s*(.+)$`, "m");
+    const m = yamlBlock.match(re);
+    if (!m) return undefined;
+    return m[1].trim().replace(/^['"]|['"]$/g, "");
+  };
+
+  const totalUnitsRaw = grab("total_units");
+  const totalUnits = totalUnitsRaw ? Number(totalUnitsRaw) : undefined;
+
+  // Campaigns list — flat YAML array under `campaigns:`
+  const campaigns: string[] = [];
+  const campaignsBlock = yamlBlock.match(/^campaigns:\s*\n((?:\s*-\s*.+\n?)*)/m);
+  if (campaignsBlock) {
+    for (const line of campaignsBlock[1].split("\n")) {
+      const m = line.match(/^\s*-\s*(.+?)\s*$/);
+      if (m) campaigns.push(m[1].replace(/^['"]|['"]$/g, ""));
+    }
+  }
+
+  const id = grab("id") ?? fileBaseName.replace(/\.md$/, "");
+  const displayName = grab("display_name") ?? id;
+
+  // Body is everything after the closing yaml fence
+  const fenceEnd = raw.indexOf("```", raw.indexOf("```yaml") + 7);
+  const body = fenceEnd >= 0 ? raw.slice(fenceEnd + 3).trim() : raw;
+
+  return {
+    summary: {
+      id,
+      displayName,
+      masterplan: grab("masterplan"),
+      emirate: grab("emirate"),
+      status: grab("status"),
+      launchQuarter: grab("launch_quarter"),
+      assetClass: grab("asset_class"),
+      totalUnits: Number.isFinite(totalUnits) ? totalUnits : undefined,
+      priceBandAed: grab("price_band_aed"),
+      campaigns,
+    },
+    body,
+  };
+};
+
+export const getProjects = (clientSlug: string): ProjectSummary[] => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return [];
+  const dir = path.join(folder, "projects");
+  if (!exists(dir)) return [];
+  return listFiles(dir, ".md")
+    .map((f) => parseProjectFile(path.join(dir, f), f))
+    .filter((p): p is ProjectDetail => p !== null)
+    .map((p) => p.summary);
+};
+
+export const getProject = (clientSlug: string, projectId: string): ProjectDetail | null => {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return null;
+  const dir = path.join(folder, "projects");
+  if (!exists(dir)) return null;
+  const filePath = path.join(dir, `${projectId}.md`);
+  if (!exists(filePath)) return null;
+  return parseProjectFile(filePath, `${projectId}.md`);
+};
+
 // ---------- Inventory ----------
 
 export type InventoryTotals = {

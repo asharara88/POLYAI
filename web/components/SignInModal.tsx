@@ -4,7 +4,12 @@ import { useState } from "react";
 import { LogIn, X } from "lucide-react";
 import { Button } from "@/components/ui";
 import { ROLE_LABEL, useIdentity, type Role } from "@/lib/identity";
+import { AldarMark } from "@/components/AldarMark";
 import { FlowMark } from "@/components/FlowLogo";
+
+// Roles available via public sign-in. `admin` is granted only via the hidden
+// /operator entrypoint — not exposed in the workspace sign-in modal.
+const PUBLIC_ROLES: Role[] = ["cco", "pod-manager", "specialist", "viewer"];
 
 export default function SignInModal({
   open,
@@ -49,10 +54,10 @@ export default function SignInModal({
         <header className="px-5 py-4 border-b border-ink-100 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-accent">
-              <FlowMark size={22} />
+              <AldarMark size={22} />
             </span>
             <h2 id="signin-title" className="text-title-sm font-semibold tracking-tight">
-              Sign in to Flow
+              Sign in to Aldar Developments
             </h2>
           </div>
           <button
@@ -122,7 +127,7 @@ export default function SignInModal({
               onChange={(e) => setRole(e.target.value as Role)}
               className="mt-1 w-full bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-700 rounded-md px-3 py-2 text-body-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
             >
-              {(Object.keys(ROLE_LABEL) as Role[]).map((r) => (
+              {PUBLIC_ROLES.map((r) => (
                 <option key={r} value={r}>
                   {ROLE_LABEL[r]}
                 </option>
@@ -151,6 +156,19 @@ export default function SignInModal({
             </Button>
           </div>
         </form>
+
+        <footer className="px-5 py-3 border-t border-ink-100 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 flex items-center justify-between gap-3 text-body-xs text-ink-500 dark:text-ink-400">
+          <span className="leading-snug">
+            Worked example — illustrative. Not real Aldar Properties PJSC data.
+          </span>
+          <span className="inline-flex items-center gap-1.5 flex-shrink-0">
+            Built on
+            <span className="text-accent">
+              <FlowMark size={12} />
+            </span>
+            <span className="font-medium text-ink-600 dark:text-ink-300">Flow</span>
+          </span>
+        </footer>
       </div>
     </div>
   );

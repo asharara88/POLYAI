@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Building2 } from "lucide-react";
 import Markdown from "@/components/Markdown";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import RsvpStaging from "./RsvpStaging";
 import { getClient, getClients, getEventDetail, getEvents } from "@/lib/content";
 
@@ -57,15 +59,14 @@ export default async function Page({
   return (
     <div className="space-y-8">
       <header>
-        <div className="flex items-center gap-2 text-xs font-mono text-ink-400">
-          <Link href="/clients" className="hover:underline">clients</Link>
-          <span>/</span>
-          <Link href={`/clients/${slug}`} className="hover:underline">{slug}</Link>
-          <span>/</span>
-          <Link href={`/clients/${slug}?tab=events`} className="hover:underline">events</Link>
-          <span>/</span>
-          <span>{eventId}</span>
-        </div>
+        <Breadcrumbs
+          crumbs={[
+            { label: "Clients", href: "/clients", icon: <Building2 className="w-3 h-3" /> },
+            { label: client.summary.displayName ?? slug, href: `/clients/${slug}` },
+            { label: "Events", href: `/clients/${slug}?tab=events` },
+            { label: e.type ?? eventId },
+          ]}
+        />
         <h1 className="text-2xl font-semibold tracking-tight mt-1">{e.type ?? eventId}</h1>
         <div className="text-sm text-ink-500 dark:text-ink-400 mt-1">
           {[e.date, e.venue, e.status].filter(Boolean).join(" · ")}

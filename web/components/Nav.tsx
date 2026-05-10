@@ -10,12 +10,12 @@ import {
 } from "lucide-react";
 import UserMenu from "@/components/UserMenu";
 import MoreMenu from "@/components/MoreMenu";
-import { FlowMark } from "@/components/FlowLogo";
+import { AldarMark } from "@/components/AldarMark";
 
 const items = [
   { href: "/cco", label: "Today", icon: Sparkles },
   { href: "/approvals", label: "Decisions", icon: CheckCircle2 },
-  { href: "/clients", label: "Clients", icon: Building2 },
+  { href: "/workspace/projects", label: "Projects", icon: Building2 },
   { href: "/chat", label: "Ask", icon: MessageSquare },
 ];
 
@@ -31,13 +31,13 @@ export default function Nav() {
         <Link
           href="/"
           className="flex items-center gap-2 flex-shrink-0 group"
-          aria-label="Flow home"
+          aria-label="Aldar Developments — home"
         >
           <span className="text-accent group-hover:scale-105 transition-transform">
-            <FlowMark size={26} />
+            <AldarMark size={26} />
           </span>
           <span className="font-semibold tracking-tight text-title-sm text-ink-900 dark:text-ink-50 hidden sm:inline">
-            Flow
+            Aldar Developments
           </span>
         </Link>
         <nav

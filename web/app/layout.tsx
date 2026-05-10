@@ -7,12 +7,13 @@ import CommandPalette from "@/components/CommandPalette";
 import { buildPaletteEntries } from "@/lib/palette-entries";
 import { IdentityProvider } from "@/lib/identity";
 import { AdvancedModeProvider } from "@/lib/advanced-mode";
+import { FlowMark } from "@/components/FlowLogo";
 
 export const metadata: Metadata = {
-  title: "Flow — AI-driven control plane",
+  title: "Aldar Developments — Workspace",
   description:
-    "Flow — AI-driven multi-agent commercial control plane. Marketing, sales, and BD orchestration.",
-  applicationName: "Flow",
+    "Aldar Developments — commercial control plane. Today, decisions, projects, and Ask. Worked example built on Flow.",
+  applicationName: "Aldar Developments",
 };
 
 export const viewport: Viewport = {
@@ -37,6 +38,10 @@ const themeInitScript = `
     html.dataset.density = d;
     var adv = localStorage.getItem('flow-advanced') === 'true';
     html.dataset.advanced = adv ? 'true' : 'false';
+    // Workspace cookie default — middleware uses this to rewrite /workspace/* → /clients/<slug>/*
+    if (!document.cookie.split('; ').some(function(c){return c.indexOf('flow-workspace=')===0;})) {
+      document.cookie = 'flow-workspace=aldar-developments; path=/; max-age=31536000; SameSite=Lax';
+    }
   } catch (_) {}
 })();
 `;
@@ -64,8 +69,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="main" className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
             {children}
           </main>
-          <footer className="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-body-xs text-ink-400 dark:text-ink-500 flex items-center justify-between flex-wrap gap-2 print:hidden">
-            <span>Flow · AI-driven solutions</span>
+          <footer className="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-body-xs text-ink-400 dark:text-ink-500 flex items-center justify-between flex-wrap gap-3 print:hidden">
+            <span className="flex items-center gap-2 flex-wrap">
+              <span>Aldar Developments — worked example, illustrative.</span>
+              <span aria-hidden className="text-ink-300 dark:text-ink-700">·</span>
+              <span className="inline-flex items-center gap-1.5">
+                Built on
+                <span className="text-accent">
+                  <FlowMark size={14} />
+                </span>
+                <span className="font-medium text-ink-500 dark:text-ink-400">Flow</span>
+              </span>
+            </span>
             <span className="hidden sm:inline">
               Tip:{" "}
               <kbd className="px-1.5 py-0.5 rounded bg-ink-100 dark:bg-ink-800 text-ink-600 dark:text-ink-300 font-mono">

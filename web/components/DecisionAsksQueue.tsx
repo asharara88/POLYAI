@@ -5,33 +5,41 @@ import SignDecisionAsk from "@/components/SignDecisionAsk";
 import { Section, SectionHeader, Stack, Card, ClassBadge, UrgencyBadge } from "@/components/ui";
 import { ChevronDown, ChevronUp, History, Inbox } from "lucide-react";
 
-function AskCard({ ask, client }: { ask: DecisionAsk; client: string }) {
+function AskCard({
+  ask,
+  client,
+  defaultOpen = false,
+}: {
+  ask: DecisionAsk;
+  client: string;
+  defaultOpen?: boolean;
+}) {
   return (
-    <details className="group rounded-card border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 shadow-card overflow-hidden">
+    <details
+      open={defaultOpen}
+      className="group rounded-card border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 shadow-card overflow-hidden"
+    >
       <summary className="cursor-pointer p-4 list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded-card">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="text-label-xs font-mono uppercase tracking-wider text-ink-400">
-                {ask.id}
-              </span>
               <ClassBadge value={ask.className} />
               <UrgencyBadge value={ask.urgency} />
             </div>
             <div className="font-semibold text-body mt-1.5 leading-snug">{ask.ask}</div>
           </div>
-          <div className="text-label-xs font-mono text-ink-400 flex-shrink-0 inline-flex items-center gap-1">
+          <div className="text-body-xs text-ink-500 dark:text-ink-400 flex-shrink-0 inline-flex items-center gap-1">
             <span className="group-open:hidden inline-flex items-center gap-1">
               <ChevronDown className="w-3.5 h-3.5" aria-hidden />
-              expand
+              Show details
             </span>
             <span className="hidden group-open:inline-flex items-center gap-1">
               <ChevronUp className="w-3.5 h-3.5" aria-hidden />
-              collapse
+              Hide details
             </span>
           </div>
         </div>
-        <div className="text-label-xs font-mono text-ink-400 mt-2 flex flex-wrap gap-x-3">
+        <div className="text-body-xs text-ink-500 dark:text-ink-400 mt-2 flex flex-wrap gap-x-3">
           <span>by {ask.submitter}</span>
           <span>· {ask.submittedAt}</span>
           <span>· {ask.sla}</span>
@@ -40,8 +48,8 @@ function AskCard({ ask, client }: { ask: DecisionAsk; client: string }) {
       <div className="px-4 pb-4 pt-0 border-t border-ink-100 dark:border-ink-800 space-y-3 text-body-sm">
         {ask.recommendation && (
           <div>
-            <div className="text-label-xs font-mono uppercase tracking-wider text-ink-400 mb-0.5">
-              recommendation
+            <div className="text-body-xs font-semibold text-ink-700 dark:text-ink-200 mb-0.5">
+              Recommendation
             </div>
             <div className="text-ink-700 dark:text-ink-300 leading-relaxed">
               {ask.recommendation}
@@ -50,8 +58,8 @@ function AskCard({ ask, client }: { ask: DecisionAsk; client: string }) {
         )}
         {ask.alternatives && (
           <div>
-            <div className="text-label-xs font-mono uppercase tracking-wider text-ink-400 mb-0.5">
-              alternatives considered
+            <div className="text-body-xs font-semibold text-ink-700 dark:text-ink-200 mb-0.5">
+              Alternatives considered
             </div>
             <div className="text-ink-600 dark:text-ink-400 leading-relaxed">
               {ask.alternatives}
@@ -60,10 +68,10 @@ function AskCard({ ask, client }: { ask: DecisionAsk; client: string }) {
         )}
         {ask.evidence && (
           <div>
-            <div className="text-label-xs font-mono uppercase tracking-wider text-ink-400 mb-0.5">
-              evidence
+            <div className="text-body-xs font-semibold text-ink-700 dark:text-ink-200 mb-0.5">
+              Evidence
             </div>
-            <div className="text-ink-500 leading-relaxed font-mono text-body-xs">
+            <div className="text-ink-600 dark:text-ink-400 leading-relaxed text-body-sm">
               {ask.evidence}
             </div>
           </div>
@@ -103,8 +111,8 @@ export default function DecisionAsksQueue({
           </Card>
         ) : (
           <Stack gap="2">
-            {asks.pending.map((a) => (
-              <AskCard key={a.id} ask={a} client={client} />
+            {asks.pending.map((a, i) => (
+              <AskCard key={a.id} ask={a} client={client} defaultOpen={i === 0} />
             ))}
           </Stack>
         )}
@@ -122,17 +130,17 @@ export default function DecisionAsksQueue({
             <table className="w-full text-body-xs">
               <thead>
                 <tr className="border-b border-ink-100 dark:border-ink-800 bg-ink-50/50 dark:bg-ink-950/30">
-                  <th className="text-left font-mono uppercase tracking-wider text-label-xs text-ink-400 px-3 py-2">
-                    id
+                  <th className="text-left text-body-xs font-semibold text-ink-600 dark:text-ink-300 px-3 py-2">
+                    Reference
                   </th>
-                  <th className="text-left font-mono uppercase tracking-wider text-label-xs text-ink-400 px-3 py-2">
-                    submitted
+                  <th className="text-left text-body-xs font-semibold text-ink-600 dark:text-ink-300 px-3 py-2">
+                    Submitted
                   </th>
-                  <th className="text-left font-mono uppercase tracking-wider text-label-xs text-ink-400 px-3 py-2">
-                    decision
+                  <th className="text-left text-body-xs font-semibold text-ink-600 dark:text-ink-300 px-3 py-2">
+                    Decision
                   </th>
-                  <th className="text-left font-mono uppercase tracking-wider text-label-xs text-ink-400 px-3 py-2">
-                    decided
+                  <th className="text-left text-body-xs font-semibold text-ink-600 dark:text-ink-300 px-3 py-2">
+                    Decided
                   </th>
                 </tr>
               </thead>
@@ -142,7 +150,7 @@ export default function DecisionAsksQueue({
                     key={s.id}
                     className="border-b border-ink-100 dark:border-ink-800 last:border-0"
                   >
-                    <td className="px-3 py-2 font-mono text-ink-400">{s.id}</td>
+                    <td className="px-3 py-2 font-mono text-body-xs text-ink-500 dark:text-ink-400">{s.id}</td>
                     <td className="px-3 py-2 text-ink-500">{s.submitted}</td>
                     <td className="px-3 py-2">{s.decision}</td>
                     <td className="px-3 py-2 text-ink-500">
