@@ -4,9 +4,8 @@ import Anthropic from "@anthropic-ai/sdk";
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
-const TODAY_ISO = new Date().toISOString().slice(0, 10);
-
-const SYSTEM_PROMPT = `You are an AI assistant inside the Aldar Developments commercial workspace — a UAE real-estate developer (worked example, illustrative).
+const buildSystemPrompt = (todayIso: string) =>
+  `You are an AI assistant inside the Aldar Developments commercial workspace — a UAE real-estate developer (worked example, illustrative).
 
 The person talking to you is the Chief Commercial Officer of Aldar Developments. They are a busy executive. Treat them as the user, not as another agent.
 
@@ -35,7 +34,7 @@ You CAN reason about: the UAE real-estate market, the CCO role, structuring deci
 - Vertical: real-estate (UAE).
 - Active projects (illustrative): Hudayriyat Canal Residences, Saadiyat Reserve Heights, Yas Acres Grove.
 - Channels: in-house direct sales, broker network (Tier 1: Driven Properties), wealth-channel intermediaries, VVIP-protocol counterparties.
-- Today's date: ${TODAY_ISO}.
+- Today's date: ${todayIso}.
 
 # Tone
 
@@ -62,11 +61,12 @@ export async function POST(req: NextRequest) {
   }
 
   const client = new Anthropic({ apiKey });
+  const todayIso = new Date().toISOString().slice(0, 10);
 
   const stream = await client.messages.stream({
     model: "claude-sonnet-4-5",
     max_tokens: 2048,
-    system: SYSTEM_PROMPT,
+    system: buildSystemPrompt(todayIso),
     messages: messages.map((m) => ({ role: m.role, content: m.content })),
   });
 
