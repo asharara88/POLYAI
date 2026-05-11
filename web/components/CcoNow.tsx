@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   AlertOctagon,
@@ -16,6 +18,8 @@ import type {
 } from "@/lib/content";
 import { statusKey } from "@/lib/design-tokens";
 import { ClassBadge, UrgencyBadge, SeverityBadge, StatusPill } from "@/components/ui";
+import { useIdentity } from "@/lib/identity";
+import { inScope, scopeFor } from "@/lib/role-scope";
 
 type Props = {
   asks: ParsedDecisionAsks | null;
@@ -43,8 +47,24 @@ function pickTopCalendar(calendar: ParsedCcoCalendar | null): CalendarEntry | nu
 }
 
 export default function CcoNow({ asks, risks, calendar }: Props) {
-  const topAsk = pickTopAsk(asks);
-  const topRisk = pickTopRisk(risks);
+  const { identity, hydrated } = useIdentity();
+  const scope = scopeFor(identity?.role ?? "cco", identity?.agentSlug);
+
+  // Scope filter — managers/specialists see only their pod's items.
+  // Pre-hydration we render unfiltered to avoid a flash; once hydrated, scope kicks in.
+  const scopedAsks: ParsedDecisionAsks | null = (() => {
+    if (!asks) return null;
+    if (!hydrated || scope.seesAll) return asks;
+    return { ...asks, pending: asks.pending.filter((a) => inScope(scope, a.className ?? "")) };
+  })();
+  const scopedRisks: ParsedRiskRegister | null = (() => {
+    if (!risks) return null;
+    if (!hydrated || scope.seesAll) return risks;
+    return { ...risks, open: risks.open.filter((r) => inScope(scope, r.class ?? "")) };
+  })();
+
+  const topAsk = pickTopAsk(scopedAsks);
+  const topRisk = pickTopRisk(scopedRisks);
   const topCal = pickTopCalendar(calendar);
 
   const items: { kind: "ask" | "risk" | "cal"; node: React.ReactNode; key: string }[] = [];
@@ -53,14 +73,14 @@ export default function CcoNow({ asks, risks, calendar }: Props) {
     items.push({
       kind: "ask",
       key: topAsk.id,
-      node: <NowAskCard ask={topAsk} pendingCount={asks?.pending.length ?? 0} />,
+      node: <NowAskCard ask={topAsk} pendingCount={scopedAsks?.pending.length ?? 0} />,
     });
   }
   if (topRisk) {
     items.push({
       kind: "risk",
       key: topRisk.title,
-      node: <NowRiskCard risk={topRisk} totalOpen={risks?.open.length ?? 0} />,
+      node: <NowRiskCard risk={topRisk} totalOpen={scopedRisks?.open.length ?? 0} />,
     });
   }
   if (topCal) {

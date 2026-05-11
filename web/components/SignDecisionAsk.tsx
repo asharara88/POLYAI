@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui";
 import { useIdentity } from "@/lib/identity";
+import { canSignClass, scopeFor } from "@/lib/role-scope";
 import SignInModal from "@/components/SignInModal";
 
 type Decision = "approve" | "approve-with-modifications" | "decline" | "send-back";
@@ -43,12 +44,25 @@ const DECISION_ICON: Record<Decision, React.ReactNode> = {
 export default function SignDecisionAsk({
   client,
   askId,
+  className,
 }: {
   client: string;
   askId: string;
+  className?: string;
 }) {
   const router = useRouter();
-  const { identity } = useIdentity();
+  const { identity, hydrated } = useIdentity();
+  const scope = scopeFor(identity?.role ?? "cco", identity?.agentSlug);
+  // Sign gating: if the identity's scope doesn't cover this decision class,
+  // disable the Sign action with a tooltip explaining why.
+  const canSign = !hydrated || !className || canSignClass(scope, className);
+  const blockedReason = !canSign
+    ? identity?.role === "specialist"
+      ? "Specialists comment and route up — only managers sign."
+      : identity?.role === "viewer"
+        ? "Viewers can read; sign requires a manager or CCO role."
+        : `This decision is outside your pod's scope. CCO or the owning pod manager can sign.`
+    : null;
   const [open, setOpen] = useState(false);
   const [signInOpen, setSignInOpen] = useState(false);
   const [decision, setDecision] = useState<Decision>("approve");
@@ -126,13 +140,21 @@ export default function SignDecisionAsk({
             variant="success"
             startIcon={<Check className="w-3.5 h-3.5" />}
             onClick={() => setOpen(true)}
+            disabled={!canSign}
             aria-label={`Open sign form for ${askId}`}
+            title={blockedReason ?? undefined}
           >
             Sign
           </Button>
           {identity ? (
             <span className="text-label-xs font-mono text-ink-400 inline-flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-success-500" aria-hidden />
+              <span
+                className={[
+                  "w-1.5 h-1.5 rounded-full",
+                  canSign ? "bg-success-500" : "bg-warning-500",
+                ].join(" ")}
+                aria-hidden
+              />
               signed in as {identity.name}
             </span>
           ) : (
@@ -144,6 +166,11 @@ export default function SignDecisionAsk({
               <LogIn className="w-3 h-3" aria-hidden />
               sign in to sign
             </button>
+          )}
+          {blockedReason && (
+            <span className="text-label-xs text-warning-700 dark:text-warning-300 leading-snug max-w-md">
+              {blockedReason}
+            </span>
           )}
         </div>
         <SignInModal open={signInOpen} onClose={() => setSignInOpen(false)} />

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { LogIn, LogOut, Monitor, Moon, Sun, User } from "lucide-react";
 import { useIdentity, ROLE_LABEL } from "@/lib/identity";
 import { useAdvancedMode } from "@/lib/advanced-mode";
+import { agentLabel, podForAgent } from "@/lib/roles";
 import SignInModal from "@/components/SignInModal";
 
 type Theme = "light" | "dark" | "system";
@@ -47,6 +48,18 @@ function applyTheme(t: Theme) {
 
 function applyDensity(d: Density) {
   document.documentElement.dataset.density = d;
+}
+
+function roleSummary(role: import("@/lib/identity").Role, agentSlug?: string): string {
+  if (role === "manager" && agentSlug) {
+    const pod = podForAgent(agentSlug);
+    return pod ? `${pod.label} manager` : agentLabel(agentSlug);
+  }
+  if (role === "specialist" && agentSlug) {
+    const pod = podForAgent(agentSlug);
+    return pod ? `${agentLabel(agentSlug)} · ${pod.label}` : agentLabel(agentSlug);
+  }
+  return ROLE_LABEL[role];
 }
 
 function SegmentedPicker<T extends string>({
@@ -187,7 +200,7 @@ export default function UserMenu() {
               <div className="min-w-0 flex-1">
                 <div className="text-body-sm font-semibold truncate">{identity.name}</div>
                 <div className="text-body-xs text-ink-500 truncate">
-                  {ROLE_LABEL[identity.role]}
+                  {roleSummary(identity.role, identity.agentSlug)}
                 </div>
                 {identity.organization && (
                   <div className="text-label-xs font-mono text-ink-400 truncate mt-0.5">

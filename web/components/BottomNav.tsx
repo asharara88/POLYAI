@@ -3,23 +3,42 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Sparkles,
-  CheckCircle2,
+  Bot,
   Building2,
+  CheckCircle2,
   MessageSquare,
   MoreHorizontal,
+  ShieldCheck,
+  Sparkles,
+  UsersRound,
 } from "lucide-react";
+import { useIdentity } from "@/lib/identity";
+import { navItemsFor, type NavItem } from "@/lib/role-scope";
 
-const items = [
-  { href: "/cco", label: "Today", icon: Sparkles },
-  { href: "/approvals", label: "Decisions", icon: CheckCircle2 },
-  { href: "/workspace/projects", label: "Projects", icon: Building2 },
-  { href: "/chat", label: "Ask", icon: MessageSquare },
-  { href: "/agents", label: "More", icon: MoreHorizontal },
-];
+const ICON_MAP: Record<NavItem["iconKey"], React.ComponentType<{ className?: string }>> = {
+  today: Sparkles,
+  decisions: CheckCircle2,
+  projects: Building2,
+  ask: MessageSquare,
+  operator: ShieldCheck,
+  pod: UsersRound,
+  agent: Bot,
+};
+
+const moreItem: NavItem = { href: "/agents", label: "More", iconKey: "agent" };
 
 export default function BottomNav() {
   const pathname = usePathname() ?? "/";
+  const { identity, hydrated } = useIdentity();
+  const baseItems = hydrated
+    ? navItemsFor(identity?.role ?? "cco", identity?.agentSlug)
+    : navItemsFor("cco", undefined);
+  // Mobile shows 5 slots. Keep the first 4 from role-scope, plus More.
+  const slots = baseItems.slice(0, 4);
+  // Replace the 5th slot with More if the role gave us fewer than 5.
+  const items = slots.length < 5
+    ? [...slots, { ...moreItem, label: "More", iconKey: "agent" as const }]
+    : slots.slice(0, 5);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
@@ -30,11 +49,12 @@ export default function BottomNav() {
     >
       <div className="grid grid-cols-5">
         {items.map((it) => {
-          const Icon = it.icon;
+          const Icon =
+            it.label === "More" ? MoreHorizontal : ICON_MAP[it.iconKey];
           const active = isActive(it.href);
           return (
             <Link
-              key={it.href}
+              key={it.href + it.label}
               href={it.href}
               aria-current={active ? "page" : undefined}
               className={[
