@@ -17,6 +17,7 @@ import { inScope, scopeFor } from "@/lib/role-scope";
 import { useCcoDedupe } from "@/lib/cco-dedupe-context";
 import AskAnchor from "@/components/ask/AskAnchor";
 import AskInlineThread from "@/components/ask/AskInlineThread";
+import SeverityHeatmap from "@/components/viz/SeverityHeatmap";
 
 const STATUS_BORDER: Record<string, string> = {
   red: "border-l-4 border-l-danger-500",
@@ -93,17 +94,16 @@ export default function RiskRegister({ register }: { register: ParsedRiskRegiste
 
   return (
     <Stack gap="6">
-      <Section
-        title="Risks to watch"
-        description={
-          reds.length > 0
-            ? `${reds.length} need attention · ${ambers.length} watching · ${greens.length} on track`
-            : ambers.length > 0
-              ? `${ambers.length} watching · ${greens.length} on track`
-              : `${greens.length} on track`
-        }
-        meta={<span>updated {register.lastUpdated ?? "—"}</span>}
-      >
+      <Section title="Risks to watch">
+        <div className="mb-5">
+          <SeverityHeatmap
+            cells={[
+              { label: "Red", subLabel: "need attention", count: reds.length, tone: "red" },
+              { label: "Amber", subLabel: "watching", count: ambers.length, tone: "amber" },
+              { label: "Green", subLabel: "on track", count: greens.length, tone: "green" },
+            ]}
+          />
+        </div>
         <Stack gap="6">
           {reds.length > 0 && (
             <section>

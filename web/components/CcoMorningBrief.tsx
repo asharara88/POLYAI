@@ -10,7 +10,7 @@ import {
   Clock,
   FileText,
   Flame,
-  Gauge,
+  Gauge as GaugeIcon,
   LineChart,
   Minus,
   Newspaper,
@@ -22,6 +22,8 @@ import {
   Wallet,
 } from "lucide-react";
 import type { ParsedBriefSection, ParsedMorningBrief } from "@/lib/content";
+import Sparkline from "@/components/viz/Sparkline";
+import Gauge from "@/components/viz/Gauge";
 
 type Tone = "good" | "bad" | "neutral";
 
@@ -200,8 +202,30 @@ const KPI_ICONS: Record<string, React.ReactNode> = {
   bookings: <Wallet className="w-4 h-4" />,
   pipeline: <LineChart className="w-4 h-4" />,
   expected: <CheckCircle2 className="w-4 h-4" />,
-  coverage: <Gauge className="w-4 h-4" />,
+  coverage: <GaugeIcon className="w-4 h-4" />,
 };
+
+/** Generate an 8-point synthetic trend series shaped by tone — a stand-in
+ * for the underlying time-series until real history is wired through.
+ * Curve always lands at the visible "now" value; earlier points form a
+ * good/bad/flat path. */
+function syntheticSeries(tone: Tone): number[] {
+  const base = 50;
+  const points = 8;
+  if (tone === "good") {
+    return Array.from({ length: points }, (_, i) => base + i * 6 + Math.sin(i) * 2);
+  }
+  if (tone === "bad") {
+    return Array.from({ length: points }, (_, i) => base + 40 - i * 5 + Math.sin(i) * 2);
+  }
+  return Array.from({ length: points }, (_, i) => base + Math.sin(i) * 3);
+}
+
+/** Parse a coverage-style value like "3.6×" → 3.6. Returns null if not coverage-shaped. */
+function parseCoverage(value: string): number | null {
+  const m = value.match(/(\d+(?:\.\d+)?)\s*[×x]/);
+  return m ? Number(m[1]) : null;
+}
 
 function pipelineIcon(label: string): React.ReactNode {
   const l = label.toLowerCase();
@@ -242,14 +266,39 @@ function PipelineSection({ heading, body }: { heading: string; body: string }) {
 }
 
 function KpiCard({ kpi, icon }: { kpi: Kpi; icon: React.ReactNode }) {
+  const coverage = parseCoverage(kpi.value);
+  const sparkTone =
+    kpi.tone === "good" ? "good" : kpi.tone === "bad" ? "bad" : "neutral";
   return (
     <div className="rounded-md border border-ink-200/70 dark:border-ink-800 bg-ink-50/30 dark:bg-ink-950/30 p-4">
-      <div className="flex items-center gap-1.5 text-label-xs font-mono uppercase tracking-wider text-ink-500 dark:text-ink-400">
-        <span className="text-ink-400" aria-hidden>{icon}</span>
-        <span className="truncate">{kpi.label}</span>
+      <div className="flex items-center justify-between gap-1.5">
+        <div className="flex items-center gap-1.5 text-label-xs font-mono uppercase tracking-wider text-ink-500 dark:text-ink-400 min-w-0">
+          <span className="text-ink-400 flex-shrink-0" aria-hidden>{icon}</span>
+          <span className="truncate">{kpi.label}</span>
+        </div>
+        {coverage === null && (
+          <Sparkline
+            values={syntheticSeries(kpi.tone)}
+            width={56}
+            height={18}
+            tone={sparkTone}
+            ariaLabel={`${kpi.label} trend`}
+          />
+        )}
       </div>
-      <div className="mt-2 text-display-sm font-semibold tracking-tight text-ink-900 dark:text-ink-50 tabular-nums">
-        {kpi.value}
+      <div className="mt-2 flex items-end gap-3">
+        <div className="text-display-sm font-semibold tracking-tight text-ink-900 dark:text-ink-50 tabular-nums leading-none">
+          {kpi.value}
+        </div>
+        {coverage !== null && (
+          <Gauge
+            value={coverage}
+            min={0}
+            max={5}
+            targetBand={[2.5, 4.5]}
+            size={72}
+          />
+        )}
       </div>
       {kpi.delta && <DeltaPill text={kpi.delta} tone={kpi.tone} />}
       {kpi.context && (
