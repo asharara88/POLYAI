@@ -16,6 +16,7 @@ import CcoNow from "@/components/CcoNow";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import LivePulse from "@/components/LivePulse";
 import { CcoDedupeProvider } from "@/lib/cco-dedupe-context";
+import { AskProvider } from "@/lib/ask-context";
 import {
   AlertTriangle,
   CalendarDays,
@@ -131,6 +132,7 @@ export default async function CcoPage({
 
       {/* Body — Now hero first, then Decisions + Risks visible, dense sections collapsed */}
       <CcoDedupeProvider>
+      <AskProvider>
       <div className="space-y-10">
         {/* Now: top items needing attention */}
         <section id="now" className="scroll-mt-20">
@@ -192,6 +194,7 @@ export default async function CcoPage({
           {calendar && <CcoCalendar calendar={calendar} />}
         </CollapsedSection>
       </div>
+      </AskProvider>
       </CcoDedupeProvider>
     </div>
   );

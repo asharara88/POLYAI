@@ -5,6 +5,8 @@ import { useIdentity } from "@/lib/identity";
 import { inScope, scopeFor } from "@/lib/role-scope";
 import { useCcoDedupe } from "@/lib/cco-dedupe-context";
 import SignDecisionAsk from "@/components/SignDecisionAsk";
+import AskAnchor from "@/components/ask/AskAnchor";
+import AskInlineThread from "@/components/ask/AskInlineThread";
 import { Section, SectionHeader, Stack, Card, ClassBadge, UrgencyBadge } from "@/components/ui";
 import { ChevronDown, History, Inbox } from "lucide-react";
 
@@ -16,6 +18,12 @@ function AskCard({
   client: string;
 }) {
   const hasEvidence = Boolean(ask.alternatives || ask.evidence);
+  const anchor = {
+    kind: "decision" as const,
+    id: `ask-${ask.id}`,
+    label: ask.ask,
+    summary: ask.recommendation ?? undefined,
+  };
   return (
     <article className="rounded-card border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 shadow-card p-4 space-y-3">
       <header className="flex items-start justify-between gap-3 flex-wrap">
@@ -28,9 +36,12 @@ function AskCard({
             {ask.ask}
           </h3>
         </div>
-        <span className="text-label-xs font-mono text-ink-400 tabular-nums flex-shrink-0">
-          {ask.sla}
-        </span>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <span className="text-label-xs font-mono text-ink-400 tabular-nums">
+            {ask.sla}
+          </span>
+          <AskAnchor anchor={anchor} size="xs" />
+        </div>
       </header>
 
       {ask.recommendation && (
@@ -41,6 +52,8 @@ function AskCard({
       )}
 
       <SignDecisionAsk client={client} askId={ask.id} className={ask.className} />
+
+      <AskInlineThread anchor={anchor} />
 
       {hasEvidence && (
         <details className="group">
