@@ -1,6 +1,8 @@
 "use client";
 
 import type { ParsedDecisionAsks, DecisionAsk } from "@/lib/content";
+import { useIdentity } from "@/lib/identity";
+import { inScope, scopeFor } from "@/lib/role-scope";
 import SignDecisionAsk from "@/components/SignDecisionAsk";
 import { Section, SectionHeader, Stack, Card, ClassBadge, UrgencyBadge } from "@/components/ui";
 import { ChevronDown, ChevronUp, History, Inbox } from "lucide-react";
@@ -76,7 +78,7 @@ function AskCard({
             </div>
           </div>
         )}
-        <SignDecisionAsk client={client} askId={ask.id} />
+        <SignDecisionAsk client={client} askId={ask.id} className={ask.className} />
       </div>
     </details>
   );
@@ -89,6 +91,14 @@ export default function DecisionAsksQueue({
   asks: ParsedDecisionAsks;
   client: string;
 }) {
+  const { identity, hydrated } = useIdentity();
+  const scope = scopeFor(identity?.role ?? "cco", identity?.agentSlug);
+  const pending = !hydrated || scope.seesAll
+    ? asks.pending
+    : asks.pending.filter((a) => inScope(scope, a.className ?? ""));
+  const inScopeCount = pending.length;
+  const outOfScopeCount = asks.pending.length - inScopeCount;
+
   return (
     <Stack gap="5">
       <Section
@@ -99,19 +109,24 @@ export default function DecisionAsksQueue({
           </span>
         }
         description={
-          asks.pending.length === 0
-            ? `All caught up · ${asks.recentlySigned.length} signed in the last week`
-            : `${asks.pending.length} waiting on you · ${asks.recentlySigned.length} signed in the last week`
+          inScopeCount === 0
+            ? scope.seesAll
+              ? `All caught up · ${asks.recentlySigned.length} signed in the last week`
+              : `None in your scope · ${outOfScopeCount} waiting on other pods`
+            : scope.seesAll
+              ? `${inScopeCount} waiting on you · ${asks.recentlySigned.length} signed in the last week`
+              : `${inScopeCount} in your scope · ${outOfScopeCount} on other pods`
         }
-        meta={<span>{asks.date}</span>}
       >
-        {asks.pending.length === 0 ? (
+        {inScopeCount === 0 ? (
           <Card padded className="text-center text-body-sm text-ink-500">
-            All caught up — no pending decisions.
+            {scope.seesAll
+              ? "All caught up — no pending decisions."
+              : "Nothing pending in your pod right now."}
           </Card>
         ) : (
           <Stack gap="2">
-            {asks.pending.map((a, i) => (
+            {pending.map((a, i) => (
               <AskCard key={a.id} ask={a} client={client} defaultOpen={i === 0} />
             ))}
           </Stack>

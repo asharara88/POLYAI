@@ -3,24 +3,36 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  Bot,
   Building2,
   CheckCircle2,
   MessageSquare,
+  ShieldCheck,
   Sparkles,
+  UsersRound,
 } from "lucide-react";
 import UserMenu from "@/components/UserMenu";
 import MoreMenu from "@/components/MoreMenu";
 import { AldarMark } from "@/components/AldarMark";
+import { useIdentity } from "@/lib/identity";
+import { navItemsFor, type NavItem } from "@/lib/role-scope";
 
-const items = [
-  { href: "/cco", label: "Today", icon: Sparkles },
-  { href: "/approvals", label: "Decisions", icon: CheckCircle2 },
-  { href: "/workspace/projects", label: "Projects", icon: Building2 },
-  { href: "/chat", label: "Ask", icon: MessageSquare },
-];
+const ICON_MAP: Record<NavItem["iconKey"], React.ComponentType<{ className?: string }>> = {
+  today: Sparkles,
+  decisions: CheckCircle2,
+  projects: Building2,
+  ask: MessageSquare,
+  operator: ShieldCheck,
+  pod: UsersRound,
+  agent: Bot,
+};
 
 export default function Nav() {
   const pathname = usePathname() ?? "/";
+  const { identity, hydrated } = useIdentity();
+  const items = hydrated
+    ? navItemsFor(identity?.role ?? "cco", identity?.agentSlug)
+    : navItemsFor("cco", undefined);
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
@@ -45,7 +57,7 @@ export default function Nav() {
           className="flex gap-1 text-body-sm flex-1 justify-center md:justify-start"
         >
           {items.map((it) => {
-            const Icon = it.icon;
+            const Icon = ICON_MAP[it.iconKey];
             const active = isActive(it.href);
             return (
               <Link

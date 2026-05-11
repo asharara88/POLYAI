@@ -11,6 +11,7 @@ import {
 import { getClients } from "@/lib/content";
 import AdminPortalGate from "@/components/AdminPortalGate";
 import AdminWorkspaceSwitcher from "@/components/AdminWorkspaceSwitcher";
+import AdminRoleSwitcher from "@/components/AdminRoleSwitcher";
 
 export const dynamic = "force-static";
 
@@ -97,6 +98,26 @@ export default function AdminPortalPage() {
           </p>
           <div className="mt-4">
             <AdminWorkspaceSwitcher workspaces={workspaces} />
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="role-section"
+          className="rounded-card border border-ink-200/70 dark:border-ink-800 dark:ring-1 dark:ring-white/[0.06] bg-white dark:bg-ink-900 shadow-card p-5 sm:p-6"
+        >
+          <h2
+            id="role-section"
+            className="text-title-sm font-semibold tracking-tight"
+          >
+            Active role
+          </h2>
+          <p className="text-body-sm text-ink-600 dark:text-ink-300 mt-1 leading-relaxed">
+            Switch perspectives to see the workspace as another role would —
+            useful for demos and for verifying that scope filtering, role-shaped
+            nav, and decision-sign gating behave correctly per identity.
+          </p>
+          <div className="mt-4">
+            <AdminRoleSwitcher />
           </div>
         </section>
 

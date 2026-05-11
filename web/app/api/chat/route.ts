@@ -1,8 +1,22 @@
 import { NextRequest } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
+import { getAgent } from "@/lib/content";
+import { podForAgent, agentLabel } from "@/lib/roles";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
+
+type CompactIdentity = { r: string; a: string | null; w: string | null };
+
+function readIdentityCookie(req: NextRequest): CompactIdentity | null {
+  const raw = req.cookies.get("flow-identity")?.value;
+  if (!raw) return null;
+  try {
+    return JSON.parse(decodeURIComponent(raw)) as CompactIdentity;
+  } catch {
+    return null;
+  }
+}
 
 const buildSystemPrompt = (todayIso: string) =>
   `You are an AI assistant inside the Aldar Developments commercial workspace — a UAE real-estate developer (worked example, illustrative).
@@ -63,10 +77,27 @@ export async function POST(req: NextRequest) {
   const client = new Anthropic({ apiKey });
   const todayIso = new Date().toISOString().slice(0, 10);
 
+  // Role-aware persona: if the active identity points at a specific agent
+  // (manager or specialist), prefix the system prompt with the agent's body
+  // and the role framing. CCO / admin / viewer use the generic assistant.
+  const ident = readIdentityCookie(req);
+  let system = buildSystemPrompt(todayIso);
+  if (ident?.a) {
+    const agent = getAgent(ident.a);
+    if (agent) {
+      const pod = podForAgent(ident.a);
+      const roleFrame =
+        ident.r === "manager"
+          ? `The person talking to you is the ${pod?.label ?? agentLabel(ident.a)} pod manager (${agentLabel(ident.a)}). They oversee the ${pod?.label ?? "pod"} pod. Answer from their perspective and within their scope.`
+          : `The person talking to you is a ${agentLabel(ident.a)} specialist${pod ? ` in the ${pod.label} pod` : ""}. Answer at their level — operational, hands-on, within their specialty.`;
+      system = `${agent.body.trim()}\n\n# Role framing for this surface\n\n${roleFrame}\n\n# Workspace baseline\n\n${system}`;
+    }
+  }
+
   const stream = await client.messages.stream({
     model: "claude-sonnet-4-5",
     max_tokens: 2048,
-    system: buildSystemPrompt(todayIso),
+    system,
     messages: messages.map((m) => ({ role: m.role, content: m.content })),
   });
 
