@@ -14,6 +14,10 @@ import {
 import { AlertOctagon, AlertTriangle, ShieldCheck, Eye } from "lucide-react";
 import { useIdentity } from "@/lib/identity";
 import { inScope, scopeFor } from "@/lib/role-scope";
+import { useCcoDedupe } from "@/lib/cco-dedupe-context";
+import AskAnchor from "@/components/ask/AskAnchor";
+import AskInlineThread from "@/components/ask/AskInlineThread";
+import SeverityHeatmap from "@/components/viz/SeverityHeatmap";
 
 const STATUS_BORDER: Record<string, string> = {
   red: "border-l-4 border-l-danger-500",
@@ -24,6 +28,12 @@ const STATUS_BORDER: Record<string, string> = {
 
 function RiskCard({ risk }: { risk: ParsedRiskEntry }) {
   const sk = statusKey(risk.status);
+  const anchor = {
+    kind: "risk" as const,
+    id: `risk-${risk.title}`,
+    label: risk.title,
+    summary: risk.description,
+  };
   return (
     <div
       className={[
@@ -37,6 +47,7 @@ function RiskCard({ risk }: { risk: ParsedRiskEntry }) {
           <ClassBadge value={risk.class} />
           <SeverityBadge value={risk.severity} />
           <StatusPill status={risk.status} ageDays={risk.ageDays} />
+          <AskAnchor anchor={anchor} size="xs" />
         </div>
       </div>
       <p className="text-body-sm text-ink-700 dark:text-ink-300 leading-relaxed">
@@ -63,6 +74,7 @@ function RiskCard({ risk }: { risk: ParsedRiskEntry }) {
         {risk.opened && <span>· Opened {risk.opened}</span>}
         {risk.lastReviewed && <span>· Reviewed {risk.lastReviewed}</span>}
       </div>
+      <AskInlineThread anchor={anchor} />
     </div>
   );
 }
@@ -70,26 +82,28 @@ function RiskCard({ risk }: { risk: ParsedRiskEntry }) {
 export default function RiskRegister({ register }: { register: ParsedRiskRegister }) {
   const { identity, hydrated } = useIdentity();
   const scope = scopeFor(identity?.role ?? "cco", identity?.agentSlug);
+  const { excluded } = useCcoDedupe();
   const scopedOpen = !hydrated || scope.seesAll
     ? register.open
     : register.open.filter((r) => inScope(scope, r.class ?? ""));
-  const reds = scopedOpen.filter((r) => statusKey(r.status) === "red");
-  const ambers = scopedOpen.filter((r) => statusKey(r.status) === "amber");
-  const greens = scopedOpen.filter((r) => statusKey(r.status) === "green");
+  // Dedupe: drop the risk that CcoNow already surfaced
+  const visible = scopedOpen.filter((r) => !excluded.risk.has(r.title));
+  const reds = visible.filter((r) => statusKey(r.status) === "red");
+  const ambers = visible.filter((r) => statusKey(r.status) === "amber");
+  const greens = visible.filter((r) => statusKey(r.status) === "green");
 
   return (
     <Stack gap="6">
-      <Section
-        title="Risks to watch"
-        description={
-          reds.length > 0
-            ? `${reds.length} need attention · ${ambers.length} watching · ${greens.length} on track`
-            : ambers.length > 0
-              ? `${ambers.length} watching · ${greens.length} on track`
-              : `${greens.length} on track`
-        }
-        meta={<span>updated {register.lastUpdated ?? "—"}</span>}
-      >
+      <Section title="Risks to watch">
+        <div className="mb-5">
+          <SeverityHeatmap
+            cells={[
+              { label: "Red", subLabel: "need attention", count: reds.length, tone: "red" },
+              { label: "Amber", subLabel: "watching", count: ambers.length, tone: "amber" },
+              { label: "Green", subLabel: "on track", count: greens.length, tone: "green" },
+            ]}
+          />
+        </div>
         <Stack gap="6">
           {reds.length > 0 && (
             <section>

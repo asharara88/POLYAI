@@ -1,3 +1,5 @@
+"use client";
+
 import {
   CalendarClock,
   CheckCircle2,
@@ -11,12 +13,34 @@ import type {
   ParsedCcoCalendar,
   StandingEntry,
 } from "@/lib/content";
+import { useCcoDedupe } from "@/lib/cco-dedupe-context";
+import { deadlineLabel, shortDate } from "@/lib/format-dates";
+import TimelineRuler, { type TimelineEvent } from "@/components/viz/TimelineRuler";
+
+function calKey(e: CalendarEntry): string {
+  return `${e.date}|${e.time}|${e.event}`;
+}
+
+function entryToTimelineEvent(e: CalendarEntry): TimelineEvent {
+  const decisionRef = e.decisionNeeded.match(/(DA-[\w-]+)/i)?.[1];
+  return {
+    id: calKey(e),
+    time: e.time,
+    title: e.event,
+    subtitle: e.counterparty || undefined,
+    decisionRef,
+  };
+}
 
 export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar }) {
-  const hasThisWeek = calendar.thisWeek.length > 0;
-  const hasNextWeek = calendar.nextWeek.length > 0;
-  const hasDeadlines = calendar.deadlines.length > 0;
-  const hasStanding = calendar.standing.length > 0;
+  const { excluded } = useCcoDedupe();
+  const thisWeek = calendar.thisWeek.filter((e) => !excluded.calendar.has(calKey(e)));
+  const nextWeek = calendar.nextWeek.filter((e) => !excluded.calendar.has(calKey(e)));
+  const view: ParsedCcoCalendar = { ...calendar, thisWeek, nextWeek };
+  const hasThisWeek = view.thisWeek.length > 0;
+  const hasNextWeek = view.nextWeek.length > 0;
+  const hasDeadlines = view.deadlines.length > 0;
+  const hasStanding = view.standing.length > 0;
 
   return (
     <div className="space-y-5">
@@ -27,18 +51,15 @@ export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar 
           </span>
           <h2 className="text-title-sm font-semibold tracking-tight">Calendar</h2>
         </div>
-        <span className="text-label-xs font-mono text-ink-400">
-          updated {calendar.lastUpdated ?? "—"}
-        </span>
       </header>
 
       {hasThisWeek && (
         <CalendarFrame
           label="This week"
           icon={<Clock className="w-4 h-4" />}
-          count={calendar.thisWeek.length}
+          count={view.thisWeek.length}
         >
-          <Timeline entries={calendar.thisWeek} />
+          <TimelineRuler events={view.thisWeek.map(entryToTimelineEvent)} />
         </CalendarFrame>
       )}
 
@@ -46,9 +67,9 @@ export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar 
         <CalendarFrame
           label="Next week"
           icon={<Clock className="w-4 h-4" />}
-          count={calendar.nextWeek.length}
+          count={view.nextWeek.length}
         >
-          <Timeline entries={calendar.nextWeek} />
+          <Timeline entries={view.nextWeek} />
         </CalendarFrame>
       )}
 
@@ -56,10 +77,10 @@ export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar 
         <CalendarFrame
           label="Decision deadlines"
           icon={<Flag className="w-4 h-4" />}
-          count={calendar.deadlines.length}
+          count={view.deadlines.length}
           subtitle="next 90 days"
         >
-          <DeadlineList items={calendar.deadlines} />
+          <DeadlineList items={view.deadlines} />
         </CalendarFrame>
       )}
 
@@ -67,10 +88,10 @@ export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar 
         <CalendarFrame
           label="Standing items"
           icon={<Repeat className="w-4 h-4" />}
-          count={calendar.standing.length}
+          count={view.standing.length}
           subtitle="recurring"
         >
-          <StandingList items={calendar.standing} />
+          <StandingList items={view.standing} />
         </CalendarFrame>
       )}
 
@@ -183,7 +204,7 @@ function DeadlineList({ items }: { items: DeadlineEntry[] }) {
       {items.map((d, i) => (
         <li key={i} className="py-3 flex items-start gap-4">
           <span className="inline-flex items-center justify-center px-2 py-1 rounded-md bg-warning-50 dark:bg-warning-950/40 text-warning-700 dark:text-warning-300 text-label-sm font-mono tabular-nums flex-shrink-0 min-w-[5.5rem]">
-            {d.deadline || "—"}
+            {deadlineLabel(d.deadline) || "—"}
           </span>
           <div className="flex-1 min-w-0">
             <div className="text-body-sm font-semibold tracking-tight text-ink-900 dark:text-ink-50 leading-snug">
@@ -236,12 +257,3 @@ function StandingList({ items }: { items: StandingEntry[] }) {
   );
 }
 
-function shortDate(date: string): string {
-  if (!date) return "";
-  // Accept "2026-05-06" → "May 06"; otherwise pass through.
-  const m = date.match(/^(\d{4})-(\d{2})-(\d{2})/);
-  if (!m) return date;
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const month = months[Number(m[2]) - 1] ?? m[2];
-  return `${month} ${m[3]}`;
-}

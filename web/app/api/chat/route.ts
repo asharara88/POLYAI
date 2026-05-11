@@ -68,6 +68,12 @@ export async function POST(req: NextRequest) {
 
   const body = (await req.json().catch(() => ({}))) as {
     messages?: { role: "user" | "assistant"; content: string }[];
+    anchor?: {
+      kind?: string;
+      id?: string;
+      label?: string;
+      summary?: string | null;
+    } | null;
   };
   const messages = body.messages ?? [];
   if (messages.length === 0) {
@@ -92,6 +98,15 @@ export async function POST(req: NextRequest) {
           : `The person talking to you is a ${agentLabel(ident.a)} specialist${pod ? ` in the ${pod.label} pod` : ""}. Answer at their level — operational, hands-on, within their specialty.`;
       system = `${agent.body.trim()}\n\n# Role framing for this surface\n\n${roleFrame}\n\n# Workspace baseline\n\n${system}`;
     }
+  }
+
+  // Anchor context: if this thread is scoped to a specific decision / risk /
+  // brief section / calendar event, prepend a context block so the model
+  // knows what "this" refers to and stays scoped to that item.
+  if (body.anchor?.label) {
+    const a = body.anchor;
+    const summary = a.summary ? `\nSummary: ${a.summary}` : "";
+    system = `${system}\n\n# Anchored thread\n\nThe user is asking specifically about a ${a.kind ?? "item"}:\n"${a.label}"${summary}\n\nKeep your answers scoped to this item unless the user explicitly broadens. Don't reintroduce general framing every turn — they already know the surface.`;
   }
 
   const stream = await client.messages.stream({

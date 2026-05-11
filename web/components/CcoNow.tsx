@@ -18,8 +18,12 @@ import type {
 } from "@/lib/content";
 import { statusKey } from "@/lib/design-tokens";
 import { ClassBadge, UrgencyBadge, SeverityBadge, StatusPill } from "@/components/ui";
+import { useEffect } from "react";
 import { useIdentity } from "@/lib/identity";
 import { inScope, scopeFor } from "@/lib/role-scope";
+import { useCcoDedupe } from "@/lib/cco-dedupe-context";
+import AskAnchor from "@/components/ask/AskAnchor";
+import AskInlineThread from "@/components/ask/AskInlineThread";
 
 type Props = {
   asks: ParsedDecisionAsks | null;
@@ -66,6 +70,19 @@ export default function CcoNow({ asks, risks, calendar }: Props) {
   const topAsk = pickTopAsk(scopedAsks);
   const topRisk = pickTopRisk(scopedRisks);
   const topCal = pickTopCalendar(calendar);
+
+  // Register the picked IDs so DecisionAsksQueue / RiskRegister / CcoCalendar
+  // below can dedupe them — kills the 2–3× duplication on /cco.
+  const { registerExcluded } = useCcoDedupe();
+  useEffect(() => {
+    registerExcluded("ask", topAsk ? [topAsk.id] : []);
+  }, [topAsk?.id, registerExcluded]);
+  useEffect(() => {
+    registerExcluded("risk", topRisk ? [topRisk.title] : []);
+  }, [topRisk?.title, registerExcluded]);
+  useEffect(() => {
+    registerExcluded("calendar", topCal ? [`${topCal.date}|${topCal.time}|${topCal.event}`] : []);
+  }, [topCal?.date, topCal?.time, topCal?.event, registerExcluded]);
 
   const items: { kind: "ask" | "risk" | "cal"; node: React.ReactNode; key: string }[] = [];
 
@@ -137,6 +154,12 @@ function NowAskCard({
   ask: DecisionAsk;
   pendingCount: number;
 }) {
+  const anchor = {
+    kind: "decision" as const,
+    id: `ask-${ask.id}`,
+    label: ask.ask,
+    summary: ask.recommendation ?? undefined,
+  };
   return (
     <article className="rounded-card border-l-4 border-l-accent border border-ink-200/70 dark:border-ink-800 dark:ring-1 dark:ring-white/[0.06] bg-white dark:bg-ink-900 p-5 shadow-card">
       <div className="flex items-center gap-2 flex-wrap">
@@ -146,6 +169,9 @@ function NowAskCard({
         </span>
         <ClassBadge value={ask.className} />
         <UrgencyBadge value={ask.urgency} />
+        <span className="ml-auto">
+          <AskAnchor anchor={anchor} size="xs" />
+        </span>
       </div>
       <h3 className="text-title-sm font-semibold tracking-tight mt-2 leading-snug">
         {ask.ask}
@@ -172,6 +198,7 @@ function NowAskCard({
           Decide by {ask.sla || "—"}
         </span>
       </div>
+      <AskInlineThread anchor={anchor} />
     </article>
   );
 }
@@ -185,6 +212,12 @@ function NowRiskCard({
 }) {
   const sk = statusKey(risk.status);
   const isRed = sk === "red";
+  const anchor = {
+    kind: "risk" as const,
+    id: `risk-${risk.title}`,
+    label: risk.title,
+    summary: risk.description,
+  };
   return (
     <article
       className={[
@@ -211,6 +244,9 @@ function NowRiskCard({
         <ClassBadge value={risk.class} />
         <SeverityBadge value={risk.severity} />
         <StatusPill status={risk.status} ageDays={risk.ageDays} />
+        <span className="ml-auto">
+          <AskAnchor anchor={anchor} size="xs" />
+        </span>
       </div>
       <h3 className="text-title-sm font-semibold tracking-tight mt-2 leading-snug">
         {risk.title}
@@ -235,17 +271,27 @@ function NowRiskCard({
           </span>
         )}
       </div>
+      <AskInlineThread anchor={anchor} />
     </article>
   );
 }
 
 function NowCalendarCard({ entry }: { entry: CalendarEntry }) {
+  const anchor = {
+    kind: "calendar-event" as const,
+    id: `cal-${entry.date}-${entry.time}-${entry.event}`,
+    label: entry.event,
+    summary: `${entry.date}${entry.time ? ` · ${entry.time}` : ""}${entry.counterparty ? ` · ${entry.counterparty}` : ""}${entry.decisionNeeded && entry.decisionNeeded !== "—" ? ` · Decision: ${entry.decisionNeeded}` : ""}`,
+  };
   return (
     <article className="rounded-card border-l-4 border-l-info-500 border border-ink-200/70 dark:border-ink-800 dark:ring-1 dark:ring-white/[0.06] bg-white dark:bg-ink-900 p-5 shadow-card">
       <div className="flex items-center gap-2 flex-wrap">
         <span className="inline-flex items-center gap-1.5 text-body-xs font-semibold text-info-600 dark:text-info-400">
           <CalendarDays className="w-3.5 h-3.5" aria-hidden />
           Up next on your calendar
+        </span>
+        <span className="ml-auto">
+          <AskAnchor anchor={anchor} size="xs" />
         </span>
       </div>
       <h3 className="text-title-sm font-semibold tracking-tight mt-2 leading-snug">
@@ -275,6 +321,7 @@ function NowCalendarCard({ entry }: { entry: CalendarEntry }) {
           </span>
         )}
       </div>
+      <AskInlineThread anchor={anchor} />
     </article>
   );
 }

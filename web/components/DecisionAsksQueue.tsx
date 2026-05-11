@@ -3,84 +3,96 @@
 import type { ParsedDecisionAsks, DecisionAsk } from "@/lib/content";
 import { useIdentity } from "@/lib/identity";
 import { inScope, scopeFor } from "@/lib/role-scope";
+import { useCcoDedupe } from "@/lib/cco-dedupe-context";
 import SignDecisionAsk from "@/components/SignDecisionAsk";
+import AskAnchor from "@/components/ask/AskAnchor";
+import AskInlineThread from "@/components/ask/AskInlineThread";
 import { Section, SectionHeader, Stack, Card, ClassBadge, UrgencyBadge } from "@/components/ui";
-import { ChevronDown, ChevronUp, History, Inbox } from "lucide-react";
+import { ChevronDown, History, Inbox } from "lucide-react";
 
 function AskCard({
   ask,
   client,
-  defaultOpen = false,
 }: {
   ask: DecisionAsk;
   client: string;
-  defaultOpen?: boolean;
 }) {
+  const hasEvidence = Boolean(ask.alternatives || ask.evidence);
+  const anchor = {
+    kind: "decision" as const,
+    id: `ask-${ask.id}`,
+    label: ask.ask,
+    summary: ask.recommendation ?? undefined,
+  };
   return (
-    <details
-      open={defaultOpen}
-      className="group rounded-card border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 shadow-card overflow-hidden"
-    >
-      <summary className="cursor-pointer p-4 list-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded-card">
-        <div className="flex items-start justify-between gap-3 flex-wrap">
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1.5 flex-wrap">
-              <ClassBadge value={ask.className} />
-              <UrgencyBadge value={ask.urgency} />
-            </div>
-            <div className="font-semibold text-body mt-1.5 leading-snug">{ask.ask}</div>
+    <article className="rounded-card border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 shadow-card p-4 space-y-3">
+      <header className="flex items-start justify-between gap-3 flex-wrap">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <ClassBadge value={ask.className} />
+            <UrgencyBadge value={ask.urgency} />
           </div>
-          <div className="text-body-xs text-ink-500 dark:text-ink-400 flex-shrink-0 inline-flex items-center gap-1">
-            <span className="group-open:hidden inline-flex items-center gap-1">
-              <ChevronDown className="w-3.5 h-3.5" aria-hidden />
-              Show details
-            </span>
-            <span className="hidden group-open:inline-flex items-center gap-1">
-              <ChevronUp className="w-3.5 h-3.5" aria-hidden />
-              Hide details
-            </span>
-          </div>
+          <h3 className="font-semibold text-body mt-1.5 leading-snug">
+            {ask.ask}
+          </h3>
         </div>
-        <div className="text-body-xs text-ink-500 dark:text-ink-400 mt-2 flex flex-wrap gap-x-3">
-          <span>by {ask.submitter}</span>
-          <span>· {ask.submittedAt}</span>
-          <span>· {ask.sla}</span>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <span className="text-label-xs font-mono text-ink-400 tabular-nums">
+            {ask.sla}
+          </span>
+          <AskAnchor anchor={anchor} size="xs" />
         </div>
-      </summary>
-      <div className="px-4 pb-4 pt-0 border-t border-ink-100 dark:border-ink-800 space-y-3 text-body-sm">
-        {ask.recommendation && (
-          <div>
-            <div className="text-body-xs font-semibold text-ink-700 dark:text-ink-200 mb-0.5">
-              Recommendation
-            </div>
-            <div className="text-ink-700 dark:text-ink-300 leading-relaxed">
-              {ask.recommendation}
+      </header>
+
+      {ask.recommendation && (
+        <p className="text-body-sm text-ink-700 dark:text-ink-200 leading-relaxed">
+          <span className="font-semibold">Recommendation:</span>{" "}
+          {ask.recommendation}
+        </p>
+      )}
+
+      <SignDecisionAsk client={client} askId={ask.id} className={ask.className} />
+
+      <AskInlineThread anchor={anchor} />
+
+      {hasEvidence && (
+        <details className="group">
+          <summary className="cursor-pointer list-none inline-flex items-center gap-1 text-label-xs font-mono text-ink-500 hover:text-ink-700 dark:hover:text-ink-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 rounded">
+            <ChevronDown
+              className="w-3 h-3 transition-transform group-open:rotate-180"
+              aria-hidden
+            />
+            <span className="group-open:hidden">Show evidence</span>
+            <span className="hidden group-open:inline">Hide evidence</span>
+          </summary>
+          <div className="mt-3 space-y-3 text-body-sm border-t border-ink-100 dark:border-ink-800 pt-3">
+            {ask.alternatives && (
+              <div>
+                <div className="text-body-xs font-semibold text-ink-700 dark:text-ink-200 mb-0.5">
+                  Alternatives considered
+                </div>
+                <div className="text-ink-600 dark:text-ink-400 leading-relaxed">
+                  {ask.alternatives}
+                </div>
+              </div>
+            )}
+            {ask.evidence && (
+              <div>
+                <div className="text-body-xs font-semibold text-ink-700 dark:text-ink-200 mb-0.5">
+                  Evidence
+                </div>
+                <div className="text-ink-600 dark:text-ink-400 leading-relaxed">
+                  {ask.evidence}
+                </div>
+              </div>
+            )}
+            <div className="text-label-xs font-mono text-ink-400">
+              by {ask.submitter}
             </div>
           </div>
-        )}
-        {ask.alternatives && (
-          <div>
-            <div className="text-body-xs font-semibold text-ink-700 dark:text-ink-200 mb-0.5">
-              Alternatives considered
-            </div>
-            <div className="text-ink-600 dark:text-ink-400 leading-relaxed">
-              {ask.alternatives}
-            </div>
-          </div>
-        )}
-        {ask.evidence && (
-          <div>
-            <div className="text-body-xs font-semibold text-ink-700 dark:text-ink-200 mb-0.5">
-              Evidence
-            </div>
-            <div className="text-ink-600 dark:text-ink-400 leading-relaxed text-body-sm">
-              {ask.evidence}
-            </div>
-          </div>
-        )}
-        <SignDecisionAsk client={client} askId={ask.id} className={ask.className} />
-      </div>
-    </details>
+        </details>
+      )}
+    </article>
   );
 }
 
@@ -93,11 +105,15 @@ export default function DecisionAsksQueue({
 }) {
   const { identity, hydrated } = useIdentity();
   const scope = scopeFor(identity?.role ?? "cco", identity?.agentSlug);
-  const pending = !hydrated || scope.seesAll
+  const { excluded } = useCcoDedupe();
+  // First: scope filter. Second: dedupe (drop items already shown in CcoNow above).
+  const scoped = !hydrated || scope.seesAll
     ? asks.pending
     : asks.pending.filter((a) => inScope(scope, a.className ?? ""));
+  const pending = scoped.filter((a) => !excluded.ask.has(a.id));
   const inScopeCount = pending.length;
-  const outOfScopeCount = asks.pending.length - inScopeCount;
+  const outOfScopeCount = asks.pending.length - inScopeCount - excluded.ask.size;
+  const dedupedCount = scoped.length - pending.length;
 
   return (
     <Stack gap="5">
@@ -110,24 +126,28 @@ export default function DecisionAsksQueue({
         }
         description={
           inScopeCount === 0
-            ? scope.seesAll
-              ? `All caught up · ${asks.recentlySigned.length} signed in the last week`
-              : `None in your scope · ${outOfScopeCount} waiting on other pods`
+            ? dedupedCount > 0
+              ? `Top item shown above · ${asks.recentlySigned.length} signed in the last week`
+              : scope.seesAll
+                ? `All caught up · ${asks.recentlySigned.length} signed in the last week`
+                : `None in your scope · ${outOfScopeCount} waiting on other pods`
             : scope.seesAll
-              ? `${inScopeCount} waiting on you · ${asks.recentlySigned.length} signed in the last week`
-              : `${inScopeCount} in your scope · ${outOfScopeCount} on other pods`
+              ? `${inScopeCount} more · ${asks.recentlySigned.length} signed in the last week`
+              : `${inScopeCount} more in your scope · ${outOfScopeCount} on other pods`
         }
       >
         {inScopeCount === 0 ? (
           <Card padded className="text-center text-body-sm text-ink-500">
-            {scope.seesAll
-              ? "All caught up — no pending decisions."
-              : "Nothing pending in your pod right now."}
+            {dedupedCount > 0
+              ? "Top decision shown above — no others pending."
+              : scope.seesAll
+                ? "All caught up — no pending decisions."
+                : "Nothing pending in your pod right now."}
           </Card>
         ) : (
           <Stack gap="2">
-            {pending.map((a, i) => (
-              <AskCard key={a.id} ask={a} client={client} defaultOpen={i === 0} />
+            {pending.map((a) => (
+              <AskCard key={a.id} ask={a} client={client} />
             ))}
           </Stack>
         )}

@@ -14,7 +14,9 @@ import DecisionAsksQueue from "@/components/DecisionAsksQueue";
 import CcoCalendar from "@/components/CcoCalendar";
 import CcoNow from "@/components/CcoNow";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import LivePulse from "@/components/LivePulse";
+import { CcoDedupeProvider } from "@/lib/cco-dedupe-context";
+import { AskProvider } from "@/lib/ask-context";
+import { relTime } from "@/lib/format-dates";
 import {
   AlertTriangle,
   CalendarDays,
@@ -105,9 +107,11 @@ export default async function CcoPage({
               What needs you today
             </p>
           </div>
-          <div className="flex items-center gap-3 flex-wrap">
-            <LivePulse autoMs={120_000} label="brief" />
-          </div>
+          {brief?.assembledAt && (
+            <span className="text-label-xs font-mono text-ink-400 tabular-nums">
+              refreshed {relTime(brief.assembledAt)}
+            </span>
+          )}
         </div>
 
         {/* Jump-to nav */}
@@ -129,6 +133,8 @@ export default async function CcoPage({
       </header>
 
       {/* Body — Now hero first, then Decisions + Risks visible, dense sections collapsed */}
+      <CcoDedupeProvider>
+      <AskProvider>
       <div className="space-y-10">
         {/* Now: top items needing attention */}
         <section id="now" className="scroll-mt-20">
@@ -190,6 +196,8 @@ export default async function CcoPage({
           {calendar && <CcoCalendar calendar={calendar} />}
         </CollapsedSection>
       </div>
+      </AskProvider>
+      </CcoDedupeProvider>
     </div>
   );
 }
