@@ -37,14 +37,16 @@ function daysBetween(a: Date, b: Date): number {
 
 function parseLoose(input: string | null | undefined): Date | null {
   if (!input) return null;
-  // Strict ISO with time
-  let d = new Date(input);
-  if (!Number.isNaN(d.getTime())) return d;
-  // Date-only YYYY-MM-DD
+  // Date-only YYYY-MM-DD must be parsed as LOCAL midnight; otherwise
+  // `new Date("2026-05-06")` parses as UTC midnight and shifts the rendered
+  // day backward in negative-offset timezones (May 6 → May 5 in US).
   if (/^\d{4}-\d{2}-\d{2}$/.test(input)) {
-    d = new Date(input + "T00:00:00");
+    const d = new Date(input + "T00:00:00");
     if (!Number.isNaN(d.getTime())) return d;
   }
+  // ISO with time, full RFC2822, etc.
+  const d = new Date(input);
+  if (!Number.isNaN(d.getTime())) return d;
   return null;
 }
 

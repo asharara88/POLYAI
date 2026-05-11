@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import {
@@ -131,22 +131,43 @@ export default function SignDecisionAsk({
     }
   };
 
+  // Inline sign-in: a signed-out user clicking Sign opens the sign-in modal
+  // with a "pending sign" flag. Once an identity hydrates, the form opens
+  // automatically and the modal closes — no second click needed.
+  const pendingOpenRef = useRef(false);
+  useEffect(() => {
+    if (pendingOpenRef.current && identity) {
+      pendingOpenRef.current = false;
+      setOpen(true);
+      setSignInOpen(false);
+    }
+  }, [identity]);
+
+  const handleSignClick = () => {
+    if (!identity) {
+      pendingOpenRef.current = true;
+      setSignInOpen(true);
+      return;
+    }
+    setOpen(true);
+  };
+
   if (!open) {
     return (
       <>
-        <div className="flex items-center gap-2 pt-2 border-t border-ink-100 dark:border-ink-800 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap">
           <Button
             size="sm"
             variant="success"
             startIcon={<Check className="w-3.5 h-3.5" />}
-            onClick={() => setOpen(true)}
+            onClick={handleSignClick}
             disabled={!canSign}
-            aria-label={`Open sign form for ${askId}`}
+            aria-label={`Sign decision ${askId}`}
             title={blockedReason ?? undefined}
           >
-            Sign
+            {identity ? "Sign" : "Sign in to sign"}
           </Button>
-          {identity ? (
+          {identity && (
             <span className="text-label-xs font-mono text-ink-400 inline-flex items-center gap-1">
               <span
                 className={[
@@ -155,17 +176,8 @@ export default function SignDecisionAsk({
                 ].join(" ")}
                 aria-hidden
               />
-              signed in as {identity.name}
+              {identity.name}
             </span>
-          ) : (
-            <button
-              type="button"
-              onClick={() => setSignInOpen(true)}
-              className="text-label-xs font-mono uppercase tracking-wider text-accent hover:underline inline-flex items-center gap-1"
-            >
-              <LogIn className="w-3 h-3" aria-hidden />
-              sign in to sign
-            </button>
           )}
           {blockedReason && (
             <span className="text-label-xs text-warning-700 dark:text-warning-300 leading-snug max-w-md">

@@ -19,6 +19,10 @@ function parseHHMM(s: string): number | null {
   const h = Number(m[1]);
   const min = Number(m[2]);
   if (Number.isNaN(h) || Number.isNaN(min)) return null;
+  // Clock-bounds: 00:00–23:59. Out-of-range inputs (e.g. "09:75", "24:00")
+  // would silently misplace events or vanish under the offset filter below.
+  // Fail parsing so the caller falls back to the plain-list view.
+  if (h < 0 || h >= 24 || min < 0 || min >= 60) return null;
   return h + min / 60;
 }
 
