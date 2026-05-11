@@ -18,8 +18,10 @@ import type {
 } from "@/lib/content";
 import { statusKey } from "@/lib/design-tokens";
 import { ClassBadge, UrgencyBadge, SeverityBadge, StatusPill } from "@/components/ui";
+import { useEffect } from "react";
 import { useIdentity } from "@/lib/identity";
 import { inScope, scopeFor } from "@/lib/role-scope";
+import { useCcoDedupe } from "@/lib/cco-dedupe-context";
 
 type Props = {
   asks: ParsedDecisionAsks | null;
@@ -66,6 +68,19 @@ export default function CcoNow({ asks, risks, calendar }: Props) {
   const topAsk = pickTopAsk(scopedAsks);
   const topRisk = pickTopRisk(scopedRisks);
   const topCal = pickTopCalendar(calendar);
+
+  // Register the picked IDs so DecisionAsksQueue / RiskRegister / CcoCalendar
+  // below can dedupe them — kills the 2–3× duplication on /cco.
+  const { registerExcluded } = useCcoDedupe();
+  useEffect(() => {
+    registerExcluded("ask", topAsk ? [topAsk.id] : []);
+  }, [topAsk?.id, registerExcluded]);
+  useEffect(() => {
+    registerExcluded("risk", topRisk ? [topRisk.title] : []);
+  }, [topRisk?.title, registerExcluded]);
+  useEffect(() => {
+    registerExcluded("calendar", topCal ? [`${topCal.date}|${topCal.time}|${topCal.event}`] : []);
+  }, [topCal?.date, topCal?.time, topCal?.event, registerExcluded]);
 
   const items: { kind: "ask" | "risk" | "cal"; node: React.ReactNode; key: string }[] = [];
 

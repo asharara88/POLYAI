@@ -14,6 +14,7 @@ import {
 import { AlertOctagon, AlertTriangle, ShieldCheck, Eye } from "lucide-react";
 import { useIdentity } from "@/lib/identity";
 import { inScope, scopeFor } from "@/lib/role-scope";
+import { useCcoDedupe } from "@/lib/cco-dedupe-context";
 
 const STATUS_BORDER: Record<string, string> = {
   red: "border-l-4 border-l-danger-500",
@@ -70,12 +71,15 @@ function RiskCard({ risk }: { risk: ParsedRiskEntry }) {
 export default function RiskRegister({ register }: { register: ParsedRiskRegister }) {
   const { identity, hydrated } = useIdentity();
   const scope = scopeFor(identity?.role ?? "cco", identity?.agentSlug);
+  const { excluded } = useCcoDedupe();
   const scopedOpen = !hydrated || scope.seesAll
     ? register.open
     : register.open.filter((r) => inScope(scope, r.class ?? ""));
-  const reds = scopedOpen.filter((r) => statusKey(r.status) === "red");
-  const ambers = scopedOpen.filter((r) => statusKey(r.status) === "amber");
-  const greens = scopedOpen.filter((r) => statusKey(r.status) === "green");
+  // Dedupe: drop the risk that CcoNow already surfaced
+  const visible = scopedOpen.filter((r) => !excluded.risk.has(r.title));
+  const reds = visible.filter((r) => statusKey(r.status) === "red");
+  const ambers = visible.filter((r) => statusKey(r.status) === "amber");
+  const greens = visible.filter((r) => statusKey(r.status) === "green");
 
   return (
     <Stack gap="6">

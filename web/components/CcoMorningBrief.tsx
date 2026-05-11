@@ -57,8 +57,14 @@ export default function CcoMorningBrief({
   clientName: string;
 }) {
   const sources = parseSources(brief.raw);
-  // Skip the "attention" section here — /cco already shows it in CcoNow above this brief.
-  const sections = brief.sections.filter((s) => classifySection(s.heading) !== "attention");
+  // Drop sections whose data has its own canonical surface on /cco above
+  // this brief: "What needs my attention" → CcoNow; risk register → RiskRegister
+  // panel; today's calendar → CcoCalendar panel. The brief renders only what's
+  // unique to the brief: pipeline, channel mix, horizon, compliance, aged threads.
+  const sections = brief.sections.filter((s) => {
+    const k = classifySection(s.heading);
+    return k !== "attention" && k !== "risk-tally" && k !== "calendar";
+  });
 
   return (
     <article>

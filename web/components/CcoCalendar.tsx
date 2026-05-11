@@ -1,3 +1,5 @@
+"use client";
+
 import {
   CalendarClock,
   CheckCircle2,
@@ -11,12 +13,21 @@ import type {
   ParsedCcoCalendar,
   StandingEntry,
 } from "@/lib/content";
+import { useCcoDedupe } from "@/lib/cco-dedupe-context";
+
+function calKey(e: CalendarEntry): string {
+  return `${e.date}|${e.time}|${e.event}`;
+}
 
 export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar }) {
-  const hasThisWeek = calendar.thisWeek.length > 0;
-  const hasNextWeek = calendar.nextWeek.length > 0;
-  const hasDeadlines = calendar.deadlines.length > 0;
-  const hasStanding = calendar.standing.length > 0;
+  const { excluded } = useCcoDedupe();
+  const thisWeek = calendar.thisWeek.filter((e) => !excluded.calendar.has(calKey(e)));
+  const nextWeek = calendar.nextWeek.filter((e) => !excluded.calendar.has(calKey(e)));
+  const view: ParsedCcoCalendar = { ...calendar, thisWeek, nextWeek };
+  const hasThisWeek = view.thisWeek.length > 0;
+  const hasNextWeek = view.nextWeek.length > 0;
+  const hasDeadlines = view.deadlines.length > 0;
+  const hasStanding = view.standing.length > 0;
 
   return (
     <div className="space-y-5">
@@ -28,7 +39,7 @@ export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar 
           <h2 className="text-title-sm font-semibold tracking-tight">Calendar</h2>
         </div>
         <span className="text-label-xs font-mono text-ink-400">
-          updated {calendar.lastUpdated ?? "—"}
+          updated {view.lastUpdated ?? "—"}
         </span>
       </header>
 
@@ -36,9 +47,9 @@ export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar 
         <CalendarFrame
           label="This week"
           icon={<Clock className="w-4 h-4" />}
-          count={calendar.thisWeek.length}
+          count={view.thisWeek.length}
         >
-          <Timeline entries={calendar.thisWeek} />
+          <Timeline entries={view.thisWeek} />
         </CalendarFrame>
       )}
 
@@ -46,9 +57,9 @@ export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar 
         <CalendarFrame
           label="Next week"
           icon={<Clock className="w-4 h-4" />}
-          count={calendar.nextWeek.length}
+          count={view.nextWeek.length}
         >
-          <Timeline entries={calendar.nextWeek} />
+          <Timeline entries={view.nextWeek} />
         </CalendarFrame>
       )}
 
@@ -56,10 +67,10 @@ export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar 
         <CalendarFrame
           label="Decision deadlines"
           icon={<Flag className="w-4 h-4" />}
-          count={calendar.deadlines.length}
+          count={view.deadlines.length}
           subtitle="next 90 days"
         >
-          <DeadlineList items={calendar.deadlines} />
+          <DeadlineList items={view.deadlines} />
         </CalendarFrame>
       )}
 
@@ -67,10 +78,10 @@ export default function CcoCalendar({ calendar }: { calendar: ParsedCcoCalendar 
         <CalendarFrame
           label="Standing items"
           icon={<Repeat className="w-4 h-4" />}
-          count={calendar.standing.length}
+          count={view.standing.length}
           subtitle="recurring"
         >
-          <StandingList items={calendar.standing} />
+          <StandingList items={view.standing} />
         </CalendarFrame>
       )}
 

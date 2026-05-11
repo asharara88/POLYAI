@@ -3,6 +3,7 @@
 import type { ParsedDecisionAsks, DecisionAsk } from "@/lib/content";
 import { useIdentity } from "@/lib/identity";
 import { inScope, scopeFor } from "@/lib/role-scope";
+import { useCcoDedupe } from "@/lib/cco-dedupe-context";
 import SignDecisionAsk from "@/components/SignDecisionAsk";
 import { Section, SectionHeader, Stack, Card, ClassBadge, UrgencyBadge } from "@/components/ui";
 import { ChevronDown, ChevronUp, History, Inbox } from "lucide-react";
@@ -93,11 +94,15 @@ export default function DecisionAsksQueue({
 }) {
   const { identity, hydrated } = useIdentity();
   const scope = scopeFor(identity?.role ?? "cco", identity?.agentSlug);
-  const pending = !hydrated || scope.seesAll
+  const { excluded } = useCcoDedupe();
+  // First: scope filter. Second: dedupe (drop items already shown in CcoNow above).
+  const scoped = !hydrated || scope.seesAll
     ? asks.pending
     : asks.pending.filter((a) => inScope(scope, a.className ?? ""));
+  const pending = scoped.filter((a) => !excluded.ask.has(a.id));
   const inScopeCount = pending.length;
-  const outOfScopeCount = asks.pending.length - inScopeCount;
+  const outOfScopeCount = asks.pending.length - inScopeCount - excluded.ask.size;
+  const dedupedCount = scoped.length - pending.length;
 
   return (
     <Stack gap="5">
@@ -110,19 +115,23 @@ export default function DecisionAsksQueue({
         }
         description={
           inScopeCount === 0
-            ? scope.seesAll
-              ? `All caught up · ${asks.recentlySigned.length} signed in the last week`
-              : `None in your scope · ${outOfScopeCount} waiting on other pods`
+            ? dedupedCount > 0
+              ? `Top item shown above · ${asks.recentlySigned.length} signed in the last week`
+              : scope.seesAll
+                ? `All caught up · ${asks.recentlySigned.length} signed in the last week`
+                : `None in your scope · ${outOfScopeCount} waiting on other pods`
             : scope.seesAll
-              ? `${inScopeCount} waiting on you · ${asks.recentlySigned.length} signed in the last week`
-              : `${inScopeCount} in your scope · ${outOfScopeCount} on other pods`
+              ? `${inScopeCount} more · ${asks.recentlySigned.length} signed in the last week`
+              : `${inScopeCount} more in your scope · ${outOfScopeCount} on other pods`
         }
       >
         {inScopeCount === 0 ? (
           <Card padded className="text-center text-body-sm text-ink-500">
-            {scope.seesAll
-              ? "All caught up — no pending decisions."
-              : "Nothing pending in your pod right now."}
+            {dedupedCount > 0
+              ? "Top decision shown above — no others pending."
+              : scope.seesAll
+                ? "All caught up — no pending decisions."
+                : "Nothing pending in your pod right now."}
           </Card>
         ) : (
           <Stack gap="2">
