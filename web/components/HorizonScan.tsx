@@ -9,6 +9,7 @@ import {
   Telescope,
   TrendingUp,
 } from "lucide-react";
+import { plainLanguage } from "@/lib/strip-jargon";
 
 const CLASS_META: Record<
   string,
@@ -66,14 +67,14 @@ function ScanItem({ item }: { item: HorizonItem }) {
         {item.source} · {item.date}
       </div>
       <p className="text-body-sm text-ink-700 dark:text-ink-300 leading-relaxed">
-        {item.summary}
+        {plainLanguage(item.summary)}
       </p>
       {item.whySurfaced && (
         <div className="text-body-xs text-ink-600 dark:text-ink-400">
           <span className="font-semibold text-ink-700 dark:text-ink-200 mr-1">
             Why this matters:
           </span>
-          {item.whySurfaced}
+          {plainLanguage(item.whySurfaced)}
         </div>
       )}
       {item.nextStep && (
@@ -81,7 +82,7 @@ function ScanItem({ item }: { item: HorizonItem }) {
           <span className="font-semibold text-ink-700 dark:text-ink-200 mr-1">
             Next step:
           </span>
-          {item.nextStep}
+          {plainLanguage(item.nextStep)}
         </div>
       )}
     </Card>
