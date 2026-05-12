@@ -6,6 +6,7 @@ import {
   Bot,
   Building2,
   CheckCircle2,
+  Megaphone,
   MessageSquare,
   ShieldCheck,
   Sparkles,
@@ -25,6 +26,7 @@ const ICON_MAP: Record<NavItem["iconKey"], React.ComponentType<{ className?: str
   operator: ShieldCheck,
   pod: UsersRound,
   agent: Bot,
+  launches: Megaphone,
 };
 
 export default function Nav() {
