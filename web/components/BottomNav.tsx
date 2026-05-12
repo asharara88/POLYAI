@@ -6,6 +6,7 @@ import {
   Bot,
   Building2,
   CheckCircle2,
+  Megaphone,
   MessageSquare,
   MoreHorizontal,
   ShieldCheck,
@@ -23,6 +24,7 @@ const ICON_MAP: Record<NavItem["iconKey"], React.ComponentType<{ className?: str
   operator: ShieldCheck,
   pod: UsersRound,
   agent: Bot,
+  launches: Megaphone,
 };
 
 const moreItem: NavItem = { href: "/agents", label: "More", iconKey: "agent" };

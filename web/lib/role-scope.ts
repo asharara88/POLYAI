@@ -155,7 +155,7 @@ export function canSignClass(scope: Scope, classLabel: string): boolean {
 export type NavItem = {
   href: string;
   label: string;
-  iconKey: "today" | "decisions" | "projects" | "ask" | "operator" | "agent" | "pod";
+  iconKey: "today" | "decisions" | "projects" | "ask" | "operator" | "agent" | "pod" | "launches";
 };
 
 export function navItemsFor(
@@ -163,9 +163,9 @@ export function navItemsFor(
   agentSlug: string | undefined,
 ): NavItem[] {
   const base: NavItem[] = [
+    { href: "/launches", label: "Launches", iconKey: "launches" },
     { href: "/cco", label: "Today", iconKey: "today" },
     { href: "/approvals", label: "Decisions", iconKey: "decisions" },
-    { href: "/workspace/projects", label: "Projects", iconKey: "projects" },
     { href: "/chat", label: "Ask", iconKey: "ask" },
   ];
   if (role === "admin") {
