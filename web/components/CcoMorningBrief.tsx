@@ -24,6 +24,7 @@ import {
 import type { ParsedBriefSection, ParsedMorningBrief } from "@/lib/content";
 import Sparkline from "@/components/viz/Sparkline";
 import Gauge from "@/components/viz/Gauge";
+import { plainLanguage } from "@/lib/strip-jargon";
 
 type Tone = "good" | "bad" | "neutral";
 
@@ -257,7 +258,7 @@ function PipelineSection({ heading, body }: { heading: string; body: string }) {
           />
           <div className="text-body-sm text-warning-900 dark:text-warning-100 leading-relaxed">
             <span className="font-semibold">Slipping deals — </span>
-            <span>{slipping}</span>
+            <span>{plainLanguage(slipping)}</span>
           </div>
         </div>
       )}
@@ -654,7 +655,7 @@ function RiskTallySection({ heading: _h, body }: { heading: string; body: string
           />
           <div className="text-body-sm text-warning-900 dark:text-warning-100 leading-relaxed">
             <span className="font-semibold">Hot item — </span>
-            <span>{t.hotItem}</span>
+            <span>{plainLanguage(t.hotItem)}</span>
           </div>
         </div>
       )}
@@ -795,7 +796,7 @@ function HorizonCard({ item }: { item: HorizonItem }) {
         {item.title}
       </div>
       <p className="text-body-xs text-ink-600 dark:text-ink-300 mt-1 leading-relaxed">
-        {item.body}
+        {plainLanguage(item.body)}
       </p>
     </div>
   );
@@ -869,7 +870,7 @@ function ComplianceMetricCard({ metric }: { metric: ComplianceMetric }) {
       </div>
       {metric.detail && (
         <p className="text-body-xs text-ink-500 dark:text-ink-400 mt-1 leading-snug">
-          {metric.detail}
+          {plainLanguage(metric.detail)}
         </p>
       )}
     </div>
@@ -937,7 +938,7 @@ function AgedThreadsSection({ heading: _h, body }: { heading: string; body: stri
               </div>
               {it.detail && (
                 <p className="text-body-xs text-ink-500 dark:text-ink-400 mt-0.5 leading-snug">
-                  {it.detail}
+                  {plainLanguage(it.detail)}
                 </p>
               )}
             </div>
@@ -977,7 +978,7 @@ function GenericSection({ heading, body }: { heading: string; body: string }) {
   return (
     <SectionFrame icon={<Sparkles className="w-4 h-4" />} title={heading}>
       <div className="text-body-sm text-ink-700 dark:text-ink-200 whitespace-pre-line leading-relaxed">
-        {body.trim()}
+        {plainLanguage(body.trim())}
       </div>
     </SectionFrame>
   );

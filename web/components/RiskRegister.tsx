@@ -18,6 +18,7 @@ import { useCcoDedupe } from "@/lib/cco-dedupe-context";
 import AskAnchor from "@/components/ask/AskAnchor";
 import AskInlineThread from "@/components/ask/AskInlineThread";
 import SeverityHeatmap from "@/components/viz/SeverityHeatmap";
+import { plainLanguage } from "@/lib/strip-jargon";
 
 const STATUS_BORDER: Record<string, string> = {
   red: "border-l-4 border-l-danger-500",
@@ -51,14 +52,14 @@ function RiskCard({ risk }: { risk: ParsedRiskEntry }) {
         </div>
       </div>
       <p className="text-body-sm text-ink-700 dark:text-ink-300 leading-relaxed">
-        {risk.description}
+        {plainLanguage(risk.description)}
       </p>
       {risk.currentMitigation && (
         <div className="text-body-xs text-ink-600 dark:text-ink-400">
           <span className="font-semibold text-ink-700 dark:text-ink-200 mr-1">
             What we're doing:
           </span>
-          {risk.currentMitigation}
+          {plainLanguage(risk.currentMitigation)}
         </div>
       )}
       {risk.escalationThreshold && (
@@ -66,7 +67,7 @@ function RiskCard({ risk }: { risk: ParsedRiskEntry }) {
           <span className="font-semibold text-ink-700 dark:text-ink-200 mr-1">
             Escalates if:
           </span>
-          {risk.escalationThreshold}
+          {plainLanguage(risk.escalationThreshold)}
         </div>
       )}
       <div className="text-body-xs text-ink-500 dark:text-ink-400 pt-1.5 border-t border-ink-100 dark:border-ink-800/80 flex flex-wrap gap-x-3 gap-y-0.5">

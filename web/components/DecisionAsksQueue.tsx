@@ -4,6 +4,7 @@ import type { ParsedDecisionAsks, DecisionAsk } from "@/lib/content";
 import { useIdentity } from "@/lib/identity";
 import { inScope, scopeFor } from "@/lib/role-scope";
 import { useCcoDedupe } from "@/lib/cco-dedupe-context";
+import { plainLanguage } from "@/lib/strip-jargon";
 import SignDecisionAsk from "@/components/SignDecisionAsk";
 import AskAnchor from "@/components/ask/AskAnchor";
 import AskInlineThread from "@/components/ask/AskInlineThread";
@@ -47,7 +48,7 @@ function AskCard({
       {ask.recommendation && (
         <p className="text-body-sm text-ink-700 dark:text-ink-200 leading-relaxed">
           <span className="font-semibold">Recommendation:</span>{" "}
-          {ask.recommendation}
+          {plainLanguage(ask.recommendation)}
         </p>
       )}
 
@@ -72,7 +73,7 @@ function AskCard({
                   Alternatives considered
                 </div>
                 <div className="text-ink-600 dark:text-ink-400 leading-relaxed">
-                  {ask.alternatives}
+                  {plainLanguage(ask.alternatives)}
                 </div>
               </div>
             )}
@@ -82,7 +83,7 @@ function AskCard({
                   Evidence
                 </div>
                 <div className="text-ink-600 dark:text-ink-400 leading-relaxed">
-                  {ask.evidence}
+                  {plainLanguage(ask.evidence)}
                 </div>
               </div>
             )}

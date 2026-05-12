@@ -24,6 +24,7 @@ import { inScope, scopeFor } from "@/lib/role-scope";
 import { useCcoDedupe } from "@/lib/cco-dedupe-context";
 import AskAnchor from "@/components/ask/AskAnchor";
 import AskInlineThread from "@/components/ask/AskInlineThread";
+import { plainLanguage } from "@/lib/strip-jargon";
 
 type Props = {
   asks: ParsedDecisionAsks | null;
@@ -178,7 +179,7 @@ function NowAskCard({
       </h3>
       {ask.recommendation && (
         <p className="text-body-sm text-ink-700 dark:text-ink-300 mt-2 leading-relaxed">
-          <span className="font-semibold">Recommendation:</span> {ask.recommendation}
+          <span className="font-semibold">Recommendation:</span> {plainLanguage(ask.recommendation)}
         </p>
       )}
       <div className="mt-4 flex items-center gap-3 flex-wrap">
@@ -252,7 +253,7 @@ function NowRiskCard({
         {risk.title}
       </h3>
       <p className="text-body-sm text-ink-700 dark:text-ink-300 mt-1.5 leading-relaxed line-clamp-3">
-        {risk.description}
+        {plainLanguage(risk.description)}
       </p>
       <div className="mt-4 flex items-center gap-3 flex-wrap">
         <Link
