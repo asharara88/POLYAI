@@ -4,8 +4,9 @@ How Flow's agents are wired together.
 
 ## Design principles
 
-1. **Multi-tenant by default.** Flow runs as a service for many clients across multiple verticals. Every artifact is tied to a `client` slug and a `vertical`.
-2. **Three-layer context, resolved most-specific first.** Client overrides → vertical defaults → team baseline. See "Context resolution" below.
+1. **Core + packs.** A universal marketing/sales/CRM core ships with every deployment. Industry packs (e.g. `real-estate-uae`) snap on per client to add specialist agents, skills, and runbooks. The product is the core; packs sharpen it.
+2. **Multi-tenant by default.** Flow runs as a service for many clients across multiple packs. Every artifact is tied to a `client` slug and a `pack` (formerly "vertical").
+3. **Three-layer context, resolved most-specific first.** Client overrides → pack defaults → team baseline. See "Context resolution" below.
 3. **Structured handoffs over prose.** Every agent-to-agent transfer is a populated template (`schemas/`). No "here's a paragraph, please figure it out."
 4. **Shared memory is the spine.** Memory is layered (per client, per vertical, team-wide) and curated only by the `knowledge` agent. Other agents request updates through it.
 5. **Review is layered, not terminal.** Lightweight peer checks at each handoff plus a final QA pass. Compliance is a separate gate before anything goes external.
@@ -159,13 +160,15 @@ The Orchestrator can author a new agent file in `.claude/agents/` when a recurri
 4. Honor the context-resolution rule from `CLAUDE.md`.
 5. Be added to `README.md` roster and `ARCHITECTURE.md` flow.
 
-## Adding a new vertical
+## Adding a new industry pack
 
-When the second client in a new industry needs different defaults than any existing vertical:
+When the second client in a new industry needs different defaults than the universal core or any existing pack:
 
-1. Author `verticals/<name>/playbook.md` to the same shape as the existing one (`real-estate`) — audience archetypes, trigger events, sales motion, channel mix, KPIs, compliance flags, voice notes, VoC sources, common pitfalls, sub-vertical hints.
-2. Add the vertical name to `README.md` "Supported verticals" section.
-3. The `client-onboarding` agent will pick it up automatically next intake.
+1. Author `verticals/<pack-name>/playbook.md` to the same shape as the `real-estate-uae` pack — audience archetypes, trigger events, sales motion, channel mix, KPIs, compliance flags, voice notes, VoC sources, common pitfalls, sub-vertical hints.
+2. Declare which agents the pack activates (`pack-manifest.md`) — `client-onboarding` only loads the pack's agents for clients on that pack.
+3. Add the pack to `README.md` "Industry packs" section and `verticals/README.md`.
+4. Author the pack-specific skills under `.claude/skills/` and runbooks under `runbooks/` if needed.
+5. The `client-onboarding` agent will pick it up automatically next intake.
 
 ## Skills directory (`.claude/skills/`)
 
