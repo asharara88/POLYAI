@@ -1,161 +1,111 @@
 # Flow
 
-Polyphonic multi-agent AI system — a marketing, sales, and business development team built as Claude Code subagents, designed to be **adapted per client and per vertical**.
+**A white-label multi-agent marketing, sales, and CRM agency.** Run your agency on a polyphonic AI team that plans, executes, and reviews commercial work for every client you serve — packaged so you can re-sell it under your own brand.
 
 ## What this is
 
-A team of specialized agents that plan, execute, and review marketing and sales work for *any* client in *any* supported vertical. Each agent lives in `.claude/agents/` as a Markdown file. The Orchestrator (CEO) routes work between them; vertical playbooks supply industry defaults; per-client folders hold each engagement's memory.
+Flow is a product for marketing agencies, GTM consultancies, and in-house commercial leaders who want the leverage of a 50-person commercial team without the headcount. The system is a **core of marketing, sales, and CRM agents** that ships with every deployment, plus **industry packs** that snap on for verticals that need them (UAE real-estate is the first; auto, F&B, professional-services packs are on the roadmap).
 
-## Team roster
+Three properties define the product:
+
+1. **Multi-tenant by default** — one Flow instance serves many clients. Every artifact is scoped to a `client` slug; per-client memory and brand voice override vertical and team defaults.
+2. **Core + packs** — the 3-pod commercial team is universal. Industry packs add the specialist agents and skills that a particular vertical demands.
+3. **Re-sellable** — outputs, dashboards, decision queues, and the `/cco` daily surface are designed to be presented to your end-client. No Flow-branding leaks into the artifacts.
+
+## The core product (every deployment ships with this)
+
+The core is the **marketing + sales + CRM** commercial team, orchestrated by a Chief Commercial Officer agent and four pod managers.
 
 **C-level (orchestration)**
-- `chief-commercial-officer` — CEO of marketing/sales/BD. Decomposes goals, assigns work, runs handoffs, can author new agents. Sibling C-level orchestrators (CHRO, CPO, CFO-agent) reserved for future expansion to other departments.
-- `client-onboarding` — stands up a new client workspace from an intake brief plus the matching vertical playbook.
+- `chief-commercial-officer` — decomposes goals, dispatches to pods, runs the handoff cadence, escalates blockers
+- `client-onboarding` — scaffolds a new client workspace from intake brief + matched vertical pack
+- `cco-morning-brief` — daily 07:00 synthesis of pipeline, channel mix, marketing pacing, CRM health, decisions due
+- `horizon-scanner` — daily 06:00 outward scan for commercially-material signal
+- `risk-register-curator` — live commercial risk register
+- `decision-router` — classifies and routes decision-asks per client `approval_gates`
 
-**Pod managers** (route within their pod; report to `chief-commercial-officer`)
-- `marketing-manager` — orchestrates the marketing pod (strategy, creative, brand-design, SEO, social, email-lifecycle, analytics, agency-liaison, content-pr-specialist)
-- `sales-manager` — orchestrates the sales pod (sdr, inbound-qualifier, account-executive, proposal, deal-desk-analyst, secondary-market-specialist, forecasting)
-- `crm-manager` — orchestrates CRM + lifecycle (account-manager, voc, data-quality-steward, service-recovery-specialist, email-lifecycle CRM-side)
-- `wealth-vvip-manager` — orchestrates relationship channels (broker-enablement, wealth-channel-enablement, vvip-channel-enablement, vip-relationship-manager, aml-kyc-compliance-specialist coordination)
+**Marketing pod** (orchestrated by `marketing-manager`)
+- `strategy` · `research` · `creative` · `brand-design` · `seo` · `social-media` · `email-lifecycle` · `analytics` · `content-pr-specialist` · `martech-ops-specialist`
 
-**Marketing pod**
-- `strategy` — campaign plans, GTM, CRM strategy
-- `research` — market, audience, trend research
-- `creative` — copy and messaging
-- `brand-design` — visual direction and brand consistency
-- `seo` — organic search and SEM
-- `social-media` — platform-native content and community
-- `email-lifecycle` — segmentation, nurture, retention email
-- `analytics` — KPIs, attribution, A/B test readouts
+**Sales pod** (orchestrated by `sales-manager`)
+- `sdr` · `inbound-qualifier` · `account-executive` · `proposal` · `account-manager` · `forecasting` · `deal-desk-analyst`
 
-**Sales pod**
-- `sdr` — outbound prospecting and cold sequences
-- `inbound-qualifier` — inbound lead scoring and routing
-- `account-executive` — discovery, demos, deal management
-- `proposal` — quotes, SOWs, proposals
-- `account-manager` — expansion, retention, renewals
-- `forecasting` — pipeline rollup and deal-slip detection
+**CRM pod** (orchestrated by `crm-manager`)
+- `email-lifecycle` (CRM-side) · `voc` · `service-recovery-specialist` · `data-quality-steward`
 
 **Business development**
-- `partnerships` — partner identification, outreach, co-marketing
-
-**CCO daily**
-- `cco-morning-brief` — daily 07:00 morning-brief synthesis; pulls from the seven weekly cadenced reports + live data + risk register + horizon scan + decision-asks queue
-- `horizon-scanner` — daily 06:00 outward-looking scan: regulator + press + sanctions + corridor + competitor; curates 3-5 action-relevant items
-- `risk-register-curator` — owns clients/<client>/risk-register.md; receives risk-flags from any agent; classifies, ages, escalates per threshold
-- `decision-router` — receives any agent's decision-ask, classifies (urgency × decision-type × counterparty-tier), routes per client `approval_gates`, tracks SLA, escalates on breach
+- `partnerships`
 
 **Cross-cutting**
-- `review` — final QA against brief and brand
-- `compliance` — claims, regulated language, ad policy, privacy
-- `project-manager` — timelines, dependencies, blockers
-- `knowledge` — curates shared memory across clients and verticals
-- `competitive-intel` — competitor pricing, launches, messaging, ads
-- `voc` — voice-of-customer: support tickets, reviews, calls
-- `localization` — multi-language, multi-region adaptation
+- `review` (final QA) · `compliance` (claims, policy, privacy) · `project-manager` · `knowledge` (memory curator) · `competitive-intel` · `localization`
 
-**Compliance + legal + data**
-- `regulatory-research-specialist` — single source of truth for "what does the regulator currently say"; tracks DLD/RERA/ADREC/ADGM/DIFC/CBUAE/PDPL/federal AML circulars; returns citation-bearing answers
-- `aml-kyc-compliance-specialist` — operational PEP/sanctions screening, source-of-funds documentation, EDD coordination, STR drafting (with legal-liaison)
-- `legal-liaison` — counsel-facing triage; SPA redlines, escrow disputes, regulator pathway, broker-agreement template management; routes to in-house + panel firms
-- `data-quality-steward` — Salesforce hygiene; dedup; stage-evidence diff; broker-attribution accuracy
-- `martech-ops-specialist` — tag governance, identity resolution, deliverability, consent management, attribution-pipeline integrity
-- `data-room-curator` — access-controlled data rooms for institutional / JV / lender / regulator diligence
-- `service-recovery-specialist` — complaint triage, RERA/ADREC pathway, reputation defense
-- `content-pr-specialist` — earned-media + thought-leadership; embargo, spokesperson briefing, no-mention enforcement
-- `deal-desk-analyst` — non-standard commercial structure analysis (multi-unit, custom payment plan, broker over-commission, VVIP bespoke)
-- `secondary-market-specialist` — UAE secondary-market resale: NOC, Form-F (Dubai), ADREC equivalent (AD), Oqood-to-title, Trustee Account release
-- `vip-relationship-manager` — HNW/UHNW concierge layer (distinct from VVIP protocol)
+## Industry packs (snap-on per client)
 
-**Sub-vertical specialists** (loaded per client based on `client-profile.md`)
-- `agency-liaison` — manages external creative / media / digital / PR agencies (real-estate developer, larger B2C)
-- `broker-enablement` — broker channel: registry, materials, allocations, channel development (reactivation + new signings), performance, disputes (real-estate developer, channel-led B2B)
-- `wealth-channel-enablement` — parallel HNI / UHNI channel: private banks, family offices, independent introducers; confidential materials, principal-to-principal, multi-unit / floor / building deals (luxury / branded residences / ultra-prime)
-- `vvip-channel-enablement` — ruling families, ministers, senior officials, foreign dignitaries, sovereign-institution principals; protocol, gatekeepers, discretion, PEP / sanctions / FCPA screening (high-end / government-adjacent engagements)
-- `inventory-manager` — source-of-truth for unit / allocation availability, pricing, status; gates customer-facing artifacts that reference inventory (real-estate developer)
-- `events` — end-to-end event ownership: planning, scheduling, headcount, invitations, RSVPs, partner / sponsor coordination, comms; coordinates external event agency + internal events team + channel agents for invitation lists; pairs with marketing-procurement and marketing-financial-manager for the commercial side
-- `marketing-procurement` — vendor selection, RFP / RFQ / sole-source processes, SOWs, contract terms, performance scorecards, renewal management for everything marketing buys
-- `marketing-financial-manager` — marketing-budget allocation, PO issuance + tracking, accruals, invoice approvals, period-close discipline, variance analysis, CFO / FP&A reporting
+A pack adds the agents, skills, runbooks, and vertical playbook that a specific industry needs on top of the core. Packs are activated per client in `client-profile.md` — agents outside the active pack stay dormant.
 
-## Multi-client + multi-vertical model
+**Pack: `real-estate-uae`** (shipping today)
+The pack a UAE master-developer engagement needs on top of the core 3-pod team.
+- Channels: `broker-enablement` · `wealth-channel-enablement` · `vvip-channel-enablement` · `vip-relationship-manager` · `wealth-vvip-manager` (pod manager) · `agency-liaison`
+- Inventory + commercial structure: `inventory-manager` · `deal-desk-analyst` (pack-augmented) · `secondary-market-specialist`
+- Regulatory + legal: `regulatory-research-specialist` · `aml-kyc-compliance-specialist` · `legal-liaison`
+- Events + procurement: `events` · `marketing-procurement` · `marketing-financial-manager`
+- Data rooms: `data-room-curator`
+- Skills loaded with the pack: `uae-real-estate-regulatory`, `aml-kyc-uae-real-estate`, `broker-operations`, `wealth-channel-operations`, `vvip-protocol-uae`, `off-plan-launch-mechanics`, `payment-plan-structures`, `dispute-resolution-uae`, `regulatory-disclosure-language`, `diaspora-corridor-marketing`, `project-fact-pack`, `owner-community-governance`
 
-Flow is a service operator. Three layers of context, resolved most-specific first:
+**Packs on the roadmap**
+- `auto-retail` — dealer-network enablement, F&I desk, test-drive orchestration, JATO/AutoData feeds
+- `professional-services` — proposal-led sales, partner-managed funnels, fee-realization analytics
+- `f-and-b-multi-unit` — local-marketing, loyalty, franchisee enablement
+- `b2b-saas` — PLG instrumentation, expansion motions, usage-driven CRM
+
+If a client needs an industry that no pack covers yet, the core team still runs them end-to-end on the universal commercial playbook in `verticals/_default/`. The pack is a sharpener, not a prerequisite.
+
+## Multi-client architecture
+
+Three layers of context, resolved most-specific first:
 
 ```
 clients/<slug>/knowledge/...     ← client overrides (their ICP, voice, decisions, results)
-verticals/<vertical>/playbook.md ← industry defaults (real-estate, ...)
+verticals/<vertical>/playbook.md ← industry-pack defaults (audience, channel mix, KPIs)
 knowledge/...                    ← team-level baseline (cross-client, cross-vertical)
 ```
 
 - **Per-client** folders hold the engagement's memory. Writes always go here.
-- **Vertical playbooks** capture patterns that apply to most clients in an industry — audience archetypes, trigger events, channel mix, KPI norms, compliance flags, voice notes, common pitfalls.
-- **Root knowledge** is the team's cross-client baseline.
+- **Industry-pack playbooks** capture patterns that apply to most clients in that pack — audience archetypes, trigger events, channel mix, KPI norms, compliance flags, voice notes.
+- **Root knowledge** is the operator's cross-client baseline (your agency's house style, your retainer playbooks).
 
-Promotion (client → vertical → root) happens only when a pattern appears across 2+ clients, with `chief-commercial-officer` approval, executed by the `knowledge` agent.
-
-## Supported verticals (today)
-
-- `real-estate` — residential / investor / off-plan / commercial
-  - `real-estate / developer` (sub-vertical) — master developers + project developers running off-plan launches with agency partners and broker networks (Aldar / Emaar / Damac / Sobha class)
-
-Sub-verticals layer on top of their parent vertical. A client whose profile has `vertical: real-estate, sub_vertical: developer` inherits both the real-estate playbook and the developer overlay. See `ARCHITECTURE.md` for the resolution rules.
-
-Adding a new vertical (or sub-vertical) means writing a `verticals/<name>/playbook.md` (or `verticals/<vertical>/sub-verticals/<sub-vertical>/playbook.md`) to the same shape as the existing one. The `chief-commercial-officer` can author one; you'd typically only do this when the second client in that industry needs different defaults than any existing vertical.
+Promotion (client → pack → root) happens only when a pattern appears across 2+ clients, with `chief-commercial-officer` approval, executed by the `knowledge` agent.
 
 ## Integrations
 
-Flow agents can read from and (with human approval) write to your existing tooling — Salesforce, HubSpot, Meta / Google Ads, Property Finder, Tableau, WhatsApp Business, DocuSign, etc. Every external write goes through an `integration-action` envelope (see `schemas/integration-action.md`) with explicit human approval until a per-client policy promotes it. See `INTEGRATIONS.md` for the full architecture and phased rollout.
+Flow agents read from and (with human approval) write to your existing stack — Salesforce, HubSpot, Meta / Google Ads, LinkedIn, WhatsApp Business, DocuSign, Snowflake, Looker, plus industry-pack-specific integrations (Property Finder, Sumsub, Trakheesi for `real-estate-uae`). Every external write goes through an `integration-action` envelope (`schemas/integration-action.md`) with explicit human approval until a per-client policy promotes it. See `INTEGRATIONS.md` for the tier system (A: read-only → D: autonomous) and the phased rollout.
 
-## How they work together
+## How a Flow engagement runs
 
-1. A new engagement starts with `client-onboarding` — intake brief in, populated `clients/<slug>/` workspace out.
-2. For any goal, the **Orchestrator** identifies the active client + vertical, then decomposes into a sequenced plan.
-3. Pod agents execute against structured briefs (see `schemas/`) and emit structured outputs.
-4. **Review** + **Compliance** + (when relevant) **Localization** gate every external artifact.
-5. **Knowledge** captures decisions and results into the client folder, and promotes cross-client patterns up to the vertical playbook.
-6. **Project-manager** tracks who owes what to whom and surfaces blockers.
+1. **Onboard** — `client-onboarding` takes an intake brief, picks the right industry pack (or `_default`), scaffolds `clients/<slug>/`, seeds `client-profile.md`, `icp.md`, `brand-voice.md`.
+2. **Orchestrate** — for any goal, `chief-commercial-officer` decomposes into a plan and dispatches to `marketing-manager`, `sales-manager`, or `crm-manager`.
+3. **Execute** — pod specialists run against structured briefs (`schemas/`) and emit structured outputs.
+4. **Gate** — `review` + `compliance` + (when needed) `localization` gate every external artifact.
+5. **Surface** — the `/cco` daily page surfaces the morning brief, decisions queue, risk register, horizon scan, and calendar for the human CCO to act on.
+6. **Learn** — `knowledge` captures decisions and results into the client folder and promotes cross-client patterns up to the pack playbook.
 
-See `ARCHITECTURE.md` for handoff flows, approval gates, and the resolution rules.
+See `ARCHITECTURE.md` for handoff flows, approval gates, and resolution rules.
 
 ## Repo layout
 
 ```
 .claude/agents/        # one .md per agent (Claude Code subagent format)
-.claude/skills/        # framework + reference skills loaded by agents
-                       #   uae-real-estate-regulatory · aml-kyc-uae-real-estate
-                       #   regulatory-disclosure-language · broker-operations
-                       #   wealth-channel-operations · marketing-attribution
-                       #   project-fact-pack · vvip-protocol-uae
-                       #   crm-data-model · off-plan-launch-mechanics
-                       #   owner-community-governance · dispute-resolution-uae
-                       #   payment-plan-structures · diaspora-corridor-marketing
-                       #   cco-kpi-framework
+.claude/skills/        # framework + reference skills loaded by agents and packs
 schemas/               # shared templates for inter-agent handoffs
 clients/               # per-client engagements (one folder per slug)
   _template/           # scaffold copied for new clients
-verticals/             # industry defaults
-  real-estate/
-    sub-verticals/developer/  # off-plan + secondary-market overlay
-integrations/          # per-system specs + actions (canva, miro, salesforce,
-                       #   sumsub, trakheesi)
-runbooks/              # multi-agent choreography for recurring scenarios.
-                       #   compliance + counterparty crisis: resale-with-noc ·
-                       #   complaint-rera-exposure · pep-sanctions-hit ·
-                       #   regulator-inquiry-non-complaint
-                       #   operational crisis: construction-delay-handover-slip ·
-                       #   tier-1-broker-collapse · project-safety-press-crisis ·
-                       #   key-rm-departure
-                       #   customer + channel lifecycle: international-roadshow ·
-                       #   inbound-hnw-private-bank · broker-onboarding-to-first-deal ·
-                       #   handover-snagging · press-sensitive-uhnw-transaction
-                       #   CCO daily + cadenced: cco-daily-brief · horizon-scan-daily ·
-                       #   risk-register-update · monthly-board-prep ·
-                       #   quarterly-exec-brief · annual-commercial-plan
-                       #   strategic: strategic-bet-evaluation
-                       #   integration go-live: integration-go-live-salesforce ·
-                       #   integration-go-live-sumsub · integration-go-live-calendar ·
-                       #   integration-go-live-news-scan
+  _examples/           # demo clients (e.g. aldar-developments)
+verticals/             # industry-pack playbooks
+  real-estate/         # `real-estate-uae` pack (developer sub-vertical today)
+integrations/          # per-system specs + action contracts
+runbooks/              # multi-agent choreography for recurring scenarios
 knowledge/             # team-level cross-client baseline
+web/                   # Next.js operator surface — landing, /cco, /clients, /agents
 ARCHITECTURE.md        # handoff flows, approval gates, design choices
 CLAUDE.md              # project-wide rules every agent inherits
 CHANGELOG.md           # versioned change log
@@ -163,15 +113,10 @@ CHANGELOG.md           # versioned change log
 
 ## Onboarding a new client
 
-Inside Claude Code, give the Orchestrator a goal mentioning a new client. It will invoke `client-onboarding` first. Onboarding will:
+Inside Claude Code, tell the orchestrator: *"Onboard a new client, slug `acme-realty`, real-estate-uae pack, off-plan launch in Q3."* `client-onboarding` will ask for the missing inputs (voice, integrations, approval gates, hard constraints), copy the template, seed the profile, and hand back to `chief-commercial-officer` with a recommended first piece of work.
 
-1. Ask for the minimum inputs (slug, vertical, what they sell, primary market, voice, integrations, approval gates, hard constraints).
-2. Pick the matching `verticals/<vertical>/playbook.md` as defaults.
-3. Copy `clients/_template/` to `clients/<slug>/` and seed `client-profile.md`, `icp.md`, `brand-voice.md`.
-4. Hand back to the Orchestrator with a status summary and a recommended first piece of work.
+## Pitching Flow to your end-clients
 
-## Using the team after onboarding
+The `/cco` surface is built to be opened in front of the buyer. The morning brief, decisions queue, risk register, horizon scan, and calendar are written in the buyer's language — never in Flow's language. The `/agents` directory shows the team that's working their account. The `/clients/<slug>` workspace is their evidence file.
 
-> "Plan a 6-week new-launch campaign for **acme-realty** — Q3 launch of an off-plan tower targeting investors in the GCC."
-
-The Orchestrator stamps `client: acme-realty, vertical: real-estate` on every handoff. Strategy reads `clients/acme-realty/knowledge/icp.md` first, falls back to `verticals/real-estate/playbook.md` for trigger events and channel mix, and dispatches Creative + SEO + Social briefs from there. Compliance is auto-included because off-plan investor marketing has regulatory weight in most markets.
+Branding, voice, and disclosure are per-client overrides in `client-profile.md`. Run Flow as your agency; the buyer sees their agency.

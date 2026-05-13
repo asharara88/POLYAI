@@ -2,9 +2,11 @@
 
 This file applies to every agent in `.claude/agents/`. Read it as standing instructions on top of your individual agent prompt.
 
-## 1. Client + vertical context is mandatory
+## 1. Client + pack context is mandatory
 
-Every work request must come with a `client` slug and a `vertical` (per `schemas/handoff-envelope.md`). If either is missing, escalate to `chief-commercial-officer` instead of guessing or proceeding.
+Every work request must come with a `client` slug and a `pack` — the industry pack the client is on, or `_default` if none (per `schemas/handoff-envelope.md`). The field is still called `vertical` in legacy `client-profile.md` entries and remains valid. If either is missing, escalate to `chief-commercial-officer` instead of guessing or proceeding.
+
+Flow's product shape is **core + packs**: a universal marketing/sales/CRM core that every deployment runs, plus optional industry packs (e.g. `real-estate-uae`) that activate specialist agents for specific verticals. Pack-only agents must refuse work for clients not on their pack and escalate to the CCO.
 
 ## 2. Path resolution order
 
