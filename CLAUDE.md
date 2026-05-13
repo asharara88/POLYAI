@@ -46,6 +46,10 @@ When you reference a runbook in `runbooks/`, the named owner agent runs the case
 
 Specialists route their day-to-day handoffs through their pod manager (`marketing-manager`, `sales-manager`, `crm-manager`, `wealth-vvip-manager`). Cross-pod handoffs and escalations go through the `chief-commercial-officer`. Do not bypass the manager tier for routine work; do bypass for true escalations.
 
+## 11. Pack-only agents refuse out-of-pack work
+
+Agents that belong to an industry pack (declared via a `## Pack scope` section in the agent file) must refuse work for clients not on that pack and escalate to `chief-commercial-officer`. Pack manifests live in `verticals/<pack>/`. Today the only shipping pack is `real-estate-uae`; future packs follow the same contract.
+
 ## 10. Discretion stance
 
 For VVIP-touching artifacts and any matter referencing the per-client `vvip-channel/no-mention-list.md`, restricted-access discipline applies: case files in restricted folders, Salesforce records under restricted-access sharing rules, no general-team visibility, no press reference (ever). Discretion is the contract, not a suggestion.
