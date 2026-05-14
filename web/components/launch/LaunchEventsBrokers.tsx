@@ -7,7 +7,30 @@ import {
 import { eventLabel, deadlineLabel } from "@/lib/format-dates";
 import EventDetailCard from "@/components/launch/EventDetailCard";
 
-const WORKSPACE = "aldar-developments";
+// Words too generic to count toward dedup-overlap signal.
+const DEDUP_STOPWORDS = new Set([
+  "the", "and", "for", "with", "from", "into", "onto", "over", "this", "that",
+  "live", "first", "final", "begin", "begins", "next", "open", "opens", "opening",
+  "tier", "event", "events", "phase", "stage", "step", "day", "days", "week",
+  "weeks", "month", "months", "year", "years", "launch", "campaign",
+]);
+
+function dedupTokens(text: string): Set<string> {
+  // Lowercase, strip non-alphanumerics, keep tokens length ≥ 4 that aren't stopwords.
+  return new Set(
+    text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .split(/\s+/)
+      .filter((w) => w.length >= 4 && !DEDUP_STOPWORDS.has(w)),
+  );
+}
+
+function tokenOverlap(a: Set<string>, b: Set<string>): number {
+  let count = 0;
+  for (const w of a) if (b.has(w)) count++;
+  return count;
+}
 
 /**
  * Events & brokers tab.
@@ -57,15 +80,27 @@ function classifyAudience(text: string): FallbackEvent["audience"] {
   return "internal";
 }
 
+type AuthoredFingerprint = { date: string; tokens: Set<string> };
+
 function fallbackEventsFromMilestones(
   milestones: LaunchMilestone[],
-  suppressDates: Set<string>,
+  authored: AuthoredFingerprint[],
 ): FallbackEvent[] {
   return milestones
     .filter((m) =>
       /event|viewing|gallery|reception|ribbon|ceremony|preview|launch|briefing/i.test(m.what),
     )
-    .filter((m) => !suppressDates.has(m.date))
+    .filter((m) => {
+      // Suppress only when an authored event has BOTH the same date AND
+      // shares ≥ 2 meaningful tokens with the milestone text. Same-date
+      // collisions on unrelated moments (broker night + paid-creative-live
+      // on 2026-06-10) and same-name different-date occurrences (the Sept-14
+      // and Sept-28 private viewings) are both preserved.
+      const milestoneTokens = dedupTokens(m.what);
+      return !authored.some(
+        (a) => a.date === m.date && tokenOverlap(milestoneTokens, a.tokens) >= 2,
+      );
+    })
     .map((m) => ({
       date: m.date,
       title: m.what,
@@ -74,9 +109,11 @@ function fallbackEventsFromMilestones(
 }
 
 export default function LaunchEventsBrokers({ launch }: { launch: Launch }) {
-  const authored = getLaunchEvents(WORKSPACE, launch.id);
-  const authoredDates = new Set(authored.map((e) => e.date).filter(Boolean));
-  const fallback = fallbackEventsFromMilestones(launch.milestones, authoredDates);
+  const authored = getLaunchEvents(launch.clientSlug, launch.id);
+  const authoredFingerprints: AuthoredFingerprint[] = authored
+    .filter((e) => e.date)
+    .map((e) => ({ date: e.date, tokens: dedupTokens(e.title) }));
+  const fallback = fallbackEventsFromMilestones(launch.milestones, authoredFingerprints);
 
   // Broker / wealth signals from the channel mix
   const brokerChannels = launch.channels.filter((c) =>
