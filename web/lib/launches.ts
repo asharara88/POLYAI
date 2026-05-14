@@ -356,3 +356,219 @@ export const PHASE_TONE: Record<LaunchPhase, "neutral" | "info" | "accent" | "su
   "close-out": "neutral",
   unknown: "neutral",
 };
+
+// ---------- Authored launch events ----------
+//
+// Events live one-per-file under
+//   clients/<slug>/campaigns/<launchId>/events/<eventId>.md
+// with a fenced ```yaml``` block at the top. Each file is one event the
+// launch is running (sales-gallery preview, broker night, wealth-channel
+// preview, public ribbon-cutting, owner reception, etc).
+//
+// Compared to the milestone-derived events on launch.milestones, authored
+// events carry attendance state, an invitee slate broken down by protocol
+// tier, the run-sheet pointer, and the owning agent — i.e. the surface a
+// real event-ops thread runs against.
+
+export type EventStatus = "planning" | "confirmed" | "live" | "closed";
+
+export type ProtocolTier =
+  | "vvip"
+  | "vip"
+  | "wealth-channel"
+  | "broker"
+  | "press"
+  | "investor"
+  | "owner"
+  | "internal";
+
+export type EventInviteeBlock = {
+  tier: ProtocolTier;
+  /** Display label for the tier (overrides the default per-tier label). */
+  label?: string;
+  invited: number;
+  accepted: number;
+  declined: number;
+  pending: number;
+  attended?: number;
+  notes?: string;
+};
+
+export type LaunchEvent = {
+  id: string;
+  launchId: string;
+  clientSlug: string;
+  title: string;
+  date: string;
+  time?: string;
+  venue?: string;
+  status: EventStatus;
+  ownerAgent: string;
+  coOwners: string[];
+  capacity?: number;
+  runSheetPath?: string;
+  attendance: {
+    invited: number;
+    accepted: number;
+    declined: number;
+    pending: number;
+    attended: number;
+  };
+  invitees: EventInviteeBlock[];
+  notes?: string;
+};
+
+function totalsFromInvitees(blocks: EventInviteeBlock[]): LaunchEvent["attendance"] {
+  return blocks.reduce(
+    (acc, b) => ({
+      invited: acc.invited + (b.invited || 0),
+      accepted: acc.accepted + (b.accepted || 0),
+      declined: acc.declined + (b.declined || 0),
+      pending: acc.pending + (b.pending || 0),
+      attended: acc.attended + (b.attended || 0),
+    }),
+    { invited: 0, accepted: 0, declined: 0, pending: 0, attended: 0 },
+  );
+}
+
+function parseInviteeBlocks(raw: unknown): EventInviteeBlock[] {
+  return asArray(raw)
+    .map((entry): EventInviteeBlock | null => {
+      const obj = asObject(entry);
+      if (!obj) return null;
+      const tierRaw = asString(obj.tier).toLowerCase();
+      const allowed: ProtocolTier[] = [
+        "vvip",
+        "vip",
+        "wealth-channel",
+        "broker",
+        "press",
+        "investor",
+        "owner",
+        "internal",
+      ];
+      const tier = (allowed as string[]).includes(tierRaw)
+        ? (tierRaw as ProtocolTier)
+        : ("internal" as ProtocolTier);
+      return {
+        tier,
+        label: asString(obj.label) || undefined,
+        invited: asNumber(obj.invited) ?? 0,
+        accepted: asNumber(obj.accepted) ?? 0,
+        declined: asNumber(obj.declined) ?? 0,
+        pending: asNumber(obj.pending) ?? 0,
+        attended: asNumber(obj.attended) ?? undefined,
+        notes: asString(obj.notes) || undefined,
+      };
+    })
+    .filter((b): b is EventInviteeBlock => b !== null);
+}
+
+export function getLaunchEvents(clientSlug: string, launchId: string): LaunchEvent[] {
+  const folder = findClientFolder(clientSlug);
+  if (!folder) return [];
+  const eventsDir = path.join(folder, "campaigns", launchId, "events");
+  if (!exists(eventsDir)) return [];
+
+  let entries: string[] = [];
+  try {
+    entries = fs
+      .readdirSync(eventsDir, { withFileTypes: true })
+      .filter((d) => d.isFile() && d.name.endsWith(".md"))
+      .map((d) => d.name);
+  } catch {
+    return [];
+  }
+
+  const out: LaunchEvent[] = [];
+  for (const file of entries) {
+    const raw = readFileSafe(path.join(eventsDir, file));
+    if (!raw) continue;
+    const yamlObj = parseYaml(extractYamlBlock(raw));
+    if (!yamlObj || Object.keys(yamlObj).length === 0) continue;
+
+    const id = asString(yamlObj.event_id) || file.replace(/\.md$/, "");
+    const invitees = parseInviteeBlocks(yamlObj.invitees);
+
+    // Attendance: prefer explicit `attendance:` block, else derive from invitees.
+    const explicitAttendance = asObject(yamlObj.attendance);
+    const attendance = explicitAttendance
+      ? {
+          invited: asNumber(explicitAttendance.invited) ?? 0,
+          accepted: asNumber(explicitAttendance.accepted) ?? 0,
+          declined: asNumber(explicitAttendance.declined) ?? 0,
+          pending: asNumber(explicitAttendance.pending) ?? 0,
+          attended: asNumber(explicitAttendance.attended) ?? 0,
+        }
+      : totalsFromInvitees(invitees);
+
+    const statusRaw = asString(yamlObj.status).toLowerCase();
+    const status: EventStatus = (
+      ["planning", "confirmed", "live", "closed"].includes(statusRaw)
+        ? statusRaw
+        : "planning"
+    ) as EventStatus;
+
+    out.push({
+      id,
+      launchId,
+      clientSlug,
+      title: asString(yamlObj.title) || id,
+      date: asString(yamlObj.date),
+      time: asString(yamlObj.time) || undefined,
+      venue: asString(yamlObj.venue) || undefined,
+      status,
+      ownerAgent: asString(yamlObj.owner_agent) || "events",
+      coOwners: asArray<string>(yamlObj.co_owners).map(String),
+      capacity: asNumber(yamlObj.capacity) ?? undefined,
+      runSheetPath: asString(yamlObj.run_sheet) || undefined,
+      attendance,
+      invitees,
+      notes: asString(yamlObj.notes) || undefined,
+    });
+  }
+
+  // Sort by date ascending (events without a date sink to the bottom).
+  return out.sort((a, b) => {
+    if (a.date && b.date) return a.date.localeCompare(b.date);
+    if (a.date) return -1;
+    if (b.date) return 1;
+    return a.title.localeCompare(b.title);
+  });
+}
+
+export const TIER_LABEL: Record<ProtocolTier, string> = {
+  vvip: "VVIP — royal & ministerial",
+  vip: "VIP — HNI & family-office principals",
+  "wealth-channel": "Wealth-channel intermediaries",
+  broker: "Tier-1 brokers",
+  press: "Press",
+  investor: "Invitation-only investors",
+  owner: "Existing owners",
+  internal: "Internal — sales gallery & ops",
+};
+
+export const TIER_TONE: Record<ProtocolTier, string> = {
+  vvip: "purple",
+  vip: "accent",
+  "wealth-channel": "info",
+  broker: "info",
+  press: "warning",
+  investor: "accent",
+  owner: "success",
+  internal: "neutral",
+};
+
+export const STATUS_LABEL: Record<EventStatus, string> = {
+  planning: "Planning",
+  confirmed: "Confirmed",
+  live: "Live now",
+  closed: "Closed",
+};
+
+export const STATUS_TONE: Record<EventStatus, "neutral" | "info" | "accent" | "success" | "warning"> = {
+  planning: "neutral",
+  confirmed: "info",
+  live: "warning",
+  closed: "success",
+};
