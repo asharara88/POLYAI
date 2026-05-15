@@ -3,10 +3,12 @@ import Link from "next/link";
 import Markdown from "@/components/Markdown";
 import {
   getBrokerDetail,
+  getBrokers,
   getClient,
   getClients,
   listBrokerProfiles,
 } from "@/lib/content";
+import FirmLaunchHistory from "@/components/broker/FirmLaunchHistory";
 
 export const dynamicParams = false;
 
@@ -30,6 +32,15 @@ export default async function Page({
   const detail = getBrokerDetail(slug, firmSlug);
   if (!client || !detail) notFound();
 
+  // Match the firm-slug back to its display name in the registry so the
+  // reverse-link lookup works (allocation files reference the display
+  // name, not the slug).
+  const brokers = getBrokers(slug);
+  const firmName =
+    brokers?.sampleFirms.find(
+      (f) => f.firm.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") === firmSlug,
+    )?.firm ?? firmSlug;
+
   return (
     <div className="space-y-8">
       <header>
@@ -38,16 +49,18 @@ export default async function Page({
           <span>/</span>
           <Link href={`/clients/${slug}`} className="hover:underline">{slug}</Link>
           <span>/</span>
-          <Link href={`/clients/${slug}?tab=brokers`} className="hover:underline">brokers</Link>
+          <Link href={`/clients/${slug}/brokers`} className="hover:underline">brokers</Link>
           <span>/</span>
           <span>{firmSlug}</span>
         </div>
-        <h1 className="text-2xl font-semibold tracking-tight mt-1">{firmSlug}</h1>
+        <h1 className="text-2xl font-semibold tracking-tight mt-1">{firmName}</h1>
       </header>
 
       <section className="rounded-lg border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
         <Markdown>{detail.raw}</Markdown>
       </section>
+
+      <FirmLaunchHistory clientSlug={slug} firmName={firmName} />
     </div>
   );
 }

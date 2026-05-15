@@ -356,6 +356,8 @@ export type BrokerFirm = {
   languages: string[];
   priorLaunchConversion: number | null;
   active: boolean;
+  dormant?: boolean;
+  dormantSince?: string;
 };
 
 export type ParsedBrokers = {
@@ -392,6 +394,8 @@ const parseBrokerRegistryMarkdown = (raw: string): ParsedBrokers => {
       const langStr = item.match(/^\s*languages:\s*\[(.*?)\]/m)?.[1] ?? "";
       const conv = num(item.match(/^\s*prior_launch_conversion:\s*(.+)$/m)?.[1] ?? "");
       const active = (item.match(/^\s*active:\s*(true|false)/m)?.[1] ?? "true") === "true";
+      const dormant = item.match(/^\s*dormant:\s*(true|false)/m)?.[1] === "true";
+      const dormantSince = item.match(/^\s*dormant_since:\s*(.+)$/m)?.[1]?.trim();
       if (!firm) continue;
       sampleFirms.push({
         firm,
@@ -400,6 +404,8 @@ const parseBrokerRegistryMarkdown = (raw: string): ParsedBrokers => {
         languages: langStr.split(",").map((s) => s.trim()).filter(Boolean),
         priorLaunchConversion: conv,
         active,
+        ...(dormant ? { dormant: true } : {}),
+        ...(dormantSince ? { dormantSince } : {}),
       });
     }
   }
