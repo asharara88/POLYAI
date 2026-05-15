@@ -6,6 +6,7 @@ import {
 } from "@/lib/launches";
 import { eventLabel, deadlineLabel } from "@/lib/format-dates";
 import EventDetailCard from "@/components/launch/EventDetailCard";
+import BrokerAllocationTable from "@/components/broker/BrokerAllocationTable";
 
 // Words too generic to count toward dedup-overlap signal.
 const DEDUP_STOPWORDS = new Set([
@@ -216,6 +217,9 @@ export default function LaunchEventsBrokers({ launch }: { launch: Launch }) {
           No events declared in the brief or events folder yet.
         </div>
       )}
+
+      {/* Authored broker-firm allocations (campaigns/<id>/broker-allocations.md) */}
+      <BrokerAllocationTable clientSlug={launch.clientSlug} launchId={launch.id} />
 
       {/* Broker / wealth slate */}
       {brokerChannels.length > 0 && (
