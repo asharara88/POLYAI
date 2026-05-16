@@ -1,14 +1,14 @@
 # Campaign brief — Saadiyat Reserve Heights — Q3 Launch
 
-> **Worked example — illustrative.** Fictional campaign brief; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional campaign brief; not real UAE Developments data.
 >
 > Owned by `strategy`. Conforms to `schemas/campaign-brief.md`.
-> Stamped with `client: aldar-developments, vertical: real-estate, sub_vertical: developer` per envelope rules.
+> Stamped with `client: uae-developments, vertical: real-estate, sub_vertical: developer` per envelope rules.
 >
 > **Linked client artifacts (developer sub-vertical):**
-> - Inventory truth: `clients/_examples/aldar-developments/inventory/current.md` (gates every artifact referencing units)
-> - Broker network: `clients/_examples/aldar-developments/brokers/registry.md`
-> - Agency engagements: `clients/_examples/aldar-developments/agencies/`
+> - Inventory truth: `clients/_examples/uae-developments/inventory/current.md` (gates every artifact referencing units)
+> - Broker network: `clients/_examples/uae-developments/brokers/registry.md`
+> - Agency engagements: `clients/_examples/uae-developments/agencies/`
 >   - Brand: `agencies/memac-ogilvy/profile.md`
 >   - Media: `agencies/havas-mena/profile.md`
 > - Working surfaces: Canva (agency design files) + Miro (planning board) — see `integrations/canva/spec.md` and `integrations/miro/spec.md`
@@ -129,7 +129,7 @@ constraints:
     - "Guaranteed yield" or "guaranteed appreciation" language
     - Any comparison naming a competing developer
     - Stock-image villas, helicopter shots, champagne glasses (per brand-voice.md)
-  brand_voice_ref: clients/_examples/aldar-developments/knowledge/brand-voice.md
+  brand_voice_ref: clients/_examples/uae-developments/knowledge/brand-voice.md
   compliance_flags:
     - ADGM            # primary regulator (Abu Dhabi anchoring)
     - RERA            # for Dubai-side reach

@@ -1,6 +1,6 @@
 # Saadiyat Reserve Heights
 
-> **Worked example — illustrative.** Fictional project on Saadiyat Island; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional project on Saadiyat Island; not real UAE Developments data.
 
 ```yaml
 id: saadiyat-reserve-heights

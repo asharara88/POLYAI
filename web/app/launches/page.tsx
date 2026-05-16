@@ -4,9 +4,9 @@ import LaunchCard from "@/components/launch/LaunchCard";
 
 export const dynamic = "force-static";
 
-// Single-tenant deployment — workspace pinned to Aldar. The runtime cookie
+// Single-tenant deployment — workspace pinned to UAE Developments. The runtime cookie
 // stays the source of truth for non-static surfaces.
-const WORKSPACE = "aldar-developments";
+const WORKSPACE = "uae-developments";
 
 export default function LaunchesPage() {
   const launches = getLaunches(WORKSPACE);

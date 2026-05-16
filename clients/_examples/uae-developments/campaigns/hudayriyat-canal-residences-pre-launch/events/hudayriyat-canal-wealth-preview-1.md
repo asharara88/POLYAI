@@ -1,6 +1,6 @@
 # Event — Hudayriyat Canal wealth-channel preview (Sept 14)
 
-> **Worked example — illustrative.** Fictional event record; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional event record; not real UAE Developments data.
 >
 > Owned by `wealth-channel-enablement`. Conforms to the Phase 20 launch-event schema.
 
@@ -18,7 +18,7 @@ co_owners:
   - vip-relationship-manager
   - aml-kyc-compliance-specialist
 capacity: 60
-run_sheet: clients/aldar-developments/campaigns/hudayriyat-canal-residences-pre-launch/events/hudayriyat-canal-wealth-preview-1/run-sheet.md
+run_sheet: clients/uae-developments/campaigns/hudayriyat-canal-residences-pre-launch/events/hudayriyat-canal-wealth-preview-1/run-sheet.md
 attendance:
   invited: 54
   accepted: 22

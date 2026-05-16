@@ -2,14 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Bot, FileCode, Layers, MoreHorizontal, Search } from "lucide-react";
+import { FileCode, Layers, MoreHorizontal, Search } from "lucide-react";
 import { useAdvancedMode } from "@/lib/advanced-mode";
 
 const advancedItems = [
-  { href: "/agents", label: "Agents", icon: Bot },
-  { href: "/verticals", label: "Verticals", icon: Layers },
-  { href: "/schemas", label: "Schemas", icon: FileCode },
   { href: "/search", label: "Search", icon: Search },
+  { href: "/verticals", label: "Pack scope", icon: Layers },
+  { href: "/schemas", label: "Schemas", icon: FileCode },
 ];
 
 const simpleItems = [

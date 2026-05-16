@@ -19,7 +19,7 @@ Under UAE Federal AML/CFT, **Designated Non-Financial Businesses and Professions
 - Dealers in precious metals + stones
 - Trust + company service providers
 
-Aldar Properties (developer) and any external broker firm in `clients/<client>/brokers/registry.md` is bound. The wealth-channel intermediaries (private banks) are bound under the parallel Financial Institutions regime — they screen on their side too, but our DNFBP obligations don't transfer to them.
+The developer and any external broker firm in `clients/<client>/brokers/registry.md` is bound. The wealth-channel intermediaries (private banks) are bound under the parallel Financial Institutions regime — they screen on their side too, but our DNFBP obligations don't transfer to them.
 
 ## Counterparty risk-rating framework
 
@@ -100,7 +100,7 @@ When a buyer pursues a property-purchase Golden Visa:
 
 ## Cross-border corridor specifics
 
-- **Russia/CIS:** Comprehensive sanctions surface; pre-commercial-conversation screening is mandatory. RM-05 in the meridian / aldar worked example is the corridor specialist with this note.
+- **Russia/CIS:** Comprehensive sanctions surface; pre-commercial-conversation screening is mandatory. RM-05 in the worked example is the corridor specialist with this note.
 - **Iran-adjacent / Syria-adjacent / DPRK-adjacent / Venezuela / Cuba:** OFAC primary-sanctions surface; check whether secondary-sanctions exposure exists for the developer / broker as a non-US entity.
 - **Pakistan / Nigeria:** Heightened FATF scrutiny segment; EDD by default for high-value purchases.
 - **US persons / FATCA:** Different reporting regime — coordinate with US-counsel-savvy `legal-liaison`.

@@ -74,8 +74,8 @@ export default function AdminPortalPage() {
               Operator portal
             </h1>
             <p className="text-body text-ink-600 dark:text-ink-300 mt-2 max-w-2xl leading-relaxed">
-              Back-of-house tools for the platform team and Aldar IT. Workspace
-              switcher, framework views, identity state. Not part of the Aldar
+              Back-of-house tools for the platform team and the developer's IT. Workspace
+              switcher, framework views, identity state. Not part of the UAE Developments
               workspace and not surfaced in nav, palette, or sitemap.
             </p>
           </div>
@@ -92,7 +92,7 @@ export default function AdminPortalPage() {
             Workspace
           </h2>
           <p className="text-body-sm text-ink-600 dark:text-ink-300 mt-1 leading-relaxed">
-            The live deployment is pinned to Aldar Developments. Pick a different
+            The live deployment is pinned to UAE Developments. Pick a different
             workspace below to operate against another engagement, or switch to
             cross-engagement view.
           </p>
@@ -130,7 +130,7 @@ export default function AdminPortalPage() {
           </h2>
           <p className="text-body-sm text-ink-600 dark:text-ink-300 mt-1 leading-relaxed">
             Shared reference surfaces — agents, runbooks, skills, schemas. Reachable
-            directly via URL but intentionally not linked from the Aldar workspace.
+            directly via URL but intentionally not linked from the the workspace.
           </p>
           <div className="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {FRAMEWORK_LINKS.map((l) => {

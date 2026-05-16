@@ -1,6 +1,6 @@
-# VVIP registry — Aldar Developments
+# VVIP registry — UAE Developments
 
-> **WORKED EXAMPLE — ILLUSTRATIVE.** Names below are anonymized fictional placeholders demonstrating the structure of a VVIP registry for an Abu Dhabi-anchored developer-class engagement. **Not real Aldar Properties data.** Do not infer any real person, household, ministry, or institution from the entries below. Real-client registries replace these with actual entries but follow the same structure and discretion stance.
+> **WORKED EXAMPLE — ILLUSTRATIVE.** Names below are anonymized fictional placeholders demonstrating the structure of a VVIP registry for an Abu Dhabi-anchored developer-class engagement. **Not real UAE Developments data.** Do not infer any real person, household, ministry, or institution from the entries below. Real-client registries replace these with actual entries but follow the same structure and discretion stance.
 >
 > Owned by `vvip-channel-enablement`. Sensitive — discretion stance applies (no public reference, no press, no social, no marketing case study).
 >

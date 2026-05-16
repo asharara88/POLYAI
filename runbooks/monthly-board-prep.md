@@ -4,7 +4,7 @@
 
 ## Trigger
 
-Calendar — typically the first Wednesday of each month (per Aldar's `clients/_examples/aldar-developments/cco/calendar.md`). Cadence may differ per engagement.
+Calendar — typically the first Wednesday of each month (per the worked example's `clients/_examples/uae-developments/cco/calendar.md`). Cadence may differ per engagement.
 
 ## Owner
 

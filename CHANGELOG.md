@@ -46,7 +46,7 @@ Removed accidentally-committed `.next/` build artifacts and added `.gitignore` t
 - `integration-go-live-salesforce` · `integration-go-live-sumsub` · `integration-go-live-calendar` · `integration-go-live-news-scan`
 
 **Phase 5F — Aldar populate:**
-- `clients/_examples/aldar-developments/cco/kpi-targets.md` — full year-2026 targets across 5 KPI families with quarterly cadence; Q3 spike reflects Saadiyat Reserve Heights launch; signed CCO + CFO + CEO
+- `clients/_examples/uae-developments/cco/kpi-targets.md` — full year-2026 targets across 5 KPI families with quarterly cadence; Q3 spike reflects Saadiyat Reserve Heights launch; signed CCO + CFO + CEO
 
 `runbooks/README.md` catalog refreshed with 6 categories.
 

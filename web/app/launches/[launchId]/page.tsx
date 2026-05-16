@@ -14,7 +14,7 @@ import {
 import { getLaunch, PHASE_LABEL, PHASE_TONE, type Launch } from "@/lib/launches";
 import { deadlineLabel } from "@/lib/format-dates";
 
-const WORKSPACE = "aldar-developments";
+const WORKSPACE = "uae-developments";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ReadinessBoard from "@/components/launch/ReadinessBoard";
 import LaunchBriefView from "@/components/launch/LaunchBriefView";

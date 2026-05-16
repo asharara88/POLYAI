@@ -24,7 +24,7 @@ The schema for the envelope is `schemas/integration-action.md`. Every integratio
 
 Default new integrations to Tier A, then promote one tier at a time.
 
-## Mapping clients/integrations needed for a developer like Aldar
+## Mapping clients/integrations needed for a developer like UAE Developments
 
 | System | Tier | Owning agent(s) | What we read | What we write |
 |---|---|---|---|---|
@@ -112,7 +112,7 @@ Each integration spec lists exactly which env vars or secret-paths it reads.
 
 ## Choosing the first integration to wire
 
-The single highest-leverage integration for an Aldar-scale developer is **Salesforce read**. With it:
+The single highest-leverage integration for an developer-scale developer is **Salesforce read**. With it:
 
 - `forecasting` operates on real pipeline
 - `account-executive` sees real opportunities

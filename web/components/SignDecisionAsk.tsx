@@ -231,7 +231,7 @@ export default function SignDecisionAsk({
               value={signer}
               onChange={(e) => setSigner(e.target.value)}
               disabled={busy}
-              placeholder="e.g. CCO (Aldar) — or sign in to autofill"
+              placeholder="e.g. CCO (UAE Developments) — or sign in to autofill"
               aria-label="Signer name"
               className="w-full bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-700 rounded-md px-3 py-2 text-body-sm font-mono focus:outline-none focus:ring-2 focus:ring-accent/40"
             />

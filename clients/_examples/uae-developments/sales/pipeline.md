@@ -1,6 +1,6 @@
-# Sales pipeline — Aldar Developments
+# Sales pipeline — UAE Developments
 
-> **Worked example — illustrative.** Fictional pipeline data; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional pipeline data; not real UAE Developments data.
 >
 > Owned by `forecasting`, with deal-record entries maintained by `account-executive` and routing decisions by `inbound-qualifier`. Snapshot at 2026-05-22.
 >

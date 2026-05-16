@@ -1,6 +1,6 @@
 # Broker allocations — Q3 tower launch
 
-> **Worked example — illustrative.** Fictional allocation record; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional allocation record; not real UAE Developments data.
 >
 > Owned by `broker-enablement`. Declares which broker firms have slot allocations in each phase of this launch. Pairs with the per-event invitee tier counts in `events/q3-tower-broker-night.md` and `events/q3-tower-public-launch.md`.
 

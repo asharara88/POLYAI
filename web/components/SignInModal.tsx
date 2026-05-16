@@ -5,7 +5,7 @@ import { LogIn, X } from "lucide-react";
 import { Button } from "@/components/ui";
 import { useIdentity, type Role } from "@/lib/identity";
 import { PODS, agentLabel } from "@/lib/roles";
-import { AldarMark } from "@/components/AldarMark";
+import { WorkspaceMark } from "@/components/WorkspaceMark";
 import { FlowMark } from "@/components/FlowLogo";
 
 /**
@@ -117,10 +117,10 @@ export default function SignInModal({
         <header className="px-5 py-4 border-b border-ink-100 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-2">
             <span className="text-accent">
-              <AldarMark size={22} />
+              <WorkspaceMark size={22} />
             </span>
             <h2 id="signin-title" className="text-title-sm font-semibold tracking-tight">
-              Sign in to Aldar Developments
+              Sign in to UAE Developments
             </h2>
           </div>
           <button
@@ -163,7 +163,7 @@ export default function SignInModal({
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="jane@aldar.ae"
+              placeholder="jane@uae-developments.ae"
               className="mt-1 w-full bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-700 rounded-md px-3 py-2 text-body-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
             />
           </label>
@@ -176,7 +176,7 @@ export default function SignInModal({
               type="text"
               value={organization}
               onChange={(e) => setOrganization(e.target.value)}
-              placeholder="Aldar Developments"
+              placeholder="UAE Developments"
               className="mt-1 w-full bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-700 rounded-md px-3 py-2 text-body-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
             />
           </label>
@@ -245,7 +245,7 @@ export default function SignInModal({
 
         <footer className="px-5 py-3 border-t border-ink-100 dark:border-ink-800 bg-ink-50/40 dark:bg-ink-950/40 flex items-center justify-between gap-3 text-body-xs text-ink-500 dark:text-ink-400 flex-shrink-0">
           <span className="leading-snug">
-            Worked example — illustrative. Not real Aldar Properties PJSC data.
+            Worked example — illustrative. Not real UAE Developments data.
           </span>
           <span className="inline-flex items-center gap-1.5 flex-shrink-0">
             Built on

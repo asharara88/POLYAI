@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import UserMenu from "@/components/UserMenu";
 import MoreMenu from "@/components/MoreMenu";
-import { AldarMark } from "@/components/AldarMark";
+import { WorkspaceMark } from "@/components/WorkspaceMark";
 import { useIdentity } from "@/lib/identity";
 import { navItemsFor, type NavItem } from "@/lib/role-scope";
 
@@ -45,13 +45,13 @@ export default function Nav() {
         <Link
           href="/"
           className="flex items-center gap-2 flex-shrink-0 group"
-          aria-label="Aldar Developments — home"
+          aria-label="UAE Developments — home"
         >
           <span className="text-accent group-hover:scale-105 transition-transform">
-            <AldarMark size={26} />
+            <WorkspaceMark size={26} />
           </span>
           <span className="font-semibold tracking-tight text-title-sm text-ink-900 dark:text-ink-50 hidden sm:inline">
-            Aldar Developments
+            UAE Developments
           </span>
         </Link>
         <nav

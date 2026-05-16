@@ -1,6 +1,6 @@
 # Campaign brief — Hudayriyat Canal Residences — Pre-launch
 
-> **Worked example — illustrative.** Fictional campaign brief; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional campaign brief; not real UAE Developments data.
 >
 > Owned by `marketing-manager`. Conforms to `schemas/campaign-brief.md`.
 
@@ -68,7 +68,7 @@ constraints:
   must_avoid:
     - "Guaranteed yield" or "appreciation" language
     - Stock-image villas, helicopter shots
-  brand_voice_ref: clients/_examples/aldar-developments/knowledge/brand-voice.md
+  brand_voice_ref: clients/_examples/uae-developments/knowledge/brand-voice.md
   compliance_flags:
     - ADGM
     - RERA

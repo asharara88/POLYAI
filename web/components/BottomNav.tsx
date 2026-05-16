@@ -8,7 +8,6 @@ import {
   CheckCircle2,
   Megaphone,
   MessageSquare,
-  MoreHorizontal,
   ShieldCheck,
   Sparkles,
   UsersRound,
@@ -27,20 +26,13 @@ const ICON_MAP: Record<NavItem["iconKey"], React.ComponentType<{ className?: str
   launches: Megaphone,
 };
 
-const moreItem: NavItem = { href: "/agents", label: "More", iconKey: "agent" };
-
 export default function BottomNav() {
   const pathname = usePathname() ?? "/";
   const { identity, hydrated } = useIdentity();
   const baseItems = hydrated
     ? navItemsFor(identity?.role ?? "cco", identity?.agentSlug)
     : navItemsFor("cco", undefined);
-  // Mobile shows 5 slots. Keep the first 4 from role-scope, plus More.
-  const slots = baseItems.slice(0, 4);
-  // Replace the 5th slot with More if the role gave us fewer than 5.
-  const items = slots.length < 5
-    ? [...slots, { ...moreItem, label: "More", iconKey: "agent" as const }]
-    : slots.slice(0, 5);
+  const items = baseItems.slice(0, 5);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
@@ -51,8 +43,7 @@ export default function BottomNav() {
     >
       <div className="grid grid-cols-5">
         {items.map((it) => {
-          const Icon =
-            it.label === "More" ? MoreHorizontal : ICON_MAP[it.iconKey];
+          const Icon = ICON_MAP[it.iconKey];
           const active = isActive(it.href);
           return (
             <Link

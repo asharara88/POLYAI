@@ -1,6 +1,6 @@
-# Wealth-channel registry — Aldar Developments
+# Wealth-channel registry — UAE Developments
 
-> **Worked example — illustrative.** Real institution names appear because they're publicly active in the UAE wealth-management market — references are illustrative of *category*, not actual relationships with Aldar Properties PJSC.
+> **Worked example — illustrative.** Real institution names appear because they're publicly active in the UAE wealth-management market — references are illustrative of *category*, not actual relationships with UAE Developments.
 >
 > Owned by `wealth-channel-enablement`. Source of truth for the wealth side of the channel mix.
 >

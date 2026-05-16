@@ -3,7 +3,7 @@ import { getDecisionAsks, getRiskRegister } from "@/lib/content";
 import type { Launch } from "@/lib/launches";
 import { plainLanguage } from "@/lib/strip-jargon";
 
-const WORKSPACE = "aldar-developments";
+const WORKSPACE = "uae-developments";
 
 /**
  * Decisions + Risks scoped to this launch. We don't have an explicit

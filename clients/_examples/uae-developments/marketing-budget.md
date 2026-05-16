@@ -1,6 +1,6 @@
-# Marketing budget — Aldar Developments
+# Marketing budget — UAE Developments
 
-> **Worked example — illustrative.** Fictional figures scaled to AED-billion-class developer context; not real Aldar Properties budget data.
+> **Worked example — illustrative.** Fictional figures scaled to AED-billion-class developer context; not real UAE Developments budget data.
 >
 > Owned by `marketing-financial-manager`. Source of truth for approved marketing budget by campaign / channel / event / category.
 > Period: 2026 fiscal year. Currency: AED.

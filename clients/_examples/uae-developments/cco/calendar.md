@@ -1,4 +1,4 @@
-# CCO Calendar — Aldar Developments
+# CCO Calendar — UAE Developments
 
 > Last updated 2026-05-06. Maintained by named human + cco-morning-brief agent. Standing items + per-week confirmations.
 
@@ -39,7 +39,7 @@
 | 2026-05-19 | Saadiyat Reserve Heights creative round 3 sign-off | CMO + Head of Sales | T-45 to permit application |
 | 2026-05-30 | Q2-2026 quarterly exec brief delivery to board | chief-commercial-officer | per `runbooks/quarterly-exec-brief.md` cycle |
 | 2026-06-05 | Trakheesi permit application T-45 | agency-liaison + regulatory-operations team | per `integrations/trakheesi/spec.md` |
-| 2026-06-12 | Q3-2026 KPI targets sign-off | chief-commercial-officer + CFO + CEO | per `clients/aldar-developments/cco/kpi-targets.md` |
+| 2026-06-12 | Q3-2026 KPI targets sign-off | chief-commercial-officer + CFO + CEO | per `clients/uae-developments/cco/kpi-targets.md` |
 | 2026-06-20 | Pre-launch AML/KYC capacity confirmation | aml-kyc-compliance-specialist | per Q3 launch readiness |
 | 2026-07-15 | Trakheesi permit issuance target | DLD/RERA | T-30 to launch |
 | 2026-07-30 | Sales gallery operational + permit-display verification | inventory-manager + compliance | T-7 to launch |

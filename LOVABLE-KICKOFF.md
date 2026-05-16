@@ -40,7 +40,7 @@ Operator        /operator
 Pitch deck      /deck
 ```
 
-Top bar on every page: a timestamp ("refreshed 2h ago"), a client switcher dropdown (Aldar Developments / Meraas / Emaar Hospitality), and an inline ask input (`<input placeholder="Ask Flow…">` — doesn't need to work).
+Top bar on every page: a timestamp ("refreshed 2h ago"), a client switcher dropdown (UAE Developments / Meraas / Emaar Hospitality), and an inline ask input (`<input placeholder="Ask Flow…">` — doesn't need to work).
 
 ### 2. Stub pages for all routes except `/cco`
 
@@ -64,7 +64,7 @@ Three vertical zones:
 **Bottom — three columns:**
 - **Decision queue** (column 1): 5 pending decisions. Each row: 1-line title, deadline pill, owner agent in mono, "Sign / Send back / Ask" inline.
 - **Risk register** (column 2): A 3-cell severity heatmap at top (Red: 2 / Amber: 4 / Green: 11). Below: 4 entry rows — severity dot + 1-line title + age in mono + owner.
-- **Calendar** (column 3): A vertical hour-block ruler 08:00 → 20:00. Position event pills at their start time. Today's pills: "09:00 — Tier-1 broker dyad call (broker-enablement)", "11:30 — Aldar exec sync (chief-commercial-officer)", "14:00 — Compliance review: Q3 creative round 3 (compliance)", "17:00 — Wealth-channel private preview rehearsal (wealth-channel-enablement)".
+- **Calendar** (column 3): A vertical hour-block ruler 08:00 → 20:00. Position event pills at their start time. Today's pills: "09:00 — Tier-1 broker dyad call (broker-enablement)", "11:30 — UAE Developments exec sync (chief-commercial-officer)", "14:00 — Compliance review: Q3 creative round 3 (compliance)", "17:00 — Wealth-channel private preview rehearsal (wealth-channel-enablement)".
 
 Every panel has a small "Ask" chip in its header — clicking opens a stub `<details>` accordion with a "This would open an inline thread" placeholder. Doesn't need to work.
 
@@ -78,7 +78,7 @@ Every panel has a small "Ask" chip in its header — clicking opens a stub `<det
 
 ## Reference data (use these exact names — they'll re-appear across surfaces in later turns)
 
-- Clients: **Aldar Developments** (real-estate-uae, Abu Dhabi, active), **Meraas** (real-estate-uae, Dubai, active), **Emaar Hospitality** (real-estate-uae, Dubai, pilot)
+- Clients: **UAE Developments** (real-estate-uae, Abu Dhabi, active), **Meraas** (real-estate-uae, Dubai, active), **Emaar Hospitality** (real-estate-uae, Dubai, pilot)
 - Pod managers (always in `font-mono` lowercase-with-hyphens): `chief-commercial-officer`, `marketing-manager`, `sales-manager`, `crm-manager`, `wealth-vvip-manager`, `broker-enablement`, `wealth-channel-enablement`, `vvip-channel-enablement`, `events`, `compliance`, `regulatory-research-specialist`
 
 ## Footer

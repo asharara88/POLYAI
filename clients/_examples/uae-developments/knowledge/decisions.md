@@ -1,6 +1,6 @@
-# Decisions log — Aldar Developments
+# Decisions log — UAE Developments
 
-> **Worked example — illustrative.** Fictional decisions log; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional decisions log; not real UAE Developments data.
 
 Append-only. Every strategic decision specific to this client.
 

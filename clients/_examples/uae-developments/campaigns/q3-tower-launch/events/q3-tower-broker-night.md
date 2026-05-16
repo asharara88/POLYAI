@@ -1,6 +1,6 @@
 # Event — Q3 tower broker night
 
-> **Worked example — illustrative.** Fictional event record; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional event record; not real UAE Developments data.
 >
 > Owned by `events`. Conforms to the Phase 20 launch-event schema.
 
@@ -17,7 +17,7 @@ co_owners:
   - events
   - sales-manager
 capacity: 140
-run_sheet: clients/aldar-developments/campaigns/q3-tower-launch/events/q3-tower-broker-night/run-sheet.md
+run_sheet: clients/uae-developments/campaigns/q3-tower-launch/events/q3-tower-broker-night/run-sheet.md
 attendance:
   invited: 132
   accepted: 98

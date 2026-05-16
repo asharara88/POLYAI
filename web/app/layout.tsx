@@ -10,10 +10,10 @@ import { AdvancedModeProvider } from "@/lib/advanced-mode";
 import { FlowMark } from "@/components/FlowLogo";
 
 export const metadata: Metadata = {
-  title: "Aldar Developments — Workspace",
+  title: "UAE Developments — Workspace",
   description:
-    "Aldar Developments — commercial control plane. Today, decisions, projects, and Ask. Worked example built on Flow.",
-  applicationName: "Aldar Developments",
+    "UAE Developments — commercial control plane. Today, decisions, projects, and Ask. Worked example built on Flow.",
+  applicationName: "UAE Developments",
 };
 
 export const viewport: Viewport = {
@@ -40,7 +40,7 @@ const themeInitScript = `
     html.dataset.advanced = adv ? 'true' : 'false';
     // Workspace cookie default — middleware uses this to rewrite /workspace/* → /clients/<slug>/*
     if (!document.cookie.split('; ').some(function(c){return c.indexOf('flow-workspace=')===0;})) {
-      document.cookie = 'flow-workspace=aldar-developments; path=/; max-age=31536000; SameSite=Lax';
+      document.cookie = 'flow-workspace=uae-developments; path=/; max-age=31536000; SameSite=Lax';
     }
   } catch (_) {}
 })();
@@ -71,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
           <footer className="max-w-6xl mx-auto px-4 sm:px-6 py-8 text-body-xs text-ink-400 dark:text-ink-500 flex items-center justify-between flex-wrap gap-3 print:hidden">
             <span className="flex items-center gap-2 flex-wrap">
-              <span>Aldar Developments — worked example, illustrative.</span>
+              <span>UAE Developments — worked example, illustrative.</span>
               <span aria-hidden className="text-ink-300 dark:text-ink-700">·</span>
               <span className="inline-flex items-center gap-1.5">
                 Built on

@@ -75,7 +75,7 @@ Operator           /operator    ← admin
 + Pitch deck       /deck
 ```
 
-Top-right of every page: a single timestamp ("refreshed 2h ago"), a "client switcher" dropdown (Aldar Developments / Meraas / +Add client), and an inline ask bar (`<input placeholder="Ask Flow…">`) — the ask bar doesn't need to work; it's an aspirational affordance.
+Top-right of every page: a single timestamp ("refreshed 2h ago"), a "client switcher" dropdown (UAE Developments / Meraas / +Add client), and an inline ask bar (`<input placeholder="Ask Flow…">`) — the ask bar doesn't need to work; it's an aspirational affordance.
 
 ### 3.1 `/cco` — the dashboard
 
@@ -88,29 +88,29 @@ Every panel has a small "Ask" chip in its header — clicking does nothing on Lo
 
 ### 3.2 `/clients` — client list
 
-Three client cards: **Aldar Developments** (active), **Meraas** (active), **Emaar Hospitality** (pilot). Each card shows: industry pack badge, primary market, # active campaigns, # active agents, last-activity timestamp.
+Three client cards: **UAE Developments** (active), **Meraas** (active), **Emaar Hospitality** (pilot). Each card shows: industry pack badge, primary market, # active campaigns, # active agents, last-activity timestamp.
 
-Click into Aldar →
+Click into UAE Developments →
 
-### 3.3 `/clients/aldar-developments` — client workspace
+### 3.3 `/clients/uae-developments` — client workspace
 
 Header: client logo placeholder, industry pack chip (`real-estate-uae`), Trakheesi number, primary market (Abu Dhabi). Tab nav across the top:
 - Overview
 - ICP
 - Brand voice
-- Brokers → links to `/clients/aldar-developments/brokers`
-- Vendors → links to `/clients/aldar-developments/vendors`
+- Brokers → links to `/clients/uae-developments/brokers`
+- Vendors → links to `/clients/uae-developments/vendors`
 - Inventory
 - Decisions
 
 Each tab shows a rich content surface (lots of cards, structured data). For the demo, Overview and Brokers are the most important — make them the most polished.
 
-### 3.4 `/clients/aldar-developments/brokers` — broker registry (the showcase)
+### 3.4 `/clients/uae-developments/brokers` — broker registry (the showcase)
 
 This is the most recent surface I built and the one I want to *look the sharpest* in the demo, because it shows the depth of the data model.
 
 Structure:
-- **Header:** breadcrumb, title "Broker registry — Aldar Developments", subtitle explaining tier system, "Speed-to-lead SLA: 5 min" stat.
+- **Header:** breadcrumb, title "Broker registry — UAE Developments", subtitle explaining tier system, "Speed-to-lead SLA: 5 min" stat.
 - **Tier map** — 3 cards horizontally (Tier 1 / Tier 2 / Tier 3). Each card:
   - Tier badge + total count (18 / 82 / 150)
   - Description (Tier 1: "exclusive private-event access; first 2 weeks exclusive on premium-tier units")
@@ -126,7 +126,7 @@ Structure:
   - Foot Print Real Estate, Trinity Homes, Stage Properties, Coldwell Banker UAE *(dormant since 2025-11)*, Skyline Properties *(dormant since 2026-01)*. Dormant firms render dimmed (`opacity-60`) with a "dormant" badge.
 - **Routing principles footer** — 5 numbered principles in a card.
 
-### 3.5 `/clients/aldar-developments/brokers/driven-properties` — firm detail
+### 3.5 `/clients/uae-developments/brokers/driven-properties` — firm detail
 
 - Breadcrumb back to brokers
 - Title: Driven Properties
@@ -183,11 +183,11 @@ Slide content:
 2. **The problem.** Commercial-services consulting (agencies, broker enablement, CRM consultancies) is a $400B+ market built on labor arbitrage. Three failure modes: high price, slow turnaround, opaque output. Visualize as 3 stats.
 3. **Why now.** Tool-using LLMs crossed the threshold for **multi-step commercial reasoning** in 2024–25. Frontier models can plan a campaign, route a lead, draft a board memo, and reason about regulatory compliance — all in one agent graph. The agent-graph quality is the moat, not the model.
 4. **What Flow is.** Diagram: a buyer's marketing/sales/CRM team replaced by a **CCO + three pod managers + ~30 specialist agents + an industry pack**. Show the actual agent-graph (use the Mermaid render shown in `/agents`).
-5. **The wedge — UAE real-estate.** Why this vertical first: high agency-spend density, regulatory complexity that nobody else automates, three highly differentiated channels (broker / wealth / VVIP), AED 1.4T regional market, 30+ active master-developers, 250+ active broker firms. Insert a screenshot of `/clients/aldar-developments/brokers`.
-6. **Demo (live).** A 90-second click-through script — pinned link to the demo. Suggested path: `/cco` → click into the top decision → `/launches` → click Q3 tower → Readiness → Events & brokers → click a firm → back to `/clients/aldar/brokers`.
+5. **The wedge — UAE real-estate.** Why this vertical first: high agency-spend density, regulatory complexity that nobody else automates, three highly differentiated channels (broker / wealth / VVIP), AED 1.4T regional market, 30+ active master-developers, 250+ active broker firms. Insert a screenshot of `/clients/uae-developments/brokers`.
+6. **Demo (live).** A 90-second click-through script — pinned link to the demo. Suggested path: `/cco` → click into the top decision → `/launches` → click Q3 tower → Readiness → Events & brokers → click a firm → back to `/clients/uae-developments/brokers`.
 7. **Product architecture.** Two diagrams side-by-side: (a) **core + packs** (universal commercial core; packs snap on per vertical), (b) **agent graph** (CCO orchestrates pod managers; pod managers orchestrate specialists). Cite numbers: 3 pods, 21 core agents, 11 real-estate-pack agents, 8 cross-cutting agents.
 8. **Defensibility.** Three moats: (a) **the agent graph** — designing this is design work that compounds, not prompting; (b) **the skills library** — regulatory citations, runbooks, handoff schemas; (c) **the data flywheel** — each engagement enriches the knowledge graph for the next.
-9. **Pricing / commercial model.** Mock numbers: enterprise SaaS, $25k/mo base, +$10k/mo per pack, +$5k/mo per integration. Gross margin >80% at scale. Show a sample bill for Aldar: $50k/mo × 12 = $600k ARR/client. Compare against the AED 4.1M they spend on one campaign with traditional agencies.
+9. **Pricing / commercial model.** Mock numbers: enterprise SaaS, $25k/mo base, +$10k/mo per pack, +$5k/mo per integration. Gross margin >80% at scale. Show a sample bill for UAE Developments: $50k/mo × 12 = $600k ARR/client. Compare against the AED 4.1M they spend on one campaign with traditional agencies.
 10. **Traction.** Honest current state — be specific about what we have: working agent graph (35 agents authored), working pack (real-estate-uae fully built), working CCO surface (`/cco`), working launch+broker surface (built in Phases 17–21 of this engagement), 4 worked-example clients. Pilot conversations: list industries if you want, or leave as "in conversation with N developers / N family offices".
 11. **Market sizing.** $400B+ TAM (global commercial services). SAM (real-estate developer commercial services, GCC + Asia): $8B. Beachhead (UAE master-developers, top 30): $200M. Top-down + bottoms-up reconciliation.
 12. **Team.** Founder (you) — leave a placeholder card with photo + 1-paragraph bio. Add a "key advisors" placeholder. Be honest about gaps and what the round funds.
@@ -203,11 +203,11 @@ Each slide: tight headline, short prose (no bullet-mountains), at most one visua
 Don't invent — these are the entities I want consistent across surfaces:
 
 **Clients:**
-- Aldar Developments (real-estate-uae, Abu Dhabi, active, 3 campaigns)
+- UAE Developments (real-estate-uae, Abu Dhabi, active, 3 campaigns)
 - Meraas (real-estate-uae, Dubai, active, 1 campaign)
 - Emaar Hospitality (real-estate-uae, Dubai, pilot, 1 campaign)
 
-**Aldar campaigns / launches:**
+**UAE Developments campaigns / launches:**
 - `q3-tower-launch` — "Saadiyat Reserve Heights — Q3 tower" — Live — Jun 17 — AED 4.1M — KPI: booking-pads issued
 - `hudayriyat-canal-residences-pre-launch` — "Hudayriyat Canal Residences — pre-launch" — Pre-launch — Sep 14 — AED 2.8M — KPI: qualified-wealth-channel intros
 - `yas-acres-grove-handover` — "Yas Acres Grove — handover campaign" — Close-out — May 15 — AED 1.2M — KPI: loyalty-program enrolment
@@ -250,7 +250,7 @@ Always render agent names in `font-mono` lowercase-with-hyphens, never title-cas
 2. Routing skeleton + left rail nav.
 3. `/cco` dashboard (hardest visual — get it right first).
 4. `/launches` + `/launches/q3-tower-launch` (six tabs — Events & brokers is the showpiece).
-5. `/clients/aldar-developments/brokers` + firm-detail.
+5. `/clients/uae-developments/brokers` + firm-detail.
 6. The lighter routes (`/agents`, `/verticals`, `/schemas`, `/operator`).
 7. `/deck` — last, once the rest exists to screenshot from.
 

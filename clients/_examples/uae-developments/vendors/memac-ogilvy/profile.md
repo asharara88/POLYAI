@@ -1,6 +1,6 @@
 # Vendor profile — Memac Ogilvy
 
-> **Worked example — illustrative.** Real agency name; not real Aldar Properties relationship data.
+> **Worked example — illustrative.** Real agency name; not real UAE Developments relationship data.
 >
 > Owned by `marketing-procurement`. Extended profile beyond the registry summary at `vendors/registry.md`.
 
@@ -89,7 +89,7 @@ recommended_action: continue
 - Designs in progress: Canva (per `integrations/canva/spec.md`) — agency-team has shared workspace
 - Approved exports: Bynder DAM (integrations/bynder/ — TBD)
 - Shared planning: Miro (per `integrations/miro/spec.md`)
-- Communications: structured feedback through `agency-liaison` agent; informal via Slack channel #aldar-q3-memac
+- Communications: structured feedback through `agency-liaison` agent; informal via Slack channel #uae-developments-q3-memac
 
 ## Audit notes
 

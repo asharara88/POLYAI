@@ -1,4 +1,4 @@
-# AUDIT.md — Aldar Multi-Agent System (Phase 1)
+# AUDIT.md — UAE Developments Multi-Agent System (Phase 1)
 
 > Phase 1 deliverable. Inventory, architectural read, and quality read of the existing repo before any extension. Phase 2 coverage matrix lives in `GAPS.md`. Phase 3 change plan lives in `PLAN.md`.
 
@@ -116,7 +116,7 @@ All agent files use the same kebab-case naming. Frontmatter pattern: `name`, `de
   - `wealth-channel-reactivation`, `wealth-channel-new-relationship-signing`
   - `vvip-channel-cultivation`, `vvip-channel-dormant-refresh`
 
-### 1.1.8 Worked example — `clients/_examples/aldar-developments/`
+### 1.1.8 Worked example — `clients/_examples/uae-developments/`
 
 34 files across: client-profile, knowledge (icp/brand-voice/decisions/results/playbooks), inventory (current + snapshot), brokers (registry + 1 firm profile), agencies (Memac Ogilvy + Havas MENA), wealth-channels/registry, vvip-channel/registry + protocol-library, reciprocity-ledger, marketing-budget, sales (rm-team + allocation-rules + pipeline), vendors (registry + 1 vendor profile), events (4 events), campaigns (1 campaign with brief + creative-brief).
 
@@ -160,17 +160,17 @@ None of the existing agents fully meet the §3 template (none have all 11 sectio
 ### Light (🟡 — extend without rewriting)
 
 Every existing agent is light against the §3 template on at least these items:
-- **Section 9 (UAE-specific compliance guardrails)** — most agents reference compliance generically. None mention DLD, ADGM, ADREC, CBUAE LTV caps, PDPL, AML/CFT DNFBP obligations, Oqood/Trustee Account/NOC flows, or Abu Dhabi Law No. 3 of 2015 directly. The Aldar `client-profile.md` flags some (`ADGM`, `RERA`, `PEP`, `sanctions-screening`) and the developer playbook touches RERA + financial-promotion, but the agent prompts themselves are vertical-agnostic (by design — multi-tenant) and rely on the client profile + vertical playbook to inject UAE context. **This is a deliberate design choice**: the agents stay generic, the UAE specificity lives in the vertical and client layers. The prompt's "UAE-grounded" quality bar can be met by **strengthening the vertical and per-agent UAE-pertinent compliance pointers**, not by hard-coding UAE rules into every agent.
+- **Section 9 (UAE-specific compliance guardrails)** — most agents reference compliance generically. None mention DLD, ADGM, ADREC, CBUAE LTV caps, PDPL, AML/CFT DNFBP obligations, Oqood/Trustee Account/NOC flows, or Abu Dhabi Law No. 3 of 2015 directly. The UAE Developments `client-profile.md` flags some (`ADGM`, `RERA`, `PEP`, `sanctions-screening`) and the developer playbook touches RERA + financial-promotion, but the agent prompts themselves are vertical-agnostic (by design — multi-tenant) and rely on the client profile + vertical playbook to inject UAE context. **This is a deliberate design choice**: the agents stay generic, the UAE specificity lives in the vertical and client layers. The prompt's "UAE-grounded" quality bar can be met by **strengthening the vertical and per-agent UAE-pertinent compliance pointers**, not by hard-coding UAE rules into every agent.
 - **Section 11 (Example invocations)** — none have these.
 - **Section 7 (Handoff matrix as a table)** — most prose-form their handoff rules.
 - **Tools usage rules** — most agents declare tools in frontmatter and put restrictions in the "What you do NOT do" section. The §3 template wants this called out separately.
 
 ### Drift (🟠 — minimum correction)
 
-- `compliance` — generic; mentions "GDPR, CCPA, CASL, CAN-SPAM, region-specific consent" but not UAE specifics (PDPL, DLD/RERA off-plan disclosure, ADGM-FSRA, Trakheesi advertising approval). For an Aldar engagement this is a meaningful gap. **Proposed correction:** add a UAE-specific pointer block referencing the vertical playbook + a per-jurisdiction rules table; do NOT rewrite the agent.
+- `compliance` — generic; mentions "GDPR, CCPA, CASL, CAN-SPAM, region-specific consent" but not UAE specifics (PDPL, DLD/RERA off-plan disclosure, ADGM-FSRA, Trakheesi advertising approval). For an UAE Developments engagement this is a meaningful gap. **Proposed correction:** add a UAE-specific pointer block referencing the vertical playbook + a per-jurisdiction rules table; do NOT rewrite the agent.
 - `account-manager` — uses generic "customer success" language. For a developer client, "post-sale" means owners during the construction-to-handover window (24–48 months), not SaaS-style retention. The agent's prose is correct in spirit but doesn't speak the developer-context vocabulary. **Proposed correction:** light edit to acknowledge the sub-vertical pattern via the vertical playbook resolution.
 - `proposal` — focuses on SOW/quote/proposal generation. For real-estate, "proposal" is closer to reservation form / SPA-precursor / payment-plan customization. The agent body acknowledges this in a real-estate-specific paragraph but it's secondary. **No change needed if `deal-desk-analyst` is added** — the deal-desk concept is what the §3 prompt is asking for.
-- `partnerships` — frames "partner" as co-marketing partner. For Aldar, "partnerships" includes things like Aldar Education school partnerships, hospitality operator JVs, asset-class partners (data-center JV, London Square subsidiary). Drift is mild and the agent's framework adapts.
+- `partnerships` — frames "partner" as co-marketing partner. For UAE Developments, "partnerships" includes things like the developer's education subsidiary school partnerships, hospitality operator JVs, asset-class partners (data-center JV, London Square subsidiary). Drift is mild and the agent's framework adapts.
 
 ### Missing (🔴 — propose creating)
 
@@ -186,7 +186,7 @@ The target roster in the prompt names ~28 agents across sales, CRM, marketing, w
 
 These are non-negotiable from CLAUDE.md + ARCHITECTURE.md and bind any new agent / skill / runbook:
 
-1. **Multi-tenant.** No agent embeds client-specific data. Aldar specifics live in `clients/_examples/aldar-developments/` and `verticals/real-estate/sub-verticals/developer/`.
+1. **Multi-tenant.** No agent embeds client-specific data. UAE Developments specifics live in `clients/_examples/uae-developments/` and `verticals/real-estate/sub-verticals/developer/`.
 2. **Three-layer context resolution.** Any new agent must use the same path-resolution rule.
 3. **Knowledge agent is the only writer to `knowledge/`.** New agents that learn must route updates through it.
 4. **Writes outside the client folder need promotion.** Vertical-level playbook edits via `knowledge` + chief-commercial-officer approval, never directly.

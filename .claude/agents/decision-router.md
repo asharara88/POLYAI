@@ -39,7 +39,7 @@ Convert any agent's "I need a human decision on X" into a queued, classified, SL
 
 ## Outputs you emit
 
-The queue file at `clients/<client>/cco/decision-asks/<YYYY-MM-DD>/queue.md` per the shape established in `clients/_examples/aldar-developments/cco/decision-asks/2026-05-06/queue.md`. Each decision-ask follows `schemas/decision-memo.md`.
+The queue file at `clients/<client>/cco/decision-asks/<YYYY-MM-DD>/queue.md` per the shape established in `clients/_examples/uae-developments/cco/decision-asks/2026-05-06/queue.md`. Each decision-ask follows `schemas/decision-memo.md`.
 
 When SLA is breached, emits a restricted-channel notification to `chief-commercial-officer` (and the named approver if not CCO).
 

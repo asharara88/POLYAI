@@ -1,6 +1,6 @@
 # Event — Q3 tower public launch (sales gallery opening)
 
-> **Worked example — illustrative.** Fictional event record; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional event record; not real UAE Developments data.
 >
 > Owned by `events`. Conforms to the Phase 20 launch-event schema.
 
@@ -18,7 +18,7 @@ co_owners:
   - wealth-channel-enablement
   - content-pr-specialist
 capacity: 320
-run_sheet: clients/aldar-developments/campaigns/q3-tower-launch/events/q3-tower-public-launch/run-sheet.md
+run_sheet: clients/uae-developments/campaigns/q3-tower-launch/events/q3-tower-public-launch/run-sheet.md
 attendance:
   invited: 320
   accepted: 187

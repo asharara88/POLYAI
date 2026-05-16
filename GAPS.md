@@ -12,9 +12,9 @@
 | crm-sales-specialist (existing clientele) | 🟡 Light | `account-manager` | Account-manager handles post-sale ownership generically. UAE-developer specifics (existing-owner reactivation for next-launch, prior-tower owner cross-sell, handover snagging cycle) are partially covered in `verticals/real-estate/sub-verticals/developer/playbook.md` but not formalized as the agent's standing remit. |
 | international-sales-specialist | 🔴 Missing | (none — `account-executive` is segment-agnostic) | International HNW handling needs jurisdiction-specific cadence (UK / India / KSA / Russia-CIS / China / Egypt / Pakistan / Nigeria), Golden Visa messaging, cross-time-zone discipline. RM team has a "Russia/CIS" specialist (rm-05) at the per-client level but no generic agent. |
 | new-business-sales-specialist | 🟡 Light | `inbound-qualifier` + `sdr` (top of funnel) + `account-executive` (qualified onward) | Three agents jointly cover the "new business" arc. Could be left as the existing trio if the user prefers. |
-| business-development-partnerships | ✅ Solid | `partnerships` | Direct equivalent. Light drift on Aldar-style partnerships (Aldar Education / hospitality JV / data-center JV scope) — marginal. |
+| business-development-partnerships | ✅ Solid | `partnerships` | Direct equivalent. Light drift on developer-style partnerships (the developer's education subsidiary / hospitality JV / data-center JV scope) — marginal. |
 | off-plan-launch-specialist | 🟡 Light | (function distributed across 6 agents + dev playbook) | The 16-week off-plan workflow at `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` covers the orchestration; `strategy`, `events`, `agency-liaison`, `inventory-manager`, `broker-enablement`, `compliance` carry the work. No single agent owns the launch as an artifact. **Decision needed: add the agent, or formalize the workflow doc as the source of truth?** |
-| secondary-market-specialist | 🔴 Missing | (none) | UAE secondary-market resale + NOC + DLD/RERA Form-F transfer is a different motion from off-plan. Real gap if Aldar runs a secondary-market arm. |
+| secondary-market-specialist | 🔴 Missing | (none) | UAE secondary-market resale + NOC + DLD/RERA Form-F transfer is a different motion from off-plan. Real gap if UAE Developments runs a secondary-market arm. |
 | deal-desk-analyst | 🔴 Missing | (`proposal` is adjacent) | Deal-desk is negotiation/term analysis (discount approval, margin protection, custom commercial terms), not document generation. Real gap. |
 
 ## CRM
@@ -35,7 +35,7 @@
 | marketing-manager | 🔴 Missing | (chief-commercial-officer + `strategy`) | Managerial-tier question. |
 | social-media-specialist | ✅ Solid | `social-media` | Direct equivalent. |
 | events-specialist | ✅ Solid | `events` | Direct equivalent — already substantive (covers external event agency + internal events team + 3 channel agents). |
-| content-pr-specialist | 🔴 Missing | `creative` covers copy; PR not represented | Aldar runs press across architecture / lifestyle / financial / institutional press — different cadence and gates from `creative`. |
+| content-pr-specialist | 🔴 Missing | `creative` covers copy; PR not represented | UAE Developments runs press across architecture / lifestyle / financial / institutional press — different cadence and gates from `creative`. |
 | performance-marketing-specialist | 🟡 Light | `seo` + `analytics` | The two cover paid-search structure + measurement. Programmatic / DSP buying / cross-platform attribution is a separate discipline. |
 | brand-creative-specialist | ✅ Solid | `creative` + `brand-design` (paired) | The existing pair is the conventional split. A merged agent would dilute. **Decision: keep the pair.** |
 | martech-ops-specialist | 🔴 Missing | (`analytics` does tracking, `marketing-procurement` does technology vendor selection) | Owns the marketing-tech stack itself: integration health, identity resolution, consent-management, deliverability monitoring across CRM + MAP + ad platforms. Real gap for an enterprise-scale developer. |
@@ -47,7 +47,7 @@
 | wealth-vvip-manager | 🔴 Missing | (the three enablement agents are independent peers) | Managerial-tier question; the 3 enablements are deliberately parallel today. |
 | broker-network-manager | ✅ Solid | `broker-enablement` | Functionally equivalent. Naming differs but the rule is "map to existing name, keep". |
 | vvip-relationship-manager | ✅ Solid | `vvip-channel-enablement` | Functionally equivalent. |
-| private-banking-liaison | 🟡 Light | `wealth-channel-enablement` (absorbs this) | Wealth-channel-enablement covers private banks, family offices, introducers in one agent. UAE-specific bank engagement (FAB Private, ADCB Private, Mashreq Private, Emirates NBD Private, J.P. Morgan Private Bank — Dubai, Standard Chartered Private, HSBC Premier, Julius Baer) is in the Aldar wealth-channels registry. Splitting out a dedicated agent is possible but doubles management surface. |
+| private-banking-liaison | 🟡 Light | `wealth-channel-enablement` (absorbs this) | Wealth-channel-enablement covers private banks, family offices, introducers in one agent. UAE-specific bank engagement (FAB Private, ADCB Private, Mashreq Private, Emirates NBD Private, J.P. Morgan Private Bank — Dubai, Standard Chartered Private, HSBC Premier, Julius Baer) is in the UAE Developments wealth-channels registry. Splitting out a dedicated agent is possible but doubles management surface. |
 | family-office-specialist | 🟡 Light | `wealth-channel-enablement` (absorbs this) | Same as above. |
 | aml-kyc-compliance-specialist | 🔴 Missing | `compliance` is generic | UAE Federal AML/CFT DNFBP obligations, PEP screening, sanctions screening (UN/OFAC/UK/EU/DFAT), Sumsub / World-Check provider integration, Golden Visa source-of-funds documentation — all unowned. Real gap. |
 | concierge-coordinator | 🔴 Missing | (none) | UHNW buyer concierge ops (private gallery viewings, cultural-corridor experiences, Yas events / F1 weekend access, school-introductions for relocating families). Could absorb into `vvip-channel-enablement` or stay separate. |
@@ -75,7 +75,7 @@ The repo has **no skills concept**. The closest in-repo equivalents are vertical
 | crm-data-model | 🟡 Light | `schemas/deal-record.md` | Generic deal-record exists; no Salesforce / Dynamics object mapping. |
 | broker-operations | 🟡 Light | `verticals/real-estate/sub-verticals/developer/playbooks/broker-channel-*.md` (2 plays) + `broker-enablement` agent | Channel development is covered; day-to-day operations (Form-F flow, commission grid mechanics, RERA broker-license verification, dispute escalation steps) are partially covered. |
 | marketing-attribution | 🟡 Light | `analytics` agent + `INTEGRATIONS.md` Salesforce / GA4 entries | No standalone attribution-model skill (multi-touch / position-based / data-driven specifics); generic guidance only. |
-| vvip-protocol | 🟡 Light | `clients/_examples/aldar-developments/vvip-channel/protocol-library.md` (worked example) + `vvip-channel-enablement` agent | UAE-specific protocol forms-of-address + ceremonial precedence are in the worked-example file, not a portable skill. |
+| vvip-protocol | 🟡 Light | `clients/_examples/uae-developments/vvip-channel/protocol-library.md` (worked example) + `vvip-channel-enablement` agent | UAE-specific protocol forms-of-address + ceremonial precedence are in the worked-example file, not a portable skill. |
 | regulatory-disclosure-language | 🔴 Missing | (none) | Approved-disclosure templates (RERA off-plan disclosure paragraph, ADGM-equivalent, financial-promotion footers, "no guaranteed return" templates) are unowned. Real risk surface. |
 
 ---
@@ -120,6 +120,6 @@ The repo has **no skills concept**. The closest in-repo equivalents are vertical
 |---|---|
 | ✅ Present and solid | 8 (chief-commercial-officer, social-media, events, partnerships, broker-enablement, vvip-channel-enablement, creative+brand-design pair, canva + miro integrations) |
 | 🟡 Present but light | ~12 (account-manager, email-lifecycle, voc+analytics split, wealth-channel-enablement absorbs PB+FO, seo, off-plan-launch distributed, new-business arc, plus most skills) |
-| 🟠 Present with drift | 2 (compliance — UAE specifics; partnerships — mild on Aldar-class scope) |
+| 🟠 Present with drift | 2 (compliance — UAE specifics; partnerships — mild on developer-class scope) |
 | 🔴 Missing | ~10 agents + ~5 skills + ~7 integrations + ~9 runbooks |
 | ⚪ Not applicable here | "manager-tier" agents are an architectural choice, not gaps — flagged for decision |

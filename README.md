@@ -99,7 +99,7 @@ See `ARCHITECTURE.md` for handoff flows, approval gates, and resolution rules.
 schemas/               # shared templates for inter-agent handoffs
 clients/               # per-client engagements (one folder per slug)
   _template/           # scaffold copied for new clients
-  _examples/           # demo clients (e.g. aldar-developments)
+  _examples/           # demo clients (e.g. uae-developments)
 verticals/             # industry-pack playbooks
   real-estate/         # `real-estate-uae` pack (developer sub-vertical today)
 integrations/          # per-system specs + action contracts

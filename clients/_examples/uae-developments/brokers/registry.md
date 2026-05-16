@@ -1,6 +1,6 @@
-# Broker registry — Aldar Developments
+# Broker registry — UAE Developments
 
-> **Worked example — illustrative.** Real firm names appear below because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships with Aldar Properties PJSC.
+> **Worked example — illustrative.** Real firm names appear below because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships with UAE Developments.
 >
 > Owned by `broker-enablement`. Source of truth for which broker firms and individuals are active on this launch, their tier, and their specialization.
 

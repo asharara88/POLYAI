@@ -1,12 +1,12 @@
-# Client profile — Aldar Developments
+# Client profile — UAE Developments
 
-> **Worked example — illustrative.** Fictional data demonstrating how Flow structures a developer-class engagement. Not real Aldar Properties PJSC data; no claim of partnership or endorsement. Names of real broker firms, agencies, and institutions appear because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships.
+> **Worked example — illustrative.** Fictional data demonstrating how Flow structures a developer-class engagement. Not real UAE Developments data; no claim of partnership or endorsement. Names of real broker firms, agencies, and institutions appear because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships.
 >
 > Populated by `client-onboarding` from a fictional intake brief, with vertical defaults pulled from `verticals/real-estate/sub-verticals/developer/playbook.md`.
 
 ```yaml
-slug: aldar-developments
-display_name: Aldar Developments
+slug: uae-developments
+display_name: UAE Developments
 vertical: real-estate
 sub_vertical: developer
 sub_sub_vertical_notes: |
@@ -41,23 +41,23 @@ business_model: transactional-residential + recurring-hospitality + recurring-ed
 sales_motion: field
 typical_deal_cycle_days: 45
 typical_deal_size: AED 1.6M – AED 24M
-icp_segments_ref: clients/_examples/aldar-developments/knowledge/icp.md
-brand_voice_ref: clients/_examples/aldar-developments/knowledge/brand-voice.md
+icp_segments_ref: clients/_examples/uae-developments/knowledge/icp.md
+brand_voice_ref: clients/_examples/uae-developments/knowledge/brand-voice.md
 
 agencies:
   brand:
     name: Memac Ogilvy
-    profile_ref: clients/_examples/aldar-developments/agencies/memac-ogilvy/profile.md
+    profile_ref: clients/_examples/uae-developments/agencies/memac-ogilvy/profile.md
     primary_contact: # TODO populate after kickoff
   media:
     name: Havas Media MENA
-    profile_ref: clients/_examples/aldar-developments/agencies/havas-mena/profile.md
+    profile_ref: clients/_examples/uae-developments/agencies/havas-mena/profile.md
     primary_contact: # TODO populate after kickoff
   digital_production: Wunderman Thompson MENA
   pr: # TBD
 
 broker_strategy:
-  registry_ref: clients/_examples/aldar-developments/brokers/registry.md
+  registry_ref: clients/_examples/uae-developments/brokers/registry.md
   network_size_target: 250
   tier_distribution:
     tier_1: 18
@@ -70,7 +70,7 @@ broker_strategy:
     new_signings: 12
 
 wealth_channel_strategy:
-  registry_ref: clients/_examples/aldar-developments/wealth-channels/registry.md
+  registry_ref: clients/_examples/uae-developments/wealth-channels/registry.md
   active_target_by_launch:
     private_banks: 8
     family_offices: 16
@@ -82,8 +82,8 @@ wealth_channel_strategy:
     new_signings: 8
 
 vvip_channel_strategy:
-  registry_ref: clients/_examples/aldar-developments/vvip-channel/registry.md
-  protocol_library_ref: clients/_examples/aldar-developments/vvip-channel/protocol-library.md
+  registry_ref: clients/_examples/uae-developments/vvip-channel/registry.md
+  protocol_library_ref: clients/_examples/uae-developments/vvip-channel/protocol-library.md
   active_target_by_launch:
     ruling_families: 5
     government_officials: 8
@@ -98,7 +98,7 @@ vvip_channel_strategy:
     protocol_library_refreshes: 1
 
 inventory:
-  current_ref: clients/_examples/aldar-developments/inventory/current.md
+  current_ref: clients/_examples/uae-developments/inventory/current.md
   total_units_in_active_launch: 280
   active_launch_project: "Saadiyat Reserve Heights"
   unit_types: [1BR, 2BR, 3BR, 4BR, penthouse]

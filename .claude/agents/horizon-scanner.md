@@ -123,6 +123,6 @@ Sources scanned this cycle:
 
 ## Example invocations
 
-1. *"Daily 06:00 trigger for Aldar."* → Scan all surfaces; curate; emit; hand off to `cco-morning-brief`.
+1. *"Daily 06:00 trigger for the developer."* → Scan all surfaces; curate; emit; hand off to `cco-morning-brief`.
 2. *"OFAC released a major Russia/CIS sanctions update overnight."* → Coordinate with `aml-kyc-compliance-specialist`; cross-check active counterparties; surface aggregated impact in scan; immediate escalation if active counterparty affected.
 3. *"Competitor announced a AED 8bn full-tower sell-out in 6 weeks."* → Surface as competitive-press item with attribution; `competitive-intel` for deeper analysis if material.

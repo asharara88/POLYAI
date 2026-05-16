@@ -4,11 +4,11 @@ type Props = {
 };
 
 /**
- * Aldar Developments wordmark — placeholder for the worked-example deployment.
- * Not a real Aldar Properties PJSC mark. The "WE" badge is a deliberate
+ * UAE Developments wordmark — placeholder for the worked-example deployment.
+ * Not a real UAE Developments mark. The "WE" badge is a deliberate
  * "worked example" signal so the brand cannot be mistaken for production usage.
  */
-export function AldarMark({ className = "", size = 26 }: Props) {
+export function WorkspaceMark({ className = "", size = 26 }: Props) {
   return (
     <svg
       viewBox="0 0 100 100"
@@ -17,7 +17,7 @@ export function AldarMark({ className = "", size = 26 }: Props) {
       height={size}
       className={className}
       role="img"
-      aria-label="Aldar Developments"
+      aria-label="UAE Developments"
     >
       <g
         fill="none"
@@ -33,7 +33,7 @@ export function AldarMark({ className = "", size = 26 }: Props) {
   );
 }
 
-export function AldarWordmark({
+export function WorkspaceWordmark({
   className = "",
   size = 26,
   showSubtitle = false,
@@ -46,11 +46,11 @@ export function AldarWordmark({
       ].join(" ")}
     >
       <span className="text-accent">
-        <AldarMark size={size} />
+        <WorkspaceMark size={size} />
       </span>
       <span className="flex flex-col leading-none">
         <span className="font-semibold tracking-tight text-title-sm">
-          Aldar Developments
+          UAE Developments
         </span>
         {showSubtitle && (
           <span className="text-label-xs font-mono uppercase tracking-wider text-ink-400 mt-0.5">
@@ -62,4 +62,4 @@ export function AldarWordmark({
   );
 }
 
-export default AldarWordmark;
+export default WorkspaceWordmark;

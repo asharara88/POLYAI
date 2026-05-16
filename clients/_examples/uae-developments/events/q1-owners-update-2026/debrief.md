@@ -133,7 +133,7 @@ secondary_metrics:
 
 ## Photos / video assets
 
-- DAM reference: bynder://aldar/events/q1-owners-update-2026/
+- DAM reference: bynder://uae-developments/events/q1-owners-update-2026/
 - Approved-for-public: 47 still images, 2 video edits (after `compliance` + `brand-design` review at T+10d)
 - Restricted: 8 stills (3 photo-removal requests + 5 with VVIP-adjacent attendees in frame)
 

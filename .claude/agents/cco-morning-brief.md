@@ -157,6 +157,6 @@ Sources cited:
 
 ## Example invocations
 
-1. *"Daily 07:00 trigger for Aldar."* → Pull all inputs; assemble the brief per template; emit; done by 07:00.
+1. *"Daily 07:00 trigger for the developer."* → Pull all inputs; assemble the brief per template; emit; done by 07:00.
 2. *"CCO requested an ad-hoc brief refresh at 14:30 because something changed."* → Re-pull inputs; emit a delta-brief at `clients/<client>/cco/briefs/<YYYY-MM-DD>/14-30-update.md`; surface the delta vs. morning brief.
 3. *"Pipeline.md showed `closed-won` jump of AED 320M overnight."* → Surface in "Pipeline + forecast" section as the delta; confirm via `data-quality-steward` audit cite; CCO interprets.

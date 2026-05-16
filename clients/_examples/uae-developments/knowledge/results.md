@@ -1,6 +1,6 @@
-# Results log — Aldar Developments
+# Results log — UAE Developments
 
-> **Worked example — illustrative.** Not real Aldar Properties data.
+> **Worked example — illustrative.** Not real UAE Developments data.
 
 Append-only. Will be populated by `analytics` post-campaign.
 

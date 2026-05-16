@@ -13,7 +13,7 @@ import {
 const STORAGE_KEY = "flow-identity";
 const WORKSPACE_COOKIE = "flow-workspace";
 const IDENTITY_COOKIE = "flow-identity";
-const DEFAULT_WORKSPACE = "aldar-developments";
+const DEFAULT_WORKSPACE = "uae-developments";
 
 export type Role = "admin" | "cco" | "manager" | "specialist" | "viewer";
 

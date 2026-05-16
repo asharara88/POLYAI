@@ -1,6 +1,6 @@
 # Broker allocations — Hudayriyat Canal Residences pre-launch
 
-> **Worked example — illustrative.** Fictional allocation record; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional allocation record; not real UAE Developments data.
 >
 > Owned by `broker-enablement`, co-owned by `wealth-channel-enablement`. Wealth-skewed pre-launch — small, mostly Tier-1, no Tier-3 firms in this phase. Pairs with the wealth-channel preview events in `events/`.
 

@@ -1,6 +1,6 @@
-# Allocation rules — Aldar Developments / Saadiyat Reserve Heights
+# Allocation rules — UAE Developments / Saadiyat Reserve Heights
 
-> **Worked example — illustrative.** Not real Aldar Properties data.
+> **Worked example — illustrative.** Not real UAE Developments data.
 >
 > Owned by `broker-enablement` (per-tier eligibility logic) and `sales-operations` (commercial sign-off).
 > Source of truth for whether a broker allocation request is approved, declined, or countered.

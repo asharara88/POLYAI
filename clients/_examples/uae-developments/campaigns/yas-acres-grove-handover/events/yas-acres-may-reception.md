@@ -1,6 +1,6 @@
 # Event — Yas Acres Grove May reception (community gardens)
 
-> **Worked example — illustrative.** Fictional event record; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional event record; not real UAE Developments data.
 >
 > Owned by `events`. Conforms to the Phase 20 launch-event schema.
 
@@ -18,7 +18,7 @@ co_owners:
   - service-recovery-specialist
   - vip-relationship-manager
 capacity: 280
-run_sheet: clients/aldar-developments/campaigns/yas-acres-grove-handover/events/yas-acres-may-reception/run-sheet.md
+run_sheet: clients/uae-developments/campaigns/yas-acres-grove-handover/events/yas-acres-may-reception/run-sheet.md
 attendance:
   invited: 411
   accepted: 248

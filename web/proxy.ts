@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-const DEFAULT_WORKSPACE = "aldar-developments";
+const DEFAULT_WORKSPACE = "uae-developments";
 
 export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;

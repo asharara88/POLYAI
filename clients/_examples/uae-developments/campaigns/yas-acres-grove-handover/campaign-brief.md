@@ -1,13 +1,13 @@
 # Campaign brief — Yas Acres Grove — Handover & loyalty
 
-> **Worked example — illustrative.** Fictional campaign brief; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional campaign brief; not real UAE Developments data.
 >
 > Owned by `crm-manager`. Conforms to `schemas/campaign-brief.md`.
 
 ```yaml
 campaign_id: yas-acres-grove-handover
 project_name: "Yas Acres Grove"
-goal: Convert 2026 Yas Acres Grove handover cohort (411 units) into the Aldar loyalty programme; seed the 2027 referral pipeline
+goal: Convert 2026 Yas Acres Grove handover cohort (411 units) into the UAE Developments loyalty programme; seed the 2027 referral pipeline
 primary_kpi: Loyalty programme enrolment rate ≥ 65% of handover cohort by 2026-09-30
 secondary_kpis:
   - Referral leads from existing-owner cohort (target 80 leads by 2026-12-31)
@@ -27,7 +27,7 @@ positioning:
 offer:
   hook: White-glove handover concierge — every owner is paired with a single point of contact for 90 days
   call_to_action: Activate your handover concierge thread
-  destination: aldar.example/owners/handover
+  destination: uae-developments.example/owners/handover
 channels:
   - channel: Direct CRM (handover cohort 1:1 outreach)
     weight: 0.45
@@ -70,7 +70,7 @@ constraints:
   must_avoid:
     - Generic "valued customer" templates
     - Any cross-sell language during handover window
-  brand_voice_ref: clients/_examples/aldar-developments/knowledge/brand-voice.md
+  brand_voice_ref: clients/_examples/uae-developments/knowledge/brand-voice.md
   compliance_flags:
     - PDPL
     - GDPR

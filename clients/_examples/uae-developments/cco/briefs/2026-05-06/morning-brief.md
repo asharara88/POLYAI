@@ -1,4 +1,4 @@
-# CCO Morning Brief — Aldar Developments — 2026-05-06
+# CCO Morning Brief — UAE Developments — 2026-05-06
 
 > Assembled by `cco-morning-brief` at 2026-05-06T06:55:00+04:00 from the sales, marketing, and CRM pod feeds. Reading time: ~90 seconds.
 

@@ -1,6 +1,6 @@
-# In-house RM team — Aldar Developments
+# In-house RM team — UAE Developments
 
-> **Worked example — illustrative.** Not real Aldar Properties data.
+> **Worked example — illustrative.** Not real UAE Developments data.
 >
 > Owned by `inbound-qualifier` (routing) and `account-executive` (deal management). Source of truth for who receives direct-marketing leads.
 

@@ -1,4 +1,4 @@
-# CCO Decision-Asks Queue — Aldar Developments — 2026-05-06
+# CCO Decision-Asks Queue — UAE Developments — 2026-05-06
 
 > Queued by decision-router. CCO sign-off + comment + timestamp for each.
 
@@ -11,7 +11,7 @@
 - **Urgency:** within 48h (Q3 launch T-90 milestone)
 - **Ask:** Approve permit-application batch sequencing — Saadiyat Reserve Heights Q3 launch ahead of Yas Acres sustain renewal vs. parallel submission.
 - **Recommendation:** Sequential submission — Saadiyat first (window: 2026-05-19 to 2026-06-05), Yas Acres second (window: 2026-06-12 to 2026-06-26). Reduces regulator-side capacity contention; modest 1-week buffer on Yas Acres.
-- **Evidence:** clients/aldar-developments/risk-register.md (Trakheesi permit renewal cycle entry); agency-liaison engagement notes 2026-05-05
+- **Evidence:** clients/uae-developments/risk-register.md (Trakheesi permit renewal cycle entry); agency-liaison engagement notes 2026-05-05
 - **Alternatives considered:** Parallel submission (faster, contention risk on regulator side); Yas first (commercially worse — Saadiyat T-45 drives launch-readiness)
 - **SLA:** decision by 2026-05-07T17:00
 - **Status:** awaiting CCO sign
@@ -23,7 +23,7 @@
 - **Urgency:** within 5 business days (Q3 launch T-14 capacity check on 2026-06-20)
 - **Ask:** Approve Sumsub `uhnw-individual-buyer` level upgrade for Russia/CIS-corridor pre-clearance flow + 2-EDD-analyst hire to support 12-15 EDD cases / week peak.
 - **Recommendation:** Approve. Cost AED 180k for Sumsub level + AED 280k annualized for 2 hires; capacity-check pre-launch confirms readiness.
-- **Evidence:** clients/aldar-developments/risk-register.md (Russia/CIS corridor entry); aml-kyc throughput projections per `.claude/skills/aml-kyc-uae-real-estate.md`
+- **Evidence:** clients/uae-developments/risk-register.md (Russia/CIS corridor entry); aml-kyc throughput projections per `.claude/skills/aml-kyc-uae-real-estate.md`
 - **Alternatives considered:** Status-quo (capacity overrun risk); 1-hire only (capacity peak still tight); outsourced corridor-specialist (compliance-control concern)
 - **SLA:** decision by 2026-05-13T17:00
 - **Status:** awaiting CCO sign
@@ -35,7 +35,7 @@
 - **Urgency:** within 7 business days (Tier-1 broker quarterly review 2026-05-11)
 - **Ask:** Approve continued Tier-1 status for Driven Properties through Q3 launch despite their corporate restructuring announcement.
 - **Recommendation:** Reconfirm Tier-1 with quarterly check-in cadence elevated to monthly through Q3 close; legal-liaison confirms no immediate license-status concern; Tier-2 over-allocation capacity briefed as fallback.
-- **Evidence:** clients/aldar-developments/brokers/driven-properties/profile.md; legal-liaison engagement notes 2026-04-30; clients/aldar-developments/risk-register.md (Tier-1 broker concentration entry)
+- **Evidence:** clients/uae-developments/brokers/driven-properties/profile.md; legal-liaison engagement notes 2026-04-30; clients/uae-developments/risk-register.md (Tier-1 broker concentration entry)
 - **Alternatives considered:** Tier-2 demote pre-emptively (relationship damage; commercially premature); status-quo without elevated cadence (concentration risk uncovered)
 - **SLA:** decision by 2026-05-09T17:00
 - **Status:** awaiting CCO sign
@@ -47,7 +47,7 @@
 - **Urgency:** within 3 business days (board-prep T-7)
 - **Ask:** Approve material-risks section of Q2 quarterly exec brief — covers MEP procurement, Russia/CIS sanctions surface, Tier-1 broker concentration, Trakheesi permit cycle.
 - **Recommendation:** Approve as-drafted. Material-risks language is defensible per evidence; aligns with risk-register state; legal-privileged appendix scoped tightly.
-- **Evidence:** clients/aldar-developments/exec-briefs/q2-2026/sections/material-risks.md (draft)
+- **Evidence:** clients/uae-developments/exec-briefs/q2-2026/sections/material-risks.md (draft)
 - **Alternatives considered:** Reduce to 3 risks (under-disclosure concern); expand to 6 (over-disclosure of items below materiality threshold)
 - **SLA:** decision by 2026-05-08T17:00
 - **Status:** awaiting CCO sign

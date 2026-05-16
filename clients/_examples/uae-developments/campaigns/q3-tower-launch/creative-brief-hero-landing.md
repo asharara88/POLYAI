@@ -1,10 +1,10 @@
 # Creative brief — Saadiyat Reserve Heights — Hero landing page
 
-> **Worked example — illustrative.** Not real Aldar Properties data.
+> **Worked example — illustrative.** Not real UAE Developments data.
 >
 > Owned by `strategy`. Conforms to `schemas/creative-brief.md`.
 > Will be consumed by `creative` (copy) + `brand-design` (visuals) + `seo` (technical SEO + on-page).
-> Stamped with `client: aldar-developments, vertical: real-estate, campaign: q3-tower-launch`.
+> Stamped with `client: uae-developments, vertical: real-estate, campaign: q3-tower-launch`.
 
 ```yaml
 asset_id: q3-tower-launch__hero-landing
@@ -31,7 +31,7 @@ mandatories:
 constraints:
   word_count: ≤ 90 words above the fold; total page ≤ 600 words
   format: responsive landing page; AR variant produced by localization
-  brand_voice_ref: clients/_examples/aldar-developments/knowledge/brand-voice.md
+  brand_voice_ref: clients/_examples/uae-developments/knowledge/brand-voice.md
   do:
     - Lead with a specific number or named partner, not an adjective
     - Use the buyer's portfolio language ("yield + appreciation profile")

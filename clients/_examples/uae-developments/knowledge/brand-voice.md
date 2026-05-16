@@ -1,6 +1,6 @@
-# Brand voice — Aldar Developments
+# Brand voice — UAE Developments
 
-> **Worked example — illustrative.** Voice principles for a developer-class engagement; not real Aldar Properties brand-voice guidelines.
+> **Worked example — illustrative.** Voice principles for a developer-class engagement; not real UAE Developments brand-voice guidelines.
 >
 > Seeded by `client-onboarding`. Three voice words: **institutional, restrained, sovereign-affiliated**. Visual notes pulled from `verticals/real-estate/sub-verticals/developer/playbook.md` "Voice notes" + branded-residences pattern.
 
@@ -12,7 +12,7 @@ The voice of an Abu Dhabi-anchored developer with national scale and institution
 
 1. **Institutional patience.** "We plan in decades" framing. No urgency-led copy, no countdown clocks. Time horizon implied is generational.
 2. **Specifics over superlatives.** "AED 1,540/sqft service charges, capped 5 years post-handover" beats "competitively-priced amenities." Drop "luxury," "premium," "exclusive" unless backed by something concrete (a named partner, a verified specification).
-3. **Sovereign-affiliated restraint.** Aldar's brand register sits adjacent to UAE national institutions. Keep gravitas; avoid hype. The buyer is treated as already qualified — no first-time-buyer explanations, no over-explanation of off-plan basics.
+3. **Sovereign-affiliated restraint.** UAE Developments' brand register sits adjacent to UAE national institutions. Keep gravitas; avoid hype. The buyer is treated as already qualified — no first-time-buyer explanations, no over-explanation of off-plan basics.
 
 ## Do / Don't
 

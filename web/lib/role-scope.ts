@@ -163,10 +163,12 @@ export function navItemsFor(
   agentSlug: string | undefined,
 ): NavItem[] {
   const base: NavItem[] = [
-    { href: "/launches", label: "Launches", iconKey: "launches" },
     { href: "/cco", label: "Today", iconKey: "today" },
+    { href: "/clients/uae-developments", label: "Workspace", iconKey: "projects" },
     { href: "/approvals", label: "Decisions", iconKey: "decisions" },
+    { href: "/launches", label: "Launches", iconKey: "launches" },
     { href: "/chat", label: "Ask", iconKey: "ask" },
+    { href: "/agents", label: "Team", iconKey: "agent" },
   ];
   if (role === "admin") {
     return [...base, { href: "/operator", label: "Operator", iconKey: "operator" }];

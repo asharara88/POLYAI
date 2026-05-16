@@ -1,6 +1,6 @@
 # Hudayriyat Canal Residences
 
-> **Worked example — illustrative.** Fictional Hudayriyat Island development; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional Hudayriyat Island development; not real UAE Developments data.
 
 ```yaml
 id: hudayriyat-canal-residences

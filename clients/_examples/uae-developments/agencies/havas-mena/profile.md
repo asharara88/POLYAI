@@ -1,6 +1,6 @@
 # Agency profile — Havas Media MENA (media)
 
-> **Worked example — illustrative.** Real agency name; not real Aldar Properties relationship data.
+> **Worked example — illustrative.** Real agency name; not real UAE Developments relationship data.
 >
 > Owned by `agency-liaison`.
 

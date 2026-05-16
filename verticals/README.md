@@ -7,7 +7,7 @@ verticals/
   real-estate/              # `real-estate-uae` pack — shipping today
     playbook.md
     sub-verticals/
-      developer/            # off-plan developers (Aldar / Emaar class)
+      developer/            # off-plan developers (UAE Developments / Emaar class)
 ```
 
 A pack playbook captures patterns common across most clients in that industry — audience archetypes, trigger events, channel mix, compliance flags, KPI norms, voice notes, common pitfalls. The client's own `clients/<slug>/knowledge/` overrides anything here.

@@ -15,7 +15,7 @@ export default function Page() {
         <p className="text-body-sm text-ink-500 dark:text-ink-400 mt-2 max-w-2xl">
           Operator-only view of every configured workspace. Each workspace is
           one developer engagement. Open one to see its pipeline, channels,
-          events, and decisions. The live deployment is pinned to Aldar Developments.
+          events, and decisions. The live deployment is pinned to UAE Developments.
         </p>
       </header>
 

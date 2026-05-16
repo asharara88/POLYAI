@@ -4,9 +4,9 @@
 
 ## Executive summary
 
-The repo has a substantive, well-architected multi-agent system (32 agents, 8 schemas, integration tier model, 3-layer memory, multi-tenant + sub-vertical pattern, working web layer, Aldar worked example). The strongest element is the architectural discipline: agents are generic, UAE specificity lives in the vertical and client layers, writes go through approval gates, the `knowledge` agent is the single curator. **It works. Most extension should be additive, not corrective.**
+The repo has a substantive, well-architected multi-agent system (32 agents, 8 schemas, integration tier model, 3-layer memory, multi-tenant + sub-vertical pattern, working web layer, UAE Developments worked example). The strongest element is the architectural discipline: agents are generic, UAE specificity lives in the vertical and client layers, writes go through approval gates, the `knowledge` agent is the single curator. **It works. Most extension should be additive, not corrective.**
 
-The **highest-leverage gap** is UAE-specific compliance and AML/KYC infrastructure — a `regulatory-research-specialist` + `aml-kyc-compliance-specialist` + `regulatory-disclosure-language` skill + `aml-kyc-uae-real-estate` skill. These are missing entirely and the existing `compliance` agent doesn't cover the DNFBP / Trakheesi / Oqood / CBUAE LTV / PDPL surface. For a real Aldar-class engagement this is the difference between safe and unsafe.
+The **highest-leverage gap** is UAE-specific compliance and AML/KYC infrastructure — a `regulatory-research-specialist` + `aml-kyc-compliance-specialist` + `regulatory-disclosure-language` skill + `aml-kyc-uae-real-estate` skill. These are missing entirely and the existing `compliance` agent doesn't cover the DNFBP / Trakheesi / Oqood / CBUAE LTV / PDPL surface. For a real developer-class engagement this is the difference between safe and unsafe.
 
 **Second-highest gap:** runbooks. The off-plan campaign workflow exists; the other nine cross-agent flows do not. These are the playbooks the team would pull off the shelf when something happens.
 
@@ -20,7 +20,7 @@ The **highest-leverage gap** is UAE-specific compliance and AML/KYC infrastructu
 
 ## Change table (ordered by priority)
 
-P1 = ship-blocking gap for a real Aldar engagement. P2 = high-value extension. P3 = nice-to-have / architectural debate.
+P1 = ship-blocking gap for a real UAE Developments engagement. P2 = high-value extension. P3 = nice-to-have / architectural debate.
 
 | # | Target | Current state | Proposed action | Effort | Risk if skipped |
 |---|---|---|---|---|---|
@@ -32,9 +32,9 @@ P1 = ship-blocking gap for a real Aldar engagement. P2 = high-value extension. P
 | **P1** | `compliance` agent — UAE pointer block | 🟠 Drift (UAE-light) | **Extend** with a UAE-specific section pointing to the new skills + `regulatory-research-specialist` agent. **Minimum edit; do not rewrite.** | S | Medium — partial UAE coverage exists in vertical playbook today |
 | **P2** | service-recovery-specialist agent | 🔴 Missing | **Create**. Owns complaint handling, RERA escalation pathway, reputation defense, root-cause-to-prevention loop. Coordinates with `compliance`, `voc`, `account-manager`, `pr` (when added). | M | Medium — without this, complaints route ad-hoc |
 | **P2** | data-quality-steward agent | 🔴 Missing | **Create**. Salesforce data hygiene: deduplication, missing-field surfacing, stage-progression discipline, broker-attribution accuracy. Coordinates with `crm` integration + `forecasting`. | M | Medium — bad CRM data poisons forecasting + attribution |
-| **P2** | content-pr-specialist agent | 🔴 Missing | **Create**. Press across architecture / lifestyle / financial / institutional press; embargo strategy; spokesperson scheduling; coordinates with `creative`, `events`, `vvip-channel-enablement` (no-mention list). | M | Medium — Aldar-scale clients need active press desk |
+| **P2** | content-pr-specialist agent | 🔴 Missing | **Create**. Press across architecture / lifestyle / financial / institutional press; embargo strategy; spokesperson scheduling; coordinates with `creative`, `events`, `vvip-channel-enablement` (no-mention list). | M | Medium — developer-scale clients need active press desk |
 | **P2** | deal-desk-analyst agent | 🔴 Missing | **Create**. Discount approval analysis, margin protection, custom-term review, multi-unit / floor / building deal commercial terms. Distinct from `proposal` (which generates documents). Coordinates with `account-executive`, `marketing-financial-manager`, `wealth-channel-enablement`. opus model. | M | Medium |
-| **P2** | secondary-market-specialist agent | 🔴 Missing | **Create**. UAE secondary-market resale, NOC flow, RERA Form-F transfer, Oqood-to-title progression. Coordinates with `account-manager`, `compliance`, `legal-liaison` (if added). | M | Low for off-plan focus; Medium if Aldar runs a resale arm |
+| **P2** | secondary-market-specialist agent | 🔴 Missing | **Create**. UAE secondary-market resale, NOC flow, RERA Form-F transfer, Oqood-to-title progression. Coordinates with `account-manager`, `compliance`, `legal-liaison` (if added). | M | Low for off-plan focus; Medium if UAE Developments runs a resale arm |
 | **P2** | Salesforce integration spec | 🔴 Missing (specced in INTEGRATIONS.md) | **Create** `integrations/salesforce/spec.md` + `schema-mapping.md` + 2–3 `actions/` (activity-log, stage-advance, score-update). Tier A → B per the existing pattern. | L | High when actually integrating; Low while specs alone |
 | **P2** | KYC-provider (Sumsub) integration spec | 🔴 Missing | **Create** `integrations/sumsub/spec.md` + 1 `actions/` (run-check). Pairs with the AML/KYC agent. | M | High when actually integrating |
 | **P2** | DLD / Trakheesi integration spec | 🔴 Missing | **Create** `integrations/trakheesi/spec.md`. Advertising-permit lifecycle for Dubai-side ads. (ADREC equivalent for AD-side as a sibling spec — note in plan, defer creation until needed.) | M | High once a campaign goes live in Dubai |
@@ -55,10 +55,10 @@ P1 = ship-blocking gap for a real Aldar engagement. P2 = high-value extension. P
 | **P3** | crm-data-model skill | 🟡 Light | **Extend** `schemas/deal-record.md` OR **create** `.claude/skills/crm-data-model.md` mapping Salesforce / Dynamics objects to the deal-record schema. | M | Medium when CRM integration is wired |
 | **P3** | broker-operations skill | 🟡 Light | **Create** `.claude/skills/broker-operations.md`. Form-F flow, commission grid mechanics, RERA broker-license verification, dispute escalation steps. | S | Low |
 | **P3** | marketing-attribution skill | 🟡 Light | **Create** `.claude/skills/marketing-attribution.md`. Multi-touch / position-based / data-driven specifics for real-estate funnel. | M | Low–Medium |
-| **P3** | aldar-project-fact-pack skill | 🟡 Light | **Create** `.claude/skills/project-fact-pack.md` (generic, not Aldar-specific to keep multi-tenancy). Consolidates client-profile + inventory + sub-vertical context into a single pull. | S | Low |
+| **P3** | aldar-project-fact-pack skill | 🟡 Light | **Create** `.claude/skills/project-fact-pack.md` (generic, not client-specific to keep multi-tenancy). Consolidates client-profile + inventory + sub-vertical context into a single pull. | S | Low |
 | **P3** | vvip-protocol skill | 🟡 Light | **Promote** the worked-example `protocol-library.md` into a skill at `.claude/skills/vvip-protocol-uae.md`. | S | Low |
 | **P3** | account-manager UAE-developer flavor | 🟡 Light | **Extend** the agent prompt with a one-paragraph UAE-developer pointer (handover-window, owner-community ops, schools-adjacent family events) referencing the developer sub-vertical playbook. **Minimum edit.** | S | Low |
-| **P3** | partnerships Aldar-class flavor | 🟠 Drift (mild) | **Extend** with a one-line note on hospitality JV / education partner / asset-class JV scope. | S | Low |
+| **P3** | partnerships developer-class flavor | 🟠 Drift (mild) | **Extend** with a one-line note on hospitality JV / education partner / asset-class JV scope. | S | Low |
 
 ---
 
@@ -97,7 +97,7 @@ Subject to your approval, ordered by priority bucket:
 
 - `.claude/agents/compliance.md` — append a UAE-pointer section. **No rewrite.**
 - `.claude/agents/account-manager.md` — append a UAE-developer paragraph pointer. **No rewrite.**
-- `.claude/agents/partnerships.md` — append a one-line Aldar-class scope note. **No rewrite.**
+- `.claude/agents/partnerships.md` — append a one-line developer-class scope note. **No rewrite.**
 - `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` — add regulatory-milestone overlay (Trakheesi / Oqood / Trustee Account / ADREC). **Append, not rewrite.**
 - `README.md` — add new agents + skills directory + runbooks directory to the roster sections. **Add lines, do not rewrite.**
 - `ARCHITECTURE.md` — add one paragraph noting the new directories (`.claude/skills/`, `runbooks/`). **Append.**
@@ -124,7 +124,7 @@ Subject to your approval, ordered by priority bucket:
 4. **`aldar-chief-of-staff`.** Confirm: do NOT rename `chief-commercial-officer`. (My strong recommendation.)
 5. **Concierge.** Separate `concierge-coordinator` agent OR absorb into `vvip-channel-enablement`? My lean: absorb (lower management surface).
 6. **Scope of approval.** Approve P1 only? P1+P2? Everything? Selective list?
-7. **Real Aldar regulatory citations.** When I write the `uae-real-estate-regulatory` skill and `regulatory-disclosure-language` skill, do you want me to include actual citations (DLD circular numbers, ADGM regulation references, CBUAE Mortgage Regulation 31/2013 LTV caps), or stay abstract and route specifics to `regulatory-research-specialist` for confirmation? My lean: include known citations with confidence-level markers, but flag any uncertain reference and route to `regulatory-research-specialist`.
+7. **Real UAE Developments regulatory citations.** When I write the `uae-real-estate-regulatory` skill and `regulatory-disclosure-language` skill, do you want me to include actual citations (DLD circular numbers, ADGM regulation references, CBUAE Mortgage Regulation 31/2013 LTV caps), or stay abstract and route specifics to `regulatory-research-specialist` for confirmation? My lean: include known citations with confidence-level markers, but flag any uncertain reference and route to `regulatory-research-specialist`.
 
 ---
 

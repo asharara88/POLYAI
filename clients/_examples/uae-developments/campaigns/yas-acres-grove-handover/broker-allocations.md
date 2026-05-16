@@ -1,6 +1,6 @@
 # Broker allocations — Yas Acres Grove handover
 
-> **Worked example — illustrative.** Fictional allocation record; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional allocation record; not real UAE Developments data.
 >
 > Owned by `broker-enablement`. Closed launch — this file records the final allocation state for the handover campaign. Brokers participated in resale-introduction and community-loyalty motions rather than primary-sale slots; counts reflect introduced-buyer slots rather than primary-allocation.
 

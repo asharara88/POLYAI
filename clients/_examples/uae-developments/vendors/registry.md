@@ -1,6 +1,6 @@
-# Vendor registry — Aldar Developments
+# Vendor registry — UAE Developments
 
-> **Worked example — illustrative.** Real vendor names appear because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships with Aldar Properties PJSC.
+> **Worked example — illustrative.** Real vendor names appear because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships with UAE Developments.
 >
 > Owned by `marketing-procurement`. Source of truth for approved vendors across all categories the marketing function buys.
 

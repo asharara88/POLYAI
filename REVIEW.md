@@ -19,9 +19,9 @@ Across Phase 4 (audit-driven extension) and Phase 5 (completely serve the CCO):
 **Phase 5 specifically** delivered:
 - A daily morning brief, native risk register, daily horizon scan, decision-asks queue, CCO calendar — all rendered at `/cco` and surfaced via chat presets and the client-detail tab
 - Decision-asks workflow at `/approvals` (native CCO queue + GitHub PR mirror split-view)
-- Aldar `client-profile.md` `approval_gates` extended with the depth thresholds the audit identified as missing
+- UAE Developments `client-profile.md` `approval_gates` extended with the depth thresholds the audit identified as missing
 - 12 new runbooks (5 operational-crisis + 3 strategic-planning + 4 integration-go-live)
-- Aldar `kpi-targets.md` for plan year 2026 across 5 KPI families
+- UAE Developments `kpi-targets.md` for plan year 2026 across 5 KPI families
 
 Total new files: 33. Total modified files: 6. Total deleted files: 0. All changes are reversible via `git revert` of the four phase commits (`6f407e4`, `89c19cb`, `46a8847`, `4381750`) plus the Phase 4E doc commit.
 
@@ -34,7 +34,7 @@ The audit found a substantively well-architected system. The extension principle
 | `creative` + `brand-design` separation | Different concerns (copy vs. visuals); merging dilutes per the §3 rule "do not rename for cosmetic conformity" |
 | `voc` + `analytics` separation | Outward (customer language) vs. inward (our metrics) — different sensibilities |
 | `wealth-channel-enablement` absorbing private-banking-liaison + family-office-specialist | Splitting them doubles management surface for marginal gain |
-| `chief-commercial-officer` (renamed from orchestrator) — kept multi-tenant, NOT renamed to `aldar-chief-of-staff` | Multi-tenancy preservation; the Aldar worked example is one tenant, not the system |
+| `chief-commercial-officer` (renamed from orchestrator) — kept multi-tenant, NOT renamed to `aldar-chief-of-staff` | Multi-tenancy preservation; the UAE Developments worked example is one tenant, not the system |
 | Existing schemas (8 of them) | Sound; they shape the entire handoff discipline |
 | Existing tools allowlists per agent | Narrowing them would break legitimate operations |
 | Existing 3-layer context resolution (client → vertical → root) | Architecturally fundamental; kept verbatim with one paragraph addition for skills + runbooks in `ARCHITECTURE.md` |
@@ -71,7 +71,7 @@ The `aml-kyc-compliance-specialist` exists; the `runbooks/pep-sanctions-hit.md` 
 
 The `vvip-channel-enablement` agent maintains the no-mention list; the `compliance` agent now references it as a block-on-sight; `content-pr-specialist`, `creative`, `social-media`, `email-lifecycle`, `events` all need to cross-reference it before ship. The `runbooks/press-sensitive-uhnw-transaction.md` overlays restricted-access discipline on the entire transaction lifecycle.
 
-**How to validate:** introduce a fake VVIP counterparty into a campaign brief and confirm it gets blocked at compliance review; verify the per-client `vvip-channel/no-mention-list.md` is populated for any client with VVIP-touching activity (the worked-example Aldar client should have one; check it).
+**How to validate:** introduce a fake VVIP counterparty into a campaign brief and confirm it gets blocked at compliance review; verify the per-client `vvip-channel/no-mention-list.md` is populated for any client with VVIP-touching activity (the worked-example UAE Developments client should have one; check it).
 
 ### 5. Integration specs are unwired
 

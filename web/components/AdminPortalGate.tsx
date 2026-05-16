@@ -53,7 +53,7 @@ export default function AdminPortalGate({ children }: { children: React.ReactNod
             Super-admin only
           </h1>
           <p className="text-body-xs text-ink-500 dark:text-ink-400 mt-0.5">
-            This surface is not part of the Aldar workspace.
+            This surface is not part of the the workspace.
           </p>
         </div>
       </div>
@@ -61,7 +61,7 @@ export default function AdminPortalGate({ children }: { children: React.ReactNod
         The <code className="font-mono text-label-xs px-1 py-0.5 rounded bg-ink-100 dark:bg-ink-800">/operator</code>{" "}
         portal exposes the framework views (workspaces, agents, runbooks, skills,
         schemas, verticals) and the workspace switcher used by the platform team
-        and Aldar IT to operate the deployment.
+        and the developer's IT to operate the deployment.
       </p>
       <div className="rounded-md bg-info-50 dark:bg-info-950/30 border border-info-200 dark:border-info-900/40 px-3 py-2 text-body-xs text-info-700 dark:text-info-300">
         Worked-example deployment — admin is self-grant. Production replaces

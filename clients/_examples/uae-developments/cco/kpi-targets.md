@@ -1,6 +1,6 @@
-# CCO KPI Targets — Aldar Developments — Plan Year 2026
+# CCO KPI Targets — UAE Developments — Plan Year 2026
 
-> Targets per `.claude/skills/cco-kpi-framework.md` 5-family taxonomy. Per-engagement overrides where Aldar's circumstances differ from default. Sign-off: CCO + CFO + CEO 2026-01-15. Quarterly review at 2026-04-15, 2026-07-15, 2026-10-15.
+> Targets per `.claude/skills/cco-kpi-framework.md` 5-family taxonomy. Per-engagement overrides where UAE Developments' circumstances differ from default. Sign-off: CCO + CFO + CEO 2026-01-15. Quarterly review at 2026-04-15, 2026-07-15, 2026-10-15.
 
 ## Family 1 — Commercial
 
@@ -89,6 +89,6 @@
 - Q3 spike across families reflects Saadiyat Reserve Heights public launch (2026-08-06)
 - Channel-mix shift toward wealth (+1pp annual) reflects Tier-1 wealth-channel build
 - VVIP channel-mix down (-1pp annual) reflects channel-classification refinement, not relationship attrition
-- KPI thresholds default to `.claude/skills/cco-kpi-framework.md` defaults; per-Aldar overrides per quarter where needed (none currently)
+- KPI thresholds default to `.claude/skills/cco-kpi-framework.md` defaults; per-engagement overrides per quarter where needed (none currently)
 - Material variance to target (> 10%) triggers `runbooks/quarterly-exec-brief.md` decision-ask routing per `decision-router`
 - Plan year is calendar 2026; per `runbooks/annual-commercial-plan.md` Q4-2025 cycle

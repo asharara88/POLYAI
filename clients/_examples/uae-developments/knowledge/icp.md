@@ -1,6 +1,6 @@
-# Ideal Customer Profile — Aldar Developments
+# Ideal Customer Profile — UAE Developments
 
-> **Worked example — illustrative.** Fictional ICP for a developer-class engagement; not real Aldar Properties data.
+> **Worked example — illustrative.** Fictional ICP for a developer-class engagement; not real UAE Developments data.
 >
 > Seeded by `client-onboarding` from intake + `verticals/real-estate/sub-verticals/developer/playbook.md` (Audience archetypes section). Refine as `voc` and won/lost data come in.
 
@@ -17,7 +17,7 @@
 - Budget control: yes (sole or co-decided with spouse)
 - Day-to-day pain:
   - High-yield AED-denominated deployment options
-  - Off-plan counter-party risk (Aldar's institutional credibility is a positive vs. smaller developers)
+  - Off-plan counter-party risk (UAE Developments' institutional credibility is a positive vs. smaller developers)
   - Service-charge transparency, exit liquidity
 - Top metric: net yield + 5-year appreciation, with developer credibility as the gating filter
 
@@ -55,7 +55,7 @@
 - Role: principal buyer, often consulted with family elder
 - Day-to-day pain:
   - AED / hard-currency exposure as inflation hedge
-  - Lack of trusted on-the-ground contacts in destination market (Aldar's brand pre-empts some of this trust gap)
+  - Lack of trusted on-the-ground contacts in destination market (UAE Developments' brand pre-empts some of this trust gap)
   - Anxiety about virtual purchase
 
 **Trigger events**

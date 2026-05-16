@@ -1,6 +1,6 @@
 # Broker profile — Driven Properties
 
-> **Worked example — illustrative.** Real firm name; not real Aldar Properties relationship data.
+> **Worked example — illustrative.** Real firm name; not real UAE Developments relationship data.
 >
 > Owned by `broker-enablement`. Extended profile beyond the registry summary at `brokers/registry.md`.
 
@@ -25,7 +25,7 @@ median_deal_size_aed: 5400000
 (commission grid lives in `clients/<slug>/sales/commission-grid.md`; references only here)
 
 ```yaml
-commission_grid_reference: clients/_examples/aldar-developments/sales/commission-grid.md#tier-1
+commission_grid_reference: clients/_examples/uae-developments/sales/commission-grid.md#tier-1
 commission_grid_signed: 2026-04-15
 rera_pack_acknowledged: 2026-04-15
 firm_in_good_standing: true
