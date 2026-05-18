@@ -47,31 +47,26 @@ export function generateStaticParams() {
   return getClients().map((c) => ({ slug: c.slug }));
 }
 
-type Tab =
-  | "profile"
-  | "icp"
-  | "voice"
-  | "decisions"
-  | "results"
-  | "cco"
-  | "inventory"
-  | "brokers"
-  | "wealth"
-  | "vvip"
-  | "reciprocity"
-  | "events"
-  | "vendors"
-  | "budget"
-  | "pipeline"
-  | "routing";
+type Tab = "workspace" | "launches" | "channels";
 
-const baseTabs: { key: Tab; label: string }[] = [
-  { key: "profile", label: "Profile" },
-  { key: "icp", label: "ICP" },
-  { key: "voice", label: "Brand voice" },
-  { key: "decisions", label: "Decisions" },
-  { key: "results", label: "Results" },
+const TABS: { key: Tab; label: string; sublabel: string }[] = [
+  { key: "workspace", label: "Workspace", sublabel: "Profile · ICP · voice · decisions · results · CCO daily" },
+  { key: "launches", label: "Inventory & launches", sublabel: "Inventory · pipeline · events · vendors · budget · routing" },
+  { key: "channels", label: "Channels", sublabel: "Brokers · wealth · VVIP · reciprocity" },
 ];
+
+function SectionHeader({ id, title }: { id: string; title: string }) {
+  return (
+    <h2
+      id={id}
+      className="text-xl font-semibold tracking-tight text-ink-900 dark:text-ink-50 scroll-mt-24"
+    >
+      <a href={`#${id}`} className="hover:text-accent transition-colors">
+        {title}
+      </a>
+    </h2>
+  );
+}
 
 export default async function Page({
   params,
@@ -104,22 +99,6 @@ export default async function Page({
   const ccoCalendar = getCcoCalendar(slug);
   const hasCcoSurface = Boolean(ccoBrief || ccoRisks || ccoAsks);
 
-  const tabs = [
-    ...baseTabs,
-    ...(hasCcoSurface ? [{ key: "cco" as Tab, label: "CCO Daily" }] : []),
-    ...(inventory ? [{ key: "inventory" as Tab, label: "Inventory" }] : []),
-    ...(brokers ? [{ key: "brokers" as Tab, label: "Brokers" }] : []),
-    ...(wealth ? [{ key: "wealth" as Tab, label: "Wealth channel" }] : []),
-    ...(vvip ? [{ key: "vvip" as Tab, label: "VVIP" }] : []),
-    ...(reciprocity ? [{ key: "reciprocity" as Tab, label: "Reciprocity" }] : []),
-    ...(events.length > 0 ? [{ key: "events" as Tab, label: "Events" }] : []),
-    ...(vendors ? [{ key: "vendors" as Tab, label: "Vendors" }] : []),
-    ...(budget ? [{ key: "budget" as Tab, label: "Budget" }] : []),
-    ...(pipeline ? [{ key: "pipeline" as Tab, label: "Pipeline" }] : []),
-    ...(brokers ? [{ key: "routing" as Tab, label: "Simulators" }] : []),
-  ];
-
-  // Build known counterparties list for the reciprocity staging form
   const knownCounterparties = [
     ...(wealth?.counterparties.map((c) => ({
       id: c.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""),
@@ -133,7 +112,7 @@ export default async function Page({
     })) ?? []),
   ];
 
-  const activeTab = (tabs.find((t) => t.key === tabParam)?.key ?? "profile") as Tab;
+  const activeTab = (TABS.find((t) => t.key === tabParam)?.key ?? "workspace") as Tab;
 
   return (
     <div className="space-y-8">
@@ -188,102 +167,160 @@ export default async function Page({
       )}
 
       <section>
-        <div className="flex flex-wrap gap-1 border-b border-ink-200/70 dark:border-ink-800 mb-5">
-          {tabs.map((t) => {
+        <div className="flex flex-col sm:flex-row gap-0 border-b border-ink-200/70 dark:border-ink-800 mb-6">
+          {TABS.map((t) => {
             const isActive = t.key === activeTab;
             return (
               <Link
                 key={t.key}
                 href={`/clients/${slug}?tab=${t.key}`}
-                className={`px-3 py-2 text-sm border-b-2 -mb-px transition-colors ${
+                className={`flex-1 px-4 py-3 border-b-2 -mb-px transition-colors ${
                   isActive
                     ? "border-accent text-ink-900 dark:text-ink-50"
                     : "border-transparent text-ink-500 hover:text-ink-800 dark:hover:text-ink-200"
                 }`}
               >
-                {t.label}
+                <div className="text-sm font-semibold">{t.label}</div>
+                <div className="text-label-xs text-ink-400 mt-0.5 hidden sm:block">{t.sublabel}</div>
               </Link>
             );
           })}
         </div>
 
-        {activeTab === "profile" && <Markdown>{client.profile}</Markdown>}
-        {activeTab === "icp" && <Markdown>{client.icp || "_No ICP defined yet._"}</Markdown>}
-        {activeTab === "voice" && <Markdown>{client.brandVoice || "_No brand voice defined yet._"}</Markdown>}
-        {activeTab === "decisions" && <Markdown>{client.decisions || "_No decisions logged yet._"}</Markdown>}
-        {activeTab === "results" && <Markdown>{client.results || "_No results logged yet._"}</Markdown>}
-        {activeTab === "cco" && hasCcoSurface && (
-          <div className="space-y-12">
-            <div className="flex items-baseline justify-between gap-3 flex-wrap">
-              <div>
+        {activeTab === "workspace" && (
+          <div className="space-y-14">
+            <div className="space-y-3">
+              <SectionHeader id="profile" title="Profile" />
+              <Markdown>{client.profile}</Markdown>
+            </div>
+            <div className="space-y-3">
+              <SectionHeader id="icp" title="ICP" />
+              <Markdown>{client.icp || "_No ICP defined yet._"}</Markdown>
+            </div>
+            <div className="space-y-3">
+              <SectionHeader id="voice" title="Brand voice" />
+              <Markdown>{client.brandVoice || "_No brand voice defined yet._"}</Markdown>
+            </div>
+            <div className="space-y-3">
+              <SectionHeader id="decisions" title="Decisions log" />
+              <Markdown>{client.decisions || "_No decisions logged yet._"}</Markdown>
+            </div>
+            <div className="space-y-3">
+              <SectionHeader id="results" title="Results" />
+              <Markdown>{client.results || "_No results logged yet._"}</Markdown>
+            </div>
+            {hasCcoSurface && (
+              <div className="space-y-6">
+                <SectionHeader id="cco" title="CCO daily surface" />
                 <p className="text-sm text-ink-500 dark:text-ink-400 max-w-2xl">
-                  CCO daily surface scoped to this client. Open in full at{" "}
-                  <Link
-                    href={`/cco?client=${slug}`}
-                    className="text-accent hover:underline"
-                  >
+                  Scoped to this client. Open in full at{" "}
+                  <Link href={`/cco?client=${slug}`} className="text-accent hover:underline">
                     /cco
                   </Link>
                   .
                 </p>
+                {ccoBrief && (
+                  <CcoMorningBrief brief={ccoBrief} clientName={client.summary.displayName ?? slug} />
+                )}
+                {ccoAsks && <DecisionAsksQueue asks={ccoAsks} client={slug} />}
+                {ccoRisks && <RiskRegister register={ccoRisks} />}
+                {ccoHorizon && <HorizonScan scan={ccoHorizon} />}
+                {ccoCalendar && <CcoCalendar calendar={ccoCalendar} />}
               </div>
-            </div>
-            {ccoBrief && (
-              <CcoMorningBrief brief={ccoBrief} clientName={client.summary.displayName ?? slug} />
             )}
-            {ccoAsks && <DecisionAsksQueue asks={ccoAsks} client={slug} />}
-            {ccoRisks && <RiskRegister register={ccoRisks} />}
-            {ccoHorizon && <HorizonScan scan={ccoHorizon} />}
-            {ccoCalendar && <CcoCalendar calendar={ccoCalendar} />}
           </div>
         )}
-        {activeTab === "inventory" && inventory && <InventoryDashboard inventory={inventory} />}
-        {activeTab === "brokers" && brokers && (
-          <BrokerRegistry
-            brokers={brokers}
-            clientSlug={slug}
-            brokersWithProfile={brokersWithProfile}
-          />
+
+        {activeTab === "launches" && (
+          <div className="space-y-14">
+            {inventory && (
+              <div className="space-y-3">
+                <SectionHeader id="inventory" title="Inventory" />
+                <InventoryDashboard inventory={inventory} />
+              </div>
+            )}
+            {pipeline && (
+              <div className="space-y-3">
+                <SectionHeader id="pipeline" title="Pipeline" />
+                <PipelineDashboard pipeline={pipeline} />
+              </div>
+            )}
+            {events.length > 0 && (
+              <div className="space-y-3">
+                <SectionHeader id="events" title="Events" />
+                <EventsDashboard events={events} clientSlug={slug} />
+              </div>
+            )}
+            {vendors && (
+              <div className="space-y-3">
+                <SectionHeader id="vendors" title="Vendors" />
+                <VendorsDashboard
+                  vendors={vendors}
+                  clientSlug={slug}
+                  vendorsWithProfile={vendorsWithProfile}
+                />
+              </div>
+            )}
+            {budget && (
+              <div className="space-y-3">
+                <SectionHeader id="budget" title="Marketing budget" />
+                <BudgetDashboard budget={budget} snapshots={budgetSnapshots} />
+              </div>
+            )}
+            {brokers && (
+              <div className="space-y-3">
+                <SectionHeader id="routing" title="Sales routing simulators" />
+                <p className="text-sm text-ink-500 dark:text-ink-400 max-w-3xl">
+                  Three simulator modes for the developer&apos;s sales motion:{" "}
+                  <code className="font-mono">direct lead → in-house RM</code> (default for
+                  direct-marketing leads),{" "}
+                  <code className="font-mono">broker allocation request</code> (default for
+                  broker-originated buyers), and{" "}
+                  <code className="font-mono">overflow → broker</code> (exception when in-house
+                  capacity is exceeded).
+                </p>
+                <RoutingSimulator clientSlug={slug} />
+              </div>
+            )}
+          </div>
         )}
-        {activeTab === "wealth" && wealth && <WealthChannelRegistry channel={wealth} />}
-        {activeTab === "vvip" && vvip && <VvipChannelRegistry channel={vvip} />}
-        {activeTab === "reciprocity" && reciprocity && (
-          <>
-            <ReciprocityLedger ledger={reciprocity} />
-            <ReciprocityStaging
-              clientSlug={slug}
-              isExample={client.summary.isExample}
-              existingSummaries={reciprocity.summaries}
-              knownCounterparties={knownCounterparties}
-            />
-          </>
-        )}
-        {activeTab === "pipeline" && pipeline && <PipelineDashboard pipeline={pipeline} />}
-        {activeTab === "events" && events.length > 0 && (
-          <EventsDashboard events={events} clientSlug={slug} />
-        )}
-        {activeTab === "vendors" && vendors && (
-          <VendorsDashboard
-            vendors={vendors}
-            clientSlug={slug}
-            vendorsWithProfile={vendorsWithProfile}
-          />
-        )}
-        {activeTab === "budget" && budget && (
-          <BudgetDashboard budget={budget} snapshots={budgetSnapshots} />
-        )}
-        {activeTab === "routing" && brokers && (
-          <div className="space-y-4">
-            <p className="text-sm text-ink-500 dark:text-ink-400 max-w-3xl">
-              Three simulator modes for the developer's sales motion:{" "}
-              <code className="font-mono">direct lead → in-house RM</code> (default for
-              direct-marketing leads),{" "}
-              <code className="font-mono">broker allocation request</code> (default for
-              broker-originated buyers), and{" "}
-              <code className="font-mono">overflow → broker</code> (exception when in-house
-              capacity is exceeded).
-            </p>
-            <RoutingSimulator clientSlug={slug} />
+
+        {activeTab === "channels" && (
+          <div className="space-y-14">
+            {brokers && (
+              <div className="space-y-3">
+                <SectionHeader id="brokers" title="Broker registry" />
+                <BrokerRegistry
+                  brokers={brokers}
+                  clientSlug={slug}
+                  brokersWithProfile={brokersWithProfile}
+                />
+              </div>
+            )}
+            {wealth && (
+              <div className="space-y-3">
+                <SectionHeader id="wealth" title="Wealth channel" />
+                <WealthChannelRegistry channel={wealth} />
+              </div>
+            )}
+            {vvip && (
+              <div className="space-y-3">
+                <SectionHeader id="vvip" title="VVIP channel" />
+                <VvipChannelRegistry channel={vvip} />
+              </div>
+            )}
+            {reciprocity && (
+              <div className="space-y-3">
+                <SectionHeader id="reciprocity" title="Reciprocity ledger" />
+                <ReciprocityLedger ledger={reciprocity} />
+                <ReciprocityStaging
+                  clientSlug={slug}
+                  isExample={client.summary.isExample}
+                  existingSummaries={reciprocity.summaries}
+                  knownCounterparties={knownCounterparties}
+                />
+              </div>
+            )}
           </div>
         )}
       </section>
