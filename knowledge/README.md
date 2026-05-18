@@ -1,18 +1,25 @@
-# Knowledge
+# Knowledge — team-level baseline
 
-Shared memory for the Flow team. The `knowledge` agent is the only one that writes here directly. Other agents request updates through it.
+This directory holds the **lowest-priority** lookup for ICP, brand voice, decisions, results, and playbooks. It is the fallback when neither the active client folder nor the active pack defines the answer.
+
+Per `CLAUDE.md` path resolution order:
+
+1. `clients/<client>/knowledge/...` — client-specific overrides
+2. `verticals/<vertical>/playbook.md` (and `verticals/<vertical>/sub-verticals/<sub>/playbook.md`) — industry pack defaults
+3. `knowledge/...` (this directory) — team-level cross-client baseline
+
+**You probably don't want to edit this directory.** Real content lives at level 1 (specific to a client) or level 2 (specific to a pack). The files here are templates that the `client-onboarding` agent reads when scaffolding a new client folder. They describe the *shape* of the data, not the data itself.
 
 ## Files
 
-- `icp.md` — ideal customer profile(s). Overwriteable, with a changelog footer.
-- `brand-voice.md` — tone, do/don't, vocabulary, visual notes. Overwriteable, with a changelog footer.
-- `decisions.md` — append-only log of strategic decisions and rationale.
-- `results.md` — append-only log of campaign / deal outcomes vs. plan.
-- `playbooks/` — reusable plays and references.
+- `icp.md` — ideal customer profile template; the structure `client-onboarding` populates per client
+- `brand-voice.md` — brand voice template; the structure `client-onboarding` populates per client
+- `decisions.md` — append-only log shape; instantiated per client
+- `results.md` — append-only log shape; instantiated per client
+- `playbooks/` — placeholder for cross-client plays that emerge once a pattern is proven in 2+ clients (promoted here by the `knowledge` agent with `chief-commercial-officer` approval)
 
 ## Discipline
 
-1. Treat this as the team's source of truth. If two agents disagree about ICP, this file resolves it.
-2. Don't quietly drift. If a finding contradicts existing content, the `knowledge` agent flags it to the `chief-commercial-officer` rather than overwriting silently.
-3. Keep entries dated. Markets and customers change.
-4. Archive failed playbooks rather than deleting them — past failures are signal.
+1. **Do not write here directly.** The `knowledge` agent is the only writer, and only on cross-client promotion. All other writes go to `clients/<client>/knowledge/` per CLAUDE.md rule 3.
+2. **Templates are descriptive, not prescriptive.** The point is to capture the *shape* a populated file should take. A future onboarding pulls from the template + the active pack's playbook + the client's intake brief.
+3. **Promotion to this level requires evidence.** A pattern must appear across two or more clients before being promoted from a single client folder or pack to the team-level baseline.
