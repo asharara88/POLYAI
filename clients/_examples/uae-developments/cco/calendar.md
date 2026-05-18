@@ -47,6 +47,6 @@
 
 ## Notes
 
-- VVIP-touching events not surfaced here — those carry restricted-access calendar entries per `.claude/skills/vvip-protocol-uae.md`
+- VVIP-touching events not surfaced here — those carry restricted-access calendar entries per `verticals/real-estate/skills/vvip-protocol-uae.md`
 - Cross-emirate travel days (Abu Dhabi → Dubai) noted as travel blocks; CCO morning brief emits on travel day same as office day
-- Ramadan window adjustments handled per `.claude/skills/diaspora-corridor-marketing.md` cultural-calendar guidance
+- Ramadan window adjustments handled per `verticals/real-estate/skills/diaspora-corridor-marketing.md` cultural-calendar guidance

@@ -119,7 +119,7 @@ The single live risk register at `clients/<client>/risk-register.md` with this f
 |---|---|
 | Risk crossed amber → red | immediate to `chief-commercial-officer`; surfaces in next morning brief |
 | Risk involves regulator | route to `legal-liaison` + `regulatory-research-specialist` |
-| Risk involves sanctions / PEP | `aml-kyc-compliance-specialist` per `runbooks/pep-sanctions-hit.md` |
+| Risk involves sanctions / PEP | `aml-kyc-compliance-specialist` per `verticals/real-estate/runbooks/pep-sanctions-hit.md` |
 | Risk involves press | `content-pr-specialist` |
 | Risk involves VVIP counterparty | restricted-access; `wealth-vvip-manager` + `vvip-channel-enablement` |
 | Closure proposed | `chief-commercial-officer` for sign-off |
@@ -151,4 +151,4 @@ The single live risk register at `clients/<client>/risk-register.md` with this f
 
 1. *"Construction-progress report shows MEP delay of 6 weeks on Tower B."* → Open commercial-risk entry with severity material; threshold: > AED 80M revenue-at-risk if handover slips beyond Q4; owner: `inventory-manager` + named operational human.
 2. *"Tier-1 broker firm announced restructuring."* → Open counterparty-risk entry; severity significant; threshold: license-status change OR > 14 days uncertainty; owner: `broker-enablement`.
-3. *"OFAC sanctioned a Russia-corridor intermediary that referred 3 active prospects to us."* → Open counterparty-risk entry red-immediate; trigger `runbooks/pep-sanctions-hit.md`; owner: `aml-kyc-compliance-specialist` + `legal-liaison`.
+3. *"OFAC sanctioned a Russia-corridor intermediary that referred 3 active prospects to us."* → Open counterparty-risk entry red-immediate; trigger `verticals/real-estate/runbooks/pep-sanctions-hit.md`; owner: `aml-kyc-compliance-specialist` + `legal-liaison`.

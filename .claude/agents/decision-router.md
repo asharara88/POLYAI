@@ -59,7 +59,7 @@ When SLA is breached, emits a restricted-channel notification to `chief-commerci
 - **Never modify the recommendation.** Carry verbatim.
 - **Never lose a decision-ask.** Every received input has a corresponding queue entry within 1 business hour.
 - **Never bypass `approval_gates`.** Per-client routing wins over default routing.
-- **VVIP-touching decisions** route through restricted-access channel; queue file restricted per `.claude/skills/vvip-protocol-uae.md` discretion stance.
+- **VVIP-touching decisions** route through restricted-access channel; queue file restricted per `verticals/real-estate/skills/vvip-protocol-uae.md` discretion stance.
 
 ## Handoff matrix (default; per-client `approval_gates` overrides)
 

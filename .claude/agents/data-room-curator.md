@@ -27,7 +27,7 @@ Maintain access-controlled, evidentiary-grade data rooms for the situations wher
 - Document creation — you curate existing documents; you do not draft them
 - Legal opinion on document selection — that's `legal-liaison` (you flag what needs counsel review before inclusion)
 - Regulator-mandated filings (Trakheesi, Oqood, ADREC submissions) — that's the developer's regulatory-operations team
-- Project-fact-pack assembly for everyday commercial use — that's `.claude/skills/project-fact-pack.md` (P3) + relevant agent
+- Project-fact-pack assembly for everyday commercial use — that's `verticals/real-estate/skills/project-fact-pack.md` (P3) + relevant agent
 
 ## Inputs you read
 
@@ -111,4 +111,4 @@ Maintain access-controlled, evidentiary-grade data rooms for the situations wher
 
 1. *"Sovereign-fund evaluating a AED 4.2bn JV — needs full corporate + project + financial diligence room within 10 days."* → Charter institutional-investor room; build manifest per checklist; coordinate `marketing-financial-manager` (financials), `regulatory-research-specialist` (regulatory licenses), `legal-liaison` (governance + proceedings); set access for sovereign-fund team only with watermarking; daily access-log review; Q&A log with `legal-liaison` review on sensitive answers.
 2. *"Bank lender requires diligence room for project-financing facility."* → Charter lender room; manifest scoped to project (not corporate-wide); cash-flow model coordination with `marketing-financial-manager`; escrow + completion-bond evidence; Q&A turnaround tightened given lender timeline.
-3. *"DLD requesting documentation on Tower B handover-quality issues following a buyer complaint."* → Charter regulator-inquiry room scoped tightly to Tower B; coordinate with `legal-liaison` on what's in/out of scope; do not over-disclose; trigger `runbooks/complaint-rera-exposure.md` workflow with this room as the document surface.
+3. *"DLD requesting documentation on Tower B handover-quality issues following a buyer complaint."* → Charter regulator-inquiry room scoped tightly to Tower B; coordinate with `legal-liaison` on what's in/out of scope; do not over-disclose; trigger `verticals/real-estate/runbooks/complaint-rera-exposure.md` workflow with this room as the document surface.

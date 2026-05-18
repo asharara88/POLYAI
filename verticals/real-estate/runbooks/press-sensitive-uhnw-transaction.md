@@ -7,7 +7,7 @@
 Any of:
 - An incoming-buyer's press-sensitivity flag is raised at intake (typically by `wealth-channel-enablement`, `vvip-channel-enablement`, or the named senior RM)
 - An existing-owner's press-sensitivity status changes mid-relationship (becomes a public figure; subject of unrelated press; VVIP-adjacency newly identified)
-- A seller in a resale transaction is press-sensitive (per `runbooks/resale-with-noc.md` adjacency)
+- A seller in a resale transaction is press-sensitive (per `verticals/real-estate/runbooks/resale-with-noc.md` adjacency)
 - A press inquiry surfaces referencing a transaction in flight or recently closed
 
 ## Owner
@@ -30,10 +30,10 @@ Any of:
 |---|---|---|---|
 | **Activation** | `wealth-vvip-manager` | Open press-sensitive-transaction case file at `clients/<client>/vvip-channel/transactions/<case-id>/` (restricted-access — named team only) | Case file open |
 | | `wealth-vvip-manager` | Brief named team only — `vvip-channel-enablement`, `vip-relationship-manager`, `legal-liaison`, `aml-kyc-compliance-specialist`, `account-executive`, `content-pr-specialist`, `chief-commercial-officer`. No general-team awareness. | Restricted-access briefing |
-| | `vvip-channel-enablement` | Cross-reference principal against no-mention list + protocol register per `.claude/skills/vvip-protocol-uae.md` | No-mention update if needed; protocol register confirmation |
-| **Compliance** | `aml-kyc-compliance-specialist` | Initiate screening with discretion-tightened access (case-restricted Sumsub level; minimal team access on verdict); EDD per PEP class | Screening per `runbooks/pep-sanctions-hit.md` if RED outcomes |
+| | `vvip-channel-enablement` | Cross-reference principal against no-mention list + protocol register per `verticals/real-estate/skills/vvip-protocol-uae.md` | No-mention update if needed; protocol register confirmation |
+| **Compliance** | `aml-kyc-compliance-specialist` | Initiate screening with discretion-tightened access (case-restricted Sumsub level; minimal team access on verdict); EDD per PEP class | Screening per `verticals/real-estate/runbooks/pep-sanctions-hit.md` if RED outcomes |
 | | `legal-liaison` | Bespoke-confidentiality NDA prepared per principal preferences (jurisdiction, duration, scope, breach remedies) | NDA ready for execution |
-| **Commercial** | `account-executive` (VVIP-channel-experienced) | Commercial conversation conducted via principal's preferred channel (gatekeeper-mediated where applicable per `.claude/skills/vvip-protocol-uae.md`) | Commercial activity logged in restricted-access manner |
+| **Commercial** | `account-executive` (VVIP-channel-experienced) | Commercial conversation conducted via principal's preferred channel (gatekeeper-mediated where applicable per `verticals/real-estate/skills/vvip-protocol-uae.md`) | Commercial activity logged in restricted-access manner |
 | | `deal-desk-analyst` (if non-standard terms) | Bespoke commercial structure analysis per `deal-desk-analyst` SOP — restricted-access memo | Restricted-access deal-desk memo |
 | | `account-executive` + `wealth-vvip-manager` | Closing coordination — discretion-aware scheduling, signing logistics (gatekeeper-mediated where applicable) | Closing artifacts in restricted-access folder |
 | **Concierge** | `vip-relationship-manager` | Principal-experience touchpoints throughout — coordinated with gatekeeper per protocol register | Concierge case files (restricted) |
@@ -50,7 +50,7 @@ Any of:
 |---|---|---|
 | `wealth-vvip-manager` → named team (briefing) | Case open | Restricted-channel briefing within 24h; if any named team member unavailable, escalate to alternate per `wealth-vvip-manager` matrix |
 | `wealth-vvip-manager` → `chief-commercial-officer` | Case open | Continuous awareness; never silent on press-sensitive cases |
-| `aml-kyc-compliance-specialist` → `legal-liaison` (RED) | Sanctions / PEP issue | Switch to `runbooks/pep-sanctions-hit.md` with discretion overlay; do not signal counterparty |
+| `aml-kyc-compliance-specialist` → `legal-liaison` (RED) | Sanctions / PEP issue | Switch to `verticals/real-estate/runbooks/pep-sanctions-hit.md` with discretion overlay; do not signal counterparty |
 | `account-executive` → `deal-desk-analyst` (non-standard) | Bespoke terms requested | Per `deal-desk-analyst` SOP; memo restricted-access |
 | `content-pr-specialist` → `legal-liaison` (press surface) | Any media reference | Immediate; legal-mediated response posture |
 | `content-pr-specialist` → `chief-commercial-officer` (press escalation) | Tier-1 outlet inquiry | Immediate; no-comment defense activated; CCO informs executive committee |
@@ -61,7 +61,7 @@ Any of:
 2. **No general-team visibility** — even agents would not be aware of case existence outside the named team. The runbook itself is referenced; specifics are not.
 3. **No press reference, ever** — principal name, transaction detail, unit identification, floor reference, value reference all blocked from any general communication, internal newsletter, marketing case study, awards submission, social post, byline. The no-mention list is non-negotiable.
 4. **Bespoke-confidentiality NDA in force** — extended-duration, broad-scope NDAs typical; signed by all developer-side personnel involved in the case.
-5. **No-tipping-off on AML adjacency** — discretion intact on any AML matter; switch to `runbooks/pep-sanctions-hit.md` silently.
+5. **No-tipping-off on AML adjacency** — discretion intact on any AML matter; switch to `verticals/real-estate/runbooks/pep-sanctions-hit.md` silently.
 6. **No comment is the default press posture** — any active statement requires `legal-liaison` + `chief-commercial-officer` sign-off + (where reputational risk material) executive-committee approval.
 7. **Vienna Convention adjacency** — for foreign-VVIP cases, route any unusual transaction-structure question to `legal-liaison` for diplomatic-immunity context.
 8. **No photographs / video** of principal or transaction artifacts in any developer-side capture, including handover, signing, viewing — unless principal's protocol office explicitly clears.
@@ -69,7 +69,7 @@ Any of:
 
 ## Out-of-scope
 
-- Routine UHNW transactions where principal is not press-sensitive — that's `runbooks/inbound-hnw-private-bank.md` standard
+- Routine UHNW transactions where principal is not press-sensitive — that's `verticals/real-estate/runbooks/inbound-hnw-private-bank.md` standard
 - General PR strategy (not transaction-specific) — that's `content-pr-specialist` standard
 - Concierge that is not transaction-coordinated — that's `vip-relationship-manager` standard ongoing relationship
 - Long-term reputation defense post-transaction — that's `content-pr-specialist` standard ongoing monitoring
@@ -88,7 +88,7 @@ Any of:
 ## Close-out + learning
 
 - Case file remains restricted-access at `clients/<client>/vvip-channel/transactions/closed/<year>/<case-id>/`
-- Aggregated learnings (no per-case detail) feed `.claude/skills/vvip-protocol-uae.md` updates via `knowledge`
+- Aggregated learnings (no per-case detail) feed `verticals/real-estate/skills/vvip-protocol-uae.md` updates via `knowledge`
 - Pattern-level reporting (e.g., a particular outlet's pattern of press inquiry on UHNW transactions) feeds `content-pr-specialist` ongoing posture
 - Material learnings (e.g., a process change in protocol coordination, a new corridor with discretion-sensitive principals) routed via `knowledge` for `wealth-vvip-manager` and `vvip-channel-enablement` SOPs
 

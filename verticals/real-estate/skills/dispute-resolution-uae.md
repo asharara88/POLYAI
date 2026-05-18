@@ -1,6 +1,6 @@
 ---
 name: dispute-resolution-uae
-description: UAE dispute-resolution pathway map for real-estate matters — RERA Rental Dispute Centre (Dubai), Real Estate Dispute Resolution Centre (Dubai), ADREC consumer-protection (Abu Dhabi), Trustee Account / escrow disputes, broker disputes, SPA disputes, owner-association disputes, and the regulator-vs-judiciary-vs-arbitration choice per matter type. Consolidates dispute-pathway knowledge currently spread across service-recovery-specialist, legal-liaison, secondary-market-specialist, broker-enablement, and runbooks/complaint-rera-exposure.md. Used by every agent that handles a dispute. Framework only — current per-emirate dispute-process steps and timelines verify per request via regulatory-research-specialist.
+description: UAE dispute-resolution pathway map for real-estate matters — RERA Rental Dispute Centre (Dubai), Real Estate Dispute Resolution Centre (Dubai), ADREC consumer-protection (Abu Dhabi), Trustee Account / escrow disputes, broker disputes, SPA disputes, owner-association disputes, and the regulator-vs-judiciary-vs-arbitration choice per matter type. Consolidates dispute-pathway knowledge currently spread across service-recovery-specialist, legal-liaison, secondary-market-specialist, broker-enablement, and verticals/real-estate/runbooks/complaint-rera-exposure.md. Used by every agent that handles a dispute. Framework only — current per-emirate dispute-process steps and timelines verify per request via regulatory-research-specialist.
 scope: UAE real-estate dispute-resolution pathway map
 maintained_by: regulatory-research-specialist + legal-liaison (writes via knowledge agent)
 ---
@@ -89,19 +89,19 @@ The right pathway depends on (a) matter type, (b) contractual arbitration clause
 | **Owner ↔ OAM dispute** (service-quality) | OA board (OAM contract review) | OA-led re-procurement; OAM regulatory complaint to RERA / ADREC |
 | **Owner ↔ owner dispute** (noise, sub-letting, common-area use) | OAM mediation | OA board; courts if material |
 | **Buyer ↔ broker dispute** (commission disclosure, mis-representation) | Broker firm internal → developer-side mediation | RERA broker-conduct complaint; courts |
-| **Developer ↔ broker dispute** (commission attribution, claw-back) | Internal mediation per `.claude/skills/broker-operations.md` dispute escalation | RERA arbitration; courts |
-| **Developer ↔ wealth-channel intermediary dispute** (introducer fee, attribution) | Internal mediation per `.claude/skills/wealth-channel-operations.md` | DIFC arbitration where DIFC-licensed intermediary; courts otherwise |
+| **Developer ↔ broker dispute** (commission attribution, claw-back) | Internal mediation per `verticals/real-estate/skills/broker-operations.md` dispute escalation | RERA arbitration; courts |
+| **Developer ↔ wealth-channel intermediary dispute** (introducer fee, attribution) | Internal mediation per `verticals/real-estate/skills/wealth-channel-operations.md` | DIFC arbitration where DIFC-licensed intermediary; courts otherwise |
 | **Developer ↔ agency dispute** (creative, media, scope) | Internal mediation per agency-liaison | Arbitration per signed SOW; courts |
 | **Developer ↔ vendor dispute** (any other commercial) | Internal mediation | Per signed contract dispute clause |
 | **Snagging warranty dispute** | `service-recovery-specialist` → `legal-liaison` | RERA RDC |
-| **AML/CFT-adjacent matter** | NOT a dispute pathway — `runbooks/pep-sanctions-hit.md`; STR if warranted; **never** signal to counterparty |
+| **AML/CFT-adjacent matter** | NOT a dispute pathway — `verticals/real-estate/runbooks/pep-sanctions-hit.md`; STR if warranted; **never** signal to counterparty |
 | **Sanctions hit on counterparty** | NOT a dispute pathway — Legal + halt + STR per AML framework |
 | **Press / reputation dispute** | `content-pr-specialist` + `legal-liaison`; courts only if defamation actionable |
-| **Regulator inquiry** (DLD / RERA / ADREC / DMT directly inquires of developer) | `legal-liaison` immediate; per `runbooks/complaint-rera-exposure.md` |
+| **Regulator inquiry** (DLD / RERA / ADREC / DMT directly inquires of developer) | `legal-liaison` immediate; per `verticals/real-estate/runbooks/complaint-rera-exposure.md` |
 
 ## Discretion overlay (VVIP-touching disputes)
 
-When a dispute touches a VVIP or VVIP-adjacent counterparty per `.claude/skills/vvip-protocol-uae.md`:
+When a dispute touches a VVIP or VVIP-adjacent counterparty per `verticals/real-estate/skills/vvip-protocol-uae.md`:
 
 - **Internal resolution preferred regardless of merit** — the cost of public dispute often exceeds the cost of resolution
 - **DIFC arbitration favored over courts** where contractual; confidentiality + finality
@@ -111,7 +111,7 @@ When a dispute touches a VVIP or VVIP-adjacent counterparty per `.claude/skills/
 
 ## Internal-resolution-first principle
 
-For every dispute, the first move is internal resolution, not pathway escalation. Per `runbooks/complaint-rera-exposure.md`:
+For every dispute, the first move is internal resolution, not pathway escalation. Per `verticals/real-estate/runbooks/complaint-rera-exposure.md`:
 
 1. **Acknowledge fast** — within 4 business hours
 2. **Triage** — severity × urgency × regulator-exposure × discretion

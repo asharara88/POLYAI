@@ -66,14 +66,14 @@ Tier promotion is earned via (a) introduction quality (close-won rate from intro
 
 The wealth-channel intermediary is a **DNFBP** under UAE Federal AML/CFT if they are not an FI (most international private banks ARE FIs under their home regulator; DIFC/ADGM-licensed advisors are FIs under their respective regulators). Either way:
 
-- Developer-side: screen the intermediary entity + UBO + key roster per `.claude/skills/aml-kyc-uae-real-estate.md`
+- Developer-side: screen the intermediary entity + UBO + key roster per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md`
 - Developer-side: do not waive principal-level screening on the intermediary's representation that "the bank has KYC'd them" — your DNFBP obligation is on you
 - Communicate principal pre-clearance as standard process to the intermediary RM, not as a flag on the principal
-- Any RED outcome on principal triggers `runbooks/pep-sanctions-hit.md` with discretion overlay
+- Any RED outcome on principal triggers `verticals/real-estate/runbooks/pep-sanctions-hit.md` with discretion overlay
 
 ## Attribution doctrine — wealth channel
 
-Per `.claude/skills/marketing-attribution.md` + `.claude/skills/broker-operations.md` doctrine:
+Per `.claude/skills/marketing-attribution.md` + `verticals/real-estate/skills/broker-operations.md` doctrine:
 
 - **Wealth-channel introducer fee** triggers when the intermediary made the principal-introduction even if a broker was later involved at transaction-mechanics level
 - **Time-window** typically per signed agreement (often 6-24 months from registered introduction to closed-won)
@@ -99,8 +99,8 @@ Wealth-channel communications operate at a different register from broker-channe
 |---|---|---|
 | Introducer-fee calculation | `marketing-financial-manager` (math) → `wealth-channel-enablement` (relationship) | `legal-liaison` (if material) |
 | Attribution dispute (intermediary vs. another channel) | `data-quality-steward` (evidence chain) → `wealth-channel-enablement` | `chief-commercial-officer` for ruling on novel cases |
-| Principal-discretion breach allegation | `wealth-vvip-manager` immediate | `chief-commercial-officer` + `legal-liaison`; `runbooks/press-sensitive-uhnw-transaction.md` if material |
-| Sanctions / PEP hit on intermediary entity / UBO / principal | `aml-kyc-compliance-specialist` per `runbooks/pep-sanctions-hit.md` | `legal-liaison` + `chief-commercial-officer` |
+| Principal-discretion breach allegation | `wealth-vvip-manager` immediate | `chief-commercial-officer` + `legal-liaison`; `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md` if material |
+| Sanctions / PEP hit on intermediary entity / UBO / principal | `aml-kyc-compliance-specialist` per `verticals/real-estate/runbooks/pep-sanctions-hit.md` | `legal-liaison` + `chief-commercial-officer` |
 | Intermediary loses regulatory license | `wealth-channel-enablement` (immediate suspension); `data-quality-steward` (in-flight deal audit) | `chief-commercial-officer`; `legal-liaison` on agreement-termination |
 | Introducer agreement redline / renewal | `legal-liaison` | `chief-commercial-officer` for material change |
 
@@ -131,7 +131,7 @@ When intermediary jurisdiction is novel for the engagement, `legal-liaison` + `r
 ## What this skill does NOT cover
 
 - Specific introducer-agreement legal language (`legal-liaison` template library)
-- Per-principal commercial mechanics (`runbooks/inbound-hnw-private-bank.md`)
-- VVIP protocol (`.claude/skills/vvip-protocol-uae.md`)
-- Operational AML/KYC (`.claude/skills/aml-kyc-uae-real-estate.md`)
+- Per-principal commercial mechanics (`verticals/real-estate/runbooks/inbound-hnw-private-bank.md`)
+- VVIP protocol (`verticals/real-estate/skills/vvip-protocol-uae.md`)
+- Operational AML/KYC (`verticals/real-estate/skills/aml-kyc-uae-real-estate.md`)
 - Tax / FATCA / CRS implications for cross-border (route to tax counsel via `legal-liaison`)

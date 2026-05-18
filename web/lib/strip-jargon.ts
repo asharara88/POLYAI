@@ -2,7 +2,7 @@
  * Plain-language pass on user-facing copy.
  *
  * Strips/rewrites three classes of jargon:
- * - Runbook paths (`runbooks/pep-sanctions-hit.md`, `clients/<slug>/cco/briefs/...`)
+ * - Runbook paths (`verticals/real-estate/runbooks/pep-sanctions-hit.md`, `clients/<slug>/cco/briefs/...`)
  *   — internal authoring artifacts, not for executive readers
  * - "T-N" countdown shorthand → "in N days"
  * - Unexplained acronyms (EDD / PEP / OFAC / MTD / WoW / pp) — expanded on first

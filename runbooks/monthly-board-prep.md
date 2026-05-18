@@ -84,7 +84,7 @@ Sources cited; calculation methodology where novel.
 
 ## Compliance gates
 
-1. **Forbidden phrasing** block per `.claude/skills/regulatory-disclosure-language.md`
+1. **Forbidden phrasing** block per `verticals/real-estate/skills/regulatory-disclosure-language.md`
 2. **Forward-looking statement** framing on projections per Template 7
 3. **VVIP discretion** — aggregated counts only
 4. **Privilege** — legal-counsel-prepared content in legal-privileged appendix only

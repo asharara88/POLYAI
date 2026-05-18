@@ -39,9 +39,9 @@ When `account-executive` briefs a buyer, when `broker-enablement` updates a brok
 - Sold (with confirmation — registered + paid-deposit count)
 - Reserved (with hold-window)
 - Available (by configuration)
-- Indicative price ranges (per current published grid; **never** quote yield or appreciation projections in the fact pack — see `.claude/skills/regulatory-disclosure-language.md`)
+- Indicative price ranges (per current published grid; **never** quote yield or appreciation projections in the fact pack — see `verticals/real-estate/skills/regulatory-disclosure-language.md`)
 - Payment-plan options (current published structures)
-- Allocation status by broker tier where applicable (per `.claude/skills/broker-operations.md` allocation mechanics)
+- Allocation status by broker tier where applicable (per `verticals/real-estate/skills/broker-operations.md` allocation mechanics)
 
 ### 3. Construction / progress — for off-plan projects
 

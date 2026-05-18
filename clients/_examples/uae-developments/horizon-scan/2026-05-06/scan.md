@@ -26,7 +26,7 @@
 - **Date:** 2026-05-05
 - **Summary:** OFAC added 12 additional Russian entities + 3 individuals to the SDN list, primarily in financial-services and metals sectors. Cross-checked against UAE Developments' active Russia/CIS-corridor counterparty list via Sumsub: no direct match. One indirect adjacency flagged (a wealth-channel intermediary's named affiliate).
 - **Why surfaced:** Russia/CIS corridor risk register entry already material; this delta confirms continued sanctions cadence in the corridor and surfaces an indirect adjacency requiring EDD-level review.
-- **Suggested next step:** `aml-kyc-compliance-specialist` opens adjacency review per `runbooks/pep-sanctions-hit.md` (Path: indirect-adjacency, not RED); restricted-access; standard intermediary-update language to the wealth-channel intermediary; do not signal counterparty.
+- **Suggested next step:** `aml-kyc-compliance-specialist` opens adjacency review per `verticals/real-estate/runbooks/pep-sanctions-hit.md` (Path: indirect-adjacency, not RED); restricted-access; standard intermediary-update language to the wealth-channel intermediary; do not signal counterparty.
 
 ### Property Finder Q1 2026 Index — Saadiyat luxury segment +18% YoY
 - **Class:** press

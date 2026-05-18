@@ -67,11 +67,11 @@ The OAM is the licensed manager appointed by the OA to operate the building day-
 
 ## Developer-side post-handover touchpoint cadence
 
-Per `runbooks/handover-snagging.md` for T-30 to T+90 immediate handover; ongoing thereafter:
+Per `verticals/real-estate/runbooks/handover-snagging.md` for T-30 to T+90 immediate handover; ongoing thereafter:
 
 | Period | Touchpoint | Owner |
 |---|---|---|
-| **T-30 to T+30** | Pre-handover communication, handover ceremony, snagging window setup | `account-manager` + `inventory-manager` per `runbooks/handover-snagging.md` |
+| **T-30 to T+30** | Pre-handover communication, handover ceremony, snagging window setup | `account-manager` + `inventory-manager` per `verticals/real-estate/runbooks/handover-snagging.md` |
 | **T+30 to T+90** | Snagging resolution, owner-portal onboarding, OA setup | Same |
 | **T+90 to T+365 (year 1)** | Quarterly community email updates, first AGM, building-amenity programming via `events`, owner CSAT surveys via `voc` | `account-manager` (lead) + `email-lifecycle` + `events` |
 | **Year 2+** | Reduced cadence: bi-monthly community update; annual AGM; referral-program activation; resale touchpoints | `account-manager` + `email-lifecycle` |
@@ -79,7 +79,7 @@ Per `runbooks/handover-snagging.md` for T-30 to T+90 immediate handover; ongoing
 
 ## VVIP overlay
 
-VVIP-occupied buildings (or VVIP-occupied floors within a building) have an overlay per `.claude/skills/vvip-protocol-uae.md`:
+VVIP-occupied buildings (or VVIP-occupied floors within a building) have an overlay per `verticals/real-estate/skills/vvip-protocol-uae.md`:
 
 - Restricted-access communications about the building's events / amenity programming
 - AGM attendance + voting handled per principal's protocol office (often via gatekeeper proxy)
@@ -106,7 +106,7 @@ These materials live at `clients/<client>/owner-community/<project-slug>/governa
 | Friction | Resolution path |
 |---|---|
 | Service-charge increase year-over-year > expected | AGM transparency; JOPD reference; regulator review if material; route to `service-recovery-specialist` if escalates |
-| Snagging-resolution SLA breach | `runbooks/handover-snagging.md` + `service-recovery-specialist` |
+| Snagging-resolution SLA breach | `verticals/real-estate/runbooks/handover-snagging.md` + `service-recovery-specialist` |
 | Common-area amenity change (pool reno, gym upgrade, etc.) | Capital-project AGM approval; OAM communication |
 | OAM service-quality decline | OA board review; OAM contract review; in extreme cases re-procurement |
 | Owner-association governance dispute (board election, budget vote) | OA board mediation; per JOPD; regulator pathway if material |
@@ -119,7 +119,7 @@ These materials live at `clients/<client>/owner-community/<project-slug>/governa
 | Dispute type | First responder | Escalation |
 |---|---|---|
 | Routine snagging | `inventory-manager` + operational team | `service-recovery-specialist` if SLA breach |
-| Service-charge dispute | `account-manager` (explanation) → OAM | RERA RDC (Dubai) / ADREC equivalent (Abu Dhabi) per `runbooks/complaint-rera-exposure.md` |
+| Service-charge dispute | `account-manager` (explanation) → OAM | RERA RDC (Dubai) / ADREC equivalent (Abu Dhabi) per `verticals/real-estate/runbooks/complaint-rera-exposure.md` |
 | OA governance dispute | OA board | RERA / ADREC arbitration; `legal-liaison` for developer-side |
 | Snagging-warranty dispute | `service-recovery-specialist` + `legal-liaison` | RERA RDC pathway |
 | OAM service-quality | OA board (OAM contract review) | OA-led re-procurement |
@@ -133,13 +133,13 @@ Existing owners are the highest-converting source for next-launch acquisition (p
 - **Referral incentive program** — defined per launch; transparent terms; documented per `legal-liaison` review
 - **Referral attribution** — captured at qualified-lead stage; honored at closed-won per program terms
 - **Owner-event programming** — `events` runs cadence; coordinates with `partnerships` for hospitality + lifestyle layer
-- **VIP / concierge layer for HNW owners** — `vip-relationship-manager` per `.claude/skills/vvip-protocol-uae.md` adjacency where applicable
+- **VIP / concierge layer for HNW owners** — `vip-relationship-manager` per `verticals/real-estate/skills/vvip-protocol-uae.md` adjacency where applicable
 
 ## What this skill does NOT cover
 
-- Pre-handover construction / launch — see `.claude/skills/off-plan-launch-mechanics.md`
-- Secondary-market resale mechanics — see `runbooks/resale-with-noc.md` + `secondary-market-specialist`
-- VVIP protocol — see `.claude/skills/vvip-protocol-uae.md`
-- Operational AML/KYC on new buyers entering via owner referral — see `.claude/skills/aml-kyc-uae-real-estate.md`
-- Specific RERA / ADREC dispute filings — see `.claude/skills/dispute-resolution-uae.md` + `runbooks/complaint-rera-exposure.md`
+- Pre-handover construction / launch — see `verticals/real-estate/skills/off-plan-launch-mechanics.md`
+- Secondary-market resale mechanics — see `verticals/real-estate/runbooks/resale-with-noc.md` + `secondary-market-specialist`
+- VVIP protocol — see `verticals/real-estate/skills/vvip-protocol-uae.md`
+- Operational AML/KYC on new buyers entering via owner referral — see `verticals/real-estate/skills/aml-kyc-uae-real-estate.md`
+- Specific RERA / ADREC dispute filings — see `verticals/real-estate/skills/dispute-resolution-uae.md` + `verticals/real-estate/runbooks/complaint-rera-exposure.md`
 - Insurance frameworks for buildings (master policy, public liability) — separate domain

@@ -1,6 +1,6 @@
 ---
 name: diaspora-corridor-marketing
-description: Corridor-specific marketing patterns for major UAE-real-estate buyer source-markets — India NRI, KSA, UK, Russia/CIS, Egypt, Pakistan, Nigeria, Singapore, US — capturing language, cultural calendar, regulatory overlay (home-jurisdiction capital-flow + sanctions surface), preferred channels, content angles, typical buyer-decision-cycle, and pitfalls. Used by sdr (corridor outbound), marketing-manager (corridor channel-mix planning), email-lifecycle (segment design + cadence), events (roadshow design via runbooks/international-roadshow.md), account-executive (corridor specialists), localization (language + register), aml-kyc-compliance-specialist (corridor-risk profile), and content-pr-specialist (corridor press considerations). Framework — specific current home-jurisdiction capital-flow rules + sanctions cadence verify per request via regulatory-research-specialist.
+description: Corridor-specific marketing patterns for major UAE-real-estate buyer source-markets — India NRI, KSA, UK, Russia/CIS, Egypt, Pakistan, Nigeria, Singapore, US — capturing language, cultural calendar, regulatory overlay (home-jurisdiction capital-flow + sanctions surface), preferred channels, content angles, typical buyer-decision-cycle, and pitfalls. Used by sdr (corridor outbound), marketing-manager (corridor channel-mix planning), email-lifecycle (segment design + cadence), events (roadshow design via verticals/real-estate/runbooks/international-roadshow.md), account-executive (corridor specialists), localization (language + register), aml-kyc-compliance-specialist (corridor-risk profile), and content-pr-specialist (corridor press considerations). Framework — specific current home-jurisdiction capital-flow rules + sanctions cadence verify per request via regulatory-research-specialist.
 scope: major UAE-real-estate buyer corridors
 maintained_by: marketing-manager + regulatory-research-specialist (writes via knowledge agent)
 ---
@@ -62,7 +62,7 @@ A UAE off-plan buyer cycle is long (3-18 months) and high-value (AED 1-100M+). C
 | **Source-cities** | Moscow, St Petersburg; Kazakhstan (Almaty, Nur-Sultan); Belarus; Armenia; Azerbaijan |
 | **Language** | Russian primary; English secondary for younger HNI |
 | **Cultural calendar** | Orthodox calendar (Christmas Jan 7); school holidays; New Year (more important than Christmas); avoid first week of January |
-| **Regulatory overlay** | **MAJOR sanctions surface — pre-commercial-conversation screening MANDATORY** per `.claude/skills/aml-kyc-uae-real-estate.md`. UN/OFAC/UK HMT/EU/DFAT regimes all apply. Russian-passport principals require corridor-specialist EDD. Some intermediaries are themselves sanctioned. |
+| **Regulatory overlay** | **MAJOR sanctions surface — pre-commercial-conversation screening MANDATORY** per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md`. UN/OFAC/UK HMT/EU/DFAT regimes all apply. Russian-passport principals require corridor-specialist EDD. Some intermediaries are themselves sanctioned. |
 | **Preferred channels** | Premium Russian-language press; Telegram (high adoption); some Instagram (varies by sub-segment); private-bank channel via Russian-corridor-experienced wealth managers; Moscow roadshow (declining post-2022 due to travel + sanctions complexity) |
 | **Content angles** | UAE-as-stable-jurisdiction (resonates given context); lifestyle + amenity; ruble-FX-hedging via UAE property; lifestyle-mobility-narrative; family-relocation framing |
 | **Decision cycle** | Variable; some corridor activity is fast-decision (relocation-driven); some slow (investment-evaluation) |
@@ -90,7 +90,7 @@ A UAE off-plan buyer cycle is long (3-18 months) and high-value (AED 1-100M+). C
 | **Source-cities** | Karachi, Lahore, Islamabad |
 | **Language** | English primary for HNI; Urdu secondary; some Punjabi / Sindhi for cultural targeting |
 | **Cultural calendar** | Islamic calendar; Pakistan Day (Mar 23); Independence Day (Aug 14); Eid timings (verify per year) |
-| **Regulatory overlay** | State Bank of Pakistan (SBP) capital-flow rules; declared-asset implications; **heightened FATF scrutiny segment** — EDD by default for high-value purchases per `.claude/skills/aml-kyc-uae-real-estate.md` |
+| **Regulatory overlay** | State Bank of Pakistan (SBP) capital-flow rules; declared-asset implications; **heightened FATF scrutiny segment** — EDD by default for high-value purchases per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` |
 | **Preferred channels** | Premium Pakistani press; LinkedIn for senior business; some Facebook + Instagram; WhatsApp Business heavy; UAE-side Pakistani-diaspora channels |
 | **Content angles** | UAE-as-second-home for Karachi / Lahore HNI; family-relocation framing; school-proximity (Pakistani parents value UK-curriculum schools); investment-stability framing |
 | **Decision cycle** | Variable; capital-flow constraints often the rate-limiter |
@@ -143,10 +143,10 @@ A UAE off-plan buyer cycle is long (3-18 months) and high-value (AED 1-100M+). C
 
 | Pattern | Application |
 |---|---|
-| **Local-time-zone respect** | Per `runbooks/international-roadshow.md` — outreach in buyer's local business hours, not Dubai's |
+| **Local-time-zone respect** | Per `verticals/real-estate/runbooks/international-roadshow.md` — outreach in buyer's local business hours, not Dubai's |
 | **Substantive-equivalence in translation** | Per `localization` agent — translation drift is regulatory + relationship risk |
 | **Corridor-specialist account-executives** | Each major corridor warrants a corridor-specialist AE with cultural fluency |
-| **AML/KYC corridor-risk profile** | Per `.claude/skills/aml-kyc-uae-real-estate.md` — sanctions-surface corridors get pre-commercial-conversation screening |
+| **AML/KYC corridor-risk profile** | Per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` — sanctions-surface corridors get pre-commercial-conversation screening |
 | **Cultural-calendar-aware cadence** | Avoid Ramadan for commercial; align with Eid for relationship-warm; respect Diwali / Lunar New Year |
 | **Visual + register cultural-fit** | Visual + tone calibrated per corridor; modesty expectations (KSA + UAE) more conservative than US / UK |
 
@@ -155,6 +155,6 @@ A UAE off-plan buyer cycle is long (3-18 months) and high-value (AED 1-100M+). C
 - Per-corridor specific regulator updates (RBI LRS, SBP, SAMA, CBN, FCA, FATCA) — `regulatory-research-specialist` per case
 - Specific advertising-platform mechanics per corridor (GTM tagging, GA4 setup) — `martech-ops-specialist`
 - Per-corridor specific roadshow vendor management — `events` + `marketing-procurement`
-- Specific AML/KYC corridor-risk-rating mechanics — `.claude/skills/aml-kyc-uae-real-estate.md`
+- Specific AML/KYC corridor-risk-rating mechanics — `verticals/real-estate/skills/aml-kyc-uae-real-estate.md`
 - Tax-treaty specifics per corridor — tax counsel via `legal-liaison`
 - Sub-corridor segmentation (e.g., Mumbai vs. Delhi NRI tonality differences) — handled at campaign-brief level by `marketing-manager` + `creative`

@@ -87,7 +87,7 @@ Under UAE Federal AML/CFT, signaling to a counterparty that suspicion exists is 
 - Case file moves to `clients/<client>/aml-kyc/closed/<year>/<case-id>/` (restricted access)
 - Pattern alerts route to `regulatory-research-specialist` if a new corridor / typology emerges
 - Wealth/VVIP-channel pattern (e.g., the same intermediary surfaces multiple PEP referrals — not problematic per se, but worth knowing) routes to `wealth-vvip-manager`
-- Material learnings (e.g., a list-update SLA gap with Sumsub) feed `knowledge` for `.claude/skills/aml-kyc-uae-real-estate.md` update
+- Material learnings (e.g., a list-update SLA gap with Sumsub) feed `knowledge` for `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` update
 - Annual aggregate trend report from `aml-kyc-compliance-specialist` to `chief-commercial-officer` (sanitized — no individual-case detail beyond the named team)
 
 ## Related runbooks

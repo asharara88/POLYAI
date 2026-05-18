@@ -65,53 +65,47 @@ How the case file closes, what feeds back into knowledge / results / playbook up
 When to switch to a different runbook mid-flight.
 ```
 
-## Catalog
+## Where runbooks live
 
-### Compliance + counterparty crisis
+- `runbooks/` (root) — **core runbooks** that apply to any client regardless of industry pack: daily cadence, board / quarterly / annual prep, risk register, strategic-bet evaluation, integration go-lives that aren't pack-specific, key-RM continuity.
+- `verticals/real-estate/runbooks/` — **real-estate-uae pack runbooks**: regulatory + counterparty crisis paths (RERA, Trakheesi, NOC resale, PEP/sanctions), construction + handover operations, broker / wealth / VVIP channel scenarios, and integration go-lives that depend on UAE-specific tooling (Sumsub).
 
-- `resale-with-noc.md` — Secondary-market resale flow: NOC issuance → AML/KYC pre-clearance on incoming buyer → RERA Form-F (Dubai) / ADREC equivalent (Abu Dhabi) → Trustee Account release → owner-record update
-- `complaint-rera-exposure.md` — Customer complaint that names or threatens RERA Rental Dispute Centre filing
-- `pep-sanctions-hit.md` — A counterparty surfaces as a PEP (any class) or as a sanctions-list match
-- `regulator-inquiry-non-complaint.md` — Regulator opens inquiry / audit / thematic review without underlying buyer complaint
+A pack runbook is only available when the client has that pack active in their `client-profile.md`. A core runbook is available to every client.
 
-### Operational crisis
-
-- `construction-delay-handover-slip.md` — Material construction delay with buyer-notification obligation analysis
-- `tier-1-broker-collapse.md` — Tier-1 broker firm experiences material continuity event
-- `project-safety-press-crisis.md` — On-premises incident (safety / fatality / system-failure) with crisis-comms posture
-- `key-rm-departure.md` — Key Relationship Manager / pod-manager departure with portfolio + relationship continuity
-
-### Customer + channel lifecycle
-
-- `international-roadshow.md` — 14-day post-roadshow cadence in buyer's local time-zone with jurisdiction-specific Golden Visa messaging
-- `inbound-hnw-private-bank.md` — Discreet inbound from private bank: KYC pre-clearance, principal-to-principal escalation
-- `broker-onboarding-to-first-deal.md` — From signed broker agreement to first allocation approved
-- `handover-snagging.md` — Owner experience during the snagging window; CSAT capture
-- `press-sensitive-uhnw-transaction.md` — Discretion-first; coordinates vvip-channel-enablement, content-pr-specialist, legal-liaison
+## Catalog — core (any pack)
 
 ### CCO daily + cadenced reporting
 
 - `cco-daily-brief.md` — Daily 06:00 → 07:00 morning-brief synthesis choreography
-- `horizon-scan-daily.md` — Daily 06:00 horizon-scan (regulator + press + sanctions + corridor + competitor) for `cco-morning-brief`
-- `risk-register-update.md` — Risk-register receive / age / escalate / close cycle; daily cadence + per-input-event
-- `monthly-board-prep.md` — Monthly board-prep brief (lighter than quarterly; 8-section template)
-- `quarterly-exec-brief.md` — Brief cadence + format + data sources for board / CMO / CFO
-- `annual-commercial-plan.md` — Annual planning cycle (Q4 → Q1): inputs → synthesis → board-decision-gate → cascade
+- `horizon-scan-daily.md` — Daily 06:00 horizon-scan for `cco-morning-brief`
+- `risk-register-update.md` — Risk-register receive / age / escalate / close cycle
+- `monthly-board-prep.md` — Monthly board-prep brief (lighter than quarterly)
+- `quarterly-exec-brief.md` — Quarterly board / CMO / CFO brief cadence
+- `annual-commercial-plan.md` — Annual planning cycle (Q4 → Q1)
 
 ### Strategic-bet evaluation
 
 - `strategic-bet-evaluation.md` — Structured evaluation for new launch / partnership / corridor / M&A / structural channel investment
 
-### Integration go-live (per-integration gate)
+### Workforce continuity
+
+- `key-rm-departure.md` — Key Relationship Manager / pod-manager departure with portfolio + relationship continuity
+
+### Integration go-live (cross-industry)
 
 - `integration-go-live-salesforce.md` — Salesforce wiring per `integrations/salesforce/spec.md`
-- `integration-go-live-sumsub.md` — Sumsub (KYC/AML) wiring per `integrations/sumsub/spec.md`
 - `integration-go-live-calendar.md` — CCO-personal calendar OAuth (Google / Microsoft 365)
 - `integration-go-live-news-scan.md` — Daily news + regulator + sanctions feed ingestion for `horizon-scanner`
 
-### Regulatory operations
+## Catalog — real-estate-uae pack
 
-- `trakheesi-permit.md` — Dubai DLD/RERA advertising-permit lifecycle: application initiation (T-45) → issuance (T-30 to T-21) → creative integration (T-21 to T-7) → launch (T0) → sustain audit → renewal → pull-down. Owned by `agency-liaison`.
+See `verticals/real-estate/runbooks/README.md` for the full pack-runbook catalog. Summary:
+
+- **Regulatory + counterparty crisis:** `resale-with-noc`, `complaint-rera-exposure`, `pep-sanctions-hit`, `regulator-inquiry-non-complaint`
+- **Operational crisis:** `construction-delay-handover-slip`, `tier-1-broker-collapse`, `project-safety-press-crisis`
+- **Customer + channel lifecycle:** `international-roadshow`, `inbound-hnw-private-bank`, `broker-onboarding-to-first-deal`, `handover-snagging`, `press-sensitive-uhnw-transaction`
+- **Regulatory operations:** `trakheesi-permit`
+- **Integration go-live (pack-specific):** `integration-go-live-sumsub`
 
 ## Authoring rules
 
@@ -120,4 +114,4 @@ When to switch to a different runbook mid-flight.
 3. **Hand-off SLAs.** Every hand-off has a target time. Without it, the runbook stalls invisibly.
 4. **Out-of-scope is named.** Runbook drift is the most common failure mode; protect against it.
 5. **Updates via `knowledge` agent + `chief-commercial-officer` approval.** Do not edit a runbook in flight; mark version + date.
-6. **Multi-tenant.** Runbooks are vertical-level (UAE real-estate developer); per-client variations live in `clients/<slug>/runbooks/<scenario>-overrides.md`.
+6. **Multi-tenant.** Core runbooks (in this directory) are vertical-agnostic; pack runbooks (under `verticals/<pack>/runbooks/`) inherit when the client has that pack active. Per-client variations live in `clients/<slug>/runbooks/<scenario>-overrides.md`.

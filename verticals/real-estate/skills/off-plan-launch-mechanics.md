@@ -25,7 +25,7 @@ The two clocks must align. Mismatches (creative ready but Trakheesi permit not y
 | **T-120 to T-90** | **Project escrow / Trustee Account opened** under Dubai Law 8/2007 | Developer's regulatory-operations team + Trustee Bank (typical Trustees: ENBD, Mashreq, ADCB, FAB, RAKBANK — verify per project) | No public-facing payment-plan reference can ship; full launch blocks |
 | **T-90 to T-60** | **RERA project registration** | Developer's regulatory-operations team via Dubai Land Department | No public-facing project reference can ship; project not lawful to market |
 | **T-60** | **Oqood off-plan registration system enabled** for the project | Developer's regulatory-operations team + DLD | Reservations cannot be booked into the regulator-recognized system |
-| **T-45 to T-30** | **Trakheesi advertising-permit application submitted** | `agency-liaison` (chase) + developer's regulatory-operations team | No Dubai-side ad can lawfully run; permit number must display on every ad per `.claude/skills/regulatory-disclosure-language.md` Template 4 |
+| **T-45 to T-30** | **Trakheesi advertising-permit application submitted** | `agency-liaison` (chase) + developer's regulatory-operations team | No Dubai-side ad can lawfully run; permit number must display on every ad per `verticals/real-estate/skills/regulatory-disclosure-language.md` Template 4 |
 | **T-30 to T-21** | **Trakheesi permit issued** (typical SLA — verify current via `regulatory-research-specialist`) | DLD/RERA | Per above |
 | **T-21 to T-7** | **Sales gallery operational** with all required regulator-display materials (escrow reference, RERA registration, Trakheesi permit visible) | `inventory-manager` + sales-gallery operational team | Cannot open to public |
 | **T-7** | **Permit-display verification** across all in-flight artifacts | `compliance` + `data-quality-steward` audit | Risk of pull-down post-launch if any artifact in-market without permit |
@@ -49,11 +49,11 @@ The reservation form is the legal-binding-or-not-binding-or-grey instrument that
 
 | Step | What | Owner |
 |---|---|---|
-| 1. Buyer identification + KYC | Per `.claude/skills/aml-kyc-uae-real-estate.md` | `aml-kyc-compliance-specialist` |
+| 1. Buyer identification + KYC | Per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` | `aml-kyc-compliance-specialist` |
 | 2. Unit selection from current allocation grid | Per allocation policy in `clients/<client>/sales/allocation-rules.md` | `account-executive` + `inventory-manager` |
-| 3. Payment plan selection | Per published grid or per `.claude/skills/payment-plan-structures.md` if bespoke | `account-executive`; bespoke routes to `deal-desk-analyst` |
+| 3. Payment plan selection | Per published grid or per `verticals/real-estate/skills/payment-plan-structures.md` if bespoke | `account-executive`; bespoke routes to `deal-desk-analyst` |
 | 4. Reservation deposit collected | To Trustee Account | Sales-gallery operational team + `marketing-financial-manager` |
-| 5. Reservation form signed | With required disclosures per `.claude/skills/regulatory-disclosure-language.md` | `account-executive` + buyer |
+| 5. Reservation form signed | With required disclosures per `verticals/real-estate/skills/regulatory-disclosure-language.md` | `account-executive` + buyer |
 | 6. Oqood registration (Dubai) / ADREC equivalent (Abu Dhabi) | Within regulator-mandated window post-reservation | Developer's regulatory-operations team |
 | 7. SPA execution | Within regulator-mandated window post-Oqood | `account-executive` + `legal-liaison` (where redline) |
 | 8. Stage advance to `closed-won` | Per `integrations/salesforce/actions/stage-advance.md` preconditions | `account-executive` (proposes) + approver per `approval_gates` |
@@ -70,7 +70,7 @@ Detailed in `integrations/trakheesi/spec.md`. Key points:
 
 ## Disclosure currency
 
-At every step, `compliance` confirms the artifact carries the right disclosures per `.claude/skills/regulatory-disclosure-language.md`:
+At every step, `compliance` confirms the artifact carries the right disclosures per `verticals/real-estate/skills/regulatory-disclosure-language.md`:
 
 - **Off-plan disclosure** — Template 1
 - **Financial-promotion** (any yield / appreciation / ROI claim) — Template 2; forbidden phrasing block
@@ -91,7 +91,7 @@ No customer-facing artifact ships from `creative` / `brand-design` / `agency-lia
 3. Trustee Account reference captured
 4. Disclosure-language pass per `regulatory-disclosure-language.md` templates
 5. Forbidden-phrasing block clear
-6. VVIP no-mention list cross-reference clear (per `.claude/skills/vvip-protocol-uae.md`)
+6. VVIP no-mention list cross-reference clear (per `verticals/real-estate/skills/vvip-protocol-uae.md`)
 7. Compliance verdict: pass / pass-with-changes / block
 
 ## Common launch-delay causes (catalog)
@@ -104,15 +104,15 @@ No customer-facing artifact ships from `creative` / `brand-design` / `agency-lia
 | Disclosure language drift post-creative-approval | Common | Re-loop `compliance` after every creative round |
 | Arabic substantive-equivalence drift | Common | `localization` not bypassed; double-loop `compliance` |
 | Inventory grid shifts post-creative (price changes, allocation re-cuts) | Common | `inventory-manager` gates artifact at T-7 |
-| AML/KYC capacity insufficient at launch volume | Common | T-14 capacity check per `runbooks/international-roadshow.md` analog |
+| AML/KYC capacity insufficient at launch volume | Common | T-14 capacity check per `verticals/real-estate/runbooks/international-roadshow.md` analog |
 | Sales-gallery not-yet-operational at T0 | Occasional | T-21 readiness review |
 | Trakheesi-permit-displayed-incorrectly on a single artifact | Common | T-7 audit by `data-quality-steward` |
 | Cross-emirate ad runs with wrong permit (Dubai-permit on AD-side ad or vice versa) | Occasional | Per-channel permit assignment in campaign brief |
 
 ## What this skill does NOT cover
 
-- Construction / handover mechanics — see `.claude/skills/owner-community-governance.md` (post-handover) + `runbooks/handover-snagging.md`
-- Secondary-market mechanics — see `runbooks/resale-with-noc.md` + `secondary-market-specialist` agent
-- VVIP-launch overlay — see `.claude/skills/vvip-protocol-uae.md` + `runbooks/press-sensitive-uhnw-transaction.md`
+- Construction / handover mechanics — see `verticals/real-estate/skills/owner-community-governance.md` (post-handover) + `verticals/real-estate/runbooks/handover-snagging.md`
+- Secondary-market mechanics — see `verticals/real-estate/runbooks/resale-with-noc.md` + `secondary-market-specialist` agent
+- VVIP-launch overlay — see `verticals/real-estate/skills/vvip-protocol-uae.md` + `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md`
 - Specific marketing campaign design — see `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` + per-campaign brief
 - Brand / creative direction — `creative` + `brand-design` agents

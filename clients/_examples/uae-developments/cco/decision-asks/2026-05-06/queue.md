@@ -23,7 +23,7 @@
 - **Urgency:** within 5 business days (Q3 launch T-14 capacity check on 2026-06-20)
 - **Ask:** Approve Sumsub `uhnw-individual-buyer` level upgrade for Russia/CIS-corridor pre-clearance flow + 2-EDD-analyst hire to support 12-15 EDD cases / week peak.
 - **Recommendation:** Approve. Cost AED 180k for Sumsub level + AED 280k annualized for 2 hires; capacity-check pre-launch confirms readiness.
-- **Evidence:** clients/uae-developments/risk-register.md (Russia/CIS corridor entry); aml-kyc throughput projections per `.claude/skills/aml-kyc-uae-real-estate.md`
+- **Evidence:** clients/uae-developments/risk-register.md (Russia/CIS corridor entry); aml-kyc throughput projections per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md`
 - **Alternatives considered:** Status-quo (capacity overrun risk); 1-hire only (capacity peak still tight); outsourced corridor-specialist (compliance-control concern)
 - **SLA:** decision by 2026-05-13T17:00
 - **Status:** awaiting CCO sign

@@ -27,7 +27,7 @@ Per-engagement greenlight to activate Sumsub-mediated screening.
 |---|---|---|---|
 | 1 | Named human Compliance Officer | Sandbox levels created per applicant-type taxonomy in spec | Sandbox config |
 | 2 | `aml-kyc-compliance-specialist` | Synthetic-applicant smoke test: create applicant, send onboarding link to test email, complete verification flow, receive verdict via webhook | Test log |
-| 3 | `aml-kyc-compliance-specialist` | RED-outcome simulation: trigger a synthetic sanctions-list match; confirm `runbooks/pep-sanctions-hit.md` activation per protocol; confirm restricted-channel routing | Test log |
+| 3 | `aml-kyc-compliance-specialist` | RED-outcome simulation: trigger a synthetic sanctions-list match; confirm `verticals/real-estate/runbooks/pep-sanctions-hit.md` activation per protocol; confirm restricted-channel routing | Test log |
 | 4 | `aml-kyc-compliance-specialist` | PEP-EDD path simulation: synthetic PEP-flagged applicant; confirm EDD case file workflow; confirm senior-management-approval recording | Test log |
 | 5 | `aml-kyc-compliance-specialist` | Re-screening cadence test: synthetic applicant aged to re-screen-due; confirm provider-side delta detection | Test log |
 
@@ -37,7 +37,7 @@ Per-engagement greenlight to activate Sumsub-mediated screening.
 |---|---|---|---|
 | 6 | `chief-commercial-officer` (decision-ask) | Approve production go-live | Decision memo |
 | 7 | Named human Compliance Officer | Production credentials verified; webhook endpoint live and authenticated | Auth log |
-| 8 | `aml-kyc-compliance-specialist` | First production applicants: handle live; close-loop with audit-ID storage in `clients/<slug>/wealth-channels/screening/<id>/` (or analogous) per `.claude/skills/aml-kyc-uae-real-estate.md` audit-trail expectations | Audit logs |
+| 8 | `aml-kyc-compliance-specialist` | First production applicants: handle live; close-loop with audit-ID storage in `clients/<slug>/wealth-channels/screening/<id>/` (or analogous) per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` audit-trail expectations | Audit logs |
 | 9 | `aml-kyc-compliance-specialist` | Re-screen cadence activated for cleared counterparties per per-client config | Cadence active |
 
 ### Phase 3: Continuous operation
@@ -82,10 +82,10 @@ Phase 3 (continuous) → if provider SLA breach or feature gap surfaces, conting
 
 ## Related runbooks
 
-- `runbooks/pep-sanctions-hit.md` — RED outcome handling
-- `runbooks/inbound-hnw-private-bank.md` — primary application surface
-- `runbooks/resale-with-noc.md` — secondary-market application surface
-- `runbooks/broker-onboarding-to-first-deal.md` — broker-firm screening surface
+- `verticals/real-estate/runbooks/pep-sanctions-hit.md` — RED outcome handling
+- `verticals/real-estate/runbooks/inbound-hnw-private-bank.md` — primary application surface
+- `verticals/real-estate/runbooks/resale-with-noc.md` — secondary-market application surface
+- `verticals/real-estate/runbooks/broker-onboarding-to-first-deal.md` — broker-firm screening surface
 - `integrations/sumsub/spec.md` + `integrations/sumsub/actions/run-check.md`
 
 ## Sign-off

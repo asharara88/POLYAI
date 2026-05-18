@@ -33,7 +33,7 @@ Any of:
 | 1 | `agency-liaison` | Open a Trakheesi case file at `clients/<client>/regulatory/trakheesi/applications/<application-id>/` per `integrations/trakheesi/spec.md` shape | Case file open | T-45 |
 | 2 | `regulatory-research-specialist` | Confirm current Trakheesi application form, fee schedule, scope-definition rules per the applicable campaign-type | Currency memo | within 2 business days |
 | 3 | `agency-liaison` + creative pod | Define the application scope: campaign slug, asset types in scope (landing page, OOH, paid social, paid search, brochure, broker pack, microsite — per `default_artifact_scope` in per-client config), expected flight window, channels, geos | Scope document | within 3 business days |
-| 4 | `agency-liaison` → developer's regulatory-operations team | Hand off the application packet (scope + creative direction + inventory ref + project registration number per `.claude/skills/uae-real-estate-regulatory.md`) for submission | Application-submitted artifact | T-45 to T-30 |
+| 4 | `agency-liaison` → developer's regulatory-operations team | Hand off the application packet (scope + creative direction + inventory ref + project registration number per `verticals/real-estate/skills/uae-real-estate-regulatory.md`) for submission | Application-submitted artifact | T-45 to T-30 |
 | 5 | `risk-register-curator` | Open / update regulatory-class entry: severity per launch-window dependency; threshold = "issuance projected past T-21" | Risk-register update | T-30 |
 
 ### Phase 2 — Issuance window (T-30 to T-21)
@@ -50,8 +50,8 @@ Any of:
 
 | Step | Who | What | Emits | SLA |
 |---|---|---|---|---|
-| 11 | `creative` + `brand-design` + `agency-liaison` | Wire permit number into every in-scope artifact per `.claude/skills/regulatory-disclosure-language.md` Template 4 (RERA permit + project registration + developer + RERA registration number) | Final artifacts with permit reference | iterative through T-7 |
-| 12 | `compliance` | Forbidden-phrasing audit + permit-display audit + cross-language substantive-equivalence (Arabic) per `.claude/skills/regulatory-disclosure-language.md` | Compliance verdict per artifact | per artifact, before ship |
+| 11 | `creative` + `brand-design` + `agency-liaison` | Wire permit number into every in-scope artifact per `verticals/real-estate/skills/regulatory-disclosure-language.md` Template 4 (RERA permit + project registration + developer + RERA registration number) | Final artifacts with permit reference | iterative through T-7 |
+| 12 | `compliance` | Forbidden-phrasing audit + permit-display audit + cross-language substantive-equivalence (Arabic) per `verticals/real-estate/skills/regulatory-disclosure-language.md` | Compliance verdict per artifact | per artifact, before ship |
 | 13 | `localization` | Arabic substantive-equivalence; `compliance` re-reviews | Localized artifacts | per artifact |
 | 14 | `data-quality-steward` | At T-7: audit pass across all in-flight artifacts (microsite footer, OOH bottom-bar, paid-social caption, paid-search ad-extension, brochure footer, broker pack disclaimer) confirming the permit number is displayed correctly + currency-fresh | Audit verdict at `clients/<client>/regulatory/trakheesi/audits/<date>/T-7-display-audit.md` | T-7 |
 
@@ -80,7 +80,7 @@ Any of:
 | 23 (any of: artifact in market without permit, permit revoked, scope-mismatch detected) | `compliance` + `agency-liaison` + `chief-commercial-officer` | Immediate alert; triage which artifacts must come down vs. which can be re-scoped in place | Pull-down list | within 2 business hours of detection |
 | 24 | `agency-liaison` + agencies + channel teams | Channel-level pull-down: paid digital, OOH, portal listings, broker collateral. Document every action | Pull-down log | within 24 business hours |
 | 25 | `data-quality-steward` | Re-audit confirms zero in-market artifacts without compliant permit display | Clean-state verdict | within 24 business hours |
-| 26 | `legal-liaison` | If pull-down was driven by regulator action (revocation / circular), per `runbooks/regulator-inquiry-non-complaint.md` for inquiry-side handling | Legal posture | per case |
+| 26 | `legal-liaison` | If pull-down was driven by regulator action (revocation / circular), per `verticals/real-estate/runbooks/regulator-inquiry-non-complaint.md` for inquiry-side handling | Legal posture | per case |
 
 ## Hand-offs
 
@@ -97,14 +97,14 @@ Any of:
 
 ## Compliance gates
 
-1. **No artifact ships without permit number on file.** `compliance` blocks per `.claude/skills/regulatory-disclosure-language.md` Template 4 + extension in `.claude/agents/compliance.md`'s UAE-specific guardrails. Non-negotiable.
+1. **No artifact ships without permit number on file.** `compliance` blocks per `verticals/real-estate/skills/regulatory-disclosure-language.md` Template 4 + extension in `.claude/agents/compliance.md`'s UAE-specific guardrails. Non-negotiable.
 2. **Application packet currency.** `regulatory-research-specialist` confirms current Trakheesi form / fee / scope rules per case — never quote framework knowledge as today's truth.
 3. **Cross-language substantive-equivalence.** Arabic translation of permit-display language must be substantively equivalent, not paraphrased; `localization` + `compliance` double-loop.
 4. **Forbidden-phrasing block.** "Guaranteed yield", "guaranteed appreciation", "risk-free" never appear in any permit-bearing artifact, even if the permit was issued — those are independent compliance violations.
 5. **Permit-display verification at T-7.** Every artifact in market carries the permit number visibly; `data-quality-steward` audit documented.
 6. **Mid-flight rotation discipline.** New variant or rotated copy = re-audit; not an automatic carry-forward.
 7. **Pull-down within 24 business hours** when a permit issue surfaces — never delay for commercial reasons.
-8. **VVIP discretion.** VVIP-touching campaigns: permit-application packet must not reference VVIP counterparties even tangentially per `.claude/skills/vvip-protocol-uae.md` no-mention list; `vvip-channel-enablement` clears scope before submission.
+8. **VVIP discretion.** VVIP-touching campaigns: permit-application packet must not reference VVIP counterparties even tangentially per `verticals/real-estate/skills/vvip-protocol-uae.md` no-mention list; `vvip-channel-enablement` clears scope before submission.
 
 ## Out-of-scope
 
@@ -139,7 +139,7 @@ Any of:
 - `runbooks/cco-daily-brief.md` — surfaces Trakheesi cycle status in daily brief
 - `runbooks/horizon-scan-daily.md` — `horizon-scanner` flags DLD/RERA circular changes that affect Trakheesi
 - `runbooks/risk-register-update.md` — permit-cycle risk handling
-- `runbooks/regulator-inquiry-non-complaint.md` — when DLD opens an inquiry adjacent to a permit
-- `runbooks/complaint-rera-exposure.md` — when an in-market artifact triggers a buyer complaint that surfaces RERA dispute
+- `verticals/real-estate/runbooks/regulator-inquiry-non-complaint.md` — when DLD opens an inquiry adjacent to a permit
+- `verticals/real-estate/runbooks/complaint-rera-exposure.md` — when an in-market artifact triggers a buyer complaint that surfaces RERA dispute
 - `runbooks/integration-go-live-news-scan.md` — DLD press feed feeds the scan that catches circular changes
 - `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` — regulatory-milestone overlay (T-90 to T+30) integrates this runbook into the launch cadence

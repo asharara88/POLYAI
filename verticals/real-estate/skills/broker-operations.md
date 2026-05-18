@@ -45,10 +45,10 @@ When `broker-enablement` signs a new firm or reactivates a dormant one, the mast
 
 ## Form-F transfer mechanics (Dubai-side resale)
 
-Form-F is the standard DLD form used to record a property transfer in the Dubai resale market. The broker (or the parties direct) lodge it with DLD. The mechanics of the form, the fees, and the appointment-booking process are operationally owned by `secondary-market-specialist` per `runbooks/resale-with-noc.md`.
+Form-F is the standard DLD form used to record a property transfer in the Dubai resale market. The broker (or the parties direct) lodge it with DLD. The mechanics of the form, the fees, and the appointment-booking process are operationally owned by `secondary-market-specialist` per `verticals/real-estate/runbooks/resale-with-noc.md`.
 
 **Form-F prerequisites (framework):**
-- Developer's NOC issued (per `runbooks/resale-with-noc.md`)
+- Developer's NOC issued (per `verticals/real-estate/runbooks/resale-with-noc.md`)
 - Buyer-side and seller-side broker licenses both current
 - Buyer's AML/KYC `cleared` (per `aml-kyc-compliance-specialist`)
 - Trustee Account release coordinated where applicable (off-plan still in escrow)
@@ -114,9 +114,9 @@ This mechanism is **distinct from** routing the developer's direct-marketing lea
 | Attribution dispute (in-house vs. broker) | `data-quality-steward` (evidence) → `broker-enablement` (relationship) | `crm-manager` → `chief-commercial-officer` (if material) |
 | Commission calculation dispute | `marketing-financial-manager` (math) → `broker-enablement` (relationship) | `legal-liaison` (if material) |
 | Allocation dispute | `broker-enablement` (policy) | `chief-commercial-officer` (if material) |
-| RERA / ADREC complaint involving broker | `legal-liaison` + `service-recovery-specialist` | Per `runbooks/complaint-rera-exposure.md` |
+| RERA / ADREC complaint involving broker | `legal-liaison` + `service-recovery-specialist` | Per `verticals/real-estate/runbooks/complaint-rera-exposure.md` |
 | Broker-side Form-F obstruction | `secondary-market-specialist` (case-side) + `broker-enablement` (relationship) | `legal-liaison` (if material) |
-| Sanctions / PEP hit on broker firm or principal | `aml-kyc-compliance-specialist` per `runbooks/pep-sanctions-hit.md` | `legal-liaison` + `chief-commercial-officer` |
+| Sanctions / PEP hit on broker firm or principal | `aml-kyc-compliance-specialist` per `verticals/real-estate/runbooks/pep-sanctions-hit.md` | `legal-liaison` + `chief-commercial-officer` |
 | License-lapse or license-revocation surfaced | `broker-enablement` (immediate suspension); `data-quality-steward` (in-flight deal audit) | `chief-commercial-officer` (if material in-flight exposure) |
 
 ## Operational documents the broker channel touches (per developer)

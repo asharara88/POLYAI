@@ -1,6 +1,6 @@
 ---
 name: vvip-protocol-uae
-description: Protocol framework for VVIP-tier counterparties in the UAE — ruling families (federal + emirate-level), ministerial / cabinet-level officials, Their Excellencies, senior judiciary, senior military, and foreign heads of state / diplomatic principals. Distinct from .claude/skills/aml-kyc-uae-real-estate.md (operational screening) and from .claude/skills/regulatory-disclosure-language.md (claim language). Used by vvip-channel-enablement (primary), wealth-vvip-manager (oversight), vip-relationship-manager (adjacent HNW principals), legal-liaison (NDA + bespoke confidentiality framework), content-pr-specialist (no-mention enforcement), and events (protocol-aware event coordination). Framework only — protocol-specific guidance per principal verified per use through the developer's chief-of-protocol or named human equivalent.
+description: Protocol framework for VVIP-tier counterparties in the UAE — ruling families (federal + emirate-level), ministerial / cabinet-level officials, Their Excellencies, senior judiciary, senior military, and foreign heads of state / diplomatic principals. Distinct from verticals/real-estate/skills/aml-kyc-uae-real-estate.md (operational screening) and from verticals/real-estate/skills/regulatory-disclosure-language.md (claim language). Used by vvip-channel-enablement (primary), wealth-vvip-manager (oversight), vip-relationship-manager (adjacent HNW principals), legal-liaison (NDA + bespoke confidentiality framework), content-pr-specialist (no-mention enforcement), and events (protocol-aware event coordination). Framework only — protocol-specific guidance per principal verified per use through the developer's chief-of-protocol or named human equivalent.
 scope: UAE VVIP protocol + discretion-channel + gatekeeper-map
 maintained_by: vvip-channel-enablement + chief-commercial-officer (writes via knowledge agent)
 ---
@@ -41,7 +41,7 @@ Per principal, the developer's chief-of-protocol maintains the gatekeeper map. F
 | Register | When | Notes |
 |---|---|---|
 | **Formal English** | Default in written correspondence with senior officials | Title usage exact; honorifics correct; signature-line of correspondent matches the recipient's level |
-| **Formal Arabic** | When the principal's preference is Arabic, or when the matter is ceremonial | Substantive equivalence — translation drift risk per `.claude/skills/regulatory-disclosure-language.md` doctrine |
+| **Formal Arabic** | When the principal's preference is Arabic, or when the matter is ceremonial | Substantive equivalence — translation drift risk per `verticals/real-estate/skills/regulatory-disclosure-language.md` doctrine |
 | **Bilingual** | Common for ministerial / royal correspondence | Arabic as the primary; English as the courtesy |
 | **Discreet informal** | When a long-tenure relationship has established a more direct channel; only with chief-of-protocol's confirmation | Never assumed |
 | **No direct correspondence** | When the protocol stance for that principal is "all communication through gatekeeper only" | Default for many ruling-family principals |
@@ -98,7 +98,7 @@ VVIP principals are by definition PEPs (per the FATF + UAE Federal AML/CFT defin
 - Quarterly minimum re-screening cadence
 - Adjacency screening on immediate family and close associates
 
-This is operationalized by `aml-kyc-compliance-specialist` per `.claude/skills/aml-kyc-uae-real-estate.md`. The discretion stance applies — screening verdicts and EDD packets stay with the named team.
+This is operationalized by `aml-kyc-compliance-specialist` per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md`. The discretion stance applies — screening verdicts and EDD packets stay with the named team.
 
 ## Foreign-VVIP corridor specifics
 
@@ -143,7 +143,7 @@ When a VVIP attends a developer event (sales gallery launch, ribbon-cutting, own
 ## What this skill does NOT cover
 
 - Specific protocol per individual principal (that's the developer's chief-of-protocol per case)
-- Operational AML/KYC mechanics (`.claude/skills/aml-kyc-uae-real-estate.md`)
-- Regulatory disclosure language (`.claude/skills/regulatory-disclosure-language.md`)
-- Press-sensitivity case management (`runbooks/press-sensitive-uhnw-transaction.md`)
+- Operational AML/KYC mechanics (`verticals/real-estate/skills/aml-kyc-uae-real-estate.md`)
+- Regulatory disclosure language (`verticals/real-estate/skills/regulatory-disclosure-language.md`)
+- Press-sensitivity case management (`verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md`)
 - Foreign-jurisdiction protocol for specific countries (route to `legal-liaison` + relevant external counsel)

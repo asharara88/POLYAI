@@ -30,7 +30,7 @@ Any of:
 | 4 | `wealth-channel-enablement` | Brief the named developer-side relationship lead (typically a senior RM with wealth-channel experience) — what we know about the principal, what intermediary has shared, what the principal expects in tone + handling | Briefing pack at case file | within 1 business day |
 | 5 | Named developer-side senior RM (human) | First substantive contact with intermediary RM — confirm next-step format (intermediary-mediated initial call vs. principal-direct vs. in-Dubai meeting) per principal's preference | Activity logged | within 2 business days |
 | 6 | `vip-relationship-manager` | Profile-build for principal — preferences captured from intermediary's intake + family composition, language, faith, dietary, gift-history sensitivities | Profile note in case file (restricted) | within 3 business days |
-| 7 | `aml-kyc-compliance-specialist` | Pre-clearance verdict landed — typically GREEN for HNI principals from established corridors, EDD trigger for PEPs / sanctions-surface corridors | Verdict update; if EDD: senior-management approval recorded before commercial conversation per `.claude/skills/aml-kyc-uae-real-estate.md` | 3-5 business days standard; longer for EDD |
+| 7 | `aml-kyc-compliance-specialist` | Pre-clearance verdict landed — typically GREEN for HNI principals from established corridors, EDD trigger for PEPs / sanctions-surface corridors | Verdict update; if EDD: senior-management approval recorded before commercial conversation per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` | 3-5 business days standard; longer for EDD |
 | 8 (if cleared) | Named senior RM | Substantive next-step — virtual viewing, physical viewing, project fact-pack tour, principal-direct call per preference | Activity logged | within 7 days of clearance |
 | 9 | `wealth-channel-enablement` | Throughout: keep intermediary RM in the loop on principal's progress (without revealing principal-side specifics that would breach principal's expectation of discretion) | Periodic intermediary updates | weekly |
 | 10 | `vip-relationship-manager` | Concierge layer activates per principal's tier — viewing logistics, residence amenity, restaurant arrangements, family considerations | Concierge case files per principal request | per request |
@@ -46,7 +46,7 @@ Any of:
 | `wealth-channel-enablement` → `aml-kyc-compliance-specialist` | Introduction received | If pre-clearance not initiated within 24h, escalate to `wealth-vvip-manager` |
 | `wealth-channel-enablement` → named senior RM | Briefing pack ready | Within 1 business day; escalate to `wealth-vvip-manager` if RM unavailable |
 | `aml-kyc-compliance-specialist` → senior RM (cleared) | Verdict written | Verdict ≤ 30 days old at any commercial-transaction step; re-screen if older |
-| `aml-kyc-compliance-specialist` → `legal-liaison` (sanctions) | RED-sanctions outcome | Per `runbooks/pep-sanctions-hit.md`; immediate restricted-channel escalation; do not signal to intermediary or principal |
+| `aml-kyc-compliance-specialist` → `legal-liaison` (sanctions) | RED-sanctions outcome | Per `verticals/real-estate/runbooks/pep-sanctions-hit.md`; immediate restricted-channel escalation; do not signal to intermediary or principal |
 | `account-executive` → `deal-desk-analyst` (non-standard terms) | Proposal involves non-standard structure | Per `deal-desk-analyst` SOP |
 | `vip-relationship-manager` → `account-manager` (post-close) | Closing complete | Within 30 days of close |
 
@@ -54,8 +54,8 @@ Any of:
 
 1. **Pre-clearance initiated within 24h** — discretion stance does not waive AML/KYC obligation; pre-clearance is non-negotiable. Communicate to intermediary RM as standard process, not as a flag on the principal.
 2. **EDD before substantive commercial conversation** for PEPs (any class) — senior-management approval recorded.
-3. **No tipping-off** if RED outcome — switch to `runbooks/pep-sanctions-hit.md` silently; standard intermediary-update language used until Legal advises otherwise.
-4. **VVIP-adjacent screening** — if principal is VVIP or VVIP-adjacent (per `.claude/skills/vvip-protocol-uae.md`), case routes through `wealth-vvip-manager` from step 1; restricted-access tightened.
+3. **No tipping-off** if RED outcome — switch to `verticals/real-estate/runbooks/pep-sanctions-hit.md` silently; standard intermediary-update language used until Legal advises otherwise.
+4. **VVIP-adjacent screening** — if principal is VVIP or VVIP-adjacent (per `verticals/real-estate/skills/vvip-protocol-uae.md`), case routes through `wealth-vvip-manager` from step 1; restricted-access tightened.
 5. **Discretion stance** — case files restricted to named team; no general-team visibility on principal identity until close (and minimal even then per `vvip-channel-enablement` no-mention list if applicable).
 6. **PDPL + corridor data-protection** — principal data per the stricter of UAE PDPL or principal's home jurisdiction.
 7. **Forbidden phrasing** — applies fully even in private-bank-mediated communications; no yield-guarantee language.

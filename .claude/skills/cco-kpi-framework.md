@@ -83,7 +83,7 @@ maintained_by: chief-commercial-officer + marketing-manager (writes via knowledg
 | KPI | Definition | Cadence | Threshold (default) | Source |
 |---|---|---|---|---|
 | **Active broker firms (Tier 1 + 2 + 3 split)** | Count by tier | Weekly | per-quarter target | `clients/<client>/brokers/registry.md` |
-| **Broker activation rate** | New firms with first allocation request within 30 days of signing | Quarterly | ≥ 70% per `runbooks/broker-onboarding-to-first-deal.md` | `broker-enablement` |
+| **Broker activation rate** | New firms with first allocation request within 30 days of signing | Quarterly | ≥ 70% per `verticals/real-estate/runbooks/broker-onboarding-to-first-deal.md` | `broker-enablement` |
 | **Broker first-deal-close rate** | New firms with first closed-won within 90 days | Quarterly | ≥ 50% | `broker-enablement` |
 | **Active wealth-channel intermediaries** | Count by tier | Weekly | per-quarter target | `clients/<client>/wealth-channels/registry.md` |
 | **Wealth-channel introductions per quarter** | Count + value | Quarterly | per-target | `wealth-channel-enablement` |
@@ -115,7 +115,7 @@ This file is updated only via the annual + quarterly planning cycles per `runboo
 - **Vanity KPIs** — count of impressions, count of brokers signed (not active). The framework intentionally privileges outcome over activity.
 - **Lagging-only** — every family includes at least one leading indicator (pipeline coverage, AML/KYC throughput, snagging-resolution, channel activation rate).
 - **Ungrounded thresholds** — every threshold default in this skill is overridable per-client; do not treat the defaults as eternally true.
-- **Forbidden language** — KPI definitions never use the forbidden phrases per `.claude/skills/regulatory-disclosure-language.md` (e.g., "guaranteed yield" never appears in a KPI definition or in board reporting).
+- **Forbidden language** — KPI definitions never use the forbidden phrases per `verticals/real-estate/skills/regulatory-disclosure-language.md` (e.g., "guaranteed yield" never appears in a KPI definition or in board reporting).
 
 ## What this skill does NOT cover
 

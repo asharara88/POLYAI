@@ -58,7 +58,7 @@ Any of:
 3. **VVIP discretion.** If customer is on the no-mention list, case file restricted to named team only.
 4. **PDPL.** Customer PII in case file under retention rules; do not surface customer identity beyond the named team.
 5. **No tipping-off** if AML/KYC adjacency surfaces (e.g., the complaint reveals a sanctions-issue with the buyer); switch to `pep-sanctions-hit.md` runbook silently.
-6. **Forbidden-phrasing** in any customer-facing artifact remains in force per `.claude/skills/regulatory-disclosure-language.md`.
+6. **Forbidden-phrasing** in any customer-facing artifact remains in force per `verticals/real-estate/skills/regulatory-disclosure-language.md`.
 
 ## Out-of-scope
 

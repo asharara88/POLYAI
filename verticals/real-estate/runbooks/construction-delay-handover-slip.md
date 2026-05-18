@@ -34,13 +34,13 @@ Any of:
 | 4 | `risk-register-curator` | Update risk-register entry to red status; notify CCO immediately per `runbooks/risk-register-update.md` | risk-register update | 1 business hour from CCO awareness |
 | 5 | `chief-commercial-officer` | Convenes executive review: project-delivery + CMO + CFO + CEO + legal-liaison + Head of Sales | Executive review minutes | 3 business days from delay confirmation |
 | 6 | `chief-commercial-officer` (decision-ask) | Approve buyer-notification approach + recovery posture | Decision memo via `decision-router` | per CCO calendar |
-| 7 (if buyer-notification required) | `legal-liaison` + `account-manager` + `email-lifecycle` | Drafted owner-notification per legal-required template + voice; cross-loop `compliance` for Template 7 forward-looking-statement framing per `.claude/skills/regulatory-disclosure-language.md` | Owner-notification artifact | 2-5 business days post-decision |
+| 7 (if buyer-notification required) | `legal-liaison` + `account-manager` + `email-lifecycle` | Drafted owner-notification per legal-required template + voice; cross-loop `compliance` for Template 7 forward-looking-statement framing per `verticals/real-estate/skills/regulatory-disclosure-language.md` | Owner-notification artifact | 2-5 business days post-decision |
 | 8 | `chief-commercial-officer` + `content-pr-specialist` | Press posture: no-comment default; if regulator-mediated public statement required, prepared per template | Press posture pack | Within decision window |
 | 9 | `account-manager` | Owner-comms cadence elevated for affected cohort (weekly construction-progress update, dedicated escalation contact) | Communication plan | Continuous from notification |
-| 10 | `service-recovery-specialist` | Triage incoming owner-complaints; cluster patterns; escalate per `runbooks/complaint-rera-exposure.md` if regulator-exposure surfaces | Service-recovery cases | Continuous |
+| 10 | `service-recovery-specialist` | Triage incoming owner-complaints; cluster patterns; escalate per `verticals/real-estate/runbooks/complaint-rera-exposure.md` if regulator-exposure surfaces | Service-recovery cases | Continuous |
 | 11 | `broker-enablement` | Broker-channel briefing: what brokers can say, can't say, must escalate | Broker-channel pack | Same day as owner-notification |
 | 12 | `wealth-channel-enablement` | Wealth-channel intermediary briefing: discreet update with talking points; intermediary RM communicates to principal | Briefing pack | Same day as owner-notification |
-| 13 | `vvip-channel-enablement` | VVIP-touching communications: restricted-channel; principal protocol office briefed via gatekeeper per `.claude/skills/vvip-protocol-uae.md` | Restricted-access pack | Same day as owner-notification |
+| 13 | `vvip-channel-enablement` | VVIP-touching communications: restricted-channel; principal protocol office briefed via gatekeeper per `verticals/real-estate/skills/vvip-protocol-uae.md` | Restricted-access pack | Same day as owner-notification |
 | 14 (recovery) | `chief-commercial-officer` + project-delivery | Recovery actions: alternate-supplier qualification, schedule-acceleration measures, contractor over-resourcing, regulator coordination on inspection windows | Recovery plan | 2-week milestone reviews |
 | 15 (closure) | `chief-commercial-officer` | Confirm new timeline; communicate revised handover schedule; update risk-register | Closure memo | per project state |
 
@@ -54,12 +54,12 @@ Any of:
 | `chief-commercial-officer` → executive review | Within 3 business days of confirmation | Non-negotiable; escalate to CEO if blocked |
 | `legal-liaison` → `chief-commercial-officer` (decision-ask) | Buyer-notification obligation analysis ready | Within 2 business days; per `decision-router` SLA |
 | Per channel manager → counterparty briefings | Same day as owner-notification | Counterparty discretion respected |
-| `service-recovery-specialist` → `runbooks/complaint-rera-exposure.md` | Owner-complaint with regulator-exposure flag | Immediate switch to that runbook |
+| `service-recovery-specialist` → `verticals/real-estate/runbooks/complaint-rera-exposure.md` | Owner-complaint with regulator-exposure flag | Immediate switch to that runbook |
 
 ## Compliance gates
 
 1. **Material-disclosure analysis is mandatory.** Don't assume the slip doesn't trigger notification obligation; `legal-liaison` analyzes per applicable law.
-2. **Forward-looking statement framing** on every revised-timeline communication per `.claude/skills/regulatory-disclosure-language.md` Template 7.
+2. **Forward-looking statement framing** on every revised-timeline communication per `verticals/real-estate/skills/regulatory-disclosure-language.md` Template 7.
 3. **Forbidden phrasing** — no "guaranteed completion" or implied certainty in revised-timeline language.
 4. **VVIP discretion** — VVIP-occupied units' affected-status restricted-access; communications via gatekeeper.
 5. **PDPL** — owner contact data per retention rules.
@@ -69,7 +69,7 @@ Any of:
 ## Out-of-scope
 
 - Construction operational recovery — project-delivery + contractor; runbook tracks but doesn't run
-- Vendor / contractor commercial dispute — separate dispute-resolution path per `.claude/skills/dispute-resolution-uae.md`
+- Vendor / contractor commercial dispute — separate dispute-resolution path per `verticals/real-estate/skills/dispute-resolution-uae.md`
 - Insurance claim if applicable — insurance counsel
 - Long-term schedule recovery beyond next-milestone — separate strategic planning
 
@@ -92,7 +92,7 @@ Any of:
 ## Related runbooks
 
 - `runbooks/risk-register-update.md` — risk-register state management
-- `runbooks/complaint-rera-exposure.md` — when owner-complaint escalates
-- `runbooks/handover-snagging.md` — when slip cascades into snagging-window
-- `runbooks/press-sensitive-uhnw-transaction.md` — VVIP-touching communications overlay
+- `verticals/real-estate/runbooks/complaint-rera-exposure.md` — when owner-complaint escalates
+- `verticals/real-estate/runbooks/handover-snagging.md` — when slip cascades into snagging-window
+- `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md` — VVIP-touching communications overlay
 - `runbooks/cco-daily-brief.md` — surfaces in daily brief throughout

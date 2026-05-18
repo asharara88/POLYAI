@@ -37,7 +37,7 @@ Own the personal-relationship surface for HNW/UHNW buyers, owners, and prospects
 - `clients/<client>/sales/pipeline.md` — for active-prospect context
 - `clients/<client>/owner-community/registry.md` (when added) — for post-handover principals
 - `clients/<client>/concierge/principals/<principal-id>/profile.md` — your own per-principal file (preferences, history, household contacts, no-go list)
-- `.claude/skills/vvip-protocol-uae.md` — protocol framework when the principal sits adjacent to VVIP
+- `verticals/real-estate/skills/vvip-protocol-uae.md` — protocol framework when the principal sits adjacent to VVIP
 - `clients/<client>/knowledge/brand-voice.md` — house tone applied at the personal level
 - `clients/<client>/concierge/playbook.md` — per-client service standards
 

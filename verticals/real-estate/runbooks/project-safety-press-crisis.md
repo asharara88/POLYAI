@@ -1,6 +1,6 @@
 # Runbook: Project-safety / press crisis
 
-> Scenario: A material adverse event occurs at a developer property — a construction-site incident, an owner-fatality on premises, a building-system failure (fire, structural, MEP), a security incident, or any reputation-affecting event that surfaces in press or social media. **Crisis-comms posture is the immediate concern**; commercial-impact mitigation follows. Distinct from `runbooks/press-sensitive-uhnw-transaction.md` (which handles ongoing UHNW-transaction discretion); this is incident-driven.
+> Scenario: A material adverse event occurs at a developer property — a construction-site incident, an owner-fatality on premises, a building-system failure (fire, structural, MEP), a security incident, or any reputation-affecting event that surfaces in press or social media. **Crisis-comms posture is the immediate concern**; commercial-impact mitigation follows. Distinct from `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md` (which handles ongoing UHNW-transaction discretion); this is incident-driven.
 
 ## Trigger
 
@@ -11,7 +11,7 @@ Any of:
 - Security incident (theft, assault, public-safety)
 - Press inquiry referencing an incident
 - Social-media spike referencing an incident
-- Regulator-initiated investigation per `runbooks/regulator-inquiry-non-complaint.md` driven by the incident
+- Regulator-initiated investigation per `verticals/real-estate/runbooks/regulator-inquiry-non-complaint.md` driven by the incident
 
 ## Owner
 
@@ -54,9 +54,9 @@ Any of:
 |---|---|---|---|---|
 | 12 | Crisis team | Daily standup; status review; press-cycle monitoring; social-media monitoring | Daily standup notes | daily, 7 days |
 | 13 | `service-recovery-specialist` | Owner-community communication if incident affects building / project: factual update, support resources, escalation contact | Community update | within 48-72h |
-| 14 | `aml-kyc-compliance-specialist` (if any sanctions/PEP-touching counterparty involved) | Restricted-access review; coordinate with `runbooks/pep-sanctions-hit.md` if applicable | Restricted memo | per case complexity |
+| 14 | `aml-kyc-compliance-specialist` (if any sanctions/PEP-touching counterparty involved) | Restricted-access review; coordinate with `verticals/real-estate/runbooks/pep-sanctions-hit.md` if applicable | Restricted memo | per case complexity |
 | 15 | `vvip-channel-enablement` (if any VVIP-counterparty implicated, even tangentially) | Restricted-access communication via principal protocol office; press posture tightened | Restricted communications | continuous |
-| 16 | `legal-liaison` | Continuing regulator coordination per any opened investigation; per `runbooks/regulator-inquiry-non-complaint.md` if formal inquiry surfaces | Continuing legal log | continuous |
+| 16 | `legal-liaison` | Continuing regulator coordination per any opened investigation; per `verticals/real-estate/runbooks/regulator-inquiry-non-complaint.md` if formal inquiry surfaces | Continuing legal log | continuous |
 | 17 | `content-pr-specialist` | Press cycle: respond to inquiries, monitor coverage, calibrate posture as facts evolve | Press log | continuous |
 
 ### Phase 4: First 30 days + ongoing
@@ -76,7 +76,7 @@ Any of:
 | `chief-commercial-officer` → CEO + executive committee | Material crisis | Within 2 hours; non-negotiable |
 | `chief-commercial-officer` → `content-pr-specialist` + `legal-liaison` | Crisis-team activation | Within 1 hour |
 | `service-recovery-specialist` → affected-owner family | Identification | Within 8 hours |
-| `chief-commercial-officer` → `runbooks/regulator-inquiry-non-complaint.md` | Regulator opens inquiry | Switch to that runbook for regulator side |
+| `chief-commercial-officer` → `verticals/real-estate/runbooks/regulator-inquiry-non-complaint.md` | Regulator opens inquiry | Switch to that runbook for regulator side |
 | `vvip-channel-enablement` activation | VVIP-counterparty implication | Immediate; restricted-access |
 
 ## Compliance gates
@@ -118,15 +118,15 @@ Any of:
 - Crisis case file at `clients/<client>/service-recovery/crisis/<case-id>/` (restricted-access)
 - Closure memo captures: incident chronology, response cadence, lessons, prevention recommendations
 - Crisis-team retrospective: what worked, what didn't, what process to update
-- Material learnings feed `knowledge` for `runbooks/project-safety-press-crisis.md` updates
+- Material learnings feed `knowledge` for `verticals/real-estate/runbooks/project-safety-press-crisis.md` updates
 - If preventive-investment narrative warrants it, `marketing-manager` + `content-pr-specialist` plan a long-cycle posture
 - Pattern alerts: 2+ material incidents in 24 months → systemic operational review
 
 ## Related runbooks
 
-- `runbooks/regulator-inquiry-non-complaint.md` — when regulator opens inquiry
-- `runbooks/complaint-rera-exposure.md` — when buyer-complaint dimension emerges
-- `runbooks/pep-sanctions-hit.md` — if any sanctions-adjacency surfaces
-- `runbooks/press-sensitive-uhnw-transaction.md` — VVIP-counterparty overlay
+- `verticals/real-estate/runbooks/regulator-inquiry-non-complaint.md` — when regulator opens inquiry
+- `verticals/real-estate/runbooks/complaint-rera-exposure.md` — when buyer-complaint dimension emerges
+- `verticals/real-estate/runbooks/pep-sanctions-hit.md` — if any sanctions-adjacency surfaces
+- `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md` — VVIP-counterparty overlay
 - `runbooks/risk-register-update.md` — risk-register state management
-- `runbooks/handover-snagging.md` — if incident is in handover-window
+- `verticals/real-estate/runbooks/handover-snagging.md` — if incident is in handover-window

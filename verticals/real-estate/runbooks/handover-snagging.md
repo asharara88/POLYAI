@@ -53,12 +53,12 @@ A unit reaches the handover-window threshold per the project schedule (typically
 | `account-manager` → `service-recovery-specialist` | Owner expresses dissatisfaction beyond snagging-routine | Per `service-recovery-specialist` SOP |
 | `account-manager` → `vip-relationship-manager` | HNW/UHNW owner | Per concierge profile |
 | `voc` → `marketing-manager` | Recurring theme surfaces (3+ similar) | Within 7 days of pattern detection |
-| `account-manager` → `service-recovery-specialist` (regulator-exposure) | Owner mentions RERA Rental Dispute Centre | Switch to `runbooks/complaint-rera-exposure.md` immediately |
+| `account-manager` → `service-recovery-specialist` (regulator-exposure) | Owner mentions RERA Rental Dispute Centre | Switch to `verticals/real-estate/runbooks/complaint-rera-exposure.md` immediately |
 
 ## Compliance gates
 
 1. **Snagging-resolution SLA** — published SLA per `clients/<client>/owners/snagging/sla.md`; breaches expose the developer to RERA / ADREC complaint. Track every item.
-2. **Service-charge transparency** — disclosed per `.claude/skills/regulatory-disclosure-language.md` Template 3 (payment-plan disclosure) and corresponding owner-association governance under Dubai Law 27/2007 (Dubai) or AD equivalent. Confirm current per case via `regulatory-research-specialist`.
+2. **Service-charge transparency** — disclosed per `verticals/real-estate/skills/regulatory-disclosure-language.md` Template 3 (payment-plan disclosure) and corresponding owner-association governance under Dubai Law 27/2007 (Dubai) or AD equivalent. Confirm current per case via `regulatory-research-specialist`.
 3. **Owner-association governance** — meeting cadence + voting rights per applicable law; coordinate with `legal-liaison` if novel structure.
 4. **PDPL** — owner contact + preference data handled per retention rules.
 5. **VVIP discretion** — VVIP-touching units have restricted-access handover scheduling; no general-team visibility.
@@ -70,7 +70,7 @@ A unit reaches the handover-window threshold per the project schedule (typically
 - Owner-association elected-board operations — that's owner-side post-handover; runbook hands over
 - Service-charge collection (post-handover ongoing) — that's the building OAM (operations + asset management); runbook hands over
 - Ongoing owner-community programming after T+90 — that's `email-lifecycle` + `events` standard
-- Resale activity by handed-over owners — switch to `runbooks/resale-with-noc.md`
+- Resale activity by handed-over owners — switch to `verticals/real-estate/runbooks/resale-with-noc.md`
 
 ## KPIs
 

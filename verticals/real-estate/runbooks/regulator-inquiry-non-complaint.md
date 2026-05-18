@@ -1,6 +1,6 @@
 # Runbook: Regulator inquiry (non-complaint)
 
-> Scenario: DLD / RERA / ADREC / DMT / ADGM-FSRA / DIFC-DFSA / CBUAE / UAE FIU opens an inquiry, audit, or thematic review where there is **no underlying buyer complaint**. The inquiry may be routine (annual review), thematic (sector-wide concern), targeted (enforcement-adjacent), or strategic (consultation participation). Distinct from `runbooks/complaint-rera-exposure.md`, which handles buyer-complaint-driven regulator exposure.
+> Scenario: DLD / RERA / ADREC / DMT / ADGM-FSRA / DIFC-DFSA / CBUAE / UAE FIU opens an inquiry, audit, or thematic review where there is **no underlying buyer complaint**. The inquiry may be routine (annual review), thematic (sector-wide concern), targeted (enforcement-adjacent), or strategic (consultation participation). Distinct from `verticals/real-estate/runbooks/complaint-rera-exposure.md`, which handles buyer-complaint-driven regulator exposure.
 
 ## Trigger
 
@@ -56,7 +56,7 @@ Any of:
 | `legal-liaison` → `regulatory-research-specialist` | Currency confirmation needed | Within 1 business day |
 | `legal-liaison` → `data-room-curator` | Scope identified | Within 1 business day |
 | `legal-liaison` → counsel (in-house or panel) | Counsel-brief ready | Per counsel SLA, typically same-day for material |
-| `legal-liaison` → `aml-kyc-compliance-specialist` | AML/CFT-class | Per `runbooks/pep-sanctions-hit.md` analog if material |
+| `legal-liaison` → `aml-kyc-compliance-specialist` | AML/CFT-class | Per `verticals/real-estate/runbooks/pep-sanctions-hit.md` analog if material |
 | `legal-liaison` → `content-pr-specialist` | Public surfacing risk | Continuous awareness |
 
 ## Compliance gates
@@ -72,8 +72,8 @@ Any of:
 
 ## Out-of-scope
 
-- Buyer-complaint-driven regulator exposure — `runbooks/complaint-rera-exposure.md`
-- Sanctions-hit-driven regulator interaction — `runbooks/pep-sanctions-hit.md`
+- Buyer-complaint-driven regulator exposure — `verticals/real-estate/runbooks/complaint-rera-exposure.md`
+- Sanctions-hit-driven regulator interaction — `verticals/real-estate/runbooks/pep-sanctions-hit.md`
 - Litigation if matter escalates — `legal-liaison` + external counsel; this runbook ends at regulator-decision
 - Specific consultation-paper substantive content — `regulatory-research-specialist` + relevant pod for input
 - Tax / customs / employment regulator inquiries — separate counsel discipline
@@ -98,8 +98,8 @@ Any of:
 
 ## Related runbooks
 
-- `runbooks/complaint-rera-exposure.md` — buyer-complaint-driven counterpart
-- `runbooks/pep-sanctions-hit.md` — sanctions / PEP regulator interaction
+- `verticals/real-estate/runbooks/complaint-rera-exposure.md` — buyer-complaint-driven counterpart
+- `verticals/real-estate/runbooks/pep-sanctions-hit.md` — sanctions / PEP regulator interaction
 - `runbooks/risk-register-update.md` — risk-register state management
 - `runbooks/cco-daily-brief.md` — surfaces inquiry state in daily brief
 - `runbooks/horizon-scan-daily.md` — feeds inquiry-trigger detection

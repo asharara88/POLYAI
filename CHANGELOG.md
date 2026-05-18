@@ -69,12 +69,12 @@ Removed accidentally-committed `.next/` build artifacts and added `.gitignore` t
 7 additional skills authored to fully cover the cross-agent reference surface for the developer engagement. Skills total: 14 (was 7 after Phase 4D).
 
 - `.claude/skills/crm-data-model.md` — system-agnostic data model (deal-record ↔ CRM-object mapping); the Salesforce-specific operational mapping at `integrations/salesforce/schema-mapping.md` is the system-level layer underneath.
-- `.claude/skills/wealth-channel-operations.md` — parallel to `broker-operations` for private banks / family offices / independent introducers; introducer-agreement framework, ADGM-FSRA + DIFC-DFSA + foreign-jurisdiction overlay, fee structure, dispute escalation, channel-development cadence.
-- `.claude/skills/off-plan-launch-mechanics.md` — consolidates Trustee Account opening, RERA / ADREC project registration, Oqood, Trakheesi / ADREC permit, reservation-form mechanics, disclosure currency, and the regulatory-clock vs. marketing-clock alignment problem.
-- `.claude/skills/owner-community-governance.md` — Dubai Law 27/2007 + AD equivalent, OAM operations, AGM cadence, service-charge transparency, post-handover developer-side touchpoint cadence, VVIP overlay.
-- `.claude/skills/dispute-resolution-uae.md` — pathway map (RERA RDC, REDRC, ADREC consumer-protection, Dubai/AD courts, DIFC/ADGM courts + arbitration), matter-type → pathway, time-and-cost tradeoffs, internal-resolution-first principle.
-- `.claude/skills/payment-plan-structures.md` — standard structures A-D + bespoke E-I; cash-flow + IRR implications; mortgage-overlay; post-handover collection; escrow-coverage adequacy; disclosure framework.
-- `.claude/skills/diaspora-corridor-marketing.md` — corridor patterns for India NRI, KSA, UK, Russia/CIS, Egypt, Pakistan, Nigeria, Singapore, US: language, cultural calendar, regulatory overlay, preferred channels, content angles, decision cycle, pitfalls.
+- `verticals/real-estate/skills/wealth-channel-operations.md` — parallel to `broker-operations` for private banks / family offices / independent introducers; introducer-agreement framework, ADGM-FSRA + DIFC-DFSA + foreign-jurisdiction overlay, fee structure, dispute escalation, channel-development cadence.
+- `verticals/real-estate/skills/off-plan-launch-mechanics.md` — consolidates Trustee Account opening, RERA / ADREC project registration, Oqood, Trakheesi / ADREC permit, reservation-form mechanics, disclosure currency, and the regulatory-clock vs. marketing-clock alignment problem.
+- `verticals/real-estate/skills/owner-community-governance.md` — Dubai Law 27/2007 + AD equivalent, OAM operations, AGM cadence, service-charge transparency, post-handover developer-side touchpoint cadence, VVIP overlay.
+- `verticals/real-estate/skills/dispute-resolution-uae.md` — pathway map (RERA RDC, REDRC, ADREC consumer-protection, Dubai/AD courts, DIFC/ADGM courts + arbitration), matter-type → pathway, time-and-cost tradeoffs, internal-resolution-first principle.
+- `verticals/real-estate/skills/payment-plan-structures.md` — standard structures A-D + bespoke E-I; cash-flow + IRR implications; mortgage-overlay; post-handover collection; escrow-coverage adequacy; disclosure framework.
+- `verticals/real-estate/skills/diaspora-corridor-marketing.md` — corridor patterns for India NRI, KSA, UK, Russia/CIS, Egypt, Pakistan, Nigeria, Singapore, US: language, cultural calendar, regulatory overlay, preferred channels, content angles, decision cycle, pitfalls.
 
 `README.md` repo-layout updated to enumerate all 14 skills.
 
@@ -125,9 +125,9 @@ The highest-leverage gap from `GAPS.md`. For an Aldar-class engagement, this is 
   - `integrations/trakheesi/spec.md` — record-keeping + verification, no public DLD API yet
 - **Introduced `runbooks/` directory** (new pattern) with 4 runbooks:
   - `runbooks/README.md` — catalog + authoring rules
-  - `runbooks/resale-with-noc.md` — full secondary-market choreography
-  - `runbooks/complaint-rera-exposure.md` — regulator-exposure complaint, no admission, Legal-first
-  - `runbooks/pep-sanctions-hit.md` — no-tipping-off, restricted-channels, STR pathway
+  - `verticals/real-estate/runbooks/resale-with-noc.md` — full secondary-market choreography
+  - `verticals/real-estate/runbooks/complaint-rera-exposure.md` — regulator-exposure complaint, no admission, Legal-first
+  - `verticals/real-estate/runbooks/pep-sanctions-hit.md` — no-tipping-off, restricted-channels, STR pathway
 - **Extended** `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` with a regulatory-milestone overlay (T-90 escrow → T0 launch sign-off → T+ongoing re-screening) layered over the existing T-16/T-12 marketing-clock cadence.
 
 ### Phase 4D — P3: long tail · `4381750`
@@ -143,12 +143,12 @@ The highest-leverage gap from `GAPS.md`. For an Aldar-class engagement, this is 
   - `project-fact-pack.md` — current-state snapshot template (facts not narrative), audience-adaptation, cadence + sources
   - `vvip-protocol-uae.md` — gatekeeper map, register, no-mention list mechanics, bespoke-arrangement coordination, foreign-VVIP corridor, gift + event protocol
 - **Added 6 P3 runbooks:**
-  - `runbooks/international-roadshow.md` — 14-day post-event cadence in buyer's local time-zone
-  - `runbooks/inbound-hnw-private-bank.md` — wealth-channel-mediated principal flow
-  - `runbooks/broker-onboarding-to-first-deal.md` — 90-day onboarding-to-activation
-  - `runbooks/handover-snagging.md` — T-30 to T+90 owner experience
+  - `verticals/real-estate/runbooks/international-roadshow.md` — 14-day post-event cadence in buyer's local time-zone
+  - `verticals/real-estate/runbooks/inbound-hnw-private-bank.md` — wealth-channel-mediated principal flow
+  - `verticals/real-estate/runbooks/broker-onboarding-to-first-deal.md` — 90-day onboarding-to-activation
+  - `verticals/real-estate/runbooks/handover-snagging.md` — T-30 to T+90 owner experience
   - `runbooks/quarterly-exec-brief.md` — 3-week assembly cycle, 8-section template
-  - `runbooks/press-sensitive-uhnw-transaction.md` — discretion-overlay across the entire transaction lifecycle
+  - `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md` — discretion-overlay across the entire transaction lifecycle
 - **Minimum-edit extensions** (preserving original prompt):
   - `account-manager.md` — appended UAE-developer note (handover, owner-community, schools, resale, referral, VVIP)
   - `partnerships.md` — appended Aldar-class scope note (hospitality JV, education, asset-class JV, lifestyle, wellness, financial)

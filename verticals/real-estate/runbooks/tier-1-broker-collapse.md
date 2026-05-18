@@ -8,7 +8,7 @@ Any of:
 - RERA / ADREC license suspension or revocation surfaces
 - Public announcement of firm dissolution / acquisition / restructuring with material continuity implication
 - Material principal departure (named senior partner leaves) at a Tier-1 firm
-- Sanctions adjacency surfaces at the firm (entity or UBO level) per `runbooks/pep-sanctions-hit.md`
+- Sanctions adjacency surfaces at the firm (entity or UBO level) per `verticals/real-estate/runbooks/pep-sanctions-hit.md`
 - Risk-register "Tier-1 broker concentration" entry crosses amber → red
 
 ## Owner
@@ -32,11 +32,11 @@ Any of:
 | 2 | `risk-register-curator` | Open / elevate counterparty-risk entry to red; notify CCO immediately | Risk-register update | 1 business hour |
 | 3 | `data-quality-steward` | Audit: all in-flight opportunities with firm-attribution; commission-attribution lock-in by stage | In-flight audit | 1 business day |
 | 4 | `legal-liaison` | License-status analysis + master broker agreement review (continuity clauses, termination-without-cause provisions, claw-back triggers) | Legal memo | 1 business day |
-| 5 | `aml-kyc-compliance-specialist` (if sanctions adjacency or UBO concern) | Re-screen entity + UBO + roster; coordinate with `runbooks/pep-sanctions-hit.md` if RED | Re-screening verdict | 2 business days |
+| 5 | `aml-kyc-compliance-specialist` (if sanctions adjacency or UBO concern) | Re-screen entity + UBO + roster; coordinate with `verticals/real-estate/runbooks/pep-sanctions-hit.md` if RED | Re-screening verdict | 2 business days |
 | 6 | `marketing-financial-manager` | Commission claw-back analysis: any deals at risk-of-rescission per SPA cooling-off; commission-disbursement halt if applicable | Financial memo | 2 business days |
 | 7 | `chief-commercial-officer` (decision-ask) | Approve immediate posture: suspend allocation flow / freeze commission disbursement / continue with elevated cadence / terminate agreement | Decision memo via `decision-router` | within 48h |
 | 8 (if suspend / freeze) | `broker-enablement` | Communication to firm's named senior contact: discreet, factual, no commitments beyond "in review"; loop `legal-liaison` on language | Communication record | 1 business day post-decision |
-| 9 | `broker-enablement` | Tier-2 over-allocation capacity briefing for the affected demand pool; per `.claude/skills/broker-operations.md` allocation mechanics | Tier-2 briefing pack | 3 business days |
+| 9 | `broker-enablement` | Tier-2 over-allocation capacity briefing for the affected demand pool; per `verticals/real-estate/skills/broker-operations.md` allocation mechanics | Tier-2 briefing pack | 3 business days |
 | 10 | `account-manager` (if affecting closed-won pipeline) | Buyer-side relationship-continuity calls on deals where the firm's individual broker was the relationship lead | Activity log | Continuous from decision |
 | 11 | `wealth-channel-enablement` | If Tier-1 firm overlapped with wealth-channel introductions: brief intermediary RMs on continuity; principal-touchpoint via gatekeeper if VVIP-adjacent | Wealth briefing | Same day as decision |
 | 12 | `content-pr-specialist` | Press posture: no-comment default; reactive only if firm announces publicly and inquiries arrive | Press posture pack | Continuous |
@@ -51,7 +51,7 @@ Any of:
 | `broker-enablement` → `risk-register-curator` | Trigger confirmed | Within 1h |
 | `broker-enablement` → `legal-liaison` | Confirmation | Within 4h |
 | `broker-enablement` → `data-quality-steward` | Confirmation | Within 4h |
-| `broker-enablement` → `aml-kyc-compliance-specialist` | Sanctions/UBO concern surface | Per `runbooks/pep-sanctions-hit.md` immediate |
+| `broker-enablement` → `aml-kyc-compliance-specialist` | Sanctions/UBO concern surface | Per `verticals/real-estate/runbooks/pep-sanctions-hit.md` immediate |
 | `chief-commercial-officer` → CCO decision-ask | Within 48h of trigger | Non-negotiable |
 | Per channel manager → counterparty briefings | Same day as decision | Discretion respected |
 | `broker-enablement` → `runbooks/broker-channel-new-firm-signing.md` | Recovery activation | When approved |
@@ -89,13 +89,13 @@ Any of:
 - Case file at `clients/<client>/brokers/<firm-slug>/collapse/case.md` (restricted if AML adjacency)
 - Closure memo captures: financial impact, time-to-recovery, learnings
 - Pattern alerts: if 2+ Tier-1 collapses in 18 months, structural concentration review with `chief-commercial-officer`
-- Material learnings feed `.claude/skills/broker-operations.md` updates via `knowledge`
+- Material learnings feed `verticals/real-estate/skills/broker-operations.md` updates via `knowledge`
 
 ## Related runbooks
 
 - `runbooks/risk-register-update.md` — counterparty-risk handling
-- `runbooks/pep-sanctions-hit.md` — if AML adjacency surfaces
-- `runbooks/complaint-rera-exposure.md` — if buyer complaints escalate
-- `runbooks/press-sensitive-uhnw-transaction.md` — VVIP-counterparty-affected overlay
+- `verticals/real-estate/runbooks/pep-sanctions-hit.md` — if AML adjacency surfaces
+- `verticals/real-estate/runbooks/complaint-rera-exposure.md` — if buyer complaints escalate
+- `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md` — VVIP-counterparty-affected overlay
 - `verticals/real-estate/sub-verticals/developer/playbooks/broker-channel-new-firm-signing.md` — recovery playbook
 - `verticals/real-estate/sub-verticals/developer/playbooks/broker-channel-reactivation.md` — Tier-1-fill alternative path

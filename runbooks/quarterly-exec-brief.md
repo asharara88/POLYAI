@@ -28,7 +28,7 @@ Quarter-end (T-0 = last business day of the quarter). The runbook spans T-21 to 
 | T-21 to T-14 | All section owners | Section drafts produced per template (see Sections below) | Per-section drafts in `clients/<client>/exec-briefs/<quarter>/sections/` |
 | T-14 | `marketing-manager` | Sections received + reviewed for completeness + cross-section consistency | Review notes |
 | T-10 | `data-quality-steward` | Data-quality audit on every numeric in the brief — sources cited, calculations verified | Audit log |
-| T-7 | `compliance` | Compliance check on any forward-looking language (per `.claude/skills/regulatory-disclosure-language.md` Template 7); forbidden-phrasing block | Compliance verdict |
+| T-7 | `compliance` | Compliance check on any forward-looking language (per `verticals/real-estate/skills/regulatory-disclosure-language.md` Template 7); forbidden-phrasing block | Compliance verdict |
 | T-7 | `regulatory-research-specialist` | Currency check on any regulatory citation in the brief | Currency verdict |
 | T-5 | `marketing-manager` | First full draft assembled; brief structured per audience preference | Full draft |
 | T-3 | `chief-commercial-officer` | CCO review + revision | Revised draft |
@@ -60,7 +60,7 @@ Owner: `chief-commercial-officer` writes the cover.
 - Channel-mix recommendations for next quarter
 
 ### 4. Channel-development — owned by `wealth-vvip-manager`
-- Broker-channel: active firms, new firms onboarded, dormant firms reactivated, disengaged firms (per `runbooks/broker-onboarding-to-first-deal.md` framework)
+- Broker-channel: active firms, new firms onboarded, dormant firms reactivated, disengaged firms (per `verticals/real-estate/runbooks/broker-onboarding-to-first-deal.md` framework)
 - Wealth-channel: active intermediaries, new intermediaries signed, performance per intermediary
 - VVIP-channel: aggregated activity (no individual-counterparty detail per discretion)
 - Channel-development activity in the quarter — events run, relationships built
@@ -69,7 +69,7 @@ Owner: `chief-commercial-officer` writes the cover.
 - Active CRM size, segmentation health (per `email-lifecycle`)
 - Owner-community size, T+60 NPS by project cohort
 - VoC themes — top emerging themes, recurring themes, resolved themes
-- Service-recovery activity (count by severity, regulator-exposure incidents per `runbooks/complaint-rera-exposure.md`)
+- Service-recovery activity (count by severity, regulator-exposure incidents per `verticals/real-estate/runbooks/complaint-rera-exposure.md`)
 - Snagging metrics for projects in handover-window
 
 ### 6. Compliance + risk — owned by `aml-kyc-compliance-specialist` + `regulatory-research-specialist` + `legal-liaison`
@@ -105,7 +105,7 @@ Owner: `chief-commercial-officer` writes the cover.
 ## Compliance gates
 
 1. **Forbidden phrasing block** — no "guaranteed yield", "guaranteed appreciation", "risk-free" anywhere in the brief, even in internal-audience contexts (the brief leaves the building eventually; the standard is the same).
-2. **Forward-looking language** — any next-quarter projection carries the forward-looking-statement framing per `.claude/skills/regulatory-disclosure-language.md` Template 7.
+2. **Forward-looking language** — any next-quarter projection carries the forward-looking-statement framing per `verticals/real-estate/skills/regulatory-disclosure-language.md` Template 7.
 3. **VVIP discretion** — VVIP-touching activity surfaces only as aggregated count + value; no counterparty identification; no unit/floor/tower reference that would imply identification.
 4. **AML/KYC restricted detail** — pattern-level statistics only; no individual-counterparty PII; restricted-access detail in legal-privileged appendix where needed.
 5. **Legal-privileged content** — flagged at the file-level; restricted access to named human team.

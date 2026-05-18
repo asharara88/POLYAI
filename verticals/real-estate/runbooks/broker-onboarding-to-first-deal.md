@@ -14,9 +14,9 @@ Either:
 
 ## Pre-flight
 
-- Master broker agreement template current per `.claude/skills/broker-operations.md`
+- Master broker agreement template current per `verticals/real-estate/skills/broker-operations.md`
 - Commission-grid letter template ready (tier proposed by `broker-enablement` based on firm's strategic value + expected volume)
-- Firm's RERA brokerage license (Dubai) or ADREC equivalent (Abu Dhabi) verified active per `.claude/skills/broker-operations.md` verification framework
+- Firm's RERA brokerage license (Dubai) or ADREC equivalent (Abu Dhabi) verified active per `verticals/real-estate/skills/broker-operations.md` verification framework
 - Firm's trade license (DED or equivalent) verified
 - AML/KYC capacity for entity-level + UBO + initial roster screening — `aml-kyc-compliance-specialist` available
 - Inventory baseline current — what's actually allocatable to a Tier 2/3 (typical entry tier) firm in the next 60-90 days
@@ -26,14 +26,14 @@ Either:
 | Phase | Day | Who | What | Emits |
 |---|---|---|---|---|
 | **Onboarding** | Day 0 | `broker-enablement` | Open onboarding case file at `clients/<client>/brokers/<firm-slug>/onboarding/case.md` | Case file open |
-| | Day 0-3 | `broker-enablement` | Collect firm documentation per `.claude/skills/broker-operations.md` onboarding-documentation list | Document index in case file |
+| | Day 0-3 | `broker-enablement` | Collect firm documentation per `verticals/real-estate/skills/broker-operations.md` onboarding-documentation list | Document index in case file |
 | | Day 0-3 | `aml-kyc-compliance-specialist` | Entity-level Sumsub run-check; UBO ≥ 25% identification + screening; initial-roster screening (named individual brokers) | Verdicts per individual + entity |
 | | Day 3-5 | `legal-liaison` | Master broker agreement + commission-grid letter signed by both sides | Signed agreement artifacts |
 | | Day 5 | `broker-enablement` | Add firm to `clients/<client>/brokers/registry.md` — status: `active` | Registry update via `data-quality-steward` |
 | | Day 5 | `marketing-financial-manager` | Set up commission-disbursement profile (bank account verified via separate channel for fraud prevention) | Disbursement profile recorded |
 | **Enablement** | Day 7-14 | `broker-enablement` + `creative` | Tailored enablement pack delivered: project portfolio, factsheets, payment-plan calculators, current-permit reference (Trakheesi-aware), commission-grid letter, escalation contacts | Enablement pack at `clients/<client>/brokers/<firm-slug>/enablement-pack-v1/` |
 | | Day 7-14 | `broker-enablement` | First-touch training session (1-2h) — webinar or in-person at sales gallery; covers product, process, allocation mechanics, dispute escalation, compliance | Session log + attendee list |
-| | Day 7-14 | `compliance` | Confirm firm understands forbidden-phrasing list per `.claude/skills/regulatory-disclosure-language.md` and Trakheesi requirements per `integrations/trakheesi/spec.md` | Compliance briefing log |
+| | Day 7-14 | `compliance` | Confirm firm understands forbidden-phrasing list per `verticals/real-estate/skills/regulatory-disclosure-language.md` and Trakheesi requirements per `integrations/trakheesi/spec.md` | Compliance briefing log |
 | | Day 14 | `broker-enablement` | Sales-gallery walkthrough scheduled for firm's named senior brokers — see units, see show-units, meet developer-side senior RM | Walkthrough confirmed |
 | **Activation** | Day 14-30 | `broker-enablement` | Firm's first allocation request invited (proactive, not reactive — call the firm, ask what they're working on, what their pipeline looks like) | Allocation request submitted |
 | | Day 14-30 | `inventory-manager` + `broker-enablement` | First allocation approved (or counter-proposed if requested unit is not Tier-2/3 appropriate) | Allocation approval per `clients/<client>/brokers/allocations/<request-id>/` |
@@ -61,7 +61,7 @@ Either:
 2. **License-currency verified** — RERA / ADREC license active at agreement signing; re-verification cadence set (typically annual + on event).
 3. **Forbidden-phrasing briefing** before any firm-distributed material is allowed in market.
 4. **Trakheesi awareness** — firm understands no Dubai-side ad runs without permit number displayed; reference current campaigns' permit numbers in their material.
-5. **Sanctions / PEP-firm** — if any UBO or principal screens as PEP or sanctions-adjacent, switch to `runbooks/pep-sanctions-hit.md`; firm onboarding pauses pending Legal + EDD.
+5. **Sanctions / PEP-firm** — if any UBO or principal screens as PEP or sanctions-adjacent, switch to `verticals/real-estate/runbooks/pep-sanctions-hit.md`; firm onboarding pauses pending Legal + EDD.
 6. **No-tipping-off** if AML adversely surfaces — communicate as standard onboarding pause language, not as flag.
 
 ## Out-of-scope
@@ -85,7 +85,7 @@ Either:
 - Onboarding case file moves to `clients/<client>/brokers/<firm-slug>/onboarding/closed.md` after Day 90 review
 - Per-firm performance enters quarterly tracking
 - Patterns: corridors / firm-types with low activation rates routed to `broker-enablement` for channel-development strategy adjustment
-- Material learnings (e.g., enablement-pack section that consistently underdelivers) routed via `knowledge` for `.claude/skills/broker-operations.md` update
+- Material learnings (e.g., enablement-pack section that consistently underdelivers) routed via `knowledge` for `verticals/real-estate/skills/broker-operations.md` update
 
 ## Related runbooks
 

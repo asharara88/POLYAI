@@ -16,7 +16,7 @@ Roadshow event closes; attendee list + interest-tier captured by the events team
 - AML/KYC-screening readiness for any tier-1 attendee from sanctions-surface corridor (Russia/CIS, etc.) — `aml-kyc-compliance-specialist` capacity check
 - Local-time-zone calendar for the corridor (so cadence respects buyer's working hours, not Dubai's)
 - Golden Visa eligibility framing per corridor verified via `regulatory-research-specialist` (current threshold + conditions)
-- Localized creative (corridor-language email + WhatsApp templates) approved by `compliance` per `.claude/skills/regulatory-disclosure-language.md`
+- Localized creative (corridor-language email + WhatsApp templates) approved by `compliance` per `verticals/real-estate/skills/regulatory-disclosure-language.md`
 
 ## Sequence
 
@@ -25,7 +25,7 @@ Roadshow event closes; attendee list + interest-tier captured by the events team
 | Day 0 (event close) | `events` → `marketing-manager` | Hand off attendee list with interest-tier, corridor, language | Attendee dataset at `clients/<client>/events/<event-id>/attendees.md` | within 24h of event close |
 | Day 0 + 4h (in buyer's local time) | `email-lifecycle` | Thank-you email — corridor-language; references the event; offers next-step (microsite tour, virtual viewing, follow-up call) | Email sent | per local-time send-window |
 | Day 1 (buyer's local time) | `account-executive` (corridor-specialist) | Personal follow-up to every tier-1 attendee — phone or WhatsApp per attendee preference | Activity logged in Salesforce per `integrations/salesforce/actions/activity-log.md` | within 24h |
-| Day 2 | `email-lifecycle` | Tier-2 follow-up email with project fact pack PDF (per `.claude/skills/project-fact-pack.md` — buyer-facing version) and corridor-specific Golden Visa framing | Email sent | within local-business-day window |
+| Day 2 | `email-lifecycle` | Tier-2 follow-up email with project fact pack PDF (per `verticals/real-estate/skills/project-fact-pack.md` — buyer-facing version) and corridor-specific Golden Visa framing | Email sent | within local-business-day window |
 | Day 3-5 | `account-executive` | Schedule virtual viewings or arrange Dubai/AD trip-coordination for any tier-1 attendee that engages | Viewing-booked artifacts | per attendee responsiveness |
 | Day 5 | `email-lifecycle` | Tier-3 nurture email — softer, more discovery-oriented, links to brand microsite + project portfolio | Email sent | within local-business-day window |
 | Day 7 | `marketing-manager` | Mid-cadence checkpoint — engagement-rate review, route engaged-but-uncontacted leads to `account-executive` | Mid-cadence note | end of week |
@@ -48,7 +48,7 @@ Roadshow event closes; attendee list + interest-tier captured by the events team
 
 ## Compliance gates
 
-1. **Corridor disclosure language** — every email + WhatsApp respects the corridor's regulatory framework (UK FCA-adjacent for UK; FCA-equivalent for KSA SAMA; etc.). `compliance` confirms localized creative pre-approval per `.claude/skills/regulatory-disclosure-language.md` with corridor-specific overlay.
+1. **Corridor disclosure language** — every email + WhatsApp respects the corridor's regulatory framework (UK FCA-adjacent for UK; FCA-equivalent for KSA SAMA; etc.). `compliance` confirms localized creative pre-approval per `verticals/real-estate/skills/regulatory-disclosure-language.md` with corridor-specific overlay.
 2. **Golden Visa framing** — never imply guaranteed visa issuance; current threshold + conditions verified via `regulatory-research-specialist`.
 3. **Forbidden phrasing** — full block list applies in localized variants too; substantive equivalence in translation per `localization` workflow.
 4. **PDPL + corridor data-protection** — attendee data handled per the stricter of UAE PDPL or the corridor's own regime (often the corridor's regime — e.g., GDPR for UK/EU residents).

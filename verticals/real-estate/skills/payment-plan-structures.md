@@ -14,7 +14,7 @@ maintained_by: marketing-financial-manager + regulatory-research-specialist (wri
 Every payment-plan structure must respect two fundamentals:
 
 1. **Escrow-protection of buyer funds** — Dubai Law 8/2007 (Dubai) / Abu Dhabi Law No. 3 of 2015 (Abu Dhabi). Buyer funds for off-plan are held in a Trustee Account at a Trustee Bank; release tied to construction milestones.
-2. **Disclosure** — buyer must be informed of payment plan + escrow mechanics + risk allocation per `.claude/skills/regulatory-disclosure-language.md` Template 3.
+2. **Disclosure** — buyer must be informed of payment plan + escrow mechanics + risk allocation per `verticals/real-estate/skills/regulatory-disclosure-language.md` Template 3.
 
 A payment plan that violates either anchor is non-compliant regardless of commercial appeal.
 
@@ -87,7 +87,7 @@ For a unit the buyer intends to lease: a portion of the price is satisfied via c
 
 ### Structure I — Bespoke for VVIP / strategic counterparty
 
-Custom structure per principal — combination of standard structures + concessions + bespoke timing. Always restricted-access per `.claude/skills/vvip-protocol-uae.md`.
+Custom structure per principal — combination of standard structures + concessions + bespoke timing. Always restricted-access per `verticals/real-estate/skills/vvip-protocol-uae.md`.
 
 ## Cash-flow + IRR implications (developer-side)
 
@@ -107,7 +107,7 @@ Custom structure per principal — combination of standard structures + concessi
 
 ## Disclosure language
 
-Every payment plan in customer-facing material carries disclosure per `.claude/skills/regulatory-disclosure-language.md` Template 3:
+Every payment plan in customer-facing material carries disclosure per `verticals/real-estate/skills/regulatory-disclosure-language.md` Template 3:
 
 - Plan structure stated
 - Trustee Account reference
@@ -162,6 +162,6 @@ For Structure B (40/60 handover-heavy) and any structure with low during-constru
 - Specific Trustee Bank product mechanics — verify per Trustee
 - Specific CBUAE LTV percentages — `regulatory-research-specialist` per case (rules change)
 - Tax implications of payment-plan structures — tax counsel via `legal-liaison`
-- Cross-border buyer-side capital-flow regulation — `regulatory-research-specialist` per corridor (see `.claude/skills/diaspora-corridor-marketing.md`)
-- Specific commission-structure-vs.-payment-plan interaction (broker side) — `.claude/skills/broker-operations.md`
-- Wealth-channel introducer-fee timing on bespoke structures — `.claude/skills/wealth-channel-operations.md`
+- Cross-border buyer-side capital-flow regulation — `regulatory-research-specialist` per corridor (see `verticals/real-estate/skills/diaspora-corridor-marketing.md`)
+- Specific commission-structure-vs.-payment-plan interaction (broker side) — `verticals/real-estate/skills/broker-operations.md`
+- Wealth-channel introducer-fee timing on bespoke structures — `verticals/real-estate/skills/wealth-channel-operations.md`

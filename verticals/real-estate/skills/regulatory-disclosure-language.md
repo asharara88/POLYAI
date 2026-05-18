@@ -116,7 +116,7 @@ maintained_by: regulatory-research-specialist + compliance (writes via knowledge
 
 ## What this skill does NOT cover
 
-- Specific Trakheesi permit-application mechanics — see `runbooks/trakheesi-permit.md` (when added) or coordinate via `agency-liaison` + `compliance`
+- Specific Trakheesi permit-application mechanics — see `verticals/real-estate/runbooks/trakheesi-permit.md` (when added) or coordinate via `agency-liaison` + `compliance`
 - ADREC-specific permit mechanics for Abu Dhabi-side — same
 - Cross-jurisdiction press-release wording (UK FCA, US SEC framing) — route to `regulatory-research-specialist` + `legal-liaison`
-- Specific commission-disclosure wording for broker channel — see `.claude/skills/broker-operations.md` (when added)
+- Specific commission-disclosure wording for broker channel — see `verticals/real-estate/skills/broker-operations.md` (when added)
