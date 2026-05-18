@@ -8,31 +8,22 @@ import {
   CheckCircle2,
   Megaphone,
   MessageSquare,
-  ShieldCheck,
   Sparkles,
-  UsersRound,
 } from "lucide-react";
-import { useIdentity } from "@/lib/identity";
 import { navItemsFor, type NavItem } from "@/lib/role-scope";
 
 const ICON_MAP: Record<NavItem["iconKey"], React.ComponentType<{ className?: string }>> = {
   today: Sparkles,
-  decisions: CheckCircle2,
-  projects: Building2,
-  ask: MessageSquare,
-  operator: ShieldCheck,
-  pod: UsersRound,
-  agent: Bot,
   launches: Megaphone,
+  clients: Building2,
+  decisions: CheckCircle2,
+  agent: Bot,
+  ask: MessageSquare,
 };
 
 export default function BottomNav() {
   const pathname = usePathname() ?? "/";
-  const { identity, hydrated } = useIdentity();
-  const baseItems = hydrated
-    ? navItemsFor(identity?.role ?? "cco", identity?.agentSlug)
-    : navItemsFor("cco", undefined);
-  const items = baseItems.slice(0, 5);
+  const items = navItemsFor();
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
@@ -41,7 +32,7 @@ export default function BottomNav() {
       aria-label="Mobile primary"
       className="md:hidden fixed bottom-0 left-0 right-0 z-30 border-t border-ink-200/70 dark:border-ink-800 bg-white/95 dark:bg-ink-950/95 backdrop-blur-md print:hidden pb-[env(safe-area-inset-bottom)]"
     >
-      <div className="grid grid-cols-5">
+      <div className="grid grid-cols-6">
         {items.map((it) => {
           const Icon = ICON_MAP[it.iconKey];
           const active = isActive(it.href);

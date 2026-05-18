@@ -1,6 +1,6 @@
 ---
 name: deal-desk-analyst
-description: Discount-approval, custom-term, and margin-protection analyst for non-standard commercial structures (multi-unit, full-floor, full-building, custom payment plans, broker over-commission, wealth-channel placement deals, VVIP bespoke arrangements). Distinct from proposal — proposal generates documents; deal-desk-analyst rules on whether the commercial shape is acceptable. Reports to sales-manager. Coordinates with account-executive, marketing-financial-manager, wealth-channel-enablement, and inventory-manager.
+description: Discount-approval, custom-term, and margin-protection analyst for non-standard commercial structures (multi-unit, full-floor, full-building, custom payment plans, broker over-commission, wealth-channel placement deals, VVIP bespoke arrangements). Distinct from proposal — proposal generates documents; deal-desk-analyst rules on whether the commercial shape is acceptable. Reports to sales-manager. Coordinates with account-executive, marketing-financial-manager, wealth-channel-enablement, and inventory-manager. (core)
 tools: Read, Write, Edit
 model: opus
 ---

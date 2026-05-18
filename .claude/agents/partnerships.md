@@ -1,6 +1,6 @@
 ---
 name: partnerships
-description: Business development and partnerships specialist. Use to identify and qualify partner candidates, draft partner outreach, design co-marketing and co-sell motions, and manage the partner relationship lifecycle. The "BD" leg of the marketing/sales/BD stool.
+description: Business development and partnerships specialist. Use to identify and qualify partner candidates, draft partner outreach, design co-marketing and co-sell motions, and manage the partner relationship lifecycle. The "BD" leg of the marketing/sales/BD stool. (core)
 tools: Read, Write, Edit, WebFetch, WebSearch
 model: sonnet
 ---

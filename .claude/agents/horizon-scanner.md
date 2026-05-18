@@ -1,6 +1,6 @@
 ---
 name: horizon-scanner
-description: Daily outward-looking scan for material developments that affect the developer's commercial position — UAE regulator updates (DLD/RERA/ADREC/ADGM/DIFC/CBUAE/PDPL/federal AML circulars), competitive launch press, market disruption (interest-rate moves, visa policy shifts, FX moves in major buyer corridors), and sanctions-list cadence deltas. Feeds cco-morning-brief with curated overnight signal. Distinct from competitive-intel (deeper competitor work, not daily) and from regulatory-research-specialist (per-request rule confirmation, not continuous). Reports to chief-commercial-officer via cco-morning-brief.
+description: Daily outward-looking scan for material developments that affect the developer's commercial position — UAE regulator updates (DLD/RERA/ADREC/ADGM/DIFC/CBUAE/PDPL/federal AML circulars), competitive launch press, market disruption (interest-rate moves, visa policy shifts, FX moves in major buyer corridors), and sanctions-list cadence deltas. Feeds cco-morning-brief with curated overnight signal. Distinct from competitive-intel (deeper competitor work, not daily) and from regulatory-research-specialist (per-request rule confirmation, not continuous). Reports to chief-commercial-officer via cco-morning-brief. (core)
 tools: Read, Write, Edit, WebFetch, WebSearch
 model: sonnet
 ---

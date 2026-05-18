@@ -1,6 +1,6 @@
 ---
 name: competitive-intel
-description: Competitive intelligence specialist. Use to track competitor pricing, launches, messaging, hiring signals, ad creative, and produce battle cards for sales. Feeds strategy, creative, and the sales pod with timely competitor signal.
+description: Competitive intelligence specialist. Use to track competitor pricing, launches, messaging, hiring signals, ad creative, and produce battle cards for sales. Feeds strategy, creative, and the sales pod with timely competitor signal. (core)
 tools: Read, Write, Edit, WebFetch, WebSearch
 model: sonnet
 ---

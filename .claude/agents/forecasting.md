@@ -1,6 +1,6 @@
 ---
 name: forecasting
-description: Pipeline rollup and forecast hygiene. Use to summarize pipeline state, categorize deals (commit / best-case / pipeline / omitted), surface slipping deals, and produce a defensible weekly forecast for the chief-commercial-officer and human leadership.
+description: Pipeline rollup and forecast hygiene. Use to summarize pipeline state, categorize deals (commit / best-case / pipeline / omitted), surface slipping deals, and produce a defensible weekly forecast for the chief-commercial-officer and human leadership. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

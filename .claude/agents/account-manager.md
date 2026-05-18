@@ -1,6 +1,6 @@
 ---
 name: account-manager
-description: Post-sale account ownership. Use for onboarding handoffs, expansion / upsell / cross-sell plays, renewals, churn-risk detection, and save plays. Owns the customer relationship after closed-won.
+description: Post-sale account ownership. Use for onboarding handoffs, expansion / upsell / cross-sell plays, renewals, churn-risk detection, and save plays. Owns the customer relationship after closed-won. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

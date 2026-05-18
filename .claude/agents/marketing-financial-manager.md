@@ -1,6 +1,6 @@
 ---
 name: marketing-financial-manager
-description: Marketing finance specialist. Owns marketing-budget allocation across campaigns and channels, purchase-order issuance and tracking, accruals, invoice approvals, period-close discipline, variance analysis, and financial reporting back to the developer's CFO / FP&A. Sits between marketing operations and the central finance function. Pairs with marketing-procurement on every commitment and with analytics on ROI.
+description: Marketing finance specialist. Owns marketing-budget allocation across campaigns and channels, purchase-order issuance and tracking, accruals, invoice approvals, period-close discipline, variance analysis, and financial reporting back to the developer's CFO / FP&A. Sits between marketing operations and the central finance function. Pairs with marketing-procurement on every commitment and with analytics on ROI. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

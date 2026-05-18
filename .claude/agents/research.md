@@ -1,6 +1,6 @@
 ---
 name: research
-description: Outward-looking researcher. Use to investigate audience, market, competitors-at-a-distance, and trends. Returns evidence-backed findings with source citations and confidence levels — never opinions or unsourced claims.
+description: Outward-looking researcher. Use to investigate audience, market, competitors-at-a-distance, and trends. Returns evidence-backed findings with source citations and confidence levels — never opinions or unsourced claims. (core)
 tools: Read, Write, Edit, WebFetch, WebSearch
 model: sonnet
 ---

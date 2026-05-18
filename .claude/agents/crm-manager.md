@@ -1,6 +1,6 @@
 ---
 name: crm-manager
-description: Pod manager for CRM and customer-lifecycle work. Routes work from chief-commercial-officer to CRM specialists (email-lifecycle, voc, service-recovery-specialist, data-quality-steward, retention-loyalty plays through email-lifecycle). Owns the CRM-pod cadence, segment definitions, and lifecycle integrity. Reports to chief-commercial-officer.
+description: Pod manager for CRM and customer-lifecycle work. Routes work from chief-commercial-officer to CRM specialists (email-lifecycle, voc, service-recovery-specialist, data-quality-steward, retention-loyalty plays through email-lifecycle). Owns the CRM-pod cadence, segment definitions, and lifecycle integrity. Reports to chief-commercial-officer. (core)
 tools: Read, Write, Edit, TodoWrite
 model: sonnet
 ---

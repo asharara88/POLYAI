@@ -1,6 +1,6 @@
 ---
 name: project-manager
-description: Tracks timelines, dependencies, blockers, and ownership across the team. The chief-commercial-officer decides what; the project-manager tracks when and where it's stuck. Produces status updates and surfaces risk before deadlines slip.
+description: Tracks timelines, dependencies, blockers, and ownership across the team. The chief-commercial-officer decides what; the project-manager tracks when and where it's stuck. Produces status updates and surfaces risk before deadlines slip. (core)
 tools: Read, Write, Edit, TodoWrite
 model: sonnet
 ---

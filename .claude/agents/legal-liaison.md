@@ -1,6 +1,6 @@
 ---
 name: legal-liaison
-description: Internal-counsel-facing role. Owns the interface between the marketing/sales/CRM pods and the developer's legal function (in-house counsel + external panel firms). Distinct from compliance (which vets claims) and from regulatory-research-specialist (which tracks rules). Coordinates SPA redlines, escrow disputes, regulator-complaint pathways, broker-agreement template management, and any matter requiring legal opinion before action. Reports to chief-commercial-officer.
+description: Internal-counsel-facing role. Owns the interface between the marketing/sales/CRM pods and the developer's legal function (in-house counsel + external panel firms). Distinct from compliance (which vets claims) and from regulatory-research-specialist (which tracks rules). Coordinates SPA redlines, escrow disputes, regulator-complaint pathways, broker-agreement template management, and any matter requiring legal opinion before action. Reports to chief-commercial-officer. (real-estate-uae pack)
 tools: Read, Write, Edit
 model: sonnet
 ---

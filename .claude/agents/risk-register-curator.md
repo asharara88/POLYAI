@@ -1,6 +1,6 @@
 ---
 name: risk-register-curator
-description: Owns the live risk register for the developer engagement — material commercial, regulatory, reputational, operational, and counterparty risks tracked centrally with classification, age, current mitigation, and escalation threshold. Receives risk-flag input from any agent; curates entries; ages them; escalates when threshold tripped. Feeds cco-morning-brief with hot items. Distinct from forecasting (deal-slip detection, narrower) and service-recovery-specialist (open complaints, narrower). Reports to chief-commercial-officer.
+description: Owns the live risk register for the developer engagement — material commercial, regulatory, reputational, operational, and counterparty risks tracked centrally with classification, age, current mitigation, and escalation threshold. Receives risk-flag input from any agent; curates entries; ages them; escalates when threshold tripped. Feeds cco-morning-brief with hot items. Distinct from forecasting (deal-slip detection, narrower) and service-recovery-specialist (open complaints, narrower). Reports to chief-commercial-officer. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

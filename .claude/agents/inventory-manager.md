@@ -1,6 +1,6 @@
 ---
 name: inventory-manager
-description: Source-of-truth keeper for sellable inventory — units, pricing tiers, payment plans, allocation status, hold/reserved/sold lifecycle. Used by real-estate developers and any client whose creative or listings reference specific finite product instances. Gates any creative or listing that references units before it ships.
+description: Source-of-truth keeper for sellable inventory — units, pricing tiers, payment plans, allocation status, hold/reserved/sold lifecycle. Used by real-estate developers and any client whose creative or listings reference specific finite product instances. Gates any creative or listing that references units before it ships. (real-estate-uae pack)
 tools: Read, Write, Edit
 model: sonnet
 ---

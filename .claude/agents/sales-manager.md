@@ -1,6 +1,6 @@
 ---
 name: sales-manager
-description: Pod manager for the sales function. Routes work from chief-commercial-officer to sales specialists, owns sales-pod hand-offs, escalates blockers, runs the weekly sales rhythm. Reports to chief-commercial-officer; manages sdr, inbound-qualifier, account-executive, proposal, account-manager, forecasting, deal-desk-analyst, secondary-market-specialist.
+description: Pod manager for the sales function. Routes work from chief-commercial-officer to sales specialists, owns sales-pod hand-offs, escalates blockers, runs the weekly sales rhythm. Reports to chief-commercial-officer; manages sdr, inbound-qualifier, account-executive, proposal, account-manager, forecasting, deal-desk-analyst, secondary-market-specialist. (core)
 tools: Read, Write, Edit, TodoWrite
 model: sonnet
 ---

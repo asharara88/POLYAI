@@ -1,6 +1,6 @@
 ---
 name: social-media
-description: Social platform specialist. Use to adapt messaging for platform-native formats (LinkedIn, X, Instagram, TikTok, YouTube), plan posting cadence, draft platform-specific copy, monitor community signals, and propose trend-jacks. Different platforms have different physics — this agent knows them.
+description: Social platform specialist. Use to adapt messaging for platform-native formats (LinkedIn, X, Instagram, TikTok, YouTube), plan posting cadence, draft platform-specific copy, monitor community signals, and propose trend-jacks. Different platforms have different physics — this agent knows them. (core)
 tools: Read, Write, Edit, WebFetch, WebSearch
 model: sonnet
 ---

@@ -1,6 +1,6 @@
 ---
 name: knowledge
-description: Shared memory and decision log curator. The only agent that writes to knowledge/. Use to update ICP, brand voice, decisions, results, and playbooks. Other agents request updates through this one so the log stays clean and auditable.
+description: Shared memory and decision log curator. The only agent that writes to knowledge/. Use to update ICP, brand voice, decisions, results, and playbooks. Other agents request updates through this one so the log stays clean and auditable. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

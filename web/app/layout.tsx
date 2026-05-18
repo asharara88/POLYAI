@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import Nav from "@/components/Nav";
+import TopNav from "@/components/TopNav";
 import BottomNav from "@/components/BottomNav";
 import { Toaster } from "sonner";
 import CommandPalette from "@/components/CommandPalette";
@@ -65,7 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
             Skip to main content
           </a>
-          <Nav />
+          <TopNav />
           <main id="main" className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
             {children}
           </main>

@@ -1,6 +1,6 @@
 ---
 name: proposal
-description: Quote, SOW, and proposal generator. Use to draft commercial proposals, statements of work, and pricing quotes from a populated deal-record. Pulls from a pricing/offer library and tailors to the deal's specifics.
+description: Quote, SOW, and proposal generator. Use to draft commercial proposals, statements of work, and pricing quotes from a populated deal-record. Pulls from a pricing/offer library and tailors to the deal's specifics. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

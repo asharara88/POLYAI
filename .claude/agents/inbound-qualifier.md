@@ -1,6 +1,6 @@
 ---
 name: inbound-qualifier
-description: Inbound lead qualifier and router. Use when a lead arrives via form, demo request, content download, or trial signup. Scores fit and intent, asks qualifying questions when needed, routes the qualified ones forward and the weak ones back to nurture.
+description: Inbound lead qualifier and router. Use when a lead arrives via form, demo request, content download, or trial signup. Scores fit and intent, asks qualifying questions when needed, routes the qualified ones forward and the weak ones back to nurture. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

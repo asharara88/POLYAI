@@ -32,6 +32,7 @@ import {
   getInventory,
   getMorningBrief,
   getPipeline,
+  getProjects,
   getReciprocity,
   getRiskRegister,
   getVendors,
@@ -47,12 +48,12 @@ export function generateStaticParams() {
   return getClients().map((c) => ({ slug: c.slug }));
 }
 
-type Tab = "workspace" | "launches" | "channels";
+type Tab = "setup" | "operations" | "channels";
 
 const TABS: { key: Tab; label: string; sublabel: string }[] = [
-  { key: "workspace", label: "Workspace", sublabel: "Profile · ICP · voice · decisions · results · CCO daily" },
-  { key: "launches", label: "Inventory & launches", sublabel: "Inventory · pipeline · events · vendors · budget · routing" },
-  { key: "channels", label: "Channels", sublabel: "Brokers · wealth · VVIP · reciprocity" },
+  { key: "setup", label: "Setup", sublabel: "Profile · ICP · brand voice" },
+  { key: "operations", label: "Daily operations", sublabel: "CCO brief · decisions · results · pipeline · risk · horizon · budget · calendar" },
+  { key: "channels", label: "Channels & inventory", sublabel: "Inventory · brokers · wealth · VVIP · vendors · events · reciprocity · routing · projects · campaigns" },
 ];
 
 function SectionHeader({ id, title }: { id: string; title: string }) {
@@ -92,6 +93,7 @@ export default async function Page({
   const budgetSnapshots = getBudgetSnapshots(slug);
   const reciprocity = getReciprocity(slug);
   const pipeline = getPipeline(slug);
+  const projects = getProjects(slug);
   const ccoBrief = getMorningBrief(slug);
   const ccoRisks = getRiskRegister(slug);
   const ccoHorizon = getHorizonScan(slug);
@@ -112,7 +114,7 @@ export default async function Page({
     })) ?? []),
   ];
 
-  const activeTab = (TABS.find((t) => t.key === tabParam)?.key ?? "workspace") as Tab;
+  const activeTab = (TABS.find((t) => t.key === tabParam)?.key ?? "setup") as Tab;
 
   return (
     <div className="space-y-8">
@@ -149,23 +151,6 @@ export default async function Page({
         </div>
       </header>
 
-      {client.summary.campaigns.length > 0 && (
-        <section>
-          <h2 className="text-sm font-mono uppercase tracking-wider text-ink-400 mb-2">Campaigns</h2>
-          <div className="flex flex-wrap gap-2">
-            {client.summary.campaigns.map((c) => (
-              <Link
-                key={c}
-                href={`/clients/${slug}/campaigns/${c}`}
-                className="px-3 py-1.5 rounded-md border border-ink-200/70 dark:border-ink-800 text-sm hover:border-accent/60"
-              >
-                {c}
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
       <section>
         <div className="flex flex-col sm:flex-row gap-0 border-b border-ink-200/70 dark:border-ink-800 mb-6">
           {TABS.map((t) => {
@@ -187,7 +172,7 @@ export default async function Page({
           })}
         </div>
 
-        {activeTab === "workspace" && (
+        {activeTab === "setup" && (
           <div className="space-y-14">
             <div className="space-y-3">
               <SectionHeader id="profile" title="Profile" />
@@ -201,64 +186,52 @@ export default async function Page({
               <SectionHeader id="voice" title="Brand voice" />
               <Markdown>{client.brandVoice || "_No brand voice defined yet._"}</Markdown>
             </div>
-            <div className="space-y-3">
-              <SectionHeader id="decisions" title="Decisions log" />
-              <Markdown>{client.decisions || "_No decisions logged yet._"}</Markdown>
-            </div>
-            <div className="space-y-3">
-              <SectionHeader id="results" title="Results" />
-              <Markdown>{client.results || "_No results logged yet._"}</Markdown>
-            </div>
-            {hasCcoSurface && (
-              <div className="space-y-6">
-                <SectionHeader id="cco" title="CCO daily surface" />
-                <p className="text-sm text-ink-500 dark:text-ink-400 max-w-2xl">
-                  Scoped to this client. Open in full at{" "}
-                  <Link href={`/cco?client=${slug}`} className="text-accent hover:underline">
-                    /cco
-                  </Link>
-                  .
-                </p>
-                {ccoBrief && (
-                  <CcoMorningBrief brief={ccoBrief} clientName={client.summary.displayName ?? slug} />
-                )}
-                {ccoAsks && <DecisionAsksQueue asks={ccoAsks} client={slug} />}
-                {ccoRisks && <RiskRegister register={ccoRisks} />}
-                {ccoHorizon && <HorizonScan scan={ccoHorizon} />}
-                {ccoCalendar && <CcoCalendar calendar={ccoCalendar} />}
-              </div>
-            )}
           </div>
         )}
 
-        {activeTab === "launches" && (
+        {activeTab === "operations" && (
           <div className="space-y-14">
-            {inventory && (
+            {hasCcoSurface && (
+              <p className="text-sm text-ink-500 dark:text-ink-400 max-w-2xl">
+                CCO daily surface scoped to this client. Open in full at{" "}
+                <Link href={`/cco?client=${slug}`} className="text-accent hover:underline">
+                  /cco
+                </Link>
+                .
+              </p>
+            )}
+            {ccoBrief && (
               <div className="space-y-3">
-                <SectionHeader id="inventory" title="Inventory" />
-                <InventoryDashboard inventory={inventory} />
+                <SectionHeader id="cco-brief" title="CCO morning brief" />
+                <CcoMorningBrief brief={ccoBrief} clientName={client.summary.displayName ?? slug} />
               </div>
             )}
+            {ccoAsks && (
+              <div className="space-y-3">
+                <SectionHeader id="decisions" title="Decision asks" />
+                <DecisionAsksQueue asks={ccoAsks} client={slug} />
+              </div>
+            )}
+            <div className="space-y-3">
+              <SectionHeader id="results" title="Results log" />
+              <Markdown>{client.results || "_No results logged yet._"}</Markdown>
+            </div>
             {pipeline && (
               <div className="space-y-3">
                 <SectionHeader id="pipeline" title="Pipeline" />
                 <PipelineDashboard pipeline={pipeline} />
               </div>
             )}
-            {events.length > 0 && (
+            {ccoRisks && (
               <div className="space-y-3">
-                <SectionHeader id="events" title="Events" />
-                <EventsDashboard events={events} clientSlug={slug} />
+                <SectionHeader id="risk" title="Risk register" />
+                <RiskRegister register={ccoRisks} />
               </div>
             )}
-            {vendors && (
+            {ccoHorizon && (
               <div className="space-y-3">
-                <SectionHeader id="vendors" title="Vendors" />
-                <VendorsDashboard
-                  vendors={vendors}
-                  clientSlug={slug}
-                  vendorsWithProfile={vendorsWithProfile}
-                />
+                <SectionHeader id="horizon" title="Horizon scan" />
+                <HorizonScan scan={ccoHorizon} />
               </div>
             )}
             {budget && (
@@ -267,26 +240,64 @@ export default async function Page({
                 <BudgetDashboard budget={budget} snapshots={budgetSnapshots} />
               </div>
             )}
-            {brokers && (
+            {ccoCalendar && (
               <div className="space-y-3">
-                <SectionHeader id="routing" title="Sales routing simulators" />
-                <p className="text-sm text-ink-500 dark:text-ink-400 max-w-3xl">
-                  Three simulator modes for the developer&apos;s sales motion:{" "}
-                  <code className="font-mono">direct lead → in-house RM</code> (default for
-                  direct-marketing leads),{" "}
-                  <code className="font-mono">broker allocation request</code> (default for
-                  broker-originated buyers), and{" "}
-                  <code className="font-mono">overflow → broker</code> (exception when in-house
-                  capacity is exceeded).
-                </p>
-                <RoutingSimulator clientSlug={slug} />
+                <SectionHeader id="calendar" title="CCO calendar" />
+                <CcoCalendar calendar={ccoCalendar} />
               </div>
             )}
+            <div className="space-y-3">
+              <SectionHeader id="decisions-log" title="Strategic decisions log" />
+              <Markdown>{client.decisions || "_No decisions logged yet._"}</Markdown>
+            </div>
           </div>
         )}
 
         {activeTab === "channels" && (
           <div className="space-y-14">
+            {inventory && (
+              <div className="space-y-3">
+                <SectionHeader id="inventory" title="Inventory" />
+                <InventoryDashboard inventory={inventory} />
+              </div>
+            )}
+            {projects.length > 0 && (
+              <div className="space-y-3">
+                <SectionHeader id="projects" title="Projects" />
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {projects.map((p) => (
+                    <Link
+                      key={p.id}
+                      href={`/clients/${slug}/projects/${p.id}`}
+                      className="rounded-md border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 p-4 hover:border-accent/40 transition-colors"
+                    >
+                      <div className="text-sm font-semibold text-ink-900 dark:text-ink-50">{p.displayName}</div>
+                      {p.totalUnits != null && (
+                        <div className="text-label-xs font-mono text-ink-400 mt-1 tabular-nums">
+                          {p.totalUnits} units{p.priceBandAed ? ` · ${p.priceBandAed}` : ""}
+                        </div>
+                      )}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+            {client.summary.campaigns.length > 0 && (
+              <div className="space-y-3">
+                <SectionHeader id="campaigns" title="Campaigns" />
+                <div className="flex flex-wrap gap-2">
+                  {client.summary.campaigns.map((c) => (
+                    <Link
+                      key={c}
+                      href={`/clients/${slug}/campaigns/${c}`}
+                      className="px-3 py-1.5 rounded-md border border-ink-200/70 dark:border-ink-800 text-sm hover:border-accent/60"
+                    >
+                      {c}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
             {brokers && (
               <div className="space-y-3">
                 <SectionHeader id="brokers" title="Broker registry" />
@@ -309,6 +320,22 @@ export default async function Page({
                 <VvipChannelRegistry channel={vvip} />
               </div>
             )}
+            {vendors && (
+              <div className="space-y-3">
+                <SectionHeader id="vendors" title="Vendors" />
+                <VendorsDashboard
+                  vendors={vendors}
+                  clientSlug={slug}
+                  vendorsWithProfile={vendorsWithProfile}
+                />
+              </div>
+            )}
+            {events.length > 0 && (
+              <div className="space-y-3">
+                <SectionHeader id="events" title="Events" />
+                <EventsDashboard events={events} clientSlug={slug} />
+              </div>
+            )}
             {reciprocity && (
               <div className="space-y-3">
                 <SectionHeader id="reciprocity" title="Reciprocity ledger" />
@@ -319,6 +346,21 @@ export default async function Page({
                   existingSummaries={reciprocity.summaries}
                   knownCounterparties={knownCounterparties}
                 />
+              </div>
+            )}
+            {brokers && (
+              <div className="space-y-3">
+                <SectionHeader id="routing" title="Sales routing simulators" />
+                <p className="text-sm text-ink-500 dark:text-ink-400 max-w-3xl">
+                  Three simulator modes for the developer&apos;s sales motion:{" "}
+                  <code className="font-mono">direct lead → in-house RM</code> (default for
+                  direct-marketing leads),{" "}
+                  <code className="font-mono">broker allocation request</code> (default for
+                  broker-originated buyers), and{" "}
+                  <code className="font-mono">overflow → broker</code> (exception when in-house
+                  capacity is exceeded).
+                </p>
+                <RoutingSimulator clientSlug={slug} />
               </div>
             )}
           </div>

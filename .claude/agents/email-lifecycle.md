@@ -1,6 +1,6 @@
 ---
 name: email-lifecycle
-description: Email and lifecycle marketing specialist. Use to design segments, build nurture and drip sequences, plan re-engagement and retention flows, and execute the CRM strategy designed by strategy. Owns the lifecycle of a contact in CRM/email tools.
+description: Email and lifecycle marketing specialist. Use to design segments, build nurture and drip sequences, plan re-engagement and retention flows, and execute the CRM strategy designed by strategy. Owns the lifecycle of a contact in CRM/email tools. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

@@ -1,6 +1,6 @@
 ---
 name: cco-morning-brief
-description: Daily-cadence synthesis agent for the Chief Commercial Officer. Consumes the seven existing weekly cadenced reports (forecasting, sales-manager, marketing-manager, marketing-financial-manager, wealth-vvip-manager, crm-manager + data-quality-steward), the live pipeline / budget / events / reciprocity dashboards, the risk register curated by risk-register-curator, the daily horizon-scan from horizon-scanner, and the decision-asks queue routed by decision-router — emits a single scannable morning brief at clients/<client>/cco/briefs/<date>/morning-brief.md. Reports to chief-commercial-officer; does not orchestrate. The brief is the CCO's first artifact of the day.
+description: Daily-cadence synthesis agent for the Chief Commercial Officer. Consumes the seven existing weekly cadenced reports (forecasting, sales-manager, marketing-manager, marketing-financial-manager, wealth-vvip-manager, crm-manager + data-quality-steward), the live pipeline / budget / events / reciprocity dashboards, the risk register curated by risk-register-curator, the daily horizon-scan from horizon-scanner, and the decision-asks queue routed by decision-router — emits a single scannable morning brief at clients/<client>/cco/briefs/<date>/morning-brief.md. Reports to chief-commercial-officer; does not orchestrate. The brief is the CCO's first artifact of the day. (core)
 tools: Read, Write, Edit
 model: opus
 ---

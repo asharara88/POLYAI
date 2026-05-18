@@ -1,6 +1,6 @@
 ---
 name: account-executive
-description: Owns qualified opportunities through close. Use for discovery design, demo scripting, objection handling, multi-threading stakeholders, and progressing deals through stages. Reads and writes the deal-record continuously.
+description: Owns qualified opportunities through close. Use for discovery design, demo scripting, objection handling, multi-threading stakeholders, and progressing deals through stages. Reads and writes the deal-record continuously. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

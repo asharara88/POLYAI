@@ -1,6 +1,6 @@
 ---
 name: agency-liaison
-description: External-agency relationship manager for clients that work with brand agencies, media agencies, digital production, and PR. Owns briefs going out, deliverables coming in, approval routing, deadlines, and agency performance. Used heavily in real-estate developer engagements where 60–80% of creative is produced externally.
+description: External-agency relationship manager for clients that work with brand agencies, media agencies, digital production, and PR. Owns briefs going out, deliverables coming in, approval routing, deadlines, and agency performance. Used heavily in real-estate developer engagements where 60–80% of creative is produced externally. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

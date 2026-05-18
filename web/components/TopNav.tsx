@@ -8,9 +8,8 @@ import {
   CheckCircle2,
   Megaphone,
   MessageSquare,
-  ShieldCheck,
+  Settings,
   Sparkles,
-  UsersRound,
 } from "lucide-react";
 import UserMenu from "@/components/UserMenu";
 import MoreMenu from "@/components/MoreMenu";
@@ -20,21 +19,18 @@ import { navItemsFor, type NavItem } from "@/lib/role-scope";
 
 const ICON_MAP: Record<NavItem["iconKey"], React.ComponentType<{ className?: string }>> = {
   today: Sparkles,
-  decisions: CheckCircle2,
-  projects: Building2,
-  ask: MessageSquare,
-  operator: ShieldCheck,
-  pod: UsersRound,
-  agent: Bot,
   launches: Megaphone,
+  clients: Building2,
+  decisions: CheckCircle2,
+  agent: Bot,
+  ask: MessageSquare,
 };
 
-export default function Nav() {
+export default function TopNav() {
   const pathname = usePathname() ?? "/";
   const { identity, hydrated } = useIdentity();
-  const items = hydrated
-    ? navItemsFor(identity?.role ?? "cco", identity?.agentSlug)
-    : navItemsFor("cco", undefined);
+  const items = navItemsFor();
+  const isAdmin = hydrated && identity?.role === "admin";
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
@@ -45,13 +41,13 @@ export default function Nav() {
         <Link
           href="/"
           className="flex items-center gap-2 flex-shrink-0 group"
-          aria-label="UAE Developments — home"
+          aria-label="Flow — home"
         >
           <span className="text-accent group-hover:scale-105 transition-transform">
             <WorkspaceMark size={26} />
           </span>
           <span className="font-semibold tracking-tight text-title-sm text-ink-900 dark:text-ink-50 hidden sm:inline">
-            UAE Developments
+            Flow
           </span>
         </Link>
         <nav
@@ -81,6 +77,21 @@ export default function Nav() {
           })}
         </nav>
         <div className="flex items-center gap-1 flex-shrink-0">
+          {isAdmin && (
+            <Link
+              href="/operator"
+              aria-label="Operator settings"
+              className={[
+                "inline-flex items-center justify-center w-9 h-9 rounded-md transition-colors",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40",
+                isActive("/operator")
+                  ? "bg-accent/10 text-accent"
+                  : "text-ink-500 dark:text-ink-300 hover:bg-ink-100 dark:hover:bg-ink-800 hover:text-ink-900 dark:hover:text-ink-50",
+              ].join(" ")}
+            >
+              <Settings className="w-4 h-4" aria-hidden />
+            </Link>
+          )}
           <MoreMenu />
           <span className="w-px h-5 bg-ink-200 dark:bg-ink-800 mx-1" aria-hidden />
           <UserMenu />

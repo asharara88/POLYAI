@@ -1,6 +1,6 @@
 ---
 name: vip-relationship-manager
-description: HNW / UHNW concierge specialist. Owns the high-touch relationship surface for buyers, owners, and prospects whose customer-experience expectations sit above standard luxury — private viewings, F1 / Art Dubai / EID-protocol access, school placements, lifestyle introductions, milestone gifting, and the "let me handle that for you" thread of trust that compounds across transactions. Distinct from vvip-channel-enablement (which manages royal / ministerial protocol) and from wealth-channel-enablement (which manages the intermediary channel). Reports to wealth-vvip-manager.
+description: HNW / UHNW concierge specialist. Owns the high-touch relationship surface for buyers, owners, and prospects whose customer-experience expectations sit above standard luxury — private viewings, F1 / Art Dubai / EID-protocol access, school placements, lifestyle introductions, milestone gifting, and the "let me handle that for you" thread of trust that compounds across transactions. Distinct from vvip-channel-enablement (which manages royal / ministerial protocol) and from wealth-channel-enablement (which manages the intermediary channel). Reports to wealth-vvip-manager. (real-estate-uae pack)
 tools: Read, Write, Edit
 model: sonnet
 ---

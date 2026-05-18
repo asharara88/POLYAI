@@ -12,7 +12,7 @@ The buyer is the **human Chief Commercial Officer** of a UAE master-developer (A
 - Decisions queued for them — discount exceptions over policy, VVIP activations, payment-plan deviations, multi-corridor roadshows
 - Live launch tracker — channel mix, finance, events, broker ecosystem for the next 0–90 days
 - Channel surfaces — broker registry with tier mechanics, wealth channel (private banks + family offices), VVIP channel (protocol-aware, no-mention discipline)
-- A team they can ask — `chief-commercial-officer`, the four pod managers, ~30 specialist agents, plus cross-cutting compliance / regulatory / legal / data-room
+- A team they can ask — `chief-commercial-officer`, the four pod managers, 46 specialist + cross-cutting agents (51 total in `.claude/agents/`, 11 tagged `(real-estate-uae pack)`)
 
 The secondary audience is the **pod manager and specialist agent operators** — `sales-manager`, `marketing-manager`, `crm-manager`, `wealth-vvip-manager` and the specialists who report to them. They see scoped views (their pod's decision asks, their pod's risks, their agent profile).
 
@@ -22,12 +22,12 @@ The secondary audience is the **pod manager and specialist agent operators** —
 |---|---|---|
 | `/cco` | Morning brief, decisions queue, risk register, horizon scan, calendar | Shipping |
 | `/launches` | Multi-launch readiness across channel mix, finance, events, brokers; deep cross-link from each launch into events + brokers + decisions | Shipping |
-| `/clients/<slug>` | Per-client workspace: profile, ICP, voice, decisions, results, CCO daily, inventory, pipeline, events, vendors, budget, brokers, wealth, VVIP, reciprocity, routing simulators | Shipping (3 macro-tabs: Workspace / Inventory & launches / Channels) |
+| `/clients/<slug>` | Per-client workspace: profile, ICP, voice, decisions, results, CCO daily, inventory, pipeline, events, vendors, budget, brokers, wealth, VVIP, reciprocity, routing simulators | Shipping (3 macro-tabs: Setup / Daily operations / Channels & inventory) |
 | `/approvals` | Inbound decision asks with scope filtering and inline sign-off | Shipping |
 | `/chat` | Conversational interface to the CCO agent, scoped to the active workspace | Shipping |
 | `/agents` | The full team grouped by pod, with hand-off matrices and runbook ownership | Shipping |
 
-Worked-example workspace at `clients/_examples/uae-developments/` — a fictional Abu Dhabi-anchored developer with multi-emirate portfolio, 250-firm broker network, parallel wealth and VVIP channels, an active Q3 launch ("Coastal Reserve Phase 1"). Project / vendor / broker / event names that look real are referenced as *category* — not actual relationships.
+Worked-example workspace at `clients/_examples/uae-developments/` — a fictional Abu Dhabi-anchored developer with multi-emirate portfolio, 250-firm broker network, parallel wealth and VVIP channels, an active Q3 launch ("Coastal Reserve Phase 1"). All project / vendor / broker / event names are illustrative placeholders — not actual relationships or real properties.
 
 ## How it's structured
 
@@ -60,9 +60,9 @@ web/                  the Next.js operator surface
 2. Click **Today** (`/cco`) — read the top decision in the queue.
 3. Click into a launch from the morning brief, or open **Launches** (`/launches`) — pick the active Q3 launch.
 4. From the launch page, click into Events & brokers depth — see how the broker firm card cross-links to the broker registry.
-5. Click **Workspace** (`/clients/uae-developments`) — three macro-tabs (Workspace / Inventory & launches / Channels). Scroll the Channels tab for brokers + wealth + VVIP.
+5. Click **Clients** (`/clients`) → open `uae-developments` — three macro-tabs (Setup / Daily operations / Channels & inventory).
 6. Click **Decisions** (`/approvals`) — inline sign-off + scope filtering.
-7. Open **Ask** (`/chat`) — the CCO agent scoped to the active workspace.
+7. Open **Chat** (`/chat`) — the CCO agent scoped to the active workspace.
 
 ## What this product is NOT
 
@@ -90,6 +90,8 @@ Not on the immediate roadmap: additional packs beyond real-estate-uae. Those act
 - `README.md` — repo intro + getting started
 - `ARCHITECTURE.md` — agent tree, pod structure, hand-off matrix, approval-gate framework
 - `CHANGELOG.md` — phase-by-phase history
+- `verticals/real-estate-uae/README.md` — pack overview
 - `verticals/real-estate-uae/pack-manifest.md` — what activates when the pack is enabled
 - `verticals/real-estate-uae/playbook.md` — pack-level patterns (audience, motion, channels, KPIs, compliance flags, voice)
 - `verticals/real-estate-uae/sub-verticals/developer/playbook.md` — developer-sub-vertical specifics
+- `/about/uae-real-estate` (in the web surface) — same content, rendered

@@ -1,6 +1,6 @@
 ---
 name: broker-enablement
-description: Broker-channel manager for clients that sell through external brokers (real-estate developers, certain auto dealer networks, channel-led B2B). Owns the broker registry, enablement materials, allocation processing, channel development (reactivating dormant firms, signing new ones), broker-performance tracking, and dispute escalations. Does NOT route the developer's direct-marketing leads to brokers — those go to in-house sales (see "What you do NOT do").
+description: Broker-channel manager for clients that sell through external brokers (real-estate developers, certain auto dealer networks, channel-led B2B). Owns the broker registry, enablement materials, allocation processing, channel development (reactivating dormant firms, signing new ones), broker-performance tracking, and dispute escalations. Does NOT route the developer's direct-marketing leads to brokers — those go to in-house sales (see "What you do NOT do"). (real-estate-uae pack)
 tools: Read, Write, Edit
 model: sonnet
 ---

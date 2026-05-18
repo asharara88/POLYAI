@@ -1,90 +1,66 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { Building2, ScrollText, BookOpen, Layers } from "lucide-react";
+import { ScrollText, BookOpen, Layers } from "lucide-react";
 import Markdown from "@/components/Markdown";
-import { getVertical, getVerticals } from "@/lib/content";
+import { getVertical } from "@/lib/content";
 
-export const dynamicParams = false;
+export const dynamic = "force-static";
 
-export function generateStaticParams() {
-  return getVerticals().map((v) => ({ name: v.name }));
-}
+const PACK_NAME = "real-estate-uae";
 
-export default async function Page({ params }: { params: Promise<{ name: string }> }) {
-  const { name } = await params;
-  const vertical = getVertical(name);
-  if (!vertical) notFound();
+export default function Page() {
+  const pack = getVertical(PACK_NAME);
+  if (!pack) notFound();
 
   return (
     <div className="space-y-8">
       <header className="space-y-2">
-        <div className="flex items-center gap-2 text-xs font-mono text-ink-400">
-          <Link href="/verticals" className="hover:underline">verticals</Link>
-          <span>/</span>
-          <span>{vertical.name}</span>
-        </div>
+        <div className="text-xs font-mono text-ink-400">about</div>
         <h1 className="text-2xl font-semibold tracking-tight">
-          Pack — <span className="font-mono">{vertical.displayName}</span>
+          About the <span className="font-mono">real-estate-uae</span> pack
         </h1>
         <p className="text-sm text-ink-500 dark:text-ink-400 max-w-2xl">
-          Pack folder <code className="font-mono text-xs bg-ink-100 dark:bg-ink-800 px-1.5 py-0.5 rounded">verticals/{vertical.name}/</code>. Activates per-client via{" "}
-          <code className="font-mono text-xs">pack: {vertical.displayName}</code> (or legacy{" "}
-          <code className="font-mono text-xs">vertical: {vertical.name}</code>) in the client profile.
+          Flow ships with one pack today. It activates the agents, runbooks, skills, and approval-gate defaults a UAE master-developer engagement needs. The repo path is{" "}
+          <code className="font-mono text-xs bg-ink-100 dark:bg-ink-800 px-1.5 py-0.5 rounded">verticals/{pack.name}/</code>; clients activate it with{" "}
+          <code className="font-mono text-xs">pack: {pack.name}</code> (or legacy{" "}
+          <code className="font-mono text-xs">vertical: {pack.name}</code>) in their client profile.
         </p>
       </header>
 
       <div className="grid sm:grid-cols-3 gap-3">
-        <StatCard icon={<ScrollText className="w-4 h-4" />} label="Runbooks" count={vertical.runbooks.length} />
-        <StatCard icon={<BookOpen className="w-4 h-4" />} label="Skills" count={vertical.skills.length} />
-        <StatCard icon={<Layers className="w-4 h-4" />} label="Sub-verticals" count={vertical.subVerticals.length} />
+        <StatCard icon={<ScrollText className="w-4 h-4" />} label="Runbooks" count={pack.runbooks.length} />
+        <StatCard icon={<BookOpen className="w-4 h-4" />} label="Skills" count={pack.skills.length} />
+        <StatCard icon={<Layers className="w-4 h-4" />} label="Sub-verticals" count={pack.subVerticals.length} />
       </div>
 
-      {vertical.manifest && (
+      {pack.manifest && (
         <section className="space-y-3">
           <h2 className="text-lg font-semibold tracking-tight">Pack manifest</h2>
           <div className="rounded-lg border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
-            <Markdown>{vertical.manifest}</Markdown>
+            <Markdown>{pack.manifest}</Markdown>
           </div>
         </section>
       )}
 
-      {(vertical.runbooks.length > 0 || vertical.skills.length > 0) && (
+      {(pack.runbooks.length > 0 || pack.skills.length > 0) && (
         <section className="space-y-3">
           <h2 className="text-lg font-semibold tracking-tight">Pack contents</h2>
           <div className="grid md:grid-cols-2 gap-3">
-            {vertical.runbooks.length > 0 && (
+            {pack.runbooks.length > 0 && (
               <ListCard
                 icon={<ScrollText className="w-4 h-4" />}
                 title="Runbooks"
-                subtitle={`verticals/${vertical.name}/runbooks/`}
-                items={vertical.runbooks}
+                subtitle={`verticals/${pack.name}/runbooks/`}
+                items={pack.runbooks}
               />
             )}
-            {vertical.skills.length > 0 && (
+            {pack.skills.length > 0 && (
               <ListCard
                 icon={<BookOpen className="w-4 h-4" />}
                 title="Skills"
-                subtitle={`verticals/${vertical.name}/skills/`}
-                items={vertical.skills}
+                subtitle={`verticals/${pack.name}/skills/`}
+                items={pack.skills}
               />
             )}
-          </div>
-        </section>
-      )}
-
-      {vertical.subVerticals.length > 0 && (
-        <section className="space-y-3">
-          <h2 className="text-lg font-semibold tracking-tight">Sub-verticals</h2>
-          <div className="flex flex-wrap gap-2">
-            {vertical.subVerticals.map((sv) => (
-              <span
-                key={sv}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-ink-200/70 dark:border-ink-800 text-sm font-mono"
-              >
-                <Building2 className="w-3.5 h-3.5 text-ink-400" />
-                {sv}
-              </span>
-            ))}
           </div>
         </section>
       )}
@@ -92,7 +68,7 @@ export default async function Page({ params }: { params: Promise<{ name: string 
       <section className="space-y-3">
         <h2 className="text-lg font-semibold tracking-tight">Pack playbook</h2>
         <div className="rounded-lg border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
-          <Markdown>{vertical.body}</Markdown>
+          <Markdown>{pack.body}</Markdown>
         </div>
       </section>
     </div>

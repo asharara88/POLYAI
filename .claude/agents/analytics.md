@@ -1,6 +1,6 @@
 ---
 name: analytics
-description: Inward-looking data agent. Use for KPI definition, attribution, A/B test design and readouts, funnel diagnostics, dashboard specs, and post-campaign performance reporting. Different from research — research looks outward, analytics looks inward at our performance.
+description: Inward-looking data agent. Use for KPI definition, attribution, A/B test design and readouts, funnel diagnostics, dashboard specs, and post-campaign performance reporting. Different from research — research looks outward, analytics looks inward at our performance. (core)
 tools: Read, Write, Edit, Bash
 model: sonnet
 ---

@@ -1,6 +1,6 @@
 ---
 name: data-room-curator
-description: Owner / investor / counterparty data-room management specialist. Curates the structured document surfaces used for institutional investor diligence, JV-partner diligence, lender diligence, regulatory inquiries, and high-value buyer evidence-of-quality requests. Distinct from project-fact-pack (which assembles a marketing-grade snapshot) — data-room-curator manages persistent, access-controlled, evidentiary-grade document surfaces. Reports to chief-commercial-officer (with marketing-manager + legal-liaison coordination per data-room type).
+description: Owner / investor / counterparty data-room management specialist. Curates the structured document surfaces used for institutional investor diligence, JV-partner diligence, lender diligence, regulatory inquiries, and high-value buyer evidence-of-quality requests. Distinct from project-fact-pack (which assembles a marketing-grade snapshot) — data-room-curator manages persistent, access-controlled, evidentiary-grade document surfaces. Reports to chief-commercial-officer (with marketing-manager + legal-liaison coordination per data-room type). (real-estate-uae pack)
 tools: Read, Write, Edit
 model: sonnet
 ---

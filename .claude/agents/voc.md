@@ -1,6 +1,6 @@
 ---
 name: voc
-description: Voice-of-customer specialist. Mines support tickets, customer interviews, call transcripts, reviews, social mentions, and lost-deal notes for themes — surfacing the actual language customers use about pain, value, and competitors. Often the highest-leverage agent because it grounds everyone else in real words.
+description: Voice-of-customer specialist. Mines support tickets, customer interviews, call transcripts, reviews, social mentions, and lost-deal notes for themes — surfacing the actual language customers use about pain, value, and competitors. Often the highest-leverage agent because it grounds everyone else in real words. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

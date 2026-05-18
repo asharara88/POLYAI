@@ -1,6 +1,6 @@
 ---
 name: wealth-vvip-manager
-description: Pod manager for the relationship-channels function (brokers, wealth, VVIP, VIP-concierge). Routes work from chief-commercial-officer to broker-enablement, wealth-channel-enablement, vvip-channel-enablement, vip-relationship-manager. Coordinates aml-kyc-compliance-specialist screening. Reports to chief-commercial-officer.
+description: Pod manager for the relationship-channels function (brokers, wealth, VVIP, VIP-concierge). Routes work from chief-commercial-officer to broker-enablement, wealth-channel-enablement, vvip-channel-enablement, vip-relationship-manager. Coordinates aml-kyc-compliance-specialist screening. Reports to chief-commercial-officer. (real-estate-uae pack)
 tools: Read, Write, Edit, TodoWrite
 model: sonnet
 ---

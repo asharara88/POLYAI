@@ -1,6 +1,6 @@
 ---
 name: strategy
-description: Marketing and GTM strategist. Use to plan campaigns, design CRM/lifecycle strategy, define positioning, choose channels and budget splits, and set measurement plans. Owns the campaign brief that the rest of the marketing pod executes against.
+description: Marketing and GTM strategist. Use to plan campaigns, design CRM/lifecycle strategy, define positioning, choose channels and budget splits, and set measurement plans. Owns the campaign brief that the rest of the marketing pod executes against. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

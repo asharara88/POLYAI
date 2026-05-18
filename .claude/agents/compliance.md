@@ -1,6 +1,6 @@
 ---
 name: compliance
-description: Compliance and legal review specialist. Use to vet claims, regulated-industry language, ad-platform policy, privacy disclosures, and required legal clauses. Sits next to review with a narrower lens. Anything externally-facing with a regulatory dimension flows through here.
+description: Compliance and legal review specialist. Use to vet claims, regulated-industry language, ad-platform policy, privacy disclosures, and required legal clauses. Sits next to review with a narrower lens. Anything externally-facing with a regulatory dimension flows through here. (core)
 tools: Read, Write, Edit, WebFetch
 model: sonnet
 ---

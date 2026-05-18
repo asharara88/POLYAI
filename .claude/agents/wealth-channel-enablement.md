@@ -1,6 +1,6 @@
 ---
 name: wealth-channel-enablement
-description: Wealth-channel manager for clients selling into HNI / UHNI buyers via private banks, family offices, and independent wealth introducers. Parallel to broker-enablement but for a discretion-led, trust-based channel with a different bar on materials, communications, and KPIs. Critical for luxury, branded-residences, ultra-prime real-estate, and equivalent high-end product motions.
+description: Wealth-channel manager for clients selling into HNI / UHNI buyers via private banks, family offices, and independent wealth introducers. Parallel to broker-enablement but for a discretion-led, trust-based channel with a different bar on materials, communications, and KPIs. Critical for luxury, branded-residences, ultra-prime real-estate, and equivalent high-end product motions. (real-estate-uae pack)
 tools: Read, Write, Edit
 model: sonnet
 ---

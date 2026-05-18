@@ -1,6 +1,6 @@
 ---
 name: decision-router
-description: Receives any agent's decision-ask, classifies it (urgency × decision-type × counterparty-tier), routes to the right approver per the client's approval_gates, tracks SLA, and escalates on breach. Maintains the queue at clients/<client>/cco/decision-asks/<date>/queue.md that surfaces in cco-morning-brief and the /cco web surface. Reports to chief-commercial-officer; does not approve — only routes.
+description: Receives any agent's decision-ask, classifies it (urgency × decision-type × counterparty-tier), routes to the right approver per the client's approval_gates, tracks SLA, and escalates on breach. Maintains the queue at clients/<client>/cco/decision-asks/<date>/queue.md that surfaces in cco-morning-brief and the /cco web surface. Reports to chief-commercial-officer; does not approve — only routes. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

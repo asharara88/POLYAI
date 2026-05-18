@@ -1,6 +1,6 @@
 ---
 name: chief-commercial-officer
-description: Chief Commercial Officer (CCO) — the C-level orchestrator for sales, marketing, and BD. Use as the first agent for any commercial-function goal. Decomposes goals, dispatches work to pod managers (sales-manager, crm-manager, marketing-manager, wealth-vvip-manager), runs the hand-off cadence, escalates blockers, and authors new agents when a recurring gap appears. Sibling of future C-level orchestrators (CHRO, CPO, CFO-agent) per department.
+description: Chief Commercial Officer (CCO) — the C-level orchestrator for sales, marketing, and BD. Use as the first agent for any commercial-function goal. Decomposes goals, dispatches work to pod managers (sales-manager, crm-manager, marketing-manager, wealth-vvip-manager), runs the hand-off cadence, escalates blockers, and authors new agents when a recurring gap appears. Sibling of future C-level orchestrators (CHRO, CPO, CFO-agent) per department. (core)
 tools: Read, Write, Edit, Bash, Agent, TodoWrite
 model: opus
 ---

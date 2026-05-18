@@ -148,38 +148,23 @@ export function canSignClass(scope: Scope, classLabel: string): boolean {
 }
 
 /**
- * Role-shaped nav items. Returns the visible primary nav for the active
- * identity. Common base: Today / Decisions / Projects / Ask. Admin adds
- * Operator. Specialists add their agent profile link.
+ * Primary nav — six slots, identical for every role. Per-role differences
+ * (operator gear icon, pod profile shortcuts) are handled in the chrome, not
+ * by mutating the primary nav list.
  */
 export type NavItem = {
   href: string;
   label: string;
-  iconKey: "today" | "decisions" | "projects" | "ask" | "operator" | "agent" | "pod" | "launches";
+  iconKey: "today" | "decisions" | "clients" | "ask" | "agent" | "launches";
 };
 
-export function navItemsFor(
-  role: Role,
-  agentSlug: string | undefined,
-): NavItem[] {
-  const base: NavItem[] = [
+export function navItemsFor(): NavItem[] {
+  return [
     { href: "/cco", label: "Today", iconKey: "today" },
-    { href: "/clients/uae-developments", label: "Workspace", iconKey: "projects" },
-    { href: "/approvals", label: "Decisions", iconKey: "decisions" },
     { href: "/launches", label: "Launches", iconKey: "launches" },
-    { href: "/chat", label: "Ask", iconKey: "ask" },
-    { href: "/agents", label: "Team", iconKey: "agent" },
+    { href: "/clients", label: "Clients", iconKey: "clients" },
+    { href: "/approvals", label: "Decisions", iconKey: "decisions" },
+    { href: "/agents", label: "Agents", iconKey: "agent" },
+    { href: "/chat", label: "Chat", iconKey: "ask" },
   ];
-  if (role === "admin") {
-    return [...base, { href: "/operator", label: "Operator", iconKey: "operator" }];
-  }
-  if ((role === "manager" || role === "specialist") && agentSlug) {
-    const pod = podForAgent(agentSlug);
-    const podLabel = pod && pod.id !== "cco-direct" ? `${pod.label} pod` : "My agent";
-    return [
-      ...base,
-      { href: `/agents/${agentSlug}`, label: podLabel, iconKey: role === "manager" ? "pod" : "agent" },
-    ];
-  }
-  return base;
 }

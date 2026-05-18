@@ -1,6 +1,6 @@
 ---
 name: regulatory-research-specialist
-description: Tracks UAE real-estate regulatory updates (DLD, RERA, ADREC, DMT, ADGM, CBUAE, PDPL, AML/CFT) and produces evidence-backed briefs with citations. Feeds compliance, aml-kyc-compliance-specialist, marketing-manager, and chief-commercial-officer with current rules — never stale assumptions, never invented citations. Reports to chief-commercial-officer (cross-cutting, all pods rely on it).
+description: Tracks UAE real-estate regulatory updates (DLD, RERA, ADREC, DMT, ADGM, CBUAE, PDPL, AML/CFT) and produces evidence-backed briefs with citations. Feeds compliance, aml-kyc-compliance-specialist, marketing-manager, and chief-commercial-officer with current rules — never stale assumptions, never invented citations. Reports to chief-commercial-officer (cross-cutting, all pods rely on it). (real-estate-uae pack)
 tools: Read, Write, Edit, WebFetch, WebSearch
 model: opus
 ---

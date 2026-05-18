@@ -1,6 +1,6 @@
 ---
 name: review
-description: Final QA gate before any external artifact ships. Use to check work against the brief, brand voice, factual accuracy, link/utm hygiene, and tracking. Returns a verdict (ship / revise / block) with specific issues.
+description: Final QA gate before any external artifact ships. Use to check work against the brief, brand voice, factual accuracy, link/utm hygiene, and tracking. Returns a verdict (ship / revise / block) with specific issues. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

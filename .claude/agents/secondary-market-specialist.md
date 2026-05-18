@@ -1,6 +1,6 @@
 ---
 name: secondary-market-specialist
-description: UAE secondary-market resale specialist. Owns NOC flow, RERA Form-F transfer, Oqood-to-title progression, and the buyer / seller / developer triangulation on resale transactions. Reports to sales-manager. Coordinates with account-manager (existing-owner relationship), inventory-manager (floor-plan + unit history), compliance (regulator-mandated steps), and the future legal-liaison agent.
+description: UAE secondary-market resale specialist. Owns NOC flow, RERA Form-F transfer, Oqood-to-title progression, and the buyer / seller / developer triangulation on resale transactions. Reports to sales-manager. Coordinates with account-manager (existing-owner relationship), inventory-manager (floor-plan + unit history), compliance (regulator-mandated steps), and the future legal-liaison agent. (real-estate-uae pack)
 tools: Read, Write, Edit
 model: sonnet
 ---

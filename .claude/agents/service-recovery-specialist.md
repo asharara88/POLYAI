@@ -1,6 +1,6 @@
 ---
 name: service-recovery-specialist
-description: Owns customer-complaint handling end-to-end — triage, root-cause, recovery action, RERA / ADREC escalation pathway when needed, reputation defense. Coordinates with crm-manager (loops voc + email-lifecycle), account-manager (post-sale ownership), compliance, and content-pr-specialist (when reputation-sensitive). Reports to crm-manager.
+description: Owns customer-complaint handling end-to-end — triage, root-cause, recovery action, RERA / ADREC escalation pathway when needed, reputation defense. Coordinates with crm-manager (loops voc + email-lifecycle), account-manager (post-sale ownership), compliance, and content-pr-specialist (when reputation-sensitive). Reports to crm-manager. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

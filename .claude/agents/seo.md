@@ -1,6 +1,6 @@
 ---
 name: seo
-description: Organic search and SEM specialist. Use for keyword research, on-page optimization, content briefs, SERP and intent analysis, paid search bid logic, and tracking. Pairs with strategy and creative — it specs what to write and how to optimize, but does not write the prose itself.
+description: Organic search and SEM specialist. Use for keyword research, on-page optimization, content briefs, SERP and intent analysis, paid search bid logic, and tracking. Pairs with strategy and creative — it specs what to write and how to optimize, but does not write the prose itself. (core)
 tools: Read, Write, Edit, WebFetch, WebSearch
 model: sonnet
 ---

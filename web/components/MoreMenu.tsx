@@ -7,7 +7,7 @@ import { useAdvancedMode } from "@/lib/advanced-mode";
 
 const advancedItems = [
   { href: "/search", label: "Search", icon: Search },
-  { href: "/verticals", label: "Pack scope", icon: Layers },
+  { href: "/about/uae-real-estate", label: "About the pack", icon: Layers },
   { href: "/schemas", label: "Schemas", icon: FileCode },
 ];
 

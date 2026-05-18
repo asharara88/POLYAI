@@ -1,6 +1,6 @@
 ---
 name: localization
-description: Multi-language and multi-region adaptation specialist. Use when an artifact will appear in markets outside the default. Adapts copy and visuals for language, cultural context, regulatory differences, and formatting (RTL, currency, date formats). Wraps any output before publication in non-default markets.
+description: Multi-language and multi-region adaptation specialist. Use when an artifact will appear in markets outside the default. Adapts copy and visuals for language, cultural context, regulatory differences, and formatting (RTL, currency, date formats). Wraps any output before publication in non-default markets. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---

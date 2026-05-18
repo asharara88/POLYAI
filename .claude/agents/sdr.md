@@ -1,6 +1,6 @@
 ---
 name: sdr
-description: Outbound prospecting and cold-sequencing specialist. Use to build target account lists from the ICP, enrich contacts, draft cold email and LinkedIn sequences, and book meetings. Owns top-of-funnel outbound volume.
+description: Outbound prospecting and cold-sequencing specialist. Use to build target account lists from the ICP, enrich contacts, draft cold email and LinkedIn sequences, and book meetings. Owns top-of-funnel outbound volume. (core)
 tools: Read, Write, Edit, WebFetch, WebSearch
 model: sonnet
 ---

@@ -1,6 +1,6 @@
 ---
 name: client-onboarding
-description: New-client intake and workspace setup. Use when a new client engagement begins — takes a brief from the human user, picks the right vertical, scaffolds clients/<slug>/, and populates client-profile, ICP, and brand-voice from the brief plus vertical defaults. Hands back to the chief-commercial-officer when the workspace is ready.
+description: New-client intake and workspace setup. Use when a new client engagement begins — takes a brief from the human user, picks the right vertical, scaffolds clients/<slug>/, and populates client-profile, ICP, and brand-voice from the brief plus vertical defaults. Hands back to the chief-commercial-officer when the workspace is ready. (core)
 tools: Read, Write, Edit, Bash
 model: sonnet
 ---

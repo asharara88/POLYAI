@@ -1,6 +1,6 @@
 ---
 name: brand-design
-description: Visual design and brand-consistency specialist. Use to brief visual assets (images, video, decks, ad creatives), enforce visual brand standards, and review visual work for on-brand-ness. Pairs with creative — copy lives there, visuals live here.
+description: Visual design and brand-consistency specialist. Use to brief visual assets (images, video, decks, ad creatives), enforce visual brand standards, and review visual work for on-brand-ness. Pairs with creative — copy lives there, visuals live here. (core)
 tools: Read, Write, Edit
 model: sonnet
 ---
