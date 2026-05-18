@@ -53,7 +53,7 @@ Daily at 06:00 client-local time (cron / scheduler) — or on-demand when the CC
 
 - Strategic interpretation — CCO does that on read
 - Deep-dive on any one item — CCO chat presets ("Brief me on [item]") handle drill-down
-- Long-form analysis — `runbooks/quarterly-exec-brief.md` is for that cadence
+- Long-form analysis — `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` is for that cadence
 - Crisis runbooks — those have their own owner; brief surfaces crisis-state, not crisis-resolution
 
 ## KPIs
@@ -73,7 +73,7 @@ Daily at 06:00 client-local time (cron / scheduler) — or on-demand when the CC
 
 ## Related runbooks
 
-- `runbooks/horizon-scan-daily.md` — feeds this runbook
-- `runbooks/risk-register-update.md` — feeds this runbook
-- `runbooks/quarterly-exec-brief.md` — quarterly deeper-cycle counterpart
+- `verticals/real-estate-uae/runbooks/horizon-scan-daily.md` — feeds this runbook
+- `verticals/real-estate-uae/runbooks/risk-register-update.md` — feeds this runbook
+- `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` — quarterly deeper-cycle counterpart
 - Any incident-runbook (e.g., `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md`) — when a triggering event surfaces, the brief flags it; that runbook owns the resolution

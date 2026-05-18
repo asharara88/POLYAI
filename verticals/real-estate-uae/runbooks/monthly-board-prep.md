@@ -1,6 +1,6 @@
 # Runbook: Monthly board prep
 
-> Scenario: Monthly cadence between full quarterly exec briefs. The board / CEO / CFO need a lighter-touch read on commercial state, material events, and decision-asks. Distinct from `runbooks/quarterly-exec-brief.md` (which is the deeper quarterly cycle) and from `runbooks/cco-daily-brief.md` (which is the daily 90-second read).
+> Scenario: Monthly cadence between full quarterly exec briefs. The board / CEO / CFO need a lighter-touch read on commercial state, material events, and decision-asks. Distinct from `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` (which is the deeper quarterly cycle) and from `verticals/real-estate-uae/runbooks/cco-daily-brief.md` (which is the daily 90-second read).
 
 ## Trigger
 
@@ -92,10 +92,10 @@ Sources cited; calculation methodology where novel.
 
 ## Out-of-scope
 
-- Annual planning — `runbooks/annual-commercial-plan.md`
-- Quarterly deeper cycle — `runbooks/quarterly-exec-brief.md`
-- Daily situational awareness — `runbooks/cco-daily-brief.md`
-- Strategic-bet evaluation — `runbooks/strategic-bet-evaluation.md`
+- Annual planning — `verticals/real-estate-uae/runbooks/annual-commercial-plan.md`
+- Quarterly deeper cycle — `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md`
+- Daily situational awareness — `verticals/real-estate-uae/runbooks/cco-daily-brief.md`
+- Strategic-bet evaluation — `verticals/real-estate-uae/runbooks/strategic-bet-evaluation.md`
 - Crisis response — relevant crisis runbook
 
 ## KPIs
@@ -110,11 +110,11 @@ Sources cited; calculation methodology where novel.
 - Brief archived at `clients/<client>/exec-briefs/<YYYY-MM>/board-brief.md`
 - Decision log + action items routed
 - Lessons captured for next month's brief
-- Material learnings feed `runbooks/monthly-board-prep.md` via `knowledge`
+- Material learnings feed `verticals/real-estate-uae/runbooks/monthly-board-prep.md` via `knowledge`
 
 ## Related runbooks
 
-- `runbooks/quarterly-exec-brief.md` — quarterly deeper cycle
-- `runbooks/annual-commercial-plan.md` — annual cycle
-- `runbooks/cco-daily-brief.md` — daily cadence
+- `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` — quarterly deeper cycle
+- `verticals/real-estate-uae/runbooks/annual-commercial-plan.md` — annual cycle
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — daily cadence
 - Any operational-crisis runbook (if material event occurred during month)

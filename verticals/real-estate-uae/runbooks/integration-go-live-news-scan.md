@@ -57,7 +57,7 @@ Per-engagement greenlight to activate horizon-scan ingestion at production caden
 4. **VVIP discretion** — items touching VVIP counterparties route via `wealth-vvip-manager` for discretion check before surfacing
 5. **No-tipping-off** on sanctions-related items
 6. **PDPL** — counterparty identities in scan items per retention rules
-7. **Same-day-effective regulator action** triggers immediate escalation off-cadence per `runbooks/horizon-scan-daily.md`
+7. **Same-day-effective regulator action** triggers immediate escalation off-cadence per `verticals/real-estate-uae/runbooks/horizon-scan-daily.md`
 
 ## Rollback path
 
@@ -84,8 +84,8 @@ Phase 3 (continuous) → if specific source becomes unreliable or paid-sub lapse
 
 ## Related runbooks
 
-- `runbooks/horizon-scan-daily.md` — operational choreography this integration enables
-- `runbooks/cco-daily-brief.md` — downstream consumer
+- `verticals/real-estate-uae/runbooks/horizon-scan-daily.md` — operational choreography this integration enables
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — downstream consumer
 - `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` — sanctions-class scan items
 - `verticals/real-estate-uae/runbooks/regulator-inquiry-non-complaint.md` — regulator-class scan items
 - `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` + `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` + `verticals/real-estate-uae/skills/diaspora-corridor-marketing.md`

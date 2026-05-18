@@ -77,6 +77,6 @@ agent → emits decision-memo with status=draft
 
 - `schemas/integration-action.md` — when an integration action requires CCO approval, it carries `decision_memo_ref` pointing to the memo that authorized it
 - `schemas/handoff-envelope.md` — every cross-pod handoff that requires CCO sign-off references a decision memo
-- `runbooks/risk-register-update.md` — risk-register-curator emits decision memos for closure proposals
-- `runbooks/quarterly-exec-brief.md` — board-prep section sign-off uses a decision memo
-- `runbooks/cco-daily-brief.md` — the brief surfaces today's pending memos
+- `verticals/real-estate-uae/runbooks/risk-register-update.md` — risk-register-curator emits decision memos for closure proposals
+- `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` — board-prep section sign-off uses a decision memo
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — the brief surfaces today's pending memos

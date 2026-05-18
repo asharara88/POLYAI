@@ -90,5 +90,5 @@
 - Channel-mix shift toward wealth (+1pp annual) reflects Tier-1 wealth-channel build
 - VVIP channel-mix down (-1pp annual) reflects channel-classification refinement, not relationship attrition
 - KPI thresholds default to `.claude/skills/cco-kpi-framework.md` defaults; per-engagement overrides per quarter where needed (none currently)
-- Material variance to target (> 10%) triggers `runbooks/quarterly-exec-brief.md` decision-ask routing per `decision-router`
-- Plan year is calendar 2026; per `runbooks/annual-commercial-plan.md` Q4-2025 cycle
+- Material variance to target (> 10%) triggers `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` decision-ask routing per `decision-router`
+- Plan year is calendar 2026; per `verticals/real-estate-uae/runbooks/annual-commercial-plan.md` Q4-2025 cycle

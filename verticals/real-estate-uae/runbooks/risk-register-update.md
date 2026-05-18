@@ -100,12 +100,12 @@ Any of:
 ## Close-out + learning
 
 - Closed entries persist in the register's "Closed (recent)" section for 90 days; archive thereafter per retention policy
-- Quarterly trend feeds `runbooks/quarterly-exec-brief.md` compliance + risk section
+- Quarterly trend feeds `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` compliance + risk section
 - Pattern alerts (3+ same-class risks in a quarter) → `chief-commercial-officer` for systemic-review
 
 ## Related runbooks
 
-- `runbooks/cco-daily-brief.md` — consumes this runbook's output
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — consumes this runbook's output
 - `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` — counterparty-class subset
 - `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` — regulatory + reputational subset
-- `runbooks/quarterly-exec-brief.md` — quarterly trend reporting
+- `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` — quarterly trend reporting

@@ -15,7 +15,7 @@ Calendar — typically Q4 (October-December) of the year preceding plan year. So
 - Trailing 12-month performance data current per `forecasting` rollup
 - Channel-attribution data per `.claude/skills/marketing-attribution.md` framework
 - Budget-actuals reconciled per `marketing-financial-manager` quarterly close
-- Risk-register comprehensively reviewed per `runbooks/risk-register-update.md`
+- Risk-register comprehensively reviewed per `verticals/real-estate-uae/runbooks/risk-register-update.md`
 - Regulatory-horizon scan refreshed per `regulatory-research-specialist`
 - Per-client `kpi-targets.md` accessible from prior year
 
@@ -50,7 +50,7 @@ Calendar — typically Q4 (October-December) of the year preceding plan year. So
 
 | Step | Who | What | Emits | SLA |
 |---|---|---|---|---|
-| 16 | `marketing-manager` (orchestrates) | Board-deck assembly per `runbooks/quarterly-exec-brief.md` 8-section template, expanded for annual | Board-deck draft | T-10 |
+| 16 | `marketing-manager` (orchestrates) | Board-deck assembly per `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` 8-section template, expanded for annual | Board-deck draft | T-10 |
 | 17 | `compliance` + `regulatory-research-specialist` | Forbidden-phrasing block + regulatory-citation currency check | Compliance verdict | T-7 |
 | 18 | `data-quality-steward` | Data-quality audit on every numeric in the deck | Audit log | T-7 |
 | 19 | `chief-commercial-officer` + executive presenter | Final review + revision cycle | Final deck | T-3 |
@@ -65,7 +65,7 @@ Calendar — typically Q4 (October-December) of the year preceding plan year. So
 | 23 | Pod managers | Per-pod sub-plans: marketing-manager (campaigns), sales-manager (RM-team + pipeline), crm-manager (lifecycle), wealth-vvip-manager (channel-development) | Per-pod plans | T+7 to T+14 |
 | 24 | `marketing-financial-manager` | Budget activated per channel + per project; PO + accrual workflow set | Budget activation | T+7 to T+14 |
 | 25 | `chief-commercial-officer` | Per-engagement `kpi-targets.md` finalized + signed for plan year | kpi-targets.md updated | T+14 |
-| 26 | All commercial pods | Plan-year operational; quarterly review cadence per `runbooks/quarterly-exec-brief.md` begins | Operational | T+14 onward |
+| 26 | All commercial pods | Plan-year operational; quarterly review cadence per `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` begins | Operational | T+14 onward |
 
 ## Hand-offs
 
@@ -92,10 +92,10 @@ Calendar — typically Q4 (October-December) of the year preceding plan year. So
 
 ## Out-of-scope
 
-- Quarterly cadence reviews — `runbooks/quarterly-exec-brief.md`
-- Monthly board prep — `runbooks/monthly-board-prep.md`
+- Quarterly cadence reviews — `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md`
+- Monthly board prep — `verticals/real-estate-uae/runbooks/monthly-board-prep.md`
 - Per-launch campaign planning — `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md`
-- Strategic-bet evaluation (M&A, new-corridor, new-asset-class) — `runbooks/strategic-bet-evaluation.md`
+- Strategic-bet evaluation (M&A, new-corridor, new-asset-class) — `verticals/real-estate-uae/runbooks/strategic-bet-evaluation.md`
 - Per-project investment-committee approvals — separate process
 
 ## KPIs
@@ -111,13 +111,13 @@ Calendar — typically Q4 (October-December) of the year preceding plan year. So
 ## Close-out + learning
 
 - Plan archived at `clients/<client>/annual-plans/<year>/plan-final.md`
-- Quarterly progress vs. plan tracked per `runbooks/quarterly-exec-brief.md`
+- Quarterly progress vs. plan tracked per `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md`
 - Plan-year closure: forecast-accuracy retrospective informs next-year framework
 - Material learnings feed `verticals/real-estate-uae/sub-verticals/developer/playbook.md` via `knowledge`
 
 ## Related runbooks
 
-- `runbooks/quarterly-exec-brief.md` — quarterly cadence within the plan year
-- `runbooks/monthly-board-prep.md` — monthly cadence within the plan year
-- `runbooks/strategic-bet-evaluation.md` — material strategic-bet evaluations within the plan year
-- `runbooks/cco-daily-brief.md` — surfaces plan-progress in daily brief
+- `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` — quarterly cadence within the plan year
+- `verticals/real-estate-uae/runbooks/monthly-board-prep.md` — monthly cadence within the plan year
+- `verticals/real-estate-uae/runbooks/strategic-bet-evaluation.md` — material strategic-bet evaluations within the plan year
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — surfaces plan-progress in daily brief

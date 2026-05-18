@@ -32,17 +32,16 @@ Worked-example workspace at `clients/_examples/uae-developments/` — a fictiona
 ## How it's structured
 
 ```
-.claude/agents/       30+ agent definitions (the team)
+.claude/agents/       51 agent definitions (the team)
 .claude/skills/       3 cross-industry skills (KPI framework, CRM data model, attribution)
-runbooks/             11 core runbooks (any pack): daily cadence, board prep, integration go-lives, strategic-bet eval
 verticals/
   real-estate-uae/    the shipping pack folder
     README.md
     pack-manifest.md
     playbook.md
     monitoring.yml
-    skills/           pack skills (UAE regulatory, AML/KYC, broker ops, off-plan, ...)
-    runbooks/         pack runbooks (RERA exposure, Trakheesi, NOC resale, broker collapse, ...)
+    skills/           12 pack skills (UAE regulatory, AML/KYC, broker ops, off-plan, ...)
+    runbooks/         25 pack runbooks (CCO daily cadence, board prep, regulatory crisis, ...)
     sub-verticals/
       developer/
         playbook.md

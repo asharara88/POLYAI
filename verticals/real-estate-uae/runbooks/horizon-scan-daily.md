@@ -75,7 +75,7 @@ Daily at 06:00 client-local time (scheduler) — or on-demand when a known event
 
 ## Related runbooks
 
-- `runbooks/cco-daily-brief.md` — consumes this runbook's output
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — consumes this runbook's output
 - `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` — when sanctions delta hits an active counterparty
 - `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` — when regulator inquiry surfaces
 - `verticals/real-estate-uae/runbooks/press-sensitive-uhnw-transaction.md` — when press item touches VVIP

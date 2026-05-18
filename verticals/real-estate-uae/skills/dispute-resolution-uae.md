@@ -157,7 +157,7 @@ For every dispute, the first move is internal resolution, not pathway escalation
 ## Reporting + learning
 
 - Every dispute case (internal or pathway-escalated) generates a case file in `clients/<client>/service-recovery/cases/<case-id>/` (routine) or `clients/<client>/legal/cases/<case-id>/` (legal-mediated)
-- Quarterly aggregated trend reporting via `runbooks/quarterly-exec-brief.md`
+- Quarterly aggregated trend reporting via `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md`
 - Pattern alerts (3+ same-cause cases) feed `marketing-manager` (positioning) or `inventory-manager` (handover-quality) for prevention
 - Material learnings feed `knowledge` for `verticals/real-estate-uae/sub-verticals/developer/playbook.md` update
 

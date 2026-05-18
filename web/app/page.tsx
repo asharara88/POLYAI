@@ -42,7 +42,7 @@ function Hero() {
         for <span className="text-accent">UAE real-estate developers</span>.
       </h1>
       <p className="text-lg lg:text-xl text-ink-600 dark:text-ink-300 max-w-3xl leading-relaxed">
-        The morning brief, the decisions queue, the launch tracker, the broker / wealth / VVIP channel surfaces — run by a multi-agent commercial team that knows DLD, RERA, ADREC, off-plan launch mechanics, and the UAE buyer corridors. One coherent dashboard for the Chief Commercial Officer and their commercial pods.
+        The morning brief, the decisions queue, the launch tracker, and the broker / wealth / VVIP channel surfaces — run by a 51-agent commercial team that knows DLD, RERA, ADREC, off-plan launch mechanics, and the UAE buyer corridors. One coherent dashboard for the Chief Commercial Officer and their commercial pods.
       </p>
       <div className="flex flex-wrap items-center gap-3 pt-2">
         <Link

@@ -54,7 +54,7 @@ Any of:
 | `broker-enablement` → `aml-kyc-compliance-specialist` | Sanctions/UBO concern surface | Per `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` immediate |
 | `chief-commercial-officer` → CCO decision-ask | Within 48h of trigger | Non-negotiable |
 | Per channel manager → counterparty briefings | Same day as decision | Discretion respected |
-| `broker-enablement` → `runbooks/broker-channel-new-firm-signing.md` | Recovery activation | When approved |
+| `broker-enablement` → `verticals/real-estate-uae/runbooks/broker-channel-new-firm-signing.md` | Recovery activation | When approved |
 
 ## Compliance gates
 
@@ -93,7 +93,7 @@ Any of:
 
 ## Related runbooks
 
-- `runbooks/risk-register-update.md` — counterparty-risk handling
+- `verticals/real-estate-uae/runbooks/risk-register-update.md` — counterparty-risk handling
 - `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` — if AML adjacency surfaces
 - `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` — if buyer complaints escalate
 - `verticals/real-estate-uae/runbooks/press-sensitive-uhnw-transaction.md` — VVIP-counterparty-affected overlay

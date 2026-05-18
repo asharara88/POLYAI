@@ -16,7 +16,7 @@ CCO opts in (personal consent). May happen at engagement start or later. Re-cons
 - Scope-limit defined: read-only; calendar of named work email only; redact private events; redact calendar entries marked "Private"
 - Token storage in Vercel env (encrypted; per-CCO; rotates per OAuth refresh)
 - Per-client config at `clients/<slug>/integrations/calendar/config.md` (CCO email, calendar IDs in scope, default redaction rules)
-- Auto-revoke trigger defined: CCO-departure (per `runbooks/key-rm-departure.md` Phase-1 step 3); credential rotation; CCO opt-out at any time
+- Auto-revoke trigger defined: CCO-departure (per `verticals/real-estate-uae/runbooks/key-rm-departure.md` Phase-1 step 3); credential rotation; CCO opt-out at any time
 
 ## Sequence
 
@@ -52,7 +52,7 @@ CCO opts in (personal consent). May happen at engagement start or later. Re-cons
 2. **Read-only** — never write to CCO calendar
 3. **Scope-limit** — only the named work email; never personal-life calendars
 4. **Redaction** — events marked "Private" excluded; counterparty PII in event titles redacted unless directly engagement-relevant
-5. **Auto-revoke on CCO-departure** — per `runbooks/key-rm-departure.md` Phase 1 step 3 trigger
+5. **Auto-revoke on CCO-departure** — per `verticals/real-estate-uae/runbooks/key-rm-departure.md` Phase 1 step 3 trigger
 6. **PDPL** — calendar data per retention rules; not shared beyond named team
 7. **Cross-jurisdiction** — if CCO is in a GDPR jurisdiction, additional posture per `legal-liaison`
 
@@ -79,9 +79,9 @@ Phase 3 (continuous) → token corruption / OAuth failure → daily job degrades
 
 ## Related runbooks
 
-- `runbooks/cco-daily-brief.md` — primary consumer
-- `runbooks/key-rm-departure.md` — auto-revoke trigger if CCO departs
-- `runbooks/risk-register-update.md` — integration-runtime risk if applicable
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — primary consumer
+- `verticals/real-estate-uae/runbooks/key-rm-departure.md` — auto-revoke trigger if CCO departs
+- `verticals/real-estate-uae/runbooks/risk-register-update.md` — integration-runtime risk if applicable
 
 ## Sign-off
 

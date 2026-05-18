@@ -71,7 +71,7 @@ Any of:
 | 19 | `regulatory-research-specialist` | Confirm renewal-procedure currency (DLD/RERA may have updated the renewal flow) | Currency memo | within 2 business days |
 | 20 | `agency-liaison` + regulatory-operations team | Submit renewal; track issuance same as Phase 2 | Renewal status log | per issuance window |
 | 21 | `compliance` + `data-quality-steward` | On renewed permit: update every in-flight artifact's permit reference; audit pass before old permit expires | Updated artifacts + audit verdict | before old permit expiry |
-| 22 (if renewal late or declined) | `agency-liaison` + `chief-commercial-officer` | Decision-ask: pause campaign / scope-narrow / pull-down. Per `runbooks/risk-register-update.md` threshold trip | Decision memo via `decision-router` | immediate |
+| 22 (if renewal late or declined) | `agency-liaison` + `chief-commercial-officer` | Decision-ask: pause campaign / scope-narrow / pull-down. Per `verticals/real-estate-uae/runbooks/risk-register-update.md` threshold trip | Decision memo via `decision-router` | immediate |
 
 ### Phase 6 — Pull-down (when required)
 
@@ -123,7 +123,7 @@ Any of:
 - **Forbidden-phrasing incidents in permit-bearing artifacts** (target: 0 — non-negotiable)
 - **Permit-renewal initiation latency** (target: at or before `permit_renewal_buffer_days` 100% of cycles)
 - **Mid-flight pull-down incidents** (target: 0; if any, full postmortem)
-- **Same-day-effective regulator-circular response** (target: ≤ 24 business hours per `runbooks/horizon-scan-daily.md` escalation)
+- **Same-day-effective regulator-circular response** (target: ≤ 24 business hours per `verticals/real-estate-uae/runbooks/horizon-scan-daily.md` escalation)
 
 ## Close-out + learning
 
@@ -136,10 +136,10 @@ Any of:
 
 ## Related runbooks
 
-- `runbooks/cco-daily-brief.md` — surfaces Trakheesi cycle status in daily brief
-- `runbooks/horizon-scan-daily.md` — `horizon-scanner` flags DLD/RERA circular changes that affect Trakheesi
-- `runbooks/risk-register-update.md` — permit-cycle risk handling
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — surfaces Trakheesi cycle status in daily brief
+- `verticals/real-estate-uae/runbooks/horizon-scan-daily.md` — `horizon-scanner` flags DLD/RERA circular changes that affect Trakheesi
+- `verticals/real-estate-uae/runbooks/risk-register-update.md` — permit-cycle risk handling
 - `verticals/real-estate-uae/runbooks/regulator-inquiry-non-complaint.md` — when DLD opens an inquiry adjacent to a permit
 - `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` — when an in-market artifact triggers a buyer complaint that surfaces RERA dispute
-- `runbooks/integration-go-live-news-scan.md` — DLD press feed feeds the scan that catches circular changes
+- `verticals/real-estate-uae/runbooks/integration-go-live-news-scan.md` — DLD press feed feeds the scan that catches circular changes
 - `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md` — regulatory-milestone overlay (T-90 to T+30) integrates this runbook into the launch cadence

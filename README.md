@@ -80,16 +80,15 @@ Flow agents read from and (with human approval) write to the existing stack — 
 ## Repo layout
 
 ```
-.claude/agents/             # one .md per agent (Claude Code subagent format)
-.claude/skills/             # core skills (KPI framework, CRM data model, attribution) — any pack
-runbooks/                   # core runbooks (CCO daily, board prep, integration go-lives, strategic bet eval) — any pack
+.claude/agents/             # 51 agent definitions (Claude Code subagent format)
+.claude/skills/             # 3 cross-industry skills (KPI framework, CRM data model, attribution)
 verticals/
   real-estate-uae/          # the shipping pack folder
     README.md               # pack overview
     pack-manifest.md        # canonical activation list
     playbook.md             # pack-level patterns
-    skills/                 # pack-specific skills
-    runbooks/               # pack-specific runbooks (all 25)
+    skills/                 # 12 pack-specific skills
+    runbooks/               # 25 pack-specific runbooks
     sub-verticals/
       developer/            # sub-vertical playbook + channel-development plays
 clients/

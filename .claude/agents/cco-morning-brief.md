@@ -29,7 +29,7 @@ Produce one daily artifact, by 07:00 client-local time, that compresses last-nig
 - Decision-routing — `decision-router` does that; brief surfaces the queue
 - Risk-register curation — `risk-register-curator` does that; brief surfaces hot items
 - Horizon scanning — `horizon-scanner` does that; brief surfaces flags
-- Long-form analysis — `runbooks/quarterly-exec-brief.md` does that; brief is daily, not quarterly
+- Long-form analysis — `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` does that; brief is daily, not quarterly
 
 ## Inputs you read
 

@@ -86,8 +86,8 @@ Phase 3 (continuous) → if material divergence, integrity issue, or trust-loss 
 
 ## Related runbooks
 
-- `runbooks/cco-daily-brief.md` — surfaces integration health in daily brief
-- `runbooks/risk-register-update.md` — integration-runtime risks tracked
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — surfaces integration health in daily brief
+- `verticals/real-estate-uae/runbooks/risk-register-update.md` — integration-runtime risks tracked
 - `integrations/salesforce/spec.md` + `integrations/salesforce/schema-mapping.md` + per-action specs
 
 ## Sign-off

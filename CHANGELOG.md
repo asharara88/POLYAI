@@ -147,7 +147,7 @@ The highest-leverage gap from `GAPS.md`. For an developer-class engagement, this
   - `verticals/real-estate-uae/runbooks/inbound-hnw-private-bank.md` — wealth-channel-mediated principal flow
   - `verticals/real-estate-uae/runbooks/broker-onboarding-to-first-deal.md` — 90-day onboarding-to-activation
   - `verticals/real-estate-uae/runbooks/handover-snagging.md` — T-30 to T+90 owner experience
-  - `runbooks/quarterly-exec-brief.md` — 3-week assembly cycle, 8-section template
+  - `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` — 3-week assembly cycle, 8-section template
   - `verticals/real-estate-uae/runbooks/press-sensitive-uhnw-transaction.md` — discretion-overlay across the entire transaction lifecycle
 - **Minimum-edit extensions** (preserving original prompt):
   - `account-manager.md` — appended UAE-developer note (handover, owner-community, schools, resale, referral, VVIP)

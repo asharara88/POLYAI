@@ -31,7 +31,7 @@ Any of:
 | 1 | `inventory-manager` + project-delivery (human) | Confirm material delay; quantify weeks of slip; identify root cause | Internal delay assessment | 1 business day |
 | 2 | `marketing-financial-manager` | Model commercial impact: revenue-recognition deferral, escrow-coverage adequacy, cash-flow shape; coordinate with Trustee Bank if escrow-impact material | Commercial impact memo | 2 business days |
 | 3 | `legal-liaison` | Buyer-notification obligation analysis: does the slip trigger material-disclosure under applicable law? if yes, what is the required notification window + content? | Legal-liaison memo | 2 business days |
-| 4 | `risk-register-curator` | Update risk-register entry to red status; notify CCO immediately per `runbooks/risk-register-update.md` | risk-register update | 1 business hour from CCO awareness |
+| 4 | `risk-register-curator` | Update risk-register entry to red status; notify CCO immediately per `verticals/real-estate-uae/runbooks/risk-register-update.md` | risk-register update | 1 business hour from CCO awareness |
 | 5 | `chief-commercial-officer` | Convenes executive review: project-delivery + CMO + CFO + CEO + legal-liaison + Head of Sales | Executive review minutes | 3 business days from delay confirmation |
 | 6 | `chief-commercial-officer` (decision-ask) | Approve buyer-notification approach + recovery posture | Decision memo via `decision-router` | per CCO calendar |
 | 7 (if buyer-notification required) | `legal-liaison` + `account-manager` + `email-lifecycle` | Drafted owner-notification per legal-required template + voice; cross-loop `compliance` for Template 7 forward-looking-statement framing per `verticals/real-estate-uae/skills/regulatory-disclosure-language.md` | Owner-notification artifact | 2-5 business days post-decision |
@@ -91,8 +91,8 @@ Any of:
 
 ## Related runbooks
 
-- `runbooks/risk-register-update.md` — risk-register state management
+- `verticals/real-estate-uae/runbooks/risk-register-update.md` — risk-register state management
 - `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` — when owner-complaint escalates
 - `verticals/real-estate-uae/runbooks/handover-snagging.md` — when slip cascades into snagging-window
 - `verticals/real-estate-uae/runbooks/press-sensitive-uhnw-transaction.md` — VVIP-touching communications overlay
-- `runbooks/cco-daily-brief.md` — surfaces in daily brief throughout
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — surfaces in daily brief throughout

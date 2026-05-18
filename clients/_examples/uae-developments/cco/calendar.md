@@ -29,15 +29,15 @@
 | Daily 09:30 | Sales pod stand-up | sales-manager | 15 min; CCO optional |
 | Weekly Mon 10:30 | Pod-managers council | chief-commercial-officer | 60 min; all 4 pod managers |
 | Weekly Fri 16:00 | Risk-register full review | risk-register-curator | 30 min |
-| Monthly 1st-Wed | Monthly board prep | chief-commercial-officer | Per `runbooks/monthly-board-prep.md` (P3 — pending) |
-| Quarterly T-21 to T+14 | Quarterly exec brief cycle | marketing-manager (orchestrates) | Per `runbooks/quarterly-exec-brief.md` |
+| Monthly 1st-Wed | Monthly board prep | chief-commercial-officer | Per `verticals/real-estate-uae/runbooks/monthly-board-prep.md` (P3 — pending) |
+| Quarterly T-21 to T+14 | Quarterly exec brief cycle | marketing-manager (orchestrates) | Per `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` |
 
 ## Upcoming decision-deadline calendar (next 90 days)
 
 | Deadline | What | Owner | Reference |
 |---|---|---|---|
 | 2026-05-19 | Coastal Reserve Phase 1 creative round 3 sign-off | CMO + Head of Sales | T-45 to permit application |
-| 2026-05-30 | Q2-2026 quarterly exec brief delivery to board | chief-commercial-officer | per `runbooks/quarterly-exec-brief.md` cycle |
+| 2026-05-30 | Q2-2026 quarterly exec brief delivery to board | chief-commercial-officer | per `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` cycle |
 | 2026-06-05 | Trakheesi permit application T-45 | agency-liaison + regulatory-operations team | per `integrations/trakheesi/spec.md` |
 | 2026-06-12 | Q3-2026 KPI targets sign-off | chief-commercial-officer + CFO + CEO | per `clients/uae-developments/cco/kpi-targets.md` |
 | 2026-06-20 | Pre-launch AML/KYC capacity confirmation | aml-kyc-compliance-specialist | per Q3 launch readiness |

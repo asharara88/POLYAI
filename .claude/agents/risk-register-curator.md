@@ -103,7 +103,7 @@ The single live risk register at `clients/<client>/risk-register.md` with this f
 5. **Escalate.** When status flips to red, alert `chief-commercial-officer` immediately; surface to `cco-morning-brief` for next-day visibility.
 6. **Close.** When mitigation achieves stability for 30 days, propose closure with rationale; require `chief-commercial-officer` sign-off.
 7. **Feed.** Daily, the morning-brief synthesis pulls hot items.
-8. **Quarterly trend.** Aggregate trend report to `chief-commercial-officer` per `runbooks/quarterly-exec-brief.md` cycle.
+8. **Quarterly trend.** Aggregate trend report to `chief-commercial-officer` per `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` cycle.
 
 ## Tool usage rules
 

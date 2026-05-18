@@ -97,9 +97,9 @@ maintained_by: chief-commercial-officer + marketing-manager (writes via knowledg
 |---|---|---|
 | **Daily** | `cco-morning-brief` | `cco-morning-brief` agent |
 | **Weekly** | Pod-manager weekly status | each pod-manager |
-| **Monthly** | `marketing-financial-manager` period close + `runbooks/monthly-board-prep.md` (5D) | as named |
-| **Quarterly** | `runbooks/quarterly-exec-brief.md` | `marketing-manager` orchestrates |
-| **Annual** | `runbooks/annual-commercial-plan.md` (5D) | `chief-commercial-officer` |
+| **Monthly** | `marketing-financial-manager` period close + `verticals/real-estate-uae/runbooks/monthly-board-prep.md` (5D) | as named |
+| **Quarterly** | `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` | `marketing-manager` orchestrates |
+| **Annual** | `verticals/real-estate-uae/runbooks/annual-commercial-plan.md` (5D) | `chief-commercial-officer` |
 
 ## Per-client target file
 
@@ -108,7 +108,7 @@ maintained_by: chief-commercial-officer + marketing-manager (writes via knowledg
 - Threshold overrides where the per-client circumstances differ from default
 - Sign-off (CCO + CFO + CEO) date
 
-This file is updated only via the annual + quarterly planning cycles per `runbooks/annual-commercial-plan.md` (5D).
+This file is updated only via the annual + quarterly planning cycles per `verticals/real-estate-uae/runbooks/annual-commercial-plan.md` (5D).
 
 ## Anti-patterns
 
@@ -120,7 +120,7 @@ This file is updated only via the annual + quarterly planning cycles per `runboo
 ## What this skill does NOT cover
 
 - Specific per-client targets — `clients/<client>/cco/kpi-targets.md`
-- Strategic-narrative interpretation — `chief-commercial-officer` + `runbooks/quarterly-exec-brief.md`
+- Strategic-narrative interpretation — `chief-commercial-officer` + `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md`
 - Specific platform measurement (GA4 setup, Meta CAPI) — `martech-ops-specialist`
 - Per-deal commercial calculations — `marketing-financial-manager` + `forecasting`
 - Brand-tracker methodology — separate brand-tracker discipline

@@ -122,8 +122,8 @@ Any of:
 
 ## Related runbooks
 
-- `runbooks/risk-register-update.md` — risk-register state management
-- `runbooks/cco-daily-brief.md` — surfaces transition state in daily brief during transition
-- `runbooks/quarterly-exec-brief.md` — aggregated trend if pattern emerges
+- `verticals/real-estate-uae/runbooks/risk-register-update.md` — risk-register state management
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — surfaces transition state in daily brief during transition
+- `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` — aggregated trend if pattern emerges
 - `verticals/real-estate-uae/runbooks/inbound-hnw-private-bank.md` — in-flight HNW pipeline coordination
 - `verticals/real-estate-uae/sub-verticals/developer/playbooks/wealth-channel-reactivation.md` — if intermediary relationships need refreshing post-departure

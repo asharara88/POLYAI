@@ -7,7 +7,7 @@
 Any of:
 - `chief-commercial-officer` initiates evaluation on an opportunity / commitment surface
 - Inbound proposal from external party (JV partner, brand operator, educational institution, corridor introducer) requires structured assessment
-- Strategic shift identified in `runbooks/annual-commercial-plan.md` cycle requires deeper evaluation before commit
+- Strategic shift identified in `verticals/real-estate-uae/runbooks/annual-commercial-plan.md` cycle requires deeper evaluation before commit
 - Competitive intelligence surfaces a development that warrants strategic response
 
 ## Owner
@@ -113,8 +113,8 @@ Each strand runs in parallel; specialist agents produce per-strand memos.
 ## Out-of-scope
 
 - Per-launch campaign planning — `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md`
-- Annual plan-year setting — `runbooks/annual-commercial-plan.md`
-- Quarterly review — `runbooks/quarterly-exec-brief.md`
+- Annual plan-year setting — `verticals/real-estate-uae/runbooks/annual-commercial-plan.md`
+- Quarterly review — `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md`
 - Operational decisions within an existing strategy — pod-managers
 - Litigation if dispute on terms — `legal-liaison` + external counsel
 
@@ -132,11 +132,11 @@ Each strand runs in parallel; specialist agents produce per-strand memos.
 - Closure memo captures: decision rationale, assumptions, monitoring plan
 - Outcome retrospective at 12 months: did the bet land where the memo projected?
 - Pattern alerts: if 3+ strategic bets miss projections in same direction, framework adjustment review
-- Material learnings feed `runbooks/strategic-bet-evaluation.md` via `knowledge`
+- Material learnings feed `verticals/real-estate-uae/runbooks/strategic-bet-evaluation.md` via `knowledge`
 
 ## Related runbooks
 
-- `runbooks/annual-commercial-plan.md` — strategic bets often surface in annual cycle
-- `runbooks/quarterly-exec-brief.md` — strategic bet status surfaces in quarterly cycle
-- `runbooks/cco-daily-brief.md` — surfaces strategic-bet milestones in daily brief
+- `verticals/real-estate-uae/runbooks/annual-commercial-plan.md` — strategic bets often surface in annual cycle
+- `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` — strategic bet status surfaces in quarterly cycle
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — surfaces strategic-bet milestones in daily brief
 - Any partnership-specific or corridor-specific runbook activated by approval

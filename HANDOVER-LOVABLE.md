@@ -49,7 +49,7 @@ Build a custom design system. Do NOT default to shadcn-ui-stock styling.
 **Components:**
 - Pills/chips: `text-label-xs font-mono uppercase tracking-wider px-1.5 py-0.5 rounded border`. Status pills carry both color tone and a leading dot.
 - Tables: `text-body-sm`, mono numerals via `tabular-nums`, alternating-row striping NO — use single thin row dividers.
-- Code-like inline references: `font-mono text-label-xs bg-ink-100 px-1.5 py-0.5 rounded` — used for agent names (`chief-commercial-officer`), file paths (`runbooks/launch-day.md`), and IDs.
+- Code-like inline references: `font-mono text-label-xs bg-ink-100 px-1.5 py-0.5 rounded` — used for agent names (`chief-commercial-officer`), file paths (`verticals/real-estate-uae/runbooks/launch-day.md`), and IDs.
 
 **Density:** Information-dense. The page should feel like a Linear/Vercel/Plain dashboard, not a marketing landing page. No big hero images. Lots of tabular and chip-based data.
 

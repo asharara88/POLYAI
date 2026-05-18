@@ -94,12 +94,12 @@ Any of:
 - Closure memo captures: regulator outcome, lessons, process adjustments
 - Pattern alerts: 3+ same-class inquiries in 18 months → systemic-review with `chief-commercial-officer`
 - Material learnings feed `regulatory-research-specialist` skill updates via `knowledge`
-- Quarterly aggregated trend reporting to `chief-commercial-officer` per `runbooks/quarterly-exec-brief.md` compliance section
+- Quarterly aggregated trend reporting to `chief-commercial-officer` per `verticals/real-estate-uae/runbooks/quarterly-exec-brief.md` compliance section
 
 ## Related runbooks
 
 - `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` — buyer-complaint-driven counterpart
 - `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` — sanctions / PEP regulator interaction
-- `runbooks/risk-register-update.md` — risk-register state management
-- `runbooks/cco-daily-brief.md` — surfaces inquiry state in daily brief
-- `runbooks/horizon-scan-daily.md` — feeds inquiry-trigger detection
+- `verticals/real-estate-uae/runbooks/risk-register-update.md` — risk-register state management
+- `verticals/real-estate-uae/runbooks/cco-daily-brief.md` — surfaces inquiry state in daily brief
+- `verticals/real-estate-uae/runbooks/horizon-scan-daily.md` — feeds inquiry-trigger detection

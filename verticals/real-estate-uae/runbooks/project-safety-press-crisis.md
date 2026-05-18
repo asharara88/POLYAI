@@ -128,5 +128,5 @@ Any of:
 - `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` — when buyer-complaint dimension emerges
 - `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` — if any sanctions-adjacency surfaces
 - `verticals/real-estate-uae/runbooks/press-sensitive-uhnw-transaction.md` — VVIP-counterparty overlay
-- `runbooks/risk-register-update.md` — risk-register state management
+- `verticals/real-estate-uae/runbooks/risk-register-update.md` — risk-register state management
 - `verticals/real-estate-uae/runbooks/handover-snagging.md` — if incident is in handover-window
