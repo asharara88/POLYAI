@@ -491,17 +491,40 @@ export const getAgent = (name: string): AgentSummary | null => {
 
 export type VerticalSummary = {
   name: string;
+  displayName: string;
   body: string;
+  manifest: string | null;
+  runbooks: string[];
+  skills: string[];
+  subVerticals: string[];
 };
 
 const VERTICALS_DIR = path.join(REPO_ROOT, "verticals");
 
+const PACK_DISPLAY_NAMES: Record<string, string> = {
+  "real-estate": "real-estate-uae",
+};
+
+const listMdSlugs = (dir: string): string[] =>
+  listFiles(dir, ".md")
+    .filter((f) => f !== "README.md")
+    .map((f) => f.replace(/\.md$/, ""))
+    .sort();
+
 export const getVerticals = (): VerticalSummary[] =>
   listDirs(VERTICALS_DIR)
-    .map((name) => ({
-      name,
-      body: readFileSafe(path.join(VERTICALS_DIR, name, "playbook.md")) ?? "",
-    }))
+    .map((name) => {
+      const base = path.join(VERTICALS_DIR, name);
+      return {
+        name,
+        displayName: PACK_DISPLAY_NAMES[name] ?? name,
+        body: readFileSafe(path.join(base, "playbook.md")) ?? "",
+        manifest: readFileSafe(path.join(base, "pack-manifest.md")),
+        runbooks: listMdSlugs(path.join(base, "runbooks")),
+        skills: listMdSlugs(path.join(base, "skills")),
+        subVerticals: listDirs(path.join(base, "sub-verticals")),
+      };
+    })
     .sort((a, b) => a.name.localeCompare(b.name));
 
 export const getVertical = (name: string): VerticalSummary | null =>
