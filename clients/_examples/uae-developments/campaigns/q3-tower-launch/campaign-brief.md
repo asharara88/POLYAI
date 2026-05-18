@@ -1,9 +1,9 @@
-# Campaign brief — Saadiyat Reserve Heights — Q3 Launch
+# Campaign brief — Coastal Reserve Phase 1 — Q3 Launch
 
 > **Worked example — illustrative.** Fictional campaign brief; not real UAE Developments data.
 >
 > Owned by `strategy`. Conforms to `schemas/campaign-brief.md`.
-> Stamped with `client: uae-developments, vertical: real-estate, sub_vertical: developer` per envelope rules.
+> Stamped with `client: uae-developments, vertical: real-estate-uae, sub_vertical: developer` per envelope rules.
 >
 > **Linked client artifacts (developer sub-vertical):**
 > - Inventory truth: `clients/_examples/uae-developments/inventory/current.md` (gates every artifact referencing units)
@@ -15,7 +15,7 @@
 
 ```yaml
 campaign_id: q3-tower-launch
-project_name: "Saadiyat Reserve Heights"
+project_name: "Coastal Reserve Phase 1"
 goal: Reserve 30% of inventory at launch (target ≈ 84 of 280 residences) within 12 weeks of public launch
 primary_kpi: Reservations (signed reservation form + AED 100k holding deposit)
 secondary_kpis:
@@ -44,7 +44,7 @@ audience:
       - Home-market property
       - London buy-to-let
   segment_c:
-    name: AD-resident end-user upgrade (Saadiyat / Yas / dual-corridor)
+    name: AD-resident end-user upgrade (Coastal District / Yas / dual-corridor)
     pains:
       - School-catchment concern; community amenities
       - Handover-date predictability for family timing
@@ -64,7 +64,7 @@ positioning:
     - Service-charge stated as AED/sqft per annum, capped for first 5 years post-handover
     - Escrow-protected payment plan compliant with relevant regulator (RERA / ADGM as applicable)
     - Exit liquidity: rental-pool program operated by hospitality partner from day one
-    - Master-community institutional context (Saadiyat cultural-corridor adjacency)
+    - Master-community institutional context (Coastal District cultural-corridor adjacency)
   anti_positioning:
     - We are NOT competing on price-per-sqft
     - We are NOT a yield-maximization product (5–7%, not 9–12%)
@@ -72,7 +72,7 @@ positioning:
 offer:
   hook: A pre-launch reservation window, by invitation, for 4 weeks before public launch
   call_to_action: Request the investor pack
-  destination: saadiyat-reserve-heights.example/investor-pack (gated form, Salesforce Marketing Cloud)
+  destination: coastal-reserve-phase-1.example/investor-pack (gated form, Salesforce Marketing Cloud)
 channels:
   - channel: Property Finder + Bayut (premium listing tier)
     weight: 0.20

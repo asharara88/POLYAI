@@ -106,7 +106,7 @@ When in doubt: don't send. Ask via gatekeeper.
 - **UAE Flag Day** — 3 November
 - **UAE Spirit of the Union** — late November
 - **Sheikh Zayed birth anniversary** — 6 May (acknowledgments appropriate via gatekeeper)
-- **Abu Dhabi-specific cultural calendar:** Saadiyat / Louvre Abu Dhabi season openings; Manarat Al Saadiyat events; Yas Marina Circuit events (Formula 1 weekend in late November / early December — protocol-aware scheduling around it)
+- **Abu Dhabi-specific cultural calendar:** Coastal District / Louvre Abu Dhabi season openings; Manarat Al Coastal District events; Yas Marina Circuit events (Formula 1 weekend in late November / early December — protocol-aware scheduling around it)
 - **Saudi National Day** — 23 September
 - **Kuwait National Day** — 25 February
 - **Qatar National Day** — 18 December

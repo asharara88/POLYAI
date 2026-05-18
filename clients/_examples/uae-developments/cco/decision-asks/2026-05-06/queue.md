@@ -9,10 +9,10 @@
 - **Submitter:** marketing-manager
 - **Class:** marketing-operational
 - **Urgency:** within 48h (Q3 launch T-90 milestone)
-- **Ask:** Approve permit-application batch sequencing — Saadiyat Reserve Heights Q3 launch ahead of Yas Acres sustain renewal vs. parallel submission.
-- **Recommendation:** Sequential submission — Saadiyat first (window: 2026-05-19 to 2026-06-05), Yas Acres second (window: 2026-06-12 to 2026-06-26). Reduces regulator-side capacity contention; modest 1-week buffer on Yas Acres.
+- **Ask:** Approve permit-application batch sequencing — Coastal Reserve Phase 1 Q3 launch ahead of Grove Acres sustain renewal vs. parallel submission.
+- **Recommendation:** Sequential submission — Coastal District first (window: 2026-05-19 to 2026-06-05), Grove Acres second (window: 2026-06-12 to 2026-06-26). Reduces regulator-side capacity contention; modest 1-week buffer on Grove Acres.
 - **Evidence:** clients/uae-developments/risk-register.md (Trakheesi permit renewal cycle entry); agency-liaison engagement notes 2026-05-05
-- **Alternatives considered:** Parallel submission (faster, contention risk on regulator side); Yas first (commercially worse — Saadiyat T-45 drives launch-readiness)
+- **Alternatives considered:** Parallel submission (faster, contention risk on regulator side); Yas first (commercially worse — Coastal District T-45 drives launch-readiness)
 - **SLA:** decision by 2026-05-07T17:00
 - **Status:** awaiting CCO sign
 
@@ -23,7 +23,7 @@
 - **Urgency:** within 5 business days (Q3 launch T-14 capacity check on 2026-06-20)
 - **Ask:** Approve Sumsub `uhnw-individual-buyer` level upgrade for Russia/CIS-corridor pre-clearance flow + 2-EDD-analyst hire to support 12-15 EDD cases / week peak.
 - **Recommendation:** Approve. Cost AED 180k for Sumsub level + AED 280k annualized for 2 hires; capacity-check pre-launch confirms readiness.
-- **Evidence:** clients/uae-developments/risk-register.md (Russia/CIS corridor entry); aml-kyc throughput projections per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md`
+- **Evidence:** clients/uae-developments/risk-register.md (Russia/CIS corridor entry); aml-kyc throughput projections per `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md`
 - **Alternatives considered:** Status-quo (capacity overrun risk); 1-hire only (capacity peak still tight); outsourced corridor-specialist (compliance-control concern)
 - **SLA:** decision by 2026-05-13T17:00
 - **Status:** awaiting CCO sign
@@ -57,5 +57,5 @@
 | Decision-Ask ID | Submitted | Decision | Decided by | Decided at |
 |---|---|---|---|---|
 | DA-2026-05-02-001 | 2026-05-01 | Approve Mashreq Private Banking introducer-agreement renewal | chief-commercial-officer | 2026-05-02T11:30 |
-| DA-2026-04-29-002 | 2026-04-28 | Approve Saadiyat creative round 2 sign-off pre-Trakheesi application | chief-commercial-officer | 2026-04-29T16:00 |
+| DA-2026-04-29-002 | 2026-04-28 | Approve Coastal District creative round 2 sign-off pre-Trakheesi application | chief-commercial-officer | 2026-04-29T16:00 |
 | DA-2026-04-25-001 | 2026-04-24 | Approve Q2 marketing-budget reallocation: paid-digital +AED 320k from OOH | chief-commercial-officer | 2026-04-25T10:15 |

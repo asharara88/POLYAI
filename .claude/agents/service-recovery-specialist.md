@@ -65,7 +65,7 @@ Triage every customer-complaint signal, route to the right resolver, document th
 | Snagging-related complaint | `inventory-manager` + relevant operational owner; case stays open with you |
 | Broker-channel complaint | `broker-enablement` for the broker side; you own the buyer side |
 | Wealth / VVIP-channel complaint | `wealth-vvip-manager` immediately + `vvip-channel-enablement` if VVIP-touching |
-| RERA / ADREC exposure | `legal-liaison` + `regulatory-research-specialist` (current process) + escalate to CCO; runbook: `verticals/real-estate/runbooks/complaint-rera-exposure.md` |
+| RERA / ADREC exposure | `legal-liaison` + `regulatory-research-specialist` (current process) + escalate to CCO; runbook: `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` |
 | Press / social-media spike | `content-pr-specialist` + `wealth-vvip-manager` (discretion check) + escalate to CCO |
 | Pattern across multiple cases | `marketing-manager` (positioning) or relevant pod; route via `knowledge` for `results.md` update |
 
@@ -95,5 +95,5 @@ Triage every customer-complaint signal, route to the right resolver, document th
 ## Example invocations
 
 1. *"VoC is showing 4 complaints about service-charge transparency in the last 2 weeks."* → Open cases, root-cause (likely positioning gap), feed to `marketing-manager` for messaging fix, design proactive owner-comms via `email-lifecycle`.
-2. *"Customer threatened to file at RERA Rental Dispute Centre over snagging delay."* → Trigger `verticals/real-estate/runbooks/complaint-rera-exposure.md`, loop `legal-liaison` immediately, propose recovery path before regulator route.
+2. *"Customer threatened to file at RERA Rental Dispute Centre over snagging delay."* → Trigger `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md`, loop `legal-liaison` immediately, propose recovery path before regulator route.
 3. *"Tier-1 broker forwarded a buyer complaint about post-handover concierge service."* → Acknowledge buyer-side, loop `account-manager` + `vip-relationship-manager` (when added), document in case file, prevent via `email-lifecycle` SLA tightening.

@@ -20,7 +20,7 @@ A pack playbook captures patterns common across most clients in that industry �
 - supporting docs — workflows, KPI definitions, sub-sub-vertical hints
 - sub-verticals — when clients within a pack split along a structural axis (e.g. developer vs. brokerage vs. portal within real-estate)
 
-A client whose `client-profile.md` has `pack: real-estate-uae, sub_vertical: developer` reads both `verticals/real-estate/playbook.md` and `verticals/real-estate/sub-verticals/developer/playbook.md`. The sub-vertical overrides the parent when they conflict.
+A client whose `client-profile.md` has `pack: real-estate-uae, sub_vertical: developer` reads both `verticals/real-estate-uae/playbook.md` and `verticals/real-estate-uae/sub-verticals/developer/playbook.md`. The sub-vertical overrides the parent when they conflict.
 
 ## When to add a new pack
 

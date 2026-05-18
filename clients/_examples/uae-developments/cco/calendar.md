@@ -16,7 +16,7 @@
 | Date | Time | Event | Counterparty | Decision needed | Brief owner |
 |---|---|---|---|---|---|
 | Mon 2026-05-11 | 10:00 | Tier-1 broker quarterly review | External: Driven Properties + LuxuryProperty + Allsopp & Allsopp | Tier-progression decisions | broker-enablement |
-| Tue 2026-05-12 | 14:00 | Saadiyat Reserve Heights creative round 3 review | Internal: brand-design + creative + agency-liaison + compliance | Sign-off for Trakheesi permit application | marketing-manager |
+| Tue 2026-05-12 | 14:00 | Coastal Reserve Phase 1 creative round 3 review | Internal: brand-design + creative + agency-liaison + compliance | Sign-off for Trakheesi permit application | marketing-manager |
 | Wed 2026-05-13 | 09:00 | Monthly board prep | Internal: CFO + CEO | Q2 close commercial summary; Q3 launch readiness | chief-commercial-officer |
 | Thu 2026-05-14 | 11:00 | Q3 launch AML/KYC capacity check | Internal: aml-kyc-compliance-specialist + Head of Compliance | Sumsub level adjustment + EDD analyst hires confirmation | wealth-vvip-manager |
 | Fri 2026-05-15 | 15:00 | Tier-2 broker training session 1 of 3 | External: 12 Tier-2 firms | None — training | broker-enablement |
@@ -36,17 +36,17 @@
 
 | Deadline | What | Owner | Reference |
 |---|---|---|---|
-| 2026-05-19 | Saadiyat Reserve Heights creative round 3 sign-off | CMO + Head of Sales | T-45 to permit application |
+| 2026-05-19 | Coastal Reserve Phase 1 creative round 3 sign-off | CMO + Head of Sales | T-45 to permit application |
 | 2026-05-30 | Q2-2026 quarterly exec brief delivery to board | chief-commercial-officer | per `runbooks/quarterly-exec-brief.md` cycle |
 | 2026-06-05 | Trakheesi permit application T-45 | agency-liaison + regulatory-operations team | per `integrations/trakheesi/spec.md` |
 | 2026-06-12 | Q3-2026 KPI targets sign-off | chief-commercial-officer + CFO + CEO | per `clients/uae-developments/cco/kpi-targets.md` |
 | 2026-06-20 | Pre-launch AML/KYC capacity confirmation | aml-kyc-compliance-specialist | per Q3 launch readiness |
 | 2026-07-15 | Trakheesi permit issuance target | DLD/RERA | T-30 to launch |
 | 2026-07-30 | Sales gallery operational + permit-display verification | inventory-manager + compliance | T-7 to launch |
-| 2026-08-06 | Saadiyat Reserve Heights public launch | All commercial pods | T0 |
+| 2026-08-06 | Coastal Reserve Phase 1 public launch | All commercial pods | T0 |
 
 ## Notes
 
-- VVIP-touching events not surfaced here — those carry restricted-access calendar entries per `verticals/real-estate/skills/vvip-protocol-uae.md`
+- VVIP-touching events not surfaced here — those carry restricted-access calendar entries per `verticals/real-estate-uae/skills/vvip-protocol-uae.md`
 - Cross-emirate travel days (Abu Dhabi → Dubai) noted as travel blocks; CCO morning brief emits on travel day same as office day
-- Ramadan window adjustments handled per `verticals/real-estate/skills/diaspora-corridor-marketing.md` cultural-calendar guidance
+- Ramadan window adjustments handled per `verticals/real-estate-uae/skills/diaspora-corridor-marketing.md` cultural-calendar guidance

@@ -4,7 +4,7 @@
 
 `aml-kyc-compliance-specialist` (or, by delegation, `inbound-qualifier` / `wealth-channel-enablement` / `broker-enablement` / `vvip-channel-enablement` / `secondary-market-specialist`) needs to initiate AML/KYC screening on a new counterparty before they can progress to a commercial conversation or commit any funds.
 
-For buyers from sanctions-surface corridors (Russia/CIS, Iran-adjacent, Syria-adjacent, DPRK-adjacent, Venezuela, Cuba), this is **pre-commercial-conversation mandatory** per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md`.
+For buyers from sanctions-surface corridors (Russia/CIS, Iran-adjacent, Syria-adjacent, DPRK-adjacent, Venezuela, Cuba), this is **pre-commercial-conversation mandatory** per `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md`.
 
 ## Pre-flight
 
@@ -24,7 +24,7 @@ Per `schemas/integration-action.md`:
 ```yaml
 action_id: <ulid>
 client: <slug>
-vertical: real-estate
+vertical: real-estate-uae
 sub_vertical: developer
 proposed_by: aml-kyc-compliance-specialist
 proposed_at: <ISO timestamp>

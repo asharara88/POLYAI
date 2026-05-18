@@ -48,7 +48,7 @@ notes: "Pre-launch; tier-1 exclusive window opens 2026-06-08 with the private pr
 | Launch | Allocations | Reservations | Conversion | Median deal size |
 |---|---|---|---|---|
 | Yas Capital Residences I (2024-Q2) | 18 | 7 | 39% | AED 4.8M |
-| Saadiyat Coastal I (2025-Q1) | 22 | 8 | 36% | AED 5.6M |
+| Coastal District Coastal I (2025-Q1) | 22 | 8 | 36% | AED 5.6M |
 | (third-party partner launch 2025) | 14 | 5 | 36% | AED 6.2M |
 | (third-party partner launch 2025) | 11 | 4 | 36% | AED 5.1M |
 

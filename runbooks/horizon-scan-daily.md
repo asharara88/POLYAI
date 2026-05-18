@@ -13,9 +13,9 @@ Daily at 06:00 client-local time (scheduler) — or on-demand when a known event
 ## Pre-flight
 
 - `clients/<client>/client-profile.md` current (markets, corridors, named competitors, press tier list)
-- `verticals/real-estate/skills/uae-real-estate-regulatory.md` regulator authority list current
-- `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` sanctions authority list current
-- `verticals/real-estate/skills/diaspora-corridor-marketing.md` corridor-regulatory authority list current
+- `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` regulator authority list current
+- `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` sanctions authority list current
+- `verticals/real-estate-uae/skills/diaspora-corridor-marketing.md` corridor-regulatory authority list current
 - Prior 7 days of `clients/<client>/horizon-scan/` accessible (de-duplication)
 
 ## Sequence
@@ -37,7 +37,7 @@ Daily at 06:00 client-local time (scheduler) — or on-demand when a known event
 | From → To | Trigger | Failure mode if no ack |
 |---|---|---|
 | `horizon-scanner` → `regulatory-research-specialist` | Regulator item flagged for action-relevance | If currency confirmation ≥ 4h, route to watchlist with note |
-| `horizon-scanner` → `aml-kyc-compliance-specialist` | Sanctions delta affects active counterparty | Immediate per `verticals/real-estate/runbooks/pep-sanctions-hit.md` |
+| `horizon-scanner` → `aml-kyc-compliance-specialist` | Sanctions delta affects active counterparty | Immediate per `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` |
 | `horizon-scanner` → `content-pr-specialist` | Press item names developer or counterparty | Immediate; do not wait for next-morning brief |
 | `horizon-scanner` → `competitive-intel` | Material competitive-launch info | Within same business day |
 | `horizon-scanner` → `cco-morning-brief` | scan.md emitted | If scan.md missing by 06:30, brief notes "horizon scan unavailable" |
@@ -76,6 +76,6 @@ Daily at 06:00 client-local time (scheduler) — or on-demand when a known event
 ## Related runbooks
 
 - `runbooks/cco-daily-brief.md` — consumes this runbook's output
-- `verticals/real-estate/runbooks/pep-sanctions-hit.md` — when sanctions delta hits an active counterparty
-- `verticals/real-estate/runbooks/complaint-rera-exposure.md` — when regulator inquiry surfaces
-- `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md` — when press item touches VVIP
+- `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` — when sanctions delta hits an active counterparty
+- `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` — when regulator inquiry surfaces
+- `verticals/real-estate-uae/runbooks/press-sensitive-uhnw-transaction.md` — when press item touches VVIP

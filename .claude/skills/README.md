@@ -2,7 +2,7 @@
 
 These are framework-level skill files loaded for every client regardless of industry pack. They cover topics that apply across all commercial engagements.
 
-Pack-specific skills live under `verticals/<pack>/skills/`. For the shipping real-estate-uae pack, see `verticals/real-estate/skills/README.md`.
+Pack-specific skills live under `verticals/<pack>/skills/`. For the shipping real-estate-uae pack, see `verticals/real-estate-uae/skills/README.md`.
 
 ## Catalog
 

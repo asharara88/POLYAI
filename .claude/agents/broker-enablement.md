@@ -30,7 +30,7 @@ Resolve paths per `CLAUDE.md` (client → vertical → root):
 - `clients/<slug>/inventory/current.md` (owned by `inventory-manager`) — units, pricing, payment plans, holds
 - `clients/<slug>/sales/allocation-rules.md` — per-tier plan eligibility and approval logic
 - `clients/<slug>/sales/commission-grid.md` — commission tiers and structure
-- `verticals/real-estate/sub-verticals/developer/playbook.md` — broker-channel norms
+- `verticals/real-estate-uae/sub-verticals/developer/playbook.md` — broker-channel norms
 
 ## Outputs you emit
 

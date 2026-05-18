@@ -117,7 +117,7 @@ Any of:
 - Case file at `clients/<client>/hr-coordination/key-rm-departures/<period>/` (HR-coordinated)
 - Closure memo captures: portfolio-impact, retention rate, learnings, process-adjustments
 - Pattern alerts: 2+ Tier-1 RM departures in 12 months → retention-strategy review with `chief-commercial-officer`
-- Material learnings feed `verticals/real-estate/sub-verticals/developer/playbook.md` via `knowledge`
+- Material learnings feed `verticals/real-estate-uae/sub-verticals/developer/playbook.md` via `knowledge`
 - If departure surfaces a structural issue (compensation gap, role-design issue), HR + CCO planning cycle
 
 ## Related runbooks
@@ -125,5 +125,5 @@ Any of:
 - `runbooks/risk-register-update.md` — risk-register state management
 - `runbooks/cco-daily-brief.md` — surfaces transition state in daily brief during transition
 - `runbooks/quarterly-exec-brief.md` — aggregated trend if pattern emerges
-- `verticals/real-estate/runbooks/inbound-hnw-private-bank.md` — in-flight HNW pipeline coordination
-- `verticals/real-estate/sub-verticals/developer/playbooks/wealth-channel-reactivation.md` — if intermediary relationships need refreshing post-departure
+- `verticals/real-estate-uae/runbooks/inbound-hnw-private-bank.md` — in-flight HNW pipeline coordination
+- `verticals/real-estate-uae/sub-verticals/developer/playbooks/wealth-channel-reactivation.md` — if intermediary relationships need refreshing post-departure

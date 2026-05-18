@@ -68,7 +68,7 @@ When to switch to a different runbook mid-flight.
 ## Where runbooks live
 
 - `runbooks/` (root) — **core runbooks** that apply to any client regardless of industry pack: daily cadence, board / quarterly / annual prep, risk register, strategic-bet evaluation, integration go-lives that aren't pack-specific, key-RM continuity.
-- `verticals/real-estate/runbooks/` — **real-estate-uae pack runbooks**: regulatory + counterparty crisis paths (RERA, Trakheesi, NOC resale, PEP/sanctions), construction + handover operations, broker / wealth / VVIP channel scenarios, and integration go-lives that depend on UAE-specific tooling (Sumsub).
+- `verticals/real-estate-uae/runbooks/` — **real-estate-uae pack runbooks**: regulatory + counterparty crisis paths (RERA, Trakheesi, NOC resale, PEP/sanctions), construction + handover operations, broker / wealth / VVIP channel scenarios, and integration go-lives that depend on UAE-specific tooling (Sumsub).
 
 A pack runbook is only available when the client has that pack active in their `client-profile.md`. A core runbook is available to every client.
 
@@ -99,7 +99,7 @@ A pack runbook is only available when the client has that pack active in their `
 
 ## Catalog — real-estate-uae pack
 
-See `verticals/real-estate/runbooks/README.md` for the full pack-runbook catalog. Summary:
+See `verticals/real-estate-uae/runbooks/README.md` for the full pack-runbook catalog. Summary:
 
 - **Regulatory + counterparty crisis:** `resale-with-noc`, `complaint-rera-exposure`, `pep-sanctions-hit`, `regulator-inquiry-non-complaint`
 - **Operational crisis:** `construction-delay-handover-slip`, `tier-1-broker-collapse`, `project-safety-press-crisis`

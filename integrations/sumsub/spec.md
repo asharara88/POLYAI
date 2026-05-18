@@ -18,7 +18,7 @@ Sumsub API key + secret per environment, stored in Vercel env vars (production +
 | Read verification result | A — read | Auto |
 | Create applicant | B — write | Per-client |
 | Submit applicant for review | B — write | Per-client |
-| Trigger re-screening (sanctions / PEP delta) | B — write | Auto-eligible per cadence in `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` |
+| Trigger re-screening (sanctions / PEP delta) | B — write | Auto-eligible per cadence in `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` |
 | Manual override of automated decision | D — autonomous prohibited | Human-only |
 | Delete applicant data | D — autonomous prohibited | Human + legal-liaison + data-protection officer |
 

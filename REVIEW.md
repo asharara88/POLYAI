@@ -63,13 +63,13 @@ The skills library deliberately stays framework-level — every regulatory citat
 
 ### 3. AML/KYC enforcement at workflow boundaries
 
-The `aml-kyc-compliance-specialist` exists; the `verticals/real-estate/runbooks/pep-sanctions-hit.md` exists; the `integrations/sumsub/spec.md` exists; multiple workflows reference the AML gate (e.g., `verticals/real-estate/runbooks/resale-with-noc.md` step 4-5, `verticals/real-estate/runbooks/inbound-hnw-private-bank.md` step 3, `integrations/salesforce/actions/stage-advance.md` precondition `aml_kyc_currency`). **Validate that these gates actually fire** — i.e., that `account-executive` cannot stage-advance an Opportunity with stale or missing AML/KYC verdict, and that `secondary-market-specialist` cannot progress a Form-F transfer with `hold-pending-edd` on the buyer.
+The `aml-kyc-compliance-specialist` exists; the `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` exists; the `integrations/sumsub/spec.md` exists; multiple workflows reference the AML gate (e.g., `verticals/real-estate-uae/runbooks/resale-with-noc.md` step 4-5, `verticals/real-estate-uae/runbooks/inbound-hnw-private-bank.md` step 3, `integrations/salesforce/actions/stage-advance.md` precondition `aml_kyc_currency`). **Validate that these gates actually fire** — i.e., that `account-executive` cannot stage-advance an Opportunity with stale or missing AML/KYC verdict, and that `secondary-market-specialist` cannot progress a Form-F transfer with `hold-pending-edd` on the buyer.
 
-**How to validate:** simulate a stage-advance attempt with no AML/KYC field populated and confirm it would block at precondition-check; simulate an NOC issuance flow with a sanctions-flagged buyer and confirm it routes to `verticals/real-estate/runbooks/pep-sanctions-hit.md` rather than continuing.
+**How to validate:** simulate a stage-advance attempt with no AML/KYC field populated and confirm it would block at precondition-check; simulate an NOC issuance flow with a sanctions-flagged buyer and confirm it routes to `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` rather than continuing.
 
 ### 4. Discretion-stance enforcement on VVIP-touching artifacts
 
-The `vvip-channel-enablement` agent maintains the no-mention list; the `compliance` agent now references it as a block-on-sight; `content-pr-specialist`, `creative`, `social-media`, `email-lifecycle`, `events` all need to cross-reference it before ship. The `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md` overlays restricted-access discipline on the entire transaction lifecycle.
+The `vvip-channel-enablement` agent maintains the no-mention list; the `compliance` agent now references it as a block-on-sight; `content-pr-specialist`, `creative`, `social-media`, `email-lifecycle`, `events` all need to cross-reference it before ship. The `verticals/real-estate-uae/runbooks/press-sensitive-uhnw-transaction.md` overlays restricted-access discipline on the entire transaction lifecycle.
 
 **How to validate:** introduce a fake VVIP counterparty into a campaign brief and confirm it gets blocked at compliance review; verify the per-client `vvip-channel/no-mention-list.md` is populated for any client with VVIP-touching activity (the worked-example UAE Developments client should have one; check it).
 
@@ -96,7 +96,7 @@ For honesty, here are gaps the extension intentionally did not close:
 
 1. **Live integration wiring.** Specs are written; runtime is not. Decision: per-engagement, when actual systems are connected.
 2. **ADREC-equivalent integration spec.** Trakheesi spec exists for Dubai; the Abu Dhabi advertising-permit equivalent is referenced but not separately specced. Add when first AD-side campaign goes live.
-3. **Per-jurisdiction sanctions corridor specifics beyond UAE.** The corridor list in `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` covers the major surface but is not exhaustive. Extend per-engagement as needed.
+3. **Per-jurisdiction sanctions corridor specifics beyond UAE.** The corridor list in `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` covers the major surface but is not exhaustive. Extend per-engagement as needed.
 4. **Future C-level orchestrators (CHRO, CPO, CFO-agent).** Reserved per your decision; not authored.
 5. **Per-client `runbooks-overrides/` files.** Pattern documented in `ARCHITECTURE.md`; client-specific overrides authored as needed when worked-example engagements identify drift.
 6. **Tax / FATCA / CRS reporting.** Out of marketing/sales/BD scope; route to tax counsel.

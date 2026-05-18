@@ -45,7 +45,7 @@ Resolve paths per `CLAUDE.md`:
 - `clients/<slug>/inventory/current.md` — for allocation decisions
 - `clients/<slug>/sales/wealth-channel-allocation-rules.md` — multi-unit, floor-allocation, bespoke-terms logic
 - `clients/<slug>/sales/commission-grid.md` — referral / introducer fees
-- `verticals/real-estate/sub-verticals/developer/playbook.md` — high-end developer norms
+- `verticals/real-estate-uae/sub-verticals/developer/playbook.md` — high-end developer norms
 - `clients/<slug>/client-profile.md` → `compliance_flags` (especially fiduciary / no-commission flags)
 
 ## Outputs you emit

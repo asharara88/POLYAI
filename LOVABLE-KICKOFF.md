@@ -53,7 +53,7 @@ Three vertical zones:
 **Top — "CCO Now — top 3 items today":** Three cards horizontally:
 - Card 1 (Decision): "Sign off Q3 tower launch creative — final round." Owner: `marketing-manager`. Deadline: in 2 days. Recommendation (2 lines). Buttons: "Sign" (primary amber) + "Send back" (secondary). Small "Ask" chip in card header.
 - Card 2 (Risk): "Tier-1 broker capacity at 78% — risk to launch-week slot fulfilment." Owner: `broker-enablement`. Severity: amber. Same chip + buttons treatment.
-- Card 3 (Calendar): "Saadiyat sales gallery — public launch in 12 days." Owner: `events`. Date: Jun 17. Same treatment.
+- Card 3 (Calendar): "Coastal District sales gallery — public launch in 12 days." Owner: `events`. Date: Jun 17. Same treatment.
 
 **Middle — "Morning brief"** (one card with multiple sections):
 - Pipeline KPIs — 4 tiles: Booking-pads issued (142, ↑12% WoW, with sparkline), Reservations to contracts (38%, with mini-gauge), Channel coverage (4.1× target, gauge), Wealth-channel intros (24 active). Each tile: label (mono uppercase), value (tabular-nums big), delta + sparkline.

@@ -10,7 +10,7 @@ launch_id: q3-tower-launch
 title: Broker preview night — Tier-1 dyads
 date: 2026-06-10
 time: "19:00 GST"
-venue: Saadiyat Reserve Heights — sales gallery
+venue: Coastal Reserve Phase 1 — sales gallery
 status: confirmed
 owner_agent: broker-enablement
 co_owners:

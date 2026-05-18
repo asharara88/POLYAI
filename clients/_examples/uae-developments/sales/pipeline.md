@@ -67,7 +67,7 @@ units_reserved_to_date: 0
   count: 68
   pipeline_aed: 220000000
   weighted_forecast_aed: 50000000
-  notes: "Direct-marketing leads to in-house RM team — primary funnel for Saadiyat Reserve Heights"
+  notes: "Direct-marketing leads to in-house RM team — primary funnel for Coastal Reserve Phase 1"
 
 - channel: broker
   count: 48
@@ -144,7 +144,7 @@ units_reserved_to_date: 0
 
 ```yaml
 - deal_id: d-2026-q3-117
-  account_anonymized: "GCC investor — penthouse interest (Saadiyat Reserve Heights)"
+  account_anonymized: "GCC investor — penthouse interest (Coastal Reserve Phase 1)"
   stage: evaluation
   rm_id: rm-01
   amount_aed: 14600000
@@ -155,7 +155,7 @@ units_reserved_to_date: 0
   recommended_action: "vvip-channel-enablement to nudge introducer; AE to schedule direct touch within 7d"
 
 - deal_id: d-2026-q3-082
-  account_anonymized: "Diaspora UK family-office advised (Saadiyat-corridor)"
+  account_anonymized: "Diaspora UK family-office advised (Coastal District-corridor)"
   stage: discovery
   rm_id: rm-02
   amount_aed: 5800000

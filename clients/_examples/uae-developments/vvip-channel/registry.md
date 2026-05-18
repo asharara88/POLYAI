@@ -202,7 +202,7 @@ Four sub-channels, each with distinct protocol and gatekeeper conventions:
   status: cultivating
   primary_gatekeeper: "Embassy private office"
   pep_screening_status: pending-on-entry
-  notes: "Saadiyat cultural-corridor (Louvre Abu Dhabi adjacency) makes invitation natural."
+  notes: "Coastal District cultural-corridor (Louvre Abu Dhabi adjacency) makes invitation natural."
 
 - entity_id: fd-sg-amb-01
   segment: foreign-dignitaries
@@ -254,7 +254,7 @@ Four sub-channels, each with distinct protocol and gatekeeper conventions:
   status: cultivating
   primary_gatekeeper: "Office of the Chairman"
   pep_screening_status: pending-on-entry
-  notes: "Philanthropic-context relationship; cultural / educational alignment with Saadiyat district."
+  notes: "Philanthropic-context relationship; cultural / educational alignment with Coastal District district."
 ```
 
 ## Channel-development priorities (current quarter)

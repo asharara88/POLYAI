@@ -13,9 +13,9 @@ Per-engagement greenlight to activate horizon-scan ingestion at production caden
 ## Pre-flight
 
 - Source list approved per `clients/<client>/client-profile.md` press tier list (default: FT, Bloomberg, The National, Gulf News, Khaleej Times, Construction Week ME, MEED, Property Finder Insights, Bayut Insights)
-- Regulator-source list per `verticals/real-estate/skills/uae-real-estate-regulatory.md` (DLD, RERA, ADREC, ADGM-FSRA, DIFC-DFSA, CBUAE, UAE FIU, PDPL Authority)
-- Sanctions-source list per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` (UN SC, OFAC SDN, UK HMT OFSI, EU Consolidated, DFAT)
-- Corridor-source list per `verticals/real-estate/skills/diaspora-corridor-marketing.md` (RBI for India, SAMA for KSA, FCA for UK, CBN for Nigeria, SBP for Pakistan, etc.)
+- Regulator-source list per `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` (DLD, RERA, ADREC, ADGM-FSRA, DIFC-DFSA, CBUAE, UAE FIU, PDPL Authority)
+- Sanctions-source list per `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` (UN SC, OFAC SDN, UK HMT OFSI, EU Consolidated, DFAT)
+- Corridor-source list per `verticals/real-estate-uae/skills/diaspora-corridor-marketing.md` (RBI for India, SAMA for KSA, FCA for UK, CBN for Nigeria, SBP for Pakistan, etc.)
 - Subscriptions / API access provisioned where required (FT, Bloomberg, etc.)
 - Ingestion runtime deployed (cron + WebFetch/WebSearch via `horizon-scanner` agent)
 - `clients/<client>/horizon-scan/` folder structure ready
@@ -86,9 +86,9 @@ Phase 3 (continuous) → if specific source becomes unreliable or paid-sub lapse
 
 - `runbooks/horizon-scan-daily.md` — operational choreography this integration enables
 - `runbooks/cco-daily-brief.md` — downstream consumer
-- `verticals/real-estate/runbooks/pep-sanctions-hit.md` — sanctions-class scan items
-- `verticals/real-estate/runbooks/regulator-inquiry-non-complaint.md` — regulator-class scan items
-- `verticals/real-estate/skills/uae-real-estate-regulatory.md` + `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` + `verticals/real-estate/skills/diaspora-corridor-marketing.md`
+- `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` — sanctions-class scan items
+- `verticals/real-estate-uae/runbooks/regulator-inquiry-non-complaint.md` — regulator-class scan items
+- `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` + `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` + `verticals/real-estate-uae/skills/diaspora-corridor-marketing.md`
 
 ## Sign-off
 

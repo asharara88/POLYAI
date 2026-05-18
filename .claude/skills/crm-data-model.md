@@ -59,14 +59,14 @@ maintained_by: data-quality-steward + crm-manager (writes via knowledge agent)
 | `eida_verified` | boolean | UAE-resident only |
 | `passport_country` | enum | ISO-3166 |
 | `residency_country` | enum | ISO-3166 |
-| `risk_rating` | enum | `low` / `medium` / `high` per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` |
+| `risk_rating` | enum | `low` / `medium` / `high` per `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` |
 | `edd_required` | boolean | |
 | `last_screened_date` | date | |
 | `screening_provider_id` | text | Audit reference (e.g., Sumsub applicant id) |
 | `pep_flag` | boolean | |
 | `pep_class` | enum | `domestic` / `foreign` / `intl-org` / `family` / `close-associate` |
 | `sanctions_flag` | boolean | |
-| `corridor` | enum | Per `verticals/real-estate/skills/diaspora-corridor-marketing.md` |
+| `corridor` | enum | Per `verticals/real-estate-uae/skills/diaspora-corridor-marketing.md` |
 | `source_of_funds_documented` | boolean | |
 | `ubo_identified` | boolean | For corporate / trust |
 

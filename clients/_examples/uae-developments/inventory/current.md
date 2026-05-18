@@ -1,12 +1,12 @@
-# Inventory — Saadiyat Reserve Heights (current)
+# Inventory — Coastal Reserve Phase 1 (current)
 
-> **Worked example — illustrative.** Fictional inventory for a fictional Saadiyat tower; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional inventory for a fictional Coastal District tower; not real UAE Developments data.
 >
 > Owned by `inventory-manager`. Source of truth for marketing-permitted-to-reference status.
 > Sales-ops / CRM (Salesforce Real Estate Cloud) remains source of truth for legal status (sold / reserved / SPA-signed).
 > Snapshot dated 2026-05-01. Refresh: weekly during launch, daily during sustain.
 
-## Project totals (Saadiyat Reserve Heights — Q3 flagship launch)
+## Project totals (Coastal Reserve Phase 1 — Q3 flagship launch)
 
 - Total units: 280
 - Available: 280 (100%) — pre-launch
@@ -47,7 +47,7 @@ Service charge: AED 1,540 per sqft per annum (capped first 5 years post-handover
 
 ## Sample of current unit detail (first 10 of 280)
 
-> Unit IDs use the convention SRH-T1-{floor}-{position}. SRH = Saadiyat Reserve Heights, T1 = tower one.
+> Unit IDs use the convention SRH-T1-{floor}-{position}. SRH = Coastal Reserve Phase 1, T1 = tower one.
 
 ```yaml
 - unit_id: SRH-T1-04-01

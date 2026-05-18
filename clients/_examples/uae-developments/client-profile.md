@@ -2,29 +2,29 @@
 
 > **Worked example — illustrative.** Fictional data demonstrating how Flow structures a developer-class engagement. Not real UAE Developments data; no claim of partnership or endorsement. Names of real broker firms, agencies, and institutions appear because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships.
 >
-> Populated by `client-onboarding` from a fictional intake brief, with vertical defaults pulled from `verticals/real-estate/sub-verticals/developer/playbook.md`.
+> Populated by `client-onboarding` from a fictional intake brief, with vertical defaults pulled from `verticals/real-estate-uae/sub-verticals/developer/playbook.md`.
 
 ```yaml
 slug: uae-developments
 display_name: UAE Developments
-vertical: real-estate
+vertical: real-estate-uae
 sub_vertical: developer
 sub_sub_vertical_notes: |
   Developer-class engagement — Abu Dhabi-anchored, multi-emirate portfolio,
   multi-asset (residential + branded residences + hospitality co-brand +
-  schools-adjacent + commercial). Inherits verticals/real-estate/playbook.md +
-  verticals/real-estate/sub-verticals/developer/playbook.md.
+  schools-adjacent + commercial). Inherits verticals/real-estate-uae/playbook.md +
+  verticals/real-estate-uae/sub-verticals/developer/playbook.md.
 markets:
   primary: AE
   primary_emirate: AD
   secondary: [SA, KW, QA, BH, OM, IN, GB, EG, RU]
   active_master_communities:
-    - "Saadiyat Island"
+    - "Abu Dhabi Coast"
     - "Yas Island"
     - "Al Raha"
     - "Al Ghadeer"
     - "Reem Island"
-    - "Hudayriyat Island"
+    - "Abu Dhabi West Marina"
     - "Dubai (selective expansion)"
 languages:
   primary: en
@@ -100,10 +100,10 @@ vvip_channel_strategy:
 inventory:
   current_ref: clients/_examples/uae-developments/inventory/current.md
   total_units_in_active_launch: 280
-  active_launch_project: "Saadiyat Reserve Heights"
+  active_launch_project: "Coastal Reserve Phase 1"
   unit_types: [1BR, 2BR, 3BR, 4BR, penthouse]
   notes: |
-    "Saadiyat Reserve Heights" is the active Q3 launch demo. The full
+    "Coastal Reserve Phase 1" is the active Q3 launch demo. The full
     pipeline would normally run many concurrent launches across master
     communities; this worked example focuses on one for clarity.
 
@@ -187,7 +187,7 @@ engagement_start: 2026-04-29
 engagement_end: null
 notes: |
   Abu Dhabi-anchored developer with multi-emirate portfolio. Active Q3
-  flagship launch is "Saadiyat Reserve Heights" (280-unit branded-residence
+  flagship launch is "Coastal Reserve Phase 1" (280-unit branded-residence
   tower with hospitality-operator co-brand). Sales motion runs through
   18 in-house RMs on the project + ~250 external brokers in tiers, plus
   parallel wealth + VVIP channels.

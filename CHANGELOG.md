@@ -2,11 +2,11 @@
 
 All notable changes to Flow. Most-recent first. Each entry references the commit that landed it.
 
-## 2026-05-06 — Phase 5: Completely serve the Aldar CCO
+## 2026-05-06 — Phase 5: Completely serve the demo CCO
 
 The audit (`AUDIT.md`), gap analysis (`GAPS.md`), and plan (per `/root/.claude/plans/instead-of-meidian-residences-async-lark.md`) identified that the system was strong on weekly cadenced reports but light on **daily situational awareness**, **decision-asks workflow**, **operational-crisis coverage**, and **integration wiring**. Phase 5 closes those gaps.
 
-**Headline:** 4 new agents + 1 new schema + 1 new skill + 12 new runbooks + a dedicated `/cco` route + native CCO decision-asks queue + Aldar approval-gates depth + Aldar populated `kpi-targets.md`.
+**Headline:** 4 new agents + 1 new schema + 1 new skill + 12 new runbooks + a dedicated `/cco` route + native CCO decision-asks queue + demo client approval-gates depth + demo client populated `kpi-targets.md`.
 
 ### Phase 5A — CCO daily situational awareness · `fbcd33b`
 
@@ -18,21 +18,21 @@ The audit (`AUDIT.md`), gap analysis (`GAPS.md`), and plan (per `/root/.claude/p
 - **Nav update** — CCO Daily promoted to primary slot
 - **Chat presets** — 6 CCO-specific
 - **`web/lib/content.ts` parsers** — `getMorningBrief`, `getRiskRegister`, `getHorizonScan`, `getDecisionAsks`, `getCcoCalendar`
-- **Aldar populate** — risk register (5 open + 1 closed + 3 watchlist), CCO calendar (this week + next week + standing + 8 deadlines), horizon scan 2026-05-06 (4 surfaced + 5 watchlist), decision-asks queue 2026-05-06 (4 pending + 3 signed), morning brief 2026-05-06
+- **Demo client populate** — risk register (5 open + 1 closed + 3 watchlist), CCO calendar (this week + next week + standing + 8 deadlines), horizon scan 2026-05-06 (4 surfaced + 5 watchlist), decision-asks queue 2026-05-06 (4 pending + 3 signed), morning brief 2026-05-06
 
 ### Phase 5B — Decision-asks workflow + approval-gates depth · `1013184`
 
 - **1 new agent** — `decision-router` [sonnet]
 - **1 new schema** — `schemas/decision-memo.md` (canonical CCO-bound decision shape)
 - **`schemas/integration-action.md`** — added `decision_memo_ref` to references
-- **Aldar `client-profile.md` `approval_gates`** — added depth thresholds for deal-desk exception, channel-development spend, marketing-budget reallocation, international roadshow, AML/KYC EDD elevation, VVIP relationship activation, decision-memo required
+- **Demo client `client-profile.md` `approval_gates`** — added depth thresholds for deal-desk exception, channel-development spend, marketing-budget reallocation, international roadshow, AML/KYC EDD elevation, VVIP relationship activation, decision-memo required
 - **`/approvals` split-view** — native CCO decision-asks queue (top) + GitHub PR mirror (bottom); each client section deep-links to `/cco?client=<slug>`
 
 ### `e310292` — `.gitignore` housekeeping
 
 Removed accidentally-committed `.next/` build artifacts and added `.gitignore` to prevent recurrence.
 
-### Phase 5C + 5D + 5E + 5F — runbooks completion + Aldar kpi-targets
+### Phase 5C + 5D + 5E + 5F — runbooks completion + demo kpi-targets
 
 12 new runbooks closing the operational-crisis, strategic-planning, and integration-go-live gaps.
 
@@ -45,8 +45,8 @@ Removed accidentally-committed `.next/` build artifacts and added `.gitignore` t
 **Phase 5E — integration go-live (4):**
 - `integration-go-live-salesforce` · `integration-go-live-sumsub` · `integration-go-live-calendar` · `integration-go-live-news-scan`
 
-**Phase 5F — Aldar populate:**
-- `clients/_examples/uae-developments/cco/kpi-targets.md` — full year-2026 targets across 5 KPI families with quarterly cadence; Q3 spike reflects Saadiyat Reserve Heights launch; signed CCO + CFO + CEO
+**Phase 5F — Demo client populate:**
+- `clients/_examples/uae-developments/cco/kpi-targets.md` — full year-2026 targets across 5 KPI families with quarterly cadence; Q3 spike reflects Coastal Reserve Phase 1 launch; signed CCO + CFO + CEO
 
 `runbooks/README.md` catalog refreshed with 6 categories.
 
@@ -60,7 +60,7 @@ Removed accidentally-committed `.next/` build artifacts and added `.gitignore` t
 | Runbooks | 10 | 22 | +12 |
 | Web routes | 12 | 13 | +1 (`/cco`) |
 | Web components | (existing dashboards) | +5 | new CCO components |
-| Aldar populated CCO surface | 0 | 6 files | morning-brief / decision-asks / risk-register / calendar / horizon-scan / kpi-targets |
+| demo client populated CCO surface | 0 | 6 files | morning-brief / decision-asks / risk-register / calendar / horizon-scan / kpi-targets |
 
 ---
 
@@ -69,12 +69,12 @@ Removed accidentally-committed `.next/` build artifacts and added `.gitignore` t
 7 additional skills authored to fully cover the cross-agent reference surface for the developer engagement. Skills total: 14 (was 7 after Phase 4D).
 
 - `.claude/skills/crm-data-model.md` — system-agnostic data model (deal-record ↔ CRM-object mapping); the Salesforce-specific operational mapping at `integrations/salesforce/schema-mapping.md` is the system-level layer underneath.
-- `verticals/real-estate/skills/wealth-channel-operations.md` — parallel to `broker-operations` for private banks / family offices / independent introducers; introducer-agreement framework, ADGM-FSRA + DIFC-DFSA + foreign-jurisdiction overlay, fee structure, dispute escalation, channel-development cadence.
-- `verticals/real-estate/skills/off-plan-launch-mechanics.md` — consolidates Trustee Account opening, RERA / ADREC project registration, Oqood, Trakheesi / ADREC permit, reservation-form mechanics, disclosure currency, and the regulatory-clock vs. marketing-clock alignment problem.
-- `verticals/real-estate/skills/owner-community-governance.md` — Dubai Law 27/2007 + AD equivalent, OAM operations, AGM cadence, service-charge transparency, post-handover developer-side touchpoint cadence, VVIP overlay.
-- `verticals/real-estate/skills/dispute-resolution-uae.md` — pathway map (RERA RDC, REDRC, ADREC consumer-protection, Dubai/AD courts, DIFC/ADGM courts + arbitration), matter-type → pathway, time-and-cost tradeoffs, internal-resolution-first principle.
-- `verticals/real-estate/skills/payment-plan-structures.md` — standard structures A-D + bespoke E-I; cash-flow + IRR implications; mortgage-overlay; post-handover collection; escrow-coverage adequacy; disclosure framework.
-- `verticals/real-estate/skills/diaspora-corridor-marketing.md` — corridor patterns for India NRI, KSA, UK, Russia/CIS, Egypt, Pakistan, Nigeria, Singapore, US: language, cultural calendar, regulatory overlay, preferred channels, content angles, decision cycle, pitfalls.
+- `verticals/real-estate-uae/skills/wealth-channel-operations.md` — parallel to `broker-operations` for private banks / family offices / independent introducers; introducer-agreement framework, ADGM-FSRA + DIFC-DFSA + foreign-jurisdiction overlay, fee structure, dispute escalation, channel-development cadence.
+- `verticals/real-estate-uae/skills/off-plan-launch-mechanics.md` — consolidates Trustee Account opening, RERA / ADREC project registration, Oqood, Trakheesi / ADREC permit, reservation-form mechanics, disclosure currency, and the regulatory-clock vs. marketing-clock alignment problem.
+- `verticals/real-estate-uae/skills/owner-community-governance.md` — Dubai Law 27/2007 + AD equivalent, OAM operations, AGM cadence, service-charge transparency, post-handover developer-side touchpoint cadence, VVIP overlay.
+- `verticals/real-estate-uae/skills/dispute-resolution-uae.md` — pathway map (RERA RDC, REDRC, ADREC consumer-protection, Dubai/AD courts, DIFC/ADGM courts + arbitration), matter-type → pathway, time-and-cost tradeoffs, internal-resolution-first principle.
+- `verticals/real-estate-uae/skills/payment-plan-structures.md` — standard structures A-D + bespoke E-I; cash-flow + IRR implications; mortgage-overlay; post-handover collection; escrow-coverage adequacy; disclosure framework.
+- `verticals/real-estate-uae/skills/diaspora-corridor-marketing.md` — corridor patterns for India NRI, KSA, UK, Russia/CIS, Egypt, Pakistan, Nigeria, Singapore, US: language, cultural calendar, regulatory overlay, preferred channels, content angles, decision cycle, pitfalls.
 
 `README.md` repo-layout updated to enumerate all 14 skills.
 
@@ -95,7 +95,7 @@ The repo was audited end-to-end (`AUDIT.md`), gaps identified (`GAPS.md`), prior
 
 ### Phase 4B — P1: regulatory + AML/KYC infrastructure · `89c19cb`
 
-The highest-leverage gap from `GAPS.md`. For an Aldar-class engagement, this is the difference between safe and unsafe.
+The highest-leverage gap from `GAPS.md`. For an developer-class engagement, this is the difference between safe and unsafe.
 
 - **Added `aml-kyc-compliance-specialist`** [opus] — DNFBP operational screening: PEP, sanctions (UN/OFAC/UK HMT/EU/DFAT + GCC), source-of-funds, EDD coordination, STR drafting (with legal-liaison), Russia/CIS pre-commercial-conversation mandatory.
 - **Added `regulatory-research-specialist`** [opus] — single source of truth for "what does the regulator currently say"; tracks DLD/RERA/ADREC/ADGM/DIFC/CBUAE/PDPL/federal AML circulars; returns citation-bearing answers; never invents citations.
@@ -125,10 +125,10 @@ The highest-leverage gap from `GAPS.md`. For an Aldar-class engagement, this is 
   - `integrations/trakheesi/spec.md` — record-keeping + verification, no public DLD API yet
 - **Introduced `runbooks/` directory** (new pattern) with 4 runbooks:
   - `runbooks/README.md` — catalog + authoring rules
-  - `verticals/real-estate/runbooks/resale-with-noc.md` — full secondary-market choreography
-  - `verticals/real-estate/runbooks/complaint-rera-exposure.md` — regulator-exposure complaint, no admission, Legal-first
-  - `verticals/real-estate/runbooks/pep-sanctions-hit.md` — no-tipping-off, restricted-channels, STR pathway
-- **Extended** `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` with a regulatory-milestone overlay (T-90 escrow → T0 launch sign-off → T+ongoing re-screening) layered over the existing T-16/T-12 marketing-clock cadence.
+  - `verticals/real-estate-uae/runbooks/resale-with-noc.md` — full secondary-market choreography
+  - `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` — regulator-exposure complaint, no admission, Legal-first
+  - `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` — no-tipping-off, restricted-channels, STR pathway
+- **Extended** `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md` with a regulatory-milestone overlay (T-90 escrow → T0 launch sign-off → T+ongoing re-screening) layered over the existing T-16/T-12 marketing-clock cadence.
 
 ### Phase 4D — P3: long tail · `4381750`
 
@@ -143,15 +143,15 @@ The highest-leverage gap from `GAPS.md`. For an Aldar-class engagement, this is 
   - `project-fact-pack.md` — current-state snapshot template (facts not narrative), audience-adaptation, cadence + sources
   - `vvip-protocol-uae.md` — gatekeeper map, register, no-mention list mechanics, bespoke-arrangement coordination, foreign-VVIP corridor, gift + event protocol
 - **Added 6 P3 runbooks:**
-  - `verticals/real-estate/runbooks/international-roadshow.md` — 14-day post-event cadence in buyer's local time-zone
-  - `verticals/real-estate/runbooks/inbound-hnw-private-bank.md` — wealth-channel-mediated principal flow
-  - `verticals/real-estate/runbooks/broker-onboarding-to-first-deal.md` — 90-day onboarding-to-activation
-  - `verticals/real-estate/runbooks/handover-snagging.md` — T-30 to T+90 owner experience
+  - `verticals/real-estate-uae/runbooks/international-roadshow.md` — 14-day post-event cadence in buyer's local time-zone
+  - `verticals/real-estate-uae/runbooks/inbound-hnw-private-bank.md` — wealth-channel-mediated principal flow
+  - `verticals/real-estate-uae/runbooks/broker-onboarding-to-first-deal.md` — 90-day onboarding-to-activation
+  - `verticals/real-estate-uae/runbooks/handover-snagging.md` — T-30 to T+90 owner experience
   - `runbooks/quarterly-exec-brief.md` — 3-week assembly cycle, 8-section template
-  - `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md` — discretion-overlay across the entire transaction lifecycle
+  - `verticals/real-estate-uae/runbooks/press-sensitive-uhnw-transaction.md` — discretion-overlay across the entire transaction lifecycle
 - **Minimum-edit extensions** (preserving original prompt):
   - `account-manager.md` — appended UAE-developer note (handover, owner-community, schools, resale, referral, VVIP)
-  - `partnerships.md` — appended Aldar-class scope note (hospitality JV, education, asset-class JV, lifestyle, wellness, financial)
+  - `partnerships.md` — appended developer-class scope note (hospitality JV, education, asset-class JV, lifestyle, wellness, financial)
 
 ### Phase 4E — Documentation refresh
 
@@ -169,7 +169,7 @@ The repo prior to the audit had been built up across many phases with the follow
 
 - `c265202` — redirect `/verticals/automotive` → `/verticals` (no 404 for the removed route)
 - `446b428` — remove automotive vertical (narrow scope to real-estate)
-- `bb3d728` — replace meridian-residences with Aldar Developments worked example
+- `bb3d728` — replace meridian-residences with UAE Developments worked example
 - `55488cb` — pipeline dashboard, budget burn-down chart, reciprocity staging form
 - `1249b38` — RSVP staging form + cross-channel reciprocity ledger
 - `12557b7` — RSVP log + debrief templates and per-vendor / per-broker detail pages

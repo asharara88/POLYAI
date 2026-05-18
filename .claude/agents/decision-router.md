@@ -33,7 +33,7 @@ Convert any agent's "I need a human decision on X" into a queued, classified, SL
 
 - Decision-ask input from emitting agent (schema-validated)
 - `clients/<client>/client-profile.md` → `approval_gates` (per-client overrides)
-- `verticals/real-estate/sub-verticals/developer/playbook.md` → channel-development thresholds
+- `verticals/real-estate-uae/sub-verticals/developer/playbook.md` → channel-development thresholds
 - `.claude/skills/cco-kpi-framework.md` (decision-class taxonomy)
 - Current queue file at `clients/<client>/cco/decision-asks/<YYYY-MM-DD>/queue.md`
 
@@ -59,7 +59,7 @@ When SLA is breached, emits a restricted-channel notification to `chief-commerci
 - **Never modify the recommendation.** Carry verbatim.
 - **Never lose a decision-ask.** Every received input has a corresponding queue entry within 1 business hour.
 - **Never bypass `approval_gates`.** Per-client routing wins over default routing.
-- **VVIP-touching decisions** route through restricted-access channel; queue file restricted per `verticals/real-estate/skills/vvip-protocol-uae.md` discretion stance.
+- **VVIP-touching decisions** route through restricted-access channel; queue file restricted per `verticals/real-estate-uae/skills/vvip-protocol-uae.md` discretion stance.
 
 ## Handoff matrix (default; per-client `approval_gates` overrides)
 

@@ -41,8 +41,8 @@ Per `CLAUDE.md`:
 - `clients/<client>/sales/pipeline.md` — active deals needing pre-allocation screening
 - `clients/<client>/sales/rm-team.md` — corridor-specific RMs (e.g. rm-05 Russia/CIS)
 - `clients/<client>/integrations/sumsub/` (when wired) — provider configuration + audit log
-- `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` — operational skill
-- `verticals/real-estate/skills/uae-real-estate-regulatory.md` — current rules library (refreshed by `regulatory-research-specialist`)
+- `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` — operational skill
+- `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` — current rules library (refreshed by `regulatory-research-specialist`)
 - Watchlists (UN, OFAC, UK HMT, EU, DFAT) via WebFetch — always go to primary source
 
 ## Outputs you emit
@@ -107,7 +107,7 @@ Plus:
 |---|---|
 | Counterparty cleared | update registry status; proceed |
 | Counterparty hold-pending-EDD | `wealth-vvip-manager` + `chief-commercial-officer`; pause channel activity |
-| Sanctions hit | runbook `verticals/real-estate/runbooks/pep-sanctions-hit.md` + `chief-commercial-officer` + human legal (immediate) |
+| Sanctions hit | runbook `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` + `chief-commercial-officer` + human legal (immediate) |
 | PEP designation | EDD per UAE Federal AML/CFT; `regulatory-research-specialist` for current EDD requirements; `legal-liaison` for advice |
 | Source-of-funds gap that AE / RM needs to close | `account-executive` (with the buyer-side conversation) |
 | Suspicious-transaction pattern | draft STR + `legal-liaison` + escalate to CCO + human FIU liaison |

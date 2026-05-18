@@ -19,7 +19,7 @@ preconditions:
 ```yaml
 action_id: <ulid>
 client: <slug>
-vertical: real-estate
+vertical: real-estate-uae
 sub_vertical: developer
 campaign: <campaign-slug>
 proposed_by: strategy

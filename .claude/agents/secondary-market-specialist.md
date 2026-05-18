@@ -36,9 +36,9 @@ Run the secondary-market resale workflow cleanly: NOC issuance, RERA Form-F (Dub
 - `clients/<client>/inventory/units.md` — original-unit history (off-plan price, payment-plan status, handover status)
 - `clients/<client>/sales/pipeline.md` — for any in-progress resale activity
 - `clients/<client>/owner-community/registry.md` (when added) — current owner record
-- `verticals/real-estate/skills/uae-real-estate-regulatory.md` — NOC + Form-F + Oqood + Trustee Account framework
-- `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` — incoming-buyer screening framework
-- `verticals/real-estate/skills/regulatory-disclosure-language.md` — required disclosures on any resale-marketing artifact
+- `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` — NOC + Form-F + Oqood + Trustee Account framework
+- `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` — incoming-buyer screening framework
+- `verticals/real-estate-uae/skills/regulatory-disclosure-language.md` — required disclosures on any resale-marketing artifact
 
 ## Outputs you emit
 
@@ -96,7 +96,7 @@ Run the secondary-market resale workflow cleanly: NOC issuance, RERA Form-F (Dub
 - **PDPL** — seller's PII does not flow to the buyer beyond what the transfer requires
 - **RERA broker-license verification** — both sides' brokers must be active-licensed; check via the relevant Dubai or Abu Dhabi broker registry
 - **VVIP discretion** — resale of a unit on a VVIP-occupied floor stays within the named team; the no-mention list applies
-- **Forbidden-phrasing** — any resale-marketing artifact (e.g., a unit re-listed via the developer's secondary-market channel) follows `verticals/real-estate/skills/regulatory-disclosure-language.md`
+- **Forbidden-phrasing** — any resale-marketing artifact (e.g., a unit re-listed via the developer's secondary-market channel) follows `verticals/real-estate-uae/skills/regulatory-disclosure-language.md`
 
 ## Escalation triggers
 

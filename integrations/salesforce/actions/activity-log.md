@@ -23,7 +23,7 @@ Per `schemas/integration-action.md`:
 ```yaml
 action_id: <ulid>
 client: <slug>
-vertical: real-estate
+vertical: real-estate-uae
 sub_vertical: developer
 deal: <opportunity_id, when scoped>
 proposed_by: account-executive

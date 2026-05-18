@@ -133,12 +133,12 @@ Structure:
 - Profile card: long-form markdown about the firm (illustrative)
 - **"Launches this firm is on"** — list of 3 rows, each linking to a launch:
   - Q3 tower launch (Live) — 36 slots · T1
-  - Hudayriyat Canal Residences (Pre-launch) — 16 slots · T1
-  - *(no Yas Acres — Driven isn't on that allocation)*
+  - Marina Canal Residences (Pre-launch) — 16 slots · T1
+  - *(no Grove Acres — Driven isn't on that allocation)*
 
 ### 3.6 `/launches` — campaign list
 
-Three sections: **Active** (1: Q3 tower launch — Live), **In creative** (1: Hudayriyat Canal — Pre-launch), **Closing out** (1: Yas Acres Grove handover — Close-out). Each `LaunchCard` shows: project name, campaign title, phase badge, days-to-close (`12 days · Jun 17`), budget chip (`AED 4.1M`), primary KPI (`booking-pads issued`), owner agent (`marketing-manager`).
+Three sections: **Active** (1: Q3 tower launch — Live), **In creative** (1: West Marina Canal — Pre-launch), **Closing out** (1: Grove Acres handover — Close-out). Each `LaunchCard` shows: project name, campaign title, phase badge, days-to-close (`12 days · Jun 17`), budget chip (`AED 4.1M`), primary KPI (`booking-pads issued`), owner agent (`marketing-manager`).
 
 ### 3.7 `/launches/q3-tower-launch` — launch detail (the second showcase)
 
@@ -208,9 +208,9 @@ Don't invent — these are the entities I want consistent across surfaces:
 - Emaar Hospitality (real-estate-uae, Dubai, pilot, 1 campaign)
 
 **UAE Developments campaigns / launches:**
-- `q3-tower-launch` — "Saadiyat Reserve Heights — Q3 tower" — Live — Jun 17 — AED 4.1M — KPI: booking-pads issued
-- `hudayriyat-canal-residences-pre-launch` — "Hudayriyat Canal Residences — pre-launch" — Pre-launch — Sep 14 — AED 2.8M — KPI: qualified-wealth-channel intros
-- `yas-acres-grove-handover` — "Yas Acres Grove — handover campaign" — Close-out — May 15 — AED 1.2M — KPI: loyalty-program enrolment
+- `q3-tower-launch` — "Coastal Reserve Phase 1 — Q3 tower" — Live — Jun 17 — AED 4.1M — KPI: booking-pads issued
+- `marina-canal-residences-pre-launch` — "Marina Canal Residences — pre-launch" — Pre-launch — Sep 14 — AED 2.8M — KPI: qualified-wealth-channel intros
+- `grove-acres-handover` — "Grove Acres — handover campaign" — Close-out — May 15 — AED 1.2M — KPI: loyalty-program enrolment
 
 **Tier-1 broker firms (use these spellings):** Driven Properties, Allsopp & Allsopp, Better Homes, Espace Real Estate, Provident Estate, LuxuryProperty.com, fäm Properties
 

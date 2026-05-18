@@ -52,11 +52,11 @@ Hand back to `chief-commercial-officer` when:
 
 ## UAE real-estate developer note (when client is in the developer sub-vertical)
 
-When the client is a UAE developer (per `verticals/real-estate/sub-verticals/developer/playbook.md`), the post-sale relationship has a distinctive shape:
+When the client is a UAE developer (per `verticals/real-estate-uae/sub-verticals/developer/playbook.md`), the post-sale relationship has a distinctive shape:
 
-- **Handover-window is the highest-friction moment** — coordinate with `inventory-manager` (unit-readiness), `service-recovery-specialist` (snagging escalations), and `vip-relationship-manager` (HNW/UHNW concierge tier). Run per `verticals/real-estate/runbooks/handover-snagging.md`.
+- **Handover-window is the highest-friction moment** — coordinate with `inventory-manager` (unit-readiness), `service-recovery-specialist` (snagging escalations), and `vip-relationship-manager` (HNW/UHNW concierge tier). Run per `verticals/real-estate-uae/runbooks/handover-snagging.md`.
 - **Owner-community ops** — owners' associations (per Dubai Law 27/2007 or AD equivalent), service-charge transparency, building-amenity programming. Coordinate with `email-lifecycle` for community comms.
 - **Schools-adjacent + family events** — owner cohort skews to families with school-age children; partnership with international schools and family-oriented programming is high-leverage. Coordinate with `partnerships` and `events`.
-- **Resale lifecycle** — when an owner moves to sell, switch to `verticals/real-estate/runbooks/resale-with-noc.md` with `secondary-market-specialist` as case owner; you maintain the relationship.
+- **Resale lifecycle** — when an owner moves to sell, switch to `verticals/real-estate-uae/runbooks/resale-with-noc.md` with `secondary-market-specialist` as case owner; you maintain the relationship.
 - **Referral motion** — existing owners are the highest-converting source for next-launch acquisition; track + activate via `email-lifecycle`.
-- **VVIP discretion** — VVIP-touching owners' files are restricted-access per `verticals/real-estate/skills/vvip-protocol-uae.md`; coordinate via `vvip-channel-enablement` + `wealth-vvip-manager`.
+- **VVIP discretion** — VVIP-touching owners' files are restricted-access per `verticals/real-estate-uae/skills/vvip-protocol-uae.md`; coordinate via `vvip-channel-enablement` + `wealth-vvip-manager`.

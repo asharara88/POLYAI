@@ -22,7 +22,7 @@ period_close:
 ## By campaign
 
 ```yaml
-- name: q3-tower-launch                    # Saadiyat Reserve Heights flagship
+- name: q3-tower-launch                    # Coastal Reserve Phase 1 flagship
   planned_aed: 165000000
   committed_aed: 113000000
   actual_aed: 28000000
@@ -34,7 +34,7 @@ period_close:
   actual_aed: 9300000
   remaining_aed: 51000000
 
-- name: existing-portfolio-marketing       # Yas + Saadiyat + Al Raha + Al Ghadeer ongoing
+- name: existing-portfolio-marketing       # Yas + Coastal District + Al Raha + Al Ghadeer ongoing
   planned_aed: 46000000
   committed_aed: 28000000
   actual_aed: 11000000

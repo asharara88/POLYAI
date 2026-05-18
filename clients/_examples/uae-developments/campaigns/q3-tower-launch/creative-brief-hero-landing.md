@@ -1,10 +1,10 @@
-# Creative brief — Saadiyat Reserve Heights — Hero landing page
+# Creative brief — Coastal Reserve Phase 1 — Hero landing page
 
 > **Worked example — illustrative.** Not real UAE Developments data.
 >
 > Owned by `strategy`. Conforms to `schemas/creative-brief.md`.
 > Will be consumed by `creative` (copy) + `brand-design` (visuals) + `seo` (technical SEO + on-page).
-> Stamped with `client: uae-developments, vertical: real-estate, campaign: q3-tower-launch`.
+> Stamped with `client: uae-developments, vertical: real-estate-uae, campaign: q3-tower-launch`.
 
 ```yaml
 asset_id: q3-tower-launch__hero-landing

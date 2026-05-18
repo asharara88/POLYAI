@@ -19,7 +19,7 @@ import { getLaunches, type LaunchPhase } from "@/lib/launches";
 //
 // Phase keys are author-defined per launch (pre_launch / launch_week /
 // post_launch on standard launches, pre_handover / handover_window /
-// post_handover on the Yas Acres closed-launch). The loader preserves
+// post_handover on the Grove Acres closed-launch). The loader preserves
 // the phase keys in document order so the UI can render them as columns.
 
 const REPO_ROOT = path.resolve(process.cwd(), "..");

@@ -55,7 +55,7 @@ DLD reviews + issues permit number (typically days; verify current SLA via regul
     ↓
 agency-liaison records "issued" status with permit number, validity dates, scope of artifacts covered
     ↓
-creative produces artifact with permit number displayed per `verticals/real-estate/skills/regulatory-disclosure-language.md` Template 4
+creative produces artifact with permit number displayed per `verticals/real-estate-uae/skills/regulatory-disclosure-language.md` Template 4
     ↓
 compliance verifies permit number matches a current valid permit on file before ship-clearance
     ↓ (if mismatch or absent: BLOCK)

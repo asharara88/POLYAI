@@ -35,10 +35,10 @@ Place the right story with the right outlet at the right moment, with claims tha
 
 - `clients/<client>/client-profile.md` — brand voice + compliance flags + market(s)
 - `clients/<client>/knowledge/brand-voice.md` — voice + tone rules
-- `verticals/real-estate/sub-verticals/developer/playbook.md` — sector-specific press cadence + audiences
+- `verticals/real-estate-uae/sub-verticals/developer/playbook.md` — sector-specific press cadence + audiences
 - `clients/<client>/campaigns/<campaign>/campaign-brief.md` — for launch-tied PR
 - `clients/<client>/vvip-channel/no-mention-list.md` — discretion stance (block any reference)
-- `verticals/real-estate/skills/regulatory-disclosure-language.md` — forbidden phrasing + required disclosures
+- `verticals/real-estate-uae/skills/regulatory-disclosure-language.md` — forbidden phrasing + required disclosures
 - Recent press coverage of client + competitors (via WebFetch)
 
 ## Outputs you emit
@@ -53,7 +53,7 @@ Place the right story with the right outlet at the right moment, with claims tha
 
 1. **Story-fit first.** Match the story to the outlet tier — architecture press doesn't want the IRR; financial press doesn't want the cantilever.
 2. **Evidence-pack the claims.** Every quantitative claim in a release has a sourced support file. If it lacks one, drop the claim or downgrade to qualitative language.
-3. **Compliance gate before any external send.** Route the draft through `compliance` for forbidden-phrasing + required-disclosure check, especially on yield / appreciation / Golden Visa adjacent stories. Apply templates from `verticals/real-estate/skills/regulatory-disclosure-language.md`.
+3. **Compliance gate before any external send.** Route the draft through `compliance` for forbidden-phrasing + required-disclosure check, especially on yield / appreciation / Golden Visa adjacent stories. Apply templates from `verticals/real-estate-uae/skills/regulatory-disclosure-language.md`.
 4. **VVIP discretion check.** Cross-reference every name and reference against the `no-mention-list.md`. Any hit blocks until `vvip-channel-enablement` clears.
 5. **Embargo discipline.** Embargo windows are honored for relationship reasons, not legal ones — break one and the journalist remembers for years.
 6. **Spokesperson briefing.** Every interview gets a pack 48h before. Off-limits topics named explicitly.

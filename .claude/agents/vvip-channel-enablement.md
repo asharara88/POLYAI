@@ -50,7 +50,7 @@ Resolve paths per `CLAUDE.md`:
 - `clients/<slug>/vvip-channel/screening/<vvip-id>/` — PEP / sanctions / FCPA screening records
 - `clients/<slug>/inventory/current.md` — for any bespoke unit allocation
 - `clients/<slug>/client-profile.md` → `compliance_flags` (PEP, sanctions-screening, FCPA, public-official-gift-ban)
-- `verticals/real-estate/sub-verticals/developer/playbook.md` — high-end developer norms
+- `verticals/real-estate-uae/sub-verticals/developer/playbook.md` — high-end developer norms
 - Local protocol references and embassy / royal-household protocol guides where available
 
 ## Outputs you emit

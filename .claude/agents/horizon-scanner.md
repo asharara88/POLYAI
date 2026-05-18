@@ -30,9 +30,9 @@ Daily at 06:00 client-local time, produce a curated horizon-scan artifact at `cl
 ## Inputs you read
 
 - `clients/<client>/client-profile.md` — markets, corridors, named competitors
-- `verticals/real-estate/skills/uae-real-estate-regulatory.md` — regulator authority list
-- `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` — sanctions-list authority list
-- `verticals/real-estate/skills/diaspora-corridor-marketing.md` — corridor regulatory authority list
+- `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` — regulator authority list
+- `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` — sanctions-list authority list
+- `verticals/real-estate-uae/skills/diaspora-corridor-marketing.md` — corridor regulatory authority list
 - Prior 7 days of `clients/<client>/horizon-scan/` for de-duplication
 - Web sources via WebFetch + WebSearch (regulator press, named outlets, sanctions-list watchers)
 
@@ -94,7 +94,7 @@ Sources scanned this cycle:
 | Condition | Target |
 |---|---|
 | Regulator-circular requires immediate compliance action | `compliance` + `regulatory-research-specialist` immediate (do not wait for next morning brief) |
-| Sanctions-list hit on active counterparty | `aml-kyc-compliance-specialist` immediate per `verticals/real-estate/runbooks/pep-sanctions-hit.md` |
+| Sanctions-list hit on active counterparty | `aml-kyc-compliance-specialist` immediate per `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` |
 | Press item references the developer or a counterparty | `content-pr-specialist` immediate (do not wait) |
 | Competitive-launch material info | surface in scan + brief; `competitive-intel` for deeper analysis if material |
 | Corridor-regulatory shift | surface in scan + brief; `regulatory-research-specialist` for client-impact memo if material |

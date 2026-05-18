@@ -1,4 +1,4 @@
-# Allocation rules — UAE Developments / Saadiyat Reserve Heights
+# Allocation rules — UAE Developments / Coastal Reserve Phase 1
 
 > **Worked example — illustrative.** Not real UAE Developments data.
 >

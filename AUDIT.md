@@ -81,7 +81,7 @@ All agent files use the same kebab-case naming. Frontmatter pattern: `name`, `de
 
 ### 1.1.4 Runbooks — `runbooks/`
 
-**Does not exist as a directory.** The closest existing artifact is `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` — a 16-week off-plan campaign workflow with phase-by-phase agent assignments (T-16 pre-brief through T+ongoing construction marketing). This covers a substantial portion of the "new off-plan launch (T-90 to T+30)" runbook intent. No other cross-agent workflow documents exist.
+**Does not exist as a directory.** The closest existing artifact is `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md` — a 16-week off-plan campaign workflow with phase-by-phase agent assignments (T-16 pre-brief through T+ongoing construction marketing). This covers a substantial portion of the "new off-plan launch (T-90 to T+30)" runbook intent. No other cross-agent workflow documents exist.
 
 ### 1.1.5 Schemas — `schemas/` (8 files)
 
@@ -107,10 +107,10 @@ All agent files use the same kebab-case naming. Frontmatter pattern: `name`, `de
 
 ### 1.1.7 Vertical content — `verticals/`
 
-- `verticals/real-estate/playbook.md` — UAE-flavored real-estate base playbook (Property Finder, Bayut, RERA mentioned)
-- `verticals/real-estate/monitoring.yml` — public-source monitoring config
-- `verticals/real-estate/sub-verticals/developer/playbook.md` — developer-specific overlay
-- `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` — 16-week off-plan workflow
+- `verticals/real-estate-uae/playbook.md` — UAE-flavored real-estate base playbook (Property Finder, Bayut, RERA mentioned)
+- `verticals/real-estate-uae/monitoring.yml` — public-source monitoring config
+- `verticals/real-estate-uae/sub-verticals/developer/playbook.md` — developer-specific overlay
+- `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md` — 16-week off-plan workflow
 - 6 channel-development playbooks under `sub-verticals/developer/playbooks/`:
   - `broker-channel-reactivation`, `broker-channel-new-firm-signing`
   - `wealth-channel-reactivation`, `wealth-channel-new-relationship-signing`
@@ -186,7 +186,7 @@ The target roster in the prompt names ~28 agents across sales, CRM, marketing, w
 
 These are non-negotiable from CLAUDE.md + ARCHITECTURE.md and bind any new agent / skill / runbook:
 
-1. **Multi-tenant.** No agent embeds client-specific data. UAE Developments specifics live in `clients/_examples/uae-developments/` and `verticals/real-estate/sub-verticals/developer/`.
+1. **Multi-tenant.** No agent embeds client-specific data. UAE Developments specifics live in `clients/_examples/uae-developments/` and `verticals/real-estate-uae/sub-verticals/developer/`.
 2. **Three-layer context resolution.** Any new agent must use the same path-resolution rule.
 3. **Knowledge agent is the only writer to `knowledge/`.** New agents that learn must route updates through it.
 4. **Writes outside the client folder need promotion.** Vertical-level playbook edits via `knowledge` + chief-commercial-officer approval, never directly.

@@ -8,7 +8,7 @@
 event_id: q1-owners-update-2026
 date: 2026-02-22
 type: owner-loyalty
-audience: Existing owners across Yas Capital Residences I + Saadiyat Coastal I (prior two towers)
+audience: Existing owners across Yas Capital Residences I + Coastal District Coastal I (prior two towers)
 headcount:
   capacity: 120
   invited: 180
@@ -31,14 +31,14 @@ secondary_metrics:
   - name: post-event NPS
     target: 50
     actual: 64
-  - name: saadiyat-reserve-heights-launch-pack request rate from attendees
+  - name: coastal-reserve-phase-1-launch-pack request rate from attendees
     target: 0.40
     actual: 0.62
 ```
 
 ## What worked
 
-- **Construction-progress reveal landed strongly.** Showing the third-party-verified drone footage of Saadiyat Coastal I structural progress alongside Saadiyat Reserve Heights architectural reveal built credibility for the upcoming launch in the audience that's already familiar with the brand's delivery.
+- **Construction-progress reveal landed strongly.** Showing the third-party-verified drone footage of Coastal District Coastal I structural progress alongside Coastal Reserve Phase 1 architectural reveal built credibility for the upcoming launch in the audience that's already familiar with the brand's delivery.
 - **Hospitality operator presence.** Their participation reinforced the institutional partnership story — owners noted it explicitly in feedback.
 - **Q&A run long.** Going 45 minutes instead of the planned 30 was the right call; ended the formal program with everyone in a warm posture.
 - **Model-unit walk-through immediately after Q&A.** No transition gap; momentum carried into 1:1 RM conversations.
@@ -47,7 +47,7 @@ secondary_metrics:
 
 ## What didn't
 
-- **Save-the-date timing.** 6 weeks out was too early; some owners didn't keep the date in mind. Attribution: 9 of the 25 Saadiyat Coastal I "no" responses cited "calendar conflict" that probably didn't exist 6 weeks prior.
+- **Save-the-date timing.** 6 weeks out was too early; some owners didn't keep the date in mind. Attribution: 9 of the 25 Coastal District Coastal I "no" responses cited "calendar conflict" that probably didn't exist 6 weeks prior.
 - **Arabic-language program coverage.** 8 Arabic-only attendees received the formal program in EN-primary with simultaneous translation on individual headsets. Headsets distributed late; 2 attendees missed the first 5 minutes of the construction reveal.
 - **Q&A microphone discipline.** Open Q&A meant some owners dominated airtime; quieter owners with substantive questions didn't get to ask. Floor management improvement needed for next event.
 - **Photography release confusion.** 3 attendees were photographed who later requested removal from any internal-distribution use. Release form was not collected at registration; should be standard.
@@ -121,7 +121,7 @@ secondary_metrics:
 | Cohort | Attended | Moved to next stage | Rate |
 |---|---|---|---|
 | Yas Capital Residences I owners | 48 | 17 (Q3 launch-pack request) | 35% |
-| Saadiyat Coastal I owners | 41 | 13 (Q3 launch-pack request) | 32% |
+| Coastal District Coastal I owners | 41 | 13 (Q3 launch-pack request) | 32% |
 | Tier-1 brokers (uninvited but attended) | 2 | 0 | n/a |
 | **Reservations attributed to event (T+90)** | | **14** | |
 

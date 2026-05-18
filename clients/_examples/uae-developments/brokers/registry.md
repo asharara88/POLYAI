@@ -16,7 +16,7 @@
 2. Speed-first: first broker to acknowledge gets the lead; auto-reroute after 5 minutes of silence.
 3. Anti-double-routing: same prospect touched in last 30 days → same broker or escalate.
 4. Specialization required: penthouse-tier inquiries route only to Tier-1 with prior penthouse closes.
-5. Corridor-aware: Saadiyat-corridor inquiries route to brokers with Abu Dhabi-anchored books; Dubai-corridor inquiries to brokers with Dubai-resident clientele.
+5. Corridor-aware: Coastal District-corridor inquiries route to brokers with Abu Dhabi-anchored books; Dubai-corridor inquiries to brokers with Dubai-resident clientele.
 
 ## Tier-1 (sample — 7 of 18)
 

@@ -60,7 +60,7 @@ This file maps Salesforce standard + custom objects to the Flow repo schemas (`s
 | `eida_verified` | `EIDA_Verified__c` | Checkbox | UAE-resident only |
 | `passport_country` | `Passport_Country__c` | Picklist (ISO codes) | |
 | `residency_country` | `Residency_Country__c` | Picklist | |
-| `risk_rating` | `Risk_Rating__c` | Picklist (`low`, `medium`, `high`) | Per `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` |
+| `risk_rating` | `Risk_Rating__c` | Picklist (`low`, `medium`, `high`) | Per `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` |
 | `edd_required` | `EDD_Required__c` | Checkbox | |
 | `last_screened_date` | `Last_Screened_Date__c` | Date | |
 | `screening_provider_id` | `Screening_Provider_ID__c` | Text | Audit reference; documents do not flow here |

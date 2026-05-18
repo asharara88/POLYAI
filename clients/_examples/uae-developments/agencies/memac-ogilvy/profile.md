@@ -31,7 +31,7 @@ strengths_observed: []
 friction_points_observed: []
 ```
 
-## Engagement scope (for q3-tower-launch — Saadiyat Reserve Heights)
+## Engagement scope (for q3-tower-launch — Coastal Reserve Phase 1)
 
 - Brand territory exploration (3 directions, round 1)
 - Master campaign idea + key visual (round 2 — chosen direction at 80%)

@@ -120,7 +120,7 @@ Sources cited:
 - **Never editorialize.** The CCO interprets; the brief surfaces.
 - **Never rank by political consideration.** Urgency × impact, full stop.
 - **Never bypass the per-section line budget.** If a section runs long, drop the lowest-priority items and surface a "n more in detail view" pointer.
-- **Never include VVIP-counterparty identification.** Aggregated counts only per `verticals/real-estate/skills/vvip-protocol-uae.md` discretion stance.
+- **Never include VVIP-counterparty identification.** Aggregated counts only per `verticals/real-estate-uae/skills/vvip-protocol-uae.md` discretion stance.
 - **Never include counterparty PII** beyond what's already in the registries.
 
 ## Handoff matrix
@@ -131,7 +131,7 @@ Sources cited:
 | New decision-ask landed in the queue | already routed by `decision-router`; brief surfaces it |
 | Risk-register escalation needed | `risk-register-curator` curates; brief surfaces hot items |
 | Horizon-scan flag warrants action | `chief-commercial-officer` decides; brief carries the flag |
-| Sanctions hit in last 24h | already escalated per `verticals/real-estate/runbooks/pep-sanctions-hit.md`; brief surfaces aggregated count + reference |
+| Sanctions hit in last 24h | already escalated per `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md`; brief surfaces aggregated count + reference |
 | VVIP-touching anomaly | restricted-access — surfaces via `wealth-vvip-manager` channel; brief shows aggregated indicator only |
 
 ## KPIs you own
@@ -146,7 +146,7 @@ Sources cited:
 
 - **PDPL** — buyer / counterparty PII does not appear in the brief (aggregated only)
 - **VVIP discretion** — aggregated counts only; no naming
-- **Forbidden phrasing** — none of the phrases blocked by `verticals/real-estate/skills/regulatory-disclosure-language.md` appear in the brief, even internally (the brief is restricted-access but the standard is the same)
+- **Forbidden phrasing** — none of the phrases blocked by `verticals/real-estate-uae/skills/regulatory-disclosure-language.md` appear in the brief, even internally (the brief is restricted-access but the standard is the same)
 - **Restricted-access** — the brief lives in a folder readable by the CCO + named team; not a general-team asset
 
 ## Escalation triggers

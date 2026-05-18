@@ -26,9 +26,9 @@ P1 = ship-blocking gap for a real UAE Developments engagement. P2 = high-value e
 |---|---|---|---|---|---|
 | **P1** | aml-kyc-compliance-specialist agent | 🔴 Missing | **Create** at `.claude/agents/aml-kyc-compliance-specialist.md`. Owns PEP screening, sanctions screening, source-of-funds documentation, Golden Visa thresholds, KYC-provider integration plumbing. Coordinates with `compliance` (claims) and `vvip-channel-enablement` (screening cadence). | M | High — actual regulatory exposure on every UHNW transaction |
 | **P1** | regulatory-research-specialist agent | 🔴 Missing | **Create** at `.claude/agents/regulatory-research-specialist.md`. Tracks DLD/RERA/ADREC/CBUAE/PDPL circulars, produces evidence-backed updates with citations, feeds `compliance` + `strategy`. | M | High — without this, `compliance` works from generic guidance and outdated assumptions |
-| **P1** | aml-kyc-uae-real-estate skill | 🔴 Missing | **Create** at `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` (introduces skills directory). UAE Federal AML/CFT DNFBP obligations, identity verification (EIDA), source-of-funds documentation, sanctions list cadence (UN/OFAC/UK/EU/DFAT/GCC), Sumsub / World-Check integration shape. | M | High — same regulatory exposure |
-| **P1** | regulatory-disclosure-language skill | 🔴 Missing | **Create** at `verticals/real-estate/skills/regulatory-disclosure-language.md`. Approved disclosure templates: RERA off-plan, ADREC equivalent, financial-promotion footers, "no guaranteed return" language, payment-plan disclosure boilerplate, escrow reference. | S | High — every public-facing artifact needs these |
-| **P1** | uae-real-estate-regulatory skill | 🟡 Light | **Create** consolidated skill at `verticals/real-estate/skills/uae-real-estate-regulatory.md` referencing DLD / RERA / ADREC / DMT / CBUAE LTV caps / PDPL / Oqood / Trustee Account / NOC / Abu Dhabi Law No. 3 of 2015. Does NOT duplicate the vertical playbook — it's a citation-bearing reference for `compliance`, `regulatory-research-specialist`, `aml-kyc-compliance-specialist`. | M | High — single source for all UAE regulatory references |
+| **P1** | aml-kyc-uae-real-estate skill | 🔴 Missing | **Create** at `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` (introduces skills directory). UAE Federal AML/CFT DNFBP obligations, identity verification (EIDA), source-of-funds documentation, sanctions list cadence (UN/OFAC/UK/EU/DFAT/GCC), Sumsub / World-Check integration shape. | M | High — same regulatory exposure |
+| **P1** | regulatory-disclosure-language skill | 🔴 Missing | **Create** at `verticals/real-estate-uae/skills/regulatory-disclosure-language.md`. Approved disclosure templates: RERA off-plan, ADREC equivalent, financial-promotion footers, "no guaranteed return" language, payment-plan disclosure boilerplate, escrow reference. | S | High — every public-facing artifact needs these |
+| **P1** | uae-real-estate-regulatory skill | 🟡 Light | **Create** consolidated skill at `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` referencing DLD / RERA / ADREC / DMT / CBUAE LTV caps / PDPL / Oqood / Trustee Account / NOC / Abu Dhabi Law No. 3 of 2015. Does NOT duplicate the vertical playbook — it's a citation-bearing reference for `compliance`, `regulatory-research-specialist`, `aml-kyc-compliance-specialist`. | M | High — single source for all UAE regulatory references |
 | **P1** | `compliance` agent — UAE pointer block | 🟠 Drift (UAE-light) | **Extend** with a UAE-specific section pointing to the new skills + `regulatory-research-specialist` agent. **Minimum edit; do not rewrite.** | S | Medium — partial UAE coverage exists in vertical playbook today |
 | **P2** | service-recovery-specialist agent | 🔴 Missing | **Create**. Owns complaint handling, RERA escalation pathway, reputation defense, root-cause-to-prevention loop. Coordinates with `compliance`, `voc`, `account-manager`, `pr` (when added). | M | Medium — without this, complaints route ad-hoc |
 | **P2** | data-quality-steward agent | 🔴 Missing | **Create**. Salesforce data hygiene: deduplication, missing-field surfacing, stage-progression discipline, broker-attribution accuracy. Coordinates with `crm` integration + `forecasting`. | M | Medium — bad CRM data poisons forecasting + attribution |
@@ -38,10 +38,10 @@ P1 = ship-blocking gap for a real UAE Developments engagement. P2 = high-value e
 | **P2** | Salesforce integration spec | 🔴 Missing (specced in INTEGRATIONS.md) | **Create** `integrations/salesforce/spec.md` + `schema-mapping.md` + 2–3 `actions/` (activity-log, stage-advance, score-update). Tier A → B per the existing pattern. | L | High when actually integrating; Low while specs alone |
 | **P2** | KYC-provider (Sumsub) integration spec | 🔴 Missing | **Create** `integrations/sumsub/spec.md` + 1 `actions/` (run-check). Pairs with the AML/KYC agent. | M | High when actually integrating |
 | **P2** | DLD / Trakheesi integration spec | 🔴 Missing | **Create** `integrations/trakheesi/spec.md`. Advertising-permit lifecycle for Dubai-side ads. (ADREC equivalent for AD-side as a sibling spec — note in plan, defer creation until needed.) | M | High once a campaign goes live in Dubai |
-| **P2** | Off-plan launch runbook | 🟡 Light | **Extend** `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` with regulatory milestones (Trakheesi permit application timing, Oqood registration, Trustee Account opening, ADREC pre-approval where applicable). Reframe windows to T-90 / T-30 / T+30 alongside existing T-16/T-12/etc. so both terminologies are present. | S | Medium |
-| **P2** | Resale with NOC runbook | 🔴 Missing | **Create** `verticals/real-estate/runbooks/resale-with-noc.md`. NOC process steps + RERA Form-F + buyer/seller/developer roles + agent assignments. Introduces `runbooks/` directory (new pattern). | M | Low for a launch-focused engagement; Medium if resale is in scope |
-| **P2** | Complaint with RERA exposure runbook | 🔴 Missing | **Create** `verticals/real-estate/runbooks/complaint-rera-exposure.md`. Triage → resolution → RERA filing path → reputation defense. | M | Medium |
-| **P2** | PEP/sanctions hit runbook | 🔴 Missing | **Create** `verticals/real-estate/runbooks/pep-sanctions-hit.md`. Immediate freeze → escalation → legal → reporting path. Pairs with the AML/KYC agent. | S | High if one happens and there's no playbook |
+| **P2** | Off-plan launch runbook | 🟡 Light | **Extend** `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md` with regulatory milestones (Trakheesi permit application timing, Oqood registration, Trustee Account opening, ADREC pre-approval where applicable). Reframe windows to T-90 / T-30 / T+30 alongside existing T-16/T-12/etc. so both terminologies are present. | S | Medium |
+| **P2** | Resale with NOC runbook | 🔴 Missing | **Create** `verticals/real-estate-uae/runbooks/resale-with-noc.md`. NOC process steps + RERA Form-F + buyer/seller/developer roles + agent assignments. Introduces `runbooks/` directory (new pattern). | M | Low for a launch-focused engagement; Medium if resale is in scope |
+| **P2** | Complaint with RERA exposure runbook | 🔴 Missing | **Create** `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md`. Triage → resolution → RERA filing path → reputation defense. | M | Medium |
+| **P2** | PEP/sanctions hit runbook | 🔴 Missing | **Create** `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md`. Immediate freeze → escalation → legal → reporting path. Pairs with the AML/KYC agent. | S | High if one happens and there's no playbook |
 | **P3** | concierge-coordinator agent | 🔴 Missing | **Create** OR **absorb into** `vvip-channel-enablement`. Decision needed. UHNW concierge ops (private viewings, F1 access, school intros). | S | Low |
 | **P3** | legal-liaison agent | 🔴 Missing | **Create**. Counsel-facing role: SPA redlines, escrow disputes, regulatory complaint pathway. Distinct from `compliance` (claims). | M | Low for routine; Medium for any unusual transaction |
 | **P3** | data-room-curator agent | 🔴 Missing | **Create**. Owner / investor / counterparty data-room management. | S | Low |
@@ -53,10 +53,10 @@ P1 = ship-blocking gap for a real UAE Developments engagement. P2 = high-value e
 | **P3** | Quarterly executive brief runbook | 🔴 Missing | **Create**. Brief cadence + format + data sources for board / CMO / CFO. | S | Low |
 | **P3** | Press-sensitive UHNW transaction runbook | 🔴 Missing | **Create**. Discretion-first; coordinates `vvip-channel-enablement`, `content-pr-specialist`, `legal-liaison`. | S | Medium for one-off occurrences |
 | **P3** | crm-data-model skill | 🟡 Light | **Extend** `schemas/deal-record.md` OR **create** `.claude/skills/crm-data-model.md` mapping Salesforce / Dynamics objects to the deal-record schema. | M | Medium when CRM integration is wired |
-| **P3** | broker-operations skill | 🟡 Light | **Create** `verticals/real-estate/skills/broker-operations.md`. Form-F flow, commission grid mechanics, RERA broker-license verification, dispute escalation steps. | S | Low |
+| **P3** | broker-operations skill | 🟡 Light | **Create** `verticals/real-estate-uae/skills/broker-operations.md`. Form-F flow, commission grid mechanics, RERA broker-license verification, dispute escalation steps. | S | Low |
 | **P3** | marketing-attribution skill | 🟡 Light | **Create** `.claude/skills/marketing-attribution.md`. Multi-touch / position-based / data-driven specifics for real-estate funnel. | M | Low–Medium |
-| **P3** | aldar-project-fact-pack skill | 🟡 Light | **Create** `verticals/real-estate/skills/project-fact-pack.md` (generic, not client-specific to keep multi-tenancy). Consolidates client-profile + inventory + sub-vertical context into a single pull. | S | Low |
-| **P3** | vvip-protocol skill | 🟡 Light | **Promote** the worked-example `protocol-library.md` into a skill at `verticals/real-estate/skills/vvip-protocol-uae.md`. | S | Low |
+| **P3** | aldar-project-fact-pack skill | 🟡 Light | **Create** `verticals/real-estate-uae/skills/project-fact-pack.md` (generic, not client-specific to keep multi-tenancy). Consolidates client-profile + inventory + sub-vertical context into a single pull. | S | Low |
+| **P3** | vvip-protocol skill | 🟡 Light | **Promote** the worked-example `protocol-library.md` into a skill at `verticals/real-estate-uae/skills/vvip-protocol-uae.md`. | S | Low |
 | **P3** | account-manager UAE-developer flavor | 🟡 Light | **Extend** the agent prompt with a one-paragraph UAE-developer pointer (handover-window, owner-community ops, schools-adjacent family events) referencing the developer sub-vertical playbook. **Minimum edit.** | S | Low |
 | **P3** | partnerships developer-class flavor | 🟠 Drift (mild) | **Extend** with a one-line note on hospitality JV / education partner / asset-class JV scope. | S | Low |
 
@@ -69,9 +69,9 @@ Subject to your approval, ordered by priority bucket:
 **P1 (5 files):**
 - `.claude/agents/aml-kyc-compliance-specialist.md`
 - `.claude/agents/regulatory-research-specialist.md`
-- `verticals/real-estate/skills/aml-kyc-uae-real-estate.md`
-- `verticals/real-estate/skills/regulatory-disclosure-language.md`
-- `verticals/real-estate/skills/uae-real-estate-regulatory.md`
+- `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md`
+- `verticals/real-estate-uae/skills/regulatory-disclosure-language.md`
+- `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md`
 
 **P2 (15 files):**
 - `.claude/agents/service-recovery-specialist.md`
@@ -87,9 +87,9 @@ Subject to your approval, ordered by priority bucket:
 - `integrations/sumsub/actions/run-check.md`
 - `integrations/trakheesi/spec.md`
 - `runbooks/README.md` (introduces the runbooks directory)
-- `verticals/real-estate/runbooks/resale-with-noc.md`
-- `verticals/real-estate/runbooks/complaint-rera-exposure.md`
-- `verticals/real-estate/runbooks/pep-sanctions-hit.md`
+- `verticals/real-estate-uae/runbooks/resale-with-noc.md`
+- `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md`
+- `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md`
 
 **P3 (12+ files):** see change table.
 
@@ -98,7 +98,7 @@ Subject to your approval, ordered by priority bucket:
 - `.claude/agents/compliance.md` — append a UAE-pointer section. **No rewrite.**
 - `.claude/agents/account-manager.md` — append a UAE-developer paragraph pointer. **No rewrite.**
 - `.claude/agents/partnerships.md` — append a one-line developer-class scope note. **No rewrite.**
-- `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` — add regulatory-milestone overlay (Trakheesi / Oqood / Trustee Account / ADREC). **Append, not rewrite.**
+- `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md` — add regulatory-milestone overlay (Trakheesi / Oqood / Trustee Account / ADREC). **Append, not rewrite.**
 - `README.md` — add new agents + skills directory + runbooks directory to the roster sections. **Add lines, do not rewrite.**
 - `ARCHITECTURE.md` — add one paragraph noting the new directories (`.claude/skills/`, `runbooks/`). **Append.**
 - `CHANGELOG.md` — **create** if it doesn't exist; one entry per modified or created file.

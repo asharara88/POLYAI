@@ -501,10 +501,6 @@ export type VerticalSummary = {
 
 const VERTICALS_DIR = path.join(REPO_ROOT, "verticals");
 
-const PACK_DISPLAY_NAMES: Record<string, string> = {
-  "real-estate": "real-estate-uae",
-};
-
 const listMdSlugs = (dir: string): string[] =>
   listFiles(dir, ".md")
     .filter((f) => f !== "README.md")
@@ -517,7 +513,7 @@ export const getVerticals = (): VerticalSummary[] =>
       const base = path.join(VERTICALS_DIR, name);
       return {
         name,
-        displayName: PACK_DISPLAY_NAMES[name] ?? name,
+        displayName: name,
         body: readFileSafe(path.join(base, "playbook.md")) ?? "",
         manifest: readFileSafe(path.join(base, "pack-manifest.md")),
         runbooks: listMdSlugs(path.join(base, "runbooks")),

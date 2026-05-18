@@ -2,7 +2,7 @@
 
 > **Worked example — illustrative.** Fictional ICP for a developer-class engagement; not real UAE Developments data.
 >
-> Seeded by `client-onboarding` from intake + `verticals/real-estate/sub-verticals/developer/playbook.md` (Audience archetypes section). Refine as `voc` and won/lost data come in.
+> Seeded by `client-onboarding` from intake + `verticals/real-estate-uae/sub-verticals/developer/playbook.md` (Audience archetypes section). Refine as `voc` and won/lost data come in.
 
 ## Segment 1: GCC investor — yield + capital appreciation (primary)
 
@@ -29,7 +29,7 @@
 - Peer purchase in immediate network
 
 **What success looks like for them**
-- A second/third holding that compounds in AED, generates rental income from day one of handover, is socially legible at family events ("we own at Saadiyat Reserve Heights")
+- A second/third holding that compounds in AED, generates rental income from day one of handover, is socially legible at family events ("we own at Coastal Reserve Phase 1")
 
 **Anti-ICP signal**
 - Buyers seeking maximum yield (luxury off-plan returns 5–7%, not 9–12%)
@@ -39,7 +39,7 @@
 **Source of truth**
 - # TODO: schedule won-deal interviews with first 12 reservations once launch closes
 - # TODO: have `voc` analyze CRM email/WhatsApp threads from prior tower for objection patterns
-- Vertical defaults from `verticals/real-estate/sub-verticals/developer/playbook.md` until client-specific data arrives
+- Vertical defaults from `verticals/real-estate-uae/sub-verticals/developer/playbook.md` until client-specific data arrives
 
 ---
 
@@ -77,7 +77,7 @@
 
 **Demographic**
 - Age: 32–48
-- Profile: AD-resident families upgrading from Al Reef / Al Raha Gardens / Khalifa City to a Saadiyat / Yas / Reem address; or Dubai-resident families relocating to AD for school / career
+- Profile: AD-resident families upgrading from Al Reef / Al Raha Gardens / Khalifa City to a Coastal District / Yas / Reem address; or Dubai-resident families relocating to AD for school / career
 - Top driver: school catchment + community amenities + commute reduction
 
 **Buyer / decision-maker**
@@ -110,4 +110,4 @@
 
 | Date | Change | Source |
 |------|--------|--------|
-| 2026-04-29 | Initial seed from intake + verticals/real-estate/sub-verticals/developer/playbook.md | client-onboarding |
+| 2026-04-29 | Initial seed from intake + verticals/real-estate-uae/sub-verticals/developer/playbook.md | client-onboarding |

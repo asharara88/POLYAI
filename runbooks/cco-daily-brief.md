@@ -45,7 +45,7 @@ Daily at 06:00 client-local time (cron / scheduler) — or on-demand when the CC
 
 1. **VVIP discretion** — VVIP-counterparty references aggregated; never named in the brief
 2. **PDPL** — counterparty PII not in the brief; aggregated counts only
-3. **Forbidden phrasing** — none of `verticals/real-estate/skills/regulatory-disclosure-language.md` blocked phrases appear, even internally
+3. **Forbidden phrasing** — none of `verticals/real-estate-uae/skills/regulatory-disclosure-language.md` blocked phrases appear, even internally
 4. **Source-citation completeness** — every numeric in the brief carries an as-of timestamp citing source
 5. **Restricted-access** — brief lives in folder readable by named CCO team only
 
@@ -76,4 +76,4 @@ Daily at 06:00 client-local time (cron / scheduler) — or on-demand when the CC
 - `runbooks/horizon-scan-daily.md` — feeds this runbook
 - `runbooks/risk-register-update.md` — feeds this runbook
 - `runbooks/quarterly-exec-brief.md` — quarterly deeper-cycle counterpart
-- Any incident-runbook (e.g., `verticals/real-estate/runbooks/pep-sanctions-hit.md`) — when a triggering event surfaces, the brief flags it; that runbook owns the resolution
+- Any incident-runbook (e.g., `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md`) — when a triggering event surfaces, the brief flags it; that runbook owns the resolution

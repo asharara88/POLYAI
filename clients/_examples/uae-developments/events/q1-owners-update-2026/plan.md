@@ -8,7 +8,7 @@ phase: post
 status: done
 date: 2026-02-22
 venue: Sales gallery — atrium
-audience: Existing owners across prior two towers (Yas Capital Residences I + Saadiyat Coastal I)
+audience: Existing owners across prior two towers (Yas Capital Residences I + Coastal District Coastal I)
 headcount:
   capacity: 120
   invited: 180

@@ -27,7 +27,7 @@ The secondary audience is the **pod manager and specialist agent operators** —
 | `/chat` | Conversational interface to the CCO agent, scoped to the active workspace | Shipping |
 | `/agents` | The full team grouped by pod, with hand-off matrices and runbook ownership | Shipping |
 
-Worked-example workspace at `clients/_examples/uae-developments/` — a fictional Abu Dhabi-anchored developer with multi-emirate portfolio, 250-firm broker network, parallel wealth and VVIP channels, an active Q3 launch ("Saadiyat Reserve Heights"). Project / vendor / broker / event names that look real are referenced as *category* — not actual relationships.
+Worked-example workspace at `clients/_examples/uae-developments/` — a fictional Abu Dhabi-anchored developer with multi-emirate portfolio, 250-firm broker network, parallel wealth and VVIP channels, an active Q3 launch ("Coastal Reserve Phase 1"). Project / vendor / broker / event names that look real are referenced as *category* — not actual relationships.
 
 ## How it's structured
 
@@ -36,12 +36,13 @@ Worked-example workspace at `clients/_examples/uae-developments/` — a fictiona
 .claude/skills/       3 cross-industry skills (KPI framework, CRM data model, attribution)
 runbooks/             11 core runbooks (any pack): daily cadence, board prep, integration go-lives, strategic-bet eval
 verticals/
-  real-estate/        the shipping pack — real-estate-uae
+  real-estate-uae/    the shipping pack folder
+    README.md
     pack-manifest.md
     playbook.md
     monitoring.yml
-    skills/           12 pack skills (UAE regulatory, AML/KYC, broker ops, off-plan, payment plans, ...)
-    runbooks/         14 pack runbooks (RERA exposure, Trakheesi, NOC resale, broker collapse, ...)
+    skills/           pack skills (UAE regulatory, AML/KYC, broker ops, off-plan, ...)
+    runbooks/         pack runbooks (RERA exposure, Trakheesi, NOC resale, broker collapse, ...)
     sub-verticals/
       developer/
         playbook.md
@@ -90,6 +91,6 @@ Not on the immediate roadmap: additional packs beyond real-estate-uae. Those act
 - `README.md` — repo intro + getting started
 - `ARCHITECTURE.md` — agent tree, pod structure, hand-off matrix, approval-gate framework
 - `CHANGELOG.md` — phase-by-phase history
-- `verticals/real-estate/pack-manifest.md` — what activates when the pack is enabled
-- `verticals/real-estate/playbook.md` — pack-level patterns (audience, motion, channels, KPIs, compliance flags, voice)
-- `verticals/real-estate/sub-verticals/developer/playbook.md` — developer-sub-vertical specifics
+- `verticals/real-estate-uae/pack-manifest.md` — what activates when the pack is enabled
+- `verticals/real-estate-uae/playbook.md` — pack-level patterns (audience, motion, channels, KPIs, compliance flags, voice)
+- `verticals/real-estate-uae/sub-verticals/developer/playbook.md` — developer-sub-vertical specifics

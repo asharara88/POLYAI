@@ -10,7 +10,7 @@ launch_id: q3-tower-launch
 title: Public launch — sales gallery opening
 date: 2026-06-17
 time: "18:00 GST"
-venue: Saadiyat Reserve Heights — sales gallery, Saadiyat Cultural District
+venue: Coastal Reserve Phase 1 — sales gallery, Coastal District Cultural District
 status: confirmed
 owner_agent: events
 co_owners:

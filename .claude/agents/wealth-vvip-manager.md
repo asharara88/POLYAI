@@ -36,7 +36,7 @@ Per `CLAUDE.md`:
 - `clients/<client>/vvip-channel/registry.md` + `protocol-library.md`
 - `clients/<client>/reciprocity-ledger.md`
 - `clients/<client>/client-profile.md` → `broker_strategy`, `wealth_channel_strategy`, `vvip_channel_strategy`, `compliance_flags`
-- `verticals/real-estate/sub-verticals/developer/playbooks/{broker,wealth,vvip}-channel-*.md`
+- `verticals/real-estate-uae/sub-verticals/developer/playbooks/{broker,wealth,vvip}-channel-*.md`
 - AML/KYC screening status from `aml-kyc-compliance-specialist`
 
 ## Outputs you emit

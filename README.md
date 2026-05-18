@@ -39,11 +39,11 @@ Four pods, one CCO. The chief-commercial-officer agent orchestrates; pod manager
 
 ## Industry pack — `real-estate-uae` (shipping)
 
-The pack a UAE master-developer engagement activates on top of the core team. Folder: `verticals/real-estate/`. See `verticals/real-estate/pack-manifest.md` for the canonical activation list — pack-specific agents, skills, runbooks, compliance flags, and approval-gate defaults.
+The pack a UAE master-developer engagement activates on top of the core team. Folder: `verticals/real-estate-uae/`. See `verticals/real-estate-uae/pack-manifest.md` for the canonical activation list — pack-specific agents, skills, runbooks, compliance flags, and approval-gate defaults.
 
 Highlights:
-- **14 pack runbooks** at `verticals/real-estate/runbooks/`: RERA exposure, Trakheesi permit lifecycle, NOC resale, PEP/sanctions hit, broker collapse, construction delay, handover snagging, UHNW press-sensitive, AML/KYC integration go-live, international roadshow, regulator inquiry, project safety crisis, inbound HNW private bank, broker onboarding to first deal.
-- **12 pack skills** at `verticals/real-estate/skills/`: UAE real-estate regulatory framework, AML/KYC UAE real-estate, broker operations, wealth-channel operations, VVIP protocol UAE, off-plan launch mechanics, payment-plan structures, dispute resolution UAE, regulatory disclosure language, diaspora corridor marketing, project fact pack, owner community governance.
+- **14 pack runbooks** at `verticals/real-estate-uae/runbooks/`: RERA exposure, Trakheesi permit lifecycle, NOC resale, PEP/sanctions hit, broker collapse, construction delay, handover snagging, UHNW press-sensitive, AML/KYC integration go-live, international roadshow, regulator inquiry, project safety crisis, inbound HNW private bank, broker onboarding to first deal.
+- **12 pack skills** at `verticals/real-estate-uae/skills/`: UAE real-estate regulatory framework, AML/KYC UAE real-estate, broker operations, wealth-channel operations, VVIP protocol UAE, off-plan launch mechanics, payment-plan structures, dispute resolution UAE, regulatory disclosure language, diaspora corridor marketing, project fact pack, owner community governance.
 - **One sub-vertical today** — `developer/`. Brokerage and portal sub-verticals are on the roadmap.
 
 Packs on the roadmap but not built: `auto-retail`, `professional-services`, `f-and-b-multi-unit`, `b2b-saas`.
@@ -84,11 +84,12 @@ Flow agents read from and (with human approval) write to the existing stack — 
 .claude/skills/             # core skills (KPI framework, CRM data model, attribution) — any pack
 runbooks/                   # core runbooks (CCO daily, board prep, integration go-lives, strategic bet eval) — any pack
 verticals/
-  real-estate/              # `real-estate-uae` pack folder
+  real-estate-uae/          # the shipping pack folder
+    README.md               # pack overview
     pack-manifest.md        # canonical activation list
     playbook.md             # pack-level patterns
-    skills/                 # 12 pack-specific skills
-    runbooks/               # 14 pack-specific runbooks
+    skills/                 # pack-specific skills
+    runbooks/               # pack-specific runbooks (all 25)
     sub-verticals/
       developer/            # sub-vertical playbook + channel-development plays
 clients/

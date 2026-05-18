@@ -14,7 +14,7 @@ maintained_by: analytics + marketing-manager (writes via knowledge agent)
 | Decision | Question | Best-fit model |
 |---|---|---|
 | **Channel-mix budget allocation** | Where should next quarter's marketing spend go? | Multi-touch / data-driven attribution at the funnel-stage level |
-| **Per-deal attribution** (commercial credit) | Who gets the commission / introducer fee on this specific deal? | First-touch within attribution window + business-rule overrides per `verticals/real-estate/skills/broker-operations.md` |
+| **Per-deal attribution** (commercial credit) | Who gets the commission / introducer fee on this specific deal? | First-touch within attribution window + business-rule overrides per `verticals/real-estate-uae/skills/broker-operations.md` |
 | **Tactical optimization** (per-channel performance) | Is this paid-search campaign working? | Last-click within the channel + post-click engagement quality |
 | **Strategic narrative** (board / CMO reporting) | What's our funnel telling us? | Cohort + position-based attribution + assisted-touchpoint reporting |
 
@@ -32,7 +32,7 @@ The mistake is using one model for all four — a multi-touch model used for com
 | **Real-estate portals** | Property Finder, Bayut, dubizzle | Portal-side attribution + click-through to microsite UTM |
 | **Diaspora portals** | Sulekha (India), Magicbricks (India), specific Russia/CIS channels | Same treatment as portals + corridor-segmented |
 | **Direct (in-house)** | Direct walk-in to sales gallery, inbound from prior-buyer-list, principal-network | First-touch typically captured by RM during intake; `data-quality-steward` audits |
-| **Broker channel** | Tier 1, 2, 3 brokers (RERA-licensed Dubai / ADREC-equivalent Abu Dhabi) | First-touch within window per `verticals/real-estate/skills/broker-operations.md` attribution doctrine |
+| **Broker channel** | Tier 1, 2, 3 brokers (RERA-licensed Dubai / ADREC-equivalent Abu Dhabi) | First-touch within window per `verticals/real-estate-uae/skills/broker-operations.md` attribution doctrine |
 | **Wealth channel** | Private banks, family offices, independent wealth introducers | Introducer-fee attribution per signed introducer agreement |
 | **VVIP channel** | Royal-protocol gatekeepers, ministerial introductions | Bespoke per relationship; rarely commission-attributed |
 | **Press / earned** | Architecture, financial, lifestyle, institutional press | Brand-impact + lift-modelled; rarely directly conversion-attributable |
@@ -51,7 +51,7 @@ A UAE off-plan buyer-decision cycle typically spans **3–18 months** (longer fo
 - **Wealth-channel introducer:** Per signed introducer agreement (typically 6-24 months)
 - **Cross-launch carryover:** when a buyer engaged in launch A but converts in launch B, credit splits per cohort tagging or fully attributes to launch B per business-rule decision (consult `marketing-manager`)
 
-**Window-conflict resolution:** When multiple channels each have a valid claim within their windows, the priority order is per `verticals/real-estate/skills/broker-operations.md` attribution doctrine (broker-channel disputes) and per `analytics` strategic ruling (marketing-channel-mix decisions).
+**Window-conflict resolution:** When multiple channels each have a valid claim within their windows, the priority order is per `verticals/real-estate-uae/skills/broker-operations.md` attribution doctrine (broker-channel disputes) and per `analytics` strategic ruling (marketing-channel-mix decisions).
 
 ## Identity resolution — the silent attribution problem
 
@@ -89,7 +89,7 @@ Attribution in real-estate is always *probabilistic* and *evidence-based*. The f
 Reporting language should be:
 - "Channel X is the first-touch channel for N% of closed-won deals in the trailing 12 months under a 90-day first-touch window"
 - "Channel Y shows a Z% lift in stage-advance probability within 60 days post-touch in our position-based model"
-- "Brokers were the registered first-touch on N deals in the period; commission accrued: AED X per `verticals/real-estate/skills/broker-operations.md` doctrine"
+- "Brokers were the registered first-touch on N deals in the period; commission accrued: AED X per `verticals/real-estate-uae/skills/broker-operations.md` doctrine"
 
 ## Reporting cadences
 
@@ -107,4 +107,4 @@ Reporting language should be:
 - Specific platform measurement (GA4 setup, Meta CAPI config, etc.) — see `martech-ops-specialist`
 - Per-campaign measurement plan — that's `analytics` per campaign brief
 - Commission calculation math — that's `marketing-financial-manager` + `broker-enablement`
-- Brand measurement (awareness, consideration, perception) — that's a separate brand-tracker discipline; reference `verticals/real-estate/sub-verticals/developer/playbook.md`
+- Brand measurement (awareness, consideration, perception) — that's a separate brand-tracker discipline; reference `verticals/real-estate-uae/sub-verticals/developer/playbook.md`

@@ -18,7 +18,7 @@
 | Cohort | Pending | Action taken |
 |---|---|---|
 | Yas Capital Residences I owners | 18 | RM 1:1 calls — recovered 11 yes, 7 no |
-| Saadiyat Coastal I owners | 25 | RM 1:1 calls — recovered 9 yes, 16 no |
+| Coastal District Coastal I owners | 25 | RM 1:1 calls — recovered 9 yes, 16 no |
 
 ## Special accommodations
 

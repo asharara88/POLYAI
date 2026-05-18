@@ -82,7 +82,7 @@ Calendar — typically Q4 (October-December) of the year preceding plan year. So
 
 ## Compliance gates
 
-1. **Forbidden phrasing** in board deck — `compliance` audit; per `verticals/real-estate/skills/regulatory-disclosure-language.md` block list
+1. **Forbidden phrasing** in board deck — `compliance` audit; per `verticals/real-estate-uae/skills/regulatory-disclosure-language.md` block list
 2. **Forward-looking statement** framing on all projections per Template 7
 3. **Regulatory-currency** on every regulatory citation per `regulatory-research-specialist`
 4. **Numeric integrity** — every number in the plan cites a verified source per `data-quality-steward`
@@ -94,7 +94,7 @@ Calendar — typically Q4 (October-December) of the year preceding plan year. So
 
 - Quarterly cadence reviews — `runbooks/quarterly-exec-brief.md`
 - Monthly board prep — `runbooks/monthly-board-prep.md`
-- Per-launch campaign planning — `verticals/real-estate/sub-verticals/developer/campaign-workflow.md`
+- Per-launch campaign planning — `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md`
 - Strategic-bet evaluation (M&A, new-corridor, new-asset-class) — `runbooks/strategic-bet-evaluation.md`
 - Per-project investment-committee approvals — separate process
 
@@ -113,7 +113,7 @@ Calendar — typically Q4 (October-December) of the year preceding plan year. So
 - Plan archived at `clients/<client>/annual-plans/<year>/plan-final.md`
 - Quarterly progress vs. plan tracked per `runbooks/quarterly-exec-brief.md`
 - Plan-year closure: forecast-accuracy retrospective informs next-year framework
-- Material learnings feed `verticals/real-estate/sub-verticals/developer/playbook.md` via `knowledge`
+- Material learnings feed `verticals/real-estate-uae/sub-verticals/developer/playbook.md` via `knowledge`
 
 ## Related runbooks
 

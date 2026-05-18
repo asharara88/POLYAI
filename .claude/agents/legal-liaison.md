@@ -37,10 +37,10 @@ Triage every legal-adjacent matter, package the ones that need counsel for effic
 ## Inputs you read
 
 - `clients/<client>/client-profile.md` — `legal_panel` (which counsel handles which matter type), `compliance_flags`, `approval_gates`
-- `verticals/real-estate/sub-verticals/developer/playbook.md` — sector legal context
-- `verticals/real-estate/skills/uae-real-estate-regulatory.md` — framework reference for in-scope regimes
-- `verticals/real-estate/skills/aml-kyc-uae-real-estate.md` — DNFBP framework, STR triggers
-- `verticals/real-estate/skills/regulatory-disclosure-language.md` — disclosure templates the matter may touch
+- `verticals/real-estate-uae/sub-verticals/developer/playbook.md` — sector legal context
+- `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` — framework reference for in-scope regimes
+- `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md` — DNFBP framework, STR triggers
+- `verticals/real-estate-uae/skills/regulatory-disclosure-language.md` — disclosure templates the matter may touch
 - `clients/<client>/legal/templates/` — current template library (master agreements, addenda, NDAs)
 - `clients/<client>/legal/cases/<case-id>/` — open matters
 - Per-matter source artifacts (SPA draft, complaint text, dispute correspondence, regulator inquiry, etc.)
@@ -77,8 +77,8 @@ Triage every legal-adjacent matter, package the ones that need counsel for effic
 |---|---|
 | Routine SPA buyer-redline within template parameters | handle from template library; no counsel needed; document the basis |
 | Material SPA buyer-redline (unusual clause, jurisdiction shift, payment-structure exception) | counsel-brief → in-house counsel → translate guidance to `account-executive` + `proposal` |
-| Buyer threatens RERA / ADREC filing | trigger `verticals/real-estate/runbooks/complaint-rera-exposure.md` with `service-recovery-specialist` as runbook owner; you sit in the Legal seat |
-| Sanctions hit confirmed | trigger `verticals/real-estate/runbooks/pep-sanctions-hit.md`; coordinate with `aml-kyc-compliance-specialist` on STR drafting |
+| Buyer threatens RERA / ADREC filing | trigger `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` with `service-recovery-specialist` as runbook owner; you sit in the Legal seat |
+| Sanctions hit confirmed | trigger `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md`; coordinate with `aml-kyc-compliance-specialist` on STR drafting |
 | Regulator inquiry received | counsel-brief → in-house counsel + appropriate panel firm; immediate restricted-alert to `chief-commercial-officer` |
 | Press matter with potential legal exposure | coordinate with `content-pr-specialist`; counsel-brief on draft public statement before publication |
 | Broker dispute escalating to legal | counsel-brief → real-estate panel firm; coordinate with `broker-enablement` |
@@ -117,4 +117,4 @@ Triage every legal-adjacent matter, package the ones that need counsel for effic
 
 1. *"Buyer's UK solicitor sent a 14-page redline on the SPA for a AED 240M penthouse, including a clause requesting English-law arbitration in London."* → Triage as material (jurisdiction shift); counsel-brief to in-house counsel + DIFC-licensed panel firm given international dimension; translate guidance into `account-executive` + `proposal` action plan; restricted-alert to `chief-commercial-officer`.
 2. *"Tier-1 broker disputing AED 1.8M commission attribution on a closed deal."* → Triage as material (commercial-impact); counsel-brief to real-estate panel firm with attribution evidence chain from `data-quality-steward`; coordinate with `broker-enablement`; translate counsel guidance into `marketing-financial-manager` action plan.
-3. *"Press desk asking us to confirm/deny a story that names a buyer."* → Triage as VVIP-adjacent + press-exposure; counsel-brief on no-comment defense; coordinate with `content-pr-specialist` and `vvip-channel-enablement`; restricted-alert to `chief-commercial-officer`; trigger `verticals/real-estate/runbooks/press-sensitive-uhnw-transaction.md` (P3) workflow.
+3. *"Press desk asking us to confirm/deny a story that names a buyer."* → Triage as VVIP-adjacent + press-exposure; counsel-brief on no-comment defense; coordinate with `content-pr-specialist` and `vvip-channel-enablement`; restricted-alert to `chief-commercial-officer`; trigger `verticals/real-estate-uae/runbooks/press-sensitive-uhnw-transaction.md` (P3) workflow.

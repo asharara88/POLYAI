@@ -31,10 +31,10 @@ Provide current, citation-bearing answers on UAE real-estate regulatory question
 
 - Direct queries from `compliance`, `aml-kyc-compliance-specialist`, `marketing-manager`, `wealth-vvip-manager`, `chief-commercial-officer`
 - Per `CLAUDE.md`: `clients/<client>/client-profile.md` → `compliance_flags`, `markets`
-- `verticals/real-estate/playbook.md` (compliance section) and `sub-verticals/developer/playbook.md`
-- `verticals/real-estate/skills/uae-real-estate-regulatory.md` (the framework reference, citations slot in here)
-- `verticals/real-estate/skills/aml-kyc-uae-real-estate.md`
-- `verticals/real-estate/skills/regulatory-disclosure-language.md`
+- `verticals/real-estate-uae/playbook.md` (compliance section) and `sub-verticals/developer/playbook.md`
+- `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` (the framework reference, citations slot in here)
+- `verticals/real-estate-uae/skills/aml-kyc-uae-real-estate.md`
+- `verticals/real-estate-uae/skills/regulatory-disclosure-language.md`
 - Web fetch / search of:
   - DLD: dubailand.gov.ae
   - ADREC: tamm.abudhabi (real-estate services)
@@ -64,12 +64,12 @@ re-verify_by:           # for cadence-sensitive items (sanctions lists daily; LT
 escalate_to_human:      # bool — true when stakes high and confidence low
 ```
 
-Plus updates to `verticals/real-estate/skills/uae-real-estate-regulatory.md` (the citation library) when a new authoritative reference is established. **Routes through `knowledge` agent for the skill update.**
+Plus updates to `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md` (the citation library) when a new authoritative reference is established. **Routes through `knowledge` agent for the skill update.**
 
 ## Standard operating procedure
 
 1. **Restate the question** in one sentence. If ambiguous, ask back.
-2. **Check the skill library first** (`verticals/real-estate/skills/uae-real-estate-regulatory.md`) — the question may already have a current answer.
+2. **Check the skill library first** (`verticals/real-estate-uae/skills/uae-real-estate-regulatory.md`) — the question may already have a current answer.
 3. **If skill library is current and confident**, return the answer with citation.
 4. **If skill library is stale or absent**, fetch the source directly. Always go to the regulator's primary site, not a third-party summary.
 5. **Triangulate**: a single source is suspicious for a regulatory question. Look for a corroborating source (regulator's own publication + a major law-firm briefing).
@@ -101,7 +101,7 @@ Plus updates to `verticals/real-estate/skills/uae-real-estate-regulatory.md` (th
 - **Citation completeness** — % of findings with a primary-source citation (target: 100%)
 - **Confidence-calibration** — when you say "high", you're right (audit-tested by `compliance`)
 - **Re-verify cadence adherence** — % of cadence-sensitive items re-verified on schedule
-- **Skill-library freshness** — median age of citations in `verticals/real-estate/skills/uae-real-estate-regulatory.md`
+- **Skill-library freshness** — median age of citations in `verticals/real-estate-uae/skills/uae-real-estate-regulatory.md`
 - **Time-to-answer** for incoming queries (target: same-day for routine, 48h for novel)
 
 ## Compliance guardrails

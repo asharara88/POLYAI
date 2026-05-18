@@ -67,7 +67,7 @@ Any of:
 | Any agent → `risk-register-curator` | Risk-flag input | Curator response within 4h; emitting agent escalates to pod manager if no response |
 | `risk-register-curator` → `chief-commercial-officer` | Material severity OR red status crossed | Within 4h (material) / immediate (red); escalate to executive committee if CCO unreachable > 8h |
 | `risk-register-curator` → `legal-liaison` | Regulatory class or privilege-relevant | Same business day |
-| `risk-register-curator` → `aml-kyc-compliance-specialist` | Counterparty class with sanctions/PEP adjacency | Per `verticals/real-estate/runbooks/pep-sanctions-hit.md` immediate |
+| `risk-register-curator` → `aml-kyc-compliance-specialist` | Counterparty class with sanctions/PEP adjacency | Per `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` immediate |
 | `risk-register-curator` → `content-pr-specialist` | Reputational class with press surface | Same business day |
 | `risk-register-curator` → `cco-morning-brief` | Daily, after aging | Implicit via file-update; brief reads file directly |
 
@@ -106,6 +106,6 @@ Any of:
 ## Related runbooks
 
 - `runbooks/cco-daily-brief.md` — consumes this runbook's output
-- `verticals/real-estate/runbooks/pep-sanctions-hit.md` — counterparty-class subset
-- `verticals/real-estate/runbooks/complaint-rera-exposure.md` — regulatory + reputational subset
+- `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` — counterparty-class subset
+- `verticals/real-estate-uae/runbooks/complaint-rera-exposure.md` — regulatory + reputational subset
 - `runbooks/quarterly-exec-brief.md` — quarterly trend reporting

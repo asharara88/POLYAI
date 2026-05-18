@@ -38,7 +38,7 @@ Quantify the margin, precedent, and fairness implications of any non-standard co
 - `clients/<client>/wealth-channels/registry.md` — for wealth-channel requests
 - `clients/<client>/vvip-channel/registry.md` — for VVIP requests
 - `clients/<client>/knowledge/results.md` — historical precedent + deal-desk decisions
-- `verticals/real-estate/sub-verticals/developer/playbook.md` — sector commercial benchmarks
+- `verticals/real-estate-uae/sub-verticals/developer/playbook.md` — sector commercial benchmarks
 - `clients/<client>/client-profile.md` → `approval_gates`
 
 ## Outputs you emit

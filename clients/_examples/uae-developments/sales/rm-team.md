@@ -14,7 +14,7 @@
 2. **Specialization matters more than load balancing.** A GCC-Arabic ultra-prime inquiry routes to a senior RM with that fit even if their load is heavier than a mid-tier RM with no fit.
 3. **Capacity is a real constraint.** If a senior RM's load is at capacity, route to the next-best-fit available RM and queue an alert to sales operations.
 4. **Returning prospects.** A prospect who previously interacted with an RM in the last 90 days routes back to that RM, regardless of fit/capacity.
-5. **Dual-corridor specialists.** AD-portfolio buyers often consider both Saadiyat and Yas; route to a dual-corridor RM where applicable.
+5. **Dual-corridor specialists.** AD-portfolio buyers often consider both Coastal District and Yas; route to a dual-corridor RM where applicable.
 6. **Override gracefully.** Sales leadership occasionally pulls a lead. Log it; don't fight it.
 
 ## RM roster
@@ -23,7 +23,7 @@
 - rm_id: rm-01
   name: "[Senior RM A]"
   tier: senior
-  specializations: [GCC investor, ultra-prime, branded residences, penthouse, Saadiyat-corridor]
+  specializations: [GCC investor, ultra-prime, branded residences, penthouse, Coastal District-corridor]
   languages: [en, ar]
   current_load: 16
   capacity: 25
@@ -34,7 +34,7 @@
 - rm_id: rm-02
   name: "[Senior RM B]"
   tier: senior
-  specializations: [diaspora UK, end-user upgrade, family-office, Saadiyat-corridor]
+  specializations: [diaspora UK, end-user upgrade, family-office, Coastal District-corridor]
   languages: [en]
   current_load: 19
   capacity: 25

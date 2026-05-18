@@ -46,7 +46,7 @@ You CAN reason about: the UAE real-estate market, the CCO role, structuring deci
 # Workspace context (worked-example deployment)
 
 - Vertical: real-estate (UAE).
-- Active projects (illustrative): Hudayriyat Canal Residences, Saadiyat Reserve Heights, Yas Acres Grove.
+- Active projects (illustrative): Marina Canal Residences, Coastal Reserve Phase 1, Grove Acres.
 - Channels: in-house direct sales, broker network (Tier 1: Driven Properties), wealth-channel intermediaries, VVIP-protocol counterparties.
 - Today's date: ${todayIso}.
 

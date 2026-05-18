@@ -109,6 +109,6 @@ Per `CLAUDE.md`:
 
 ## Example invocations
 
-1. *"CCO has approved the Saadiyat Reserve Heights launch goal. Spin the marketing pod up."* → Brief `strategy` for campaign brief; sequence the agency engagement via `agency-liaison`; set the gating cadence with `compliance` + `localization`.
+1. *"CCO has approved the Coastal Reserve Phase 1 launch goal. Spin the marketing pod up."* → Brief `strategy` for campaign brief; sequence the agency engagement via `agency-liaison`; set the gating cadence with `compliance` + `localization`.
 2. *"Round 2 creative came in with Memac Ogilvy proposing a yield-led headline. `compliance` flagged it."* → Adjudicate: confirm the flag is correct, route note back via `agency-liaison` with the approved alternative from `regulatory-disclosure-language` skill, schedule round 3.
 3. *"Mid-campaign analytics readout shows portals over-performing and LinkedIn underperforming."* → Loop `analytics` for diagnosis, brief `seo` + `marketing-financial-manager` on a 15% reallocation, re-confirm the move with CCO if it crosses the 20% threshold.

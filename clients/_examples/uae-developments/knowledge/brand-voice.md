@@ -2,7 +2,7 @@
 
 > **Worked example — illustrative.** Voice principles for a developer-class engagement; not real UAE Developments brand-voice guidelines.
 >
-> Seeded by `client-onboarding`. Three voice words: **institutional, restrained, sovereign-affiliated**. Visual notes pulled from `verticals/real-estate/sub-verticals/developer/playbook.md` "Voice notes" + branded-residences pattern.
+> Seeded by `client-onboarding`. Three voice words: **institutional, restrained, sovereign-affiliated**. Visual notes pulled from `verticals/real-estate-uae/sub-verticals/developer/playbook.md` "Voice notes" + branded-residences pattern.
 
 ## Voice in one paragraph
 
@@ -19,7 +19,7 @@ The voice of an Abu Dhabi-anchored developer with national scale and institution
 | Do | Don't |
 |---|---|
 | Lead with a number, a fact, or a specific named feature | Lead with adjectives or emotive flourishes |
-| Reference master-community context (Saadiyat / Yas / Al Raha) by name | Use "iconic," "landmark," "world-class" |
+| Reference master-community context (Coastal District / Yas / Al Raha) by name | Use "iconic," "landmark," "world-class" |
 | Show payment-plan structure transparently | Hide fees or rely on "from AED X" without disclosure |
 | Speak to the investor's portfolio logic, the end-user's family logic | Speak as if this is their first purchase |
 | Imply long horizons and institutional credibility | Imply scarcity-by-pressure or auction dynamics |
@@ -31,7 +31,7 @@ The voice of an Abu Dhabi-anchored developer with national scale and institution
 - "owners" (not "buyers" once reserved)
 - "service charge" stated as AED/sqft per annum
 - "handover" (not "completion" or "delivery")
-- "master community" (Saadiyat, Yas, Al Raha, Al Ghadeer named explicitly when relevant)
+- "master community" (Coastal District, Yas, Al Raha, Al Ghadeer named explicitly when relevant)
 - specific named partners and materials
 
 **Avoid**

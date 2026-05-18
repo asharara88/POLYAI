@@ -20,7 +20,7 @@
 | **Slipping deals % of active pipeline** | 8% | ≤ 10% | ≤ 8% | ≤ 8% | ≤ 8% | forecasting |
 | **Forecast accuracy (last quarter)** | within ±9% | within ±10% | within ±10% | within ±10% | within ±10% | forecasting |
 
-**Q3 spike rationale:** Saadiyat Reserve Heights public launch on 2026-08-06 drives Q3 bookings target.
+**Q3 spike rationale:** Coastal Reserve Phase 1 public launch on 2026-08-06 drives Q3 bookings target.
 
 ## Family 2 — Marketing performance
 
@@ -86,7 +86,7 @@
 ## Notes
 
 - All AED targets in nominal terms; FX exposure modeled separately
-- Q3 spike across families reflects Saadiyat Reserve Heights public launch (2026-08-06)
+- Q3 spike across families reflects Coastal Reserve Phase 1 public launch (2026-08-06)
 - Channel-mix shift toward wealth (+1pp annual) reflects Tier-1 wealth-channel build
 - VVIP channel-mix down (-1pp annual) reflects channel-classification refinement, not relationship attrition
 - KPI thresholds default to `.claude/skills/cco-kpi-framework.md` defaults; per-engagement overrides per quarter where needed (none currently)

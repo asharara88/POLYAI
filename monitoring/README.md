@@ -10,7 +10,7 @@ Each client can list public sources in `clients/<slug>/monitoring.yml`:
 - url: https://www.bayut.com/property/details-12345.html
   name: Bayut listing — competing tower
 
-- url: https://www.reddit.com/r/abudhabi/search?q=saadiyat-reserve-heights
+- url: https://www.reddit.com/r/abudhabi/search?q=coastal-reserve-phase-1
   name: Reddit — Abu Dhabi mentions
 ```
 

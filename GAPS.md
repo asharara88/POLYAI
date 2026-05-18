@@ -9,11 +9,11 @@
 | Target agent | Status | Existing equivalent | Notes / specific gaps |
 |---|---|---|---|
 | sales-manager | 🔴 Missing | (chief-commercial-officer routes directly) | No managerial tier exists. Adding it is an architectural change — flag for decision. |
-| crm-sales-specialist (existing clientele) | 🟡 Light | `account-manager` | Account-manager handles post-sale ownership generically. UAE-developer specifics (existing-owner reactivation for next-launch, prior-tower owner cross-sell, handover snagging cycle) are partially covered in `verticals/real-estate/sub-verticals/developer/playbook.md` but not formalized as the agent's standing remit. |
+| crm-sales-specialist (existing clientele) | 🟡 Light | `account-manager` | Account-manager handles post-sale ownership generically. UAE-developer specifics (existing-owner reactivation for next-launch, prior-tower owner cross-sell, handover snagging cycle) are partially covered in `verticals/real-estate-uae/sub-verticals/developer/playbook.md` but not formalized as the agent's standing remit. |
 | international-sales-specialist | 🔴 Missing | (none — `account-executive` is segment-agnostic) | International HNW handling needs jurisdiction-specific cadence (UK / India / KSA / Russia-CIS / China / Egypt / Pakistan / Nigeria), Golden Visa messaging, cross-time-zone discipline. RM team has a "Russia/CIS" specialist (rm-05) at the per-client level but no generic agent. |
 | new-business-sales-specialist | 🟡 Light | `inbound-qualifier` + `sdr` (top of funnel) + `account-executive` (qualified onward) | Three agents jointly cover the "new business" arc. Could be left as the existing trio if the user prefers. |
 | business-development-partnerships | ✅ Solid | `partnerships` | Direct equivalent. Light drift on developer-style partnerships (the developer's education subsidiary / hospitality JV / data-center JV scope) — marginal. |
-| off-plan-launch-specialist | 🟡 Light | (function distributed across 6 agents + dev playbook) | The 16-week off-plan workflow at `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` covers the orchestration; `strategy`, `events`, `agency-liaison`, `inventory-manager`, `broker-enablement`, `compliance` carry the work. No single agent owns the launch as an artifact. **Decision needed: add the agent, or formalize the workflow doc as the source of truth?** |
+| off-plan-launch-specialist | 🟡 Light | (function distributed across 6 agents + dev playbook) | The 16-week off-plan workflow at `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md` covers the orchestration; `strategy`, `events`, `agency-liaison`, `inventory-manager`, `broker-enablement`, `compliance` carry the work. No single agent owns the launch as an artifact. **Decision needed: add the agent, or formalize the workflow doc as the source of truth?** |
 | secondary-market-specialist | 🔴 Missing | (none) | UAE secondary-market resale + NOC + DLD/RERA Form-F transfer is a different motion from off-plan. Real gap if UAE Developments runs a secondary-market arm. |
 | deal-desk-analyst | 🔴 Missing | (`proposal` is adjacent) | Deal-desk is negotiation/term analysis (discount approval, margin protection, custom commercial terms), not document generation. Real gap. |
 
@@ -69,11 +69,11 @@ The repo has **no skills concept**. The closest in-repo equivalents are vertical
 
 | Target skill | Status | Closest existing | Gap |
 |---|---|---|---|
-| aldar-project-fact-pack | 🟡 Light | `client-profile.md` + `inventory/current.md` | A "fact pack" for a project (Saadiyat Reserve Heights worked example) exists as scattered yaml; not a single skill artifact. |
-| uae-real-estate-regulatory | 🟡 Light | `verticals/real-estate/playbook.md` + `sub-verticals/developer/playbook.md` (compliance-flag sections) | Generic compliance pointers exist; no consolidated, citation-bearing skill. Doesn't reference DLD circulars, ADREC notices, CBUAE LTV caps, Oqood, or Trustee Account flows. |
+| aldar-project-fact-pack | 🟡 Light | `client-profile.md` + `inventory/current.md` | A "fact pack" for a project (Coastal Reserve Phase 1 worked example) exists as scattered yaml; not a single skill artifact. |
+| uae-real-estate-regulatory | 🟡 Light | `verticals/real-estate-uae/playbook.md` + `sub-verticals/developer/playbook.md` (compliance-flag sections) | Generic compliance pointers exist; no consolidated, citation-bearing skill. Doesn't reference DLD circulars, ADREC notices, CBUAE LTV caps, Oqood, or Trustee Account flows. |
 | aml-kyc-uae-real-estate | 🔴 Missing | (none) | UAE Federal AML/CFT DNFBP-specific obligations + Sumsub/World-Check provider integration absent entirely. |
 | crm-data-model | 🟡 Light | `schemas/deal-record.md` | Generic deal-record exists; no Salesforce / Dynamics object mapping. |
-| broker-operations | 🟡 Light | `verticals/real-estate/sub-verticals/developer/playbooks/broker-channel-*.md` (2 plays) + `broker-enablement` agent | Channel development is covered; day-to-day operations (Form-F flow, commission grid mechanics, RERA broker-license verification, dispute escalation steps) are partially covered. |
+| broker-operations | 🟡 Light | `verticals/real-estate-uae/sub-verticals/developer/playbooks/broker-channel-*.md` (2 plays) + `broker-enablement` agent | Channel development is covered; day-to-day operations (Form-F flow, commission grid mechanics, RERA broker-license verification, dispute escalation steps) are partially covered. |
 | marketing-attribution | 🟡 Light | `analytics` agent + `INTEGRATIONS.md` Salesforce / GA4 entries | No standalone attribution-model skill (multi-touch / position-based / data-driven specifics); generic guidance only. |
 | vvip-protocol | 🟡 Light | `clients/_examples/uae-developments/vvip-channel/protocol-library.md` (worked example) + `vvip-channel-enablement` agent | UAE-specific protocol forms-of-address + ceremonial precedence are in the worked-example file, not a portable skill. |
 | regulatory-disclosure-language | 🔴 Missing | (none) | Approved-disclosure templates (RERA off-plan disclosure paragraph, ADGM-equivalent, financial-promotion footers, "no guaranteed return" templates) are unowned. Real risk surface. |
@@ -101,10 +101,10 @@ The repo has **no skills concept**. The closest in-repo equivalents are vertical
 
 | Runbook | Status | Closest existing |
 |---|---|---|
-| New off-plan launch (T-90 to T+30) | 🟡 Light | `verticals/real-estate/sub-verticals/developer/campaign-workflow.md` (T-16 to T+ongoing). Needs reframing to T-90 / T+30 windows + addition of regulatory milestones (Trakheesi permit application timing, Oqood registration, Trustee Account opening). |
+| New off-plan launch (T-90 to T+30) | 🟡 Light | `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md` (T-16 to T+ongoing). Needs reframing to T-90 / T+30 windows + addition of regulatory milestones (Trakheesi permit application timing, Oqood registration, Trustee Account opening). |
 | International roadshow | 🔴 Missing | (none) |
 | Inbound HNW lead from private bank | 🔴 Missing | `wealth-channel-enablement` covers principles, no runbook |
-| Broker onboarding & first deal | 🟡 Light | `verticals/real-estate/sub-verticals/developer/playbooks/broker-channel-new-firm-signing.md` covers signing, not onboarding-to-first-deal |
+| Broker onboarding & first deal | 🟡 Light | `verticals/real-estate-uae/sub-verticals/developer/playbooks/broker-channel-new-firm-signing.md` covers signing, not onboarding-to-first-deal |
 | Resale with NOC | 🔴 Missing | (none) |
 | Complaint with RERA exposure | 🔴 Missing | (none) |
 | Handover snagging cycle | 🔴 Missing | (mentioned in dev playbook but not as a runbook) |

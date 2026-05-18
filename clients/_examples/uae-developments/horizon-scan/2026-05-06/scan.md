@@ -9,15 +9,15 @@
 - **Source:** Central Bank of the UAE official communications channel — consultation paper published 2026-05-05
 - **Date:** 2026-05-05
 - **Summary:** CBUAE opened a 6-week consultation on potential adjustment to Mortgage Regulation 31/2013 LTV caps for non-resident buyers. Direction-of-change not yet specified; consultation invites industry input on cap structure for properties > AED 5M.
-- **Why surfaced:** Saadiyat Reserve Heights buyer-mix projects 30%+ non-resident HNI buyers using mortgage finance; Structure D (40/40/20 mortgage-friendly) payment plan exposure to LTV change is material.
+- **Why surfaced:** Coastal Reserve Phase 1 buyer-mix projects 30%+ non-resident HNI buyers using mortgage finance; Structure D (40/40/20 mortgage-friendly) payment plan exposure to LTV change is material.
 - **Suggested next step:** Route to `regulatory-research-specialist` for confirmation of consultation scope + timeline; `marketing-financial-manager` to model payment-plan-mix sensitivity to LTV change scenarios; consider industry-input submission via `legal-liaison`.
 
-### Emaar announces Saadiyat-adjacent tower launch (Q3 window)
+### Emaar announces Coastal District-adjacent tower launch (Q3 window)
 - **Class:** competitor
 - **Source:** Construction Week ME — article published 2026-05-05
 - **Date:** 2026-05-05
-- **Summary:** Emaar confirmed launch of "Mirage Saadiyat" — 320-unit branded-residence tower adjacent to Saadiyat Reserve Heights site. Public launch window stated as "Q3 2026"; pre-launch wealth-channel briefings already underway per article.
-- **Why surfaced:** Direct overlap with UAE Developments' Saadiyat Reserve Heights launch window; broker channel + wealth channel + diaspora corridors will see both opportunities; channel-mix and message-differentiation implications.
+- **Summary:** Emaar confirmed launch of "Mirage Coastal District" — 320-unit branded-residence tower adjacent to Coastal Reserve Phase 1 site. Public launch window stated as "Q3 2026"; pre-launch wealth-channel briefings already underway per article.
+- **Why surfaced:** Direct overlap with UAE Developments' Coastal Reserve Phase 1 launch window; broker channel + wealth channel + diaspora corridors will see both opportunities; channel-mix and message-differentiation implications.
 - **Suggested next step:** Route to `competitive-intel` for deeper-analysis brief; `marketing-manager` for message-differentiation review; `broker-enablement` for Tier-1 firm conversation re: dual-allocation expectations.
 
 ### OFAC sanctions update — additional Russia entities (5 May 2026 SDN list)
@@ -26,14 +26,14 @@
 - **Date:** 2026-05-05
 - **Summary:** OFAC added 12 additional Russian entities + 3 individuals to the SDN list, primarily in financial-services and metals sectors. Cross-checked against UAE Developments' active Russia/CIS-corridor counterparty list via Sumsub: no direct match. One indirect adjacency flagged (a wealth-channel intermediary's named affiliate).
 - **Why surfaced:** Russia/CIS corridor risk register entry already material; this delta confirms continued sanctions cadence in the corridor and surfaces an indirect adjacency requiring EDD-level review.
-- **Suggested next step:** `aml-kyc-compliance-specialist` opens adjacency review per `verticals/real-estate/runbooks/pep-sanctions-hit.md` (Path: indirect-adjacency, not RED); restricted-access; standard intermediary-update language to the wealth-channel intermediary; do not signal counterparty.
+- **Suggested next step:** `aml-kyc-compliance-specialist` opens adjacency review per `verticals/real-estate-uae/runbooks/pep-sanctions-hit.md` (Path: indirect-adjacency, not RED); restricted-access; standard intermediary-update language to the wealth-channel intermediary; do not signal counterparty.
 
-### Property Finder Q1 2026 Index — Saadiyat luxury segment +18% YoY
+### Property Finder Q1 2026 Index — Coastal District luxury segment +18% YoY
 - **Class:** press
 - **Source:** Property Finder Insights index report — published 2026-05-04
 - **Date:** 2026-05-04
-- **Summary:** Property Finder's Q1 index reports Saadiyat luxury-segment transactions up 18% YoY by value; up 7% by volume. Average ticket size up 10%. Foreign buyer share at 64% (up from 58% prior year).
-- **Why surfaced:** Supports Saadiyat Reserve Heights pricing strategy + corridor-mix assumptions; useful for board prep + press positioning ahead of Q3 launch.
+- **Summary:** Property Finder's Q1 index reports Coastal District luxury-segment transactions up 18% YoY by value; up 7% by volume. Average ticket size up 10%. Foreign buyer share at 64% (up from 58% prior year).
+- **Why surfaced:** Supports Coastal Reserve Phase 1 pricing strategy + corridor-mix assumptions; useful for board prep + press positioning ahead of Q3 launch.
 - **Suggested next step:** `marketing-manager` to fold into Q2 quarterly exec brief market-context section; `content-pr-specialist` to consider use in Q3 launch-press positioning (with Property Finder attribution).
 
 ## Watch list (no action needed yet)

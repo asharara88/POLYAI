@@ -91,7 +91,7 @@
   channel: vvip
   direction: outbound
   type: event-invited
-  description: "Invited CEO + selected officers to private preview of Saadiyat Reserve Heights launch"
+  description: "Invited CEO + selected officers to private preview of Coastal Reserve Phase 1 launch"
   value_implied: high
   status: pending-acknowledge
   recorded_by: vvip-channel-enablement
@@ -128,7 +128,7 @@
   channel: vvip
   direction: outbound
   type: acknowledgment
-  description: "Saudi National Day-adjacent congratulatory note + project-milestone update on Saadiyat Reserve Heights"
+  description: "Saudi National Day-adjacent congratulatory note + project-milestone update on Coastal Reserve Phase 1"
   value_implied: low
   status: complete
   recorded_by: vvip-channel-enablement

@@ -112,7 +112,7 @@ Each strand runs in parallel; specialist agents produce per-strand memos.
 
 ## Out-of-scope
 
-- Per-launch campaign planning — `verticals/real-estate/sub-verticals/developer/campaign-workflow.md`
+- Per-launch campaign planning — `verticals/real-estate-uae/sub-verticals/developer/campaign-workflow.md`
 - Annual plan-year setting — `runbooks/annual-commercial-plan.md`
 - Quarterly review — `runbooks/quarterly-exec-brief.md`
 - Operational decisions within an existing strategy — pod-managers
