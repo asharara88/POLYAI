@@ -1,6 +1,6 @@
 # Marina Canal Residences
 
-> **Worked example — illustrative.** Fictional Abu Dhabi West Marina development; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional Abu Dhabi West Marina development; illustrative data only.
 
 ```yaml
 id: marina-canal-residences

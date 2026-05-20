@@ -1,6 +1,6 @@
 # Broker profile — Driven Properties
 
-> **Worked example — illustrative.** Real firm name; not real UAE Developments relationship data.
+> **Worked example — illustrative.** Real firm name; no real commercial relationship implied.
 >
 > Owned by `broker-enablement`. Extended profile beyond the registry summary at `brokers/registry.md`.
 

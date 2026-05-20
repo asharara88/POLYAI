@@ -1,6 +1,6 @@
 # Inventory — Coastal Reserve Phase 1 (current)
 
-> **Worked example — illustrative.** Fictional inventory for a fictional Coastal District tower; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional inventory for a fictional Coastal District tower; illustrative data only.
 >
 > Owned by `inventory-manager`. Source of truth for marketing-permitted-to-reference status.
 > Sales-ops / CRM (Salesforce Real Estate Cloud) remains source of truth for legal status (sold / reserved / SPA-signed).

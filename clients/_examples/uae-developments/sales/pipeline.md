@@ -1,6 +1,6 @@
 # Sales pipeline — UAE Developments
 
-> **Worked example — illustrative.** Fictional pipeline data; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional pipeline data; illustrative data only.
 >
 > Owned by `forecasting`, with deal-record entries maintained by `account-executive` and routing decisions by `inbound-qualifier`. Snapshot at 2026-05-22.
 >

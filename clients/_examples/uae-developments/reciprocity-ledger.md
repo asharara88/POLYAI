@@ -1,6 +1,6 @@
 # Reciprocity ledger — UAE Developments
 
-> **Worked example — illustrative.** Fictional reciprocity entries; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional reciprocity entries; illustrative data only.
 >
 > Owned jointly by `wealth-channel-enablement` and `vvip-channel-enablement`. Confidential. VVIP entries are anonymized per the registry's discretion stance.
 

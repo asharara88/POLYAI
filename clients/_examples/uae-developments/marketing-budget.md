@@ -1,6 +1,6 @@
 # Marketing budget — UAE Developments
 
-> **Worked example — illustrative.** Fictional figures scaled to AED-billion-class developer context; not real UAE Developments budget data.
+> **Worked example — illustrative.** Fictional figures scaled to AED-billion-class developer context; illustrative budget figures only.
 >
 > Owned by `marketing-financial-manager`. Source of truth for approved marketing budget by campaign / channel / event / category.
 > Period: 2026 fiscal year. Currency: AED.

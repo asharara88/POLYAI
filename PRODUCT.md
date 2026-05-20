@@ -67,7 +67,7 @@ web/                  the Next.js operator surface
 ## What this product is NOT
 
 - A general-purpose CRM. It plugs into Salesforce and reads from it; it doesn't replace Salesforce.
-- A white-label commercial OS for any industry. Today's product is real-estate-uae. The architecture supports additional packs (`auto-retail`, `professional-services`, `f-and-b-multi-unit`, `b2b-saas` are on a roadmap that has not started) but they're not built.
+- A white-label commercial OS for any industry. Today's product is the real-estate-uae pack. The architecture has placeholders for other packs (`auto-retail`, `professional-services`, `f-and-b-multi-unit`, `b2b-saas`) but none of them are built; treat Flow as a single-pack product until a second pack ships.
 - A property listing / portal product. We are operator-side, not consumer-side.
 - A general document or knowledge management tool. The shape is opinionated for commercial operations, not for storing every kind of doc.
 

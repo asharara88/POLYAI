@@ -1,6 +1,6 @@
 # Results log — UAE Developments
 
-> **Worked example — illustrative.** Not real UAE Developments data.
+> **Worked example — illustrative.** Illustrative data only.
 
 Append-only. Will be populated by `analytics` post-campaign.
 

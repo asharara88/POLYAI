@@ -1,6 +1,6 @@
 # Campaign brief — Coastal Reserve Phase 1 — Q3 Launch
 
-> **Worked example — illustrative.** Fictional campaign brief; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional campaign brief; illustrative data only.
 >
 > Owned by `strategy`. Conforms to `schemas/campaign-brief.md`.
 > Stamped with `client: uae-developments, vertical: real-estate-uae, sub_vertical: developer` per envelope rules.

@@ -1,6 +1,6 @@
 # Event — Q3 tower public launch (sales gallery opening)
 
-> **Worked example — illustrative.** Fictional event record; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional event record; illustrative data only.
 >
 > Owned by `events`. Conforms to the Phase 20 launch-event schema.
 

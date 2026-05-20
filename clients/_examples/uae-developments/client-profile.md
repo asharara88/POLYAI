@@ -1,6 +1,6 @@
 # Client profile — UAE Developments
 
-> **Worked example — illustrative.** Fictional data demonstrating how Flow structures a developer-class engagement. Not real UAE Developments data; no claim of partnership or endorsement. Names of real broker firms, agencies, and institutions appear because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships.
+> **Worked example — illustrative.** Fictional data demonstrating how Flow structures a developer-class engagement. All names (broker firms, agencies, projects, vendors, events) are illustrative placeholders — not real relationships or real entities. UAE Developments is a fictional developer.
 >
 > Populated by `client-onboarding` from a fictional intake brief, with vertical defaults pulled from `verticals/real-estate-uae/sub-verticals/developer/playbook.md`.
 

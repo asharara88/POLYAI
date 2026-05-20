@@ -1,6 +1,6 @@
 # Creative brief — Coastal Reserve Phase 1 — Hero landing page
 
-> **Worked example — illustrative.** Not real UAE Developments data.
+> **Worked example — illustrative.** Illustrative data only.
 >
 > Owned by `strategy`. Conforms to `schemas/creative-brief.md`.
 > Will be consumed by `creative` (copy) + `brand-design` (visuals) + `seo` (technical SEO + on-page).

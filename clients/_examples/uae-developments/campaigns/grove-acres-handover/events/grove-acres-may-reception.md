@@ -1,11 +1,11 @@
 # Event — Grove Acres May reception (community gardens)
 
-> **Worked example — illustrative.** Fictional event record; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional event record; illustrative data only.
 >
 > Owned by `events`. Conforms to the Phase 20 launch-event schema.
 
 ```yaml
-event_id: yas-acres-may-reception
+event_id: grove-acres-may-reception
 launch_id: grove-acres-handover
 title: Owner reception — community gardens opening
 date: 2026-05-15
@@ -18,7 +18,7 @@ co_owners:
   - service-recovery-specialist
   - vip-relationship-manager
 capacity: 280
-run_sheet: clients/uae-developments/campaigns/grove-acres-handover/events/yas-acres-may-reception/run-sheet.md
+run_sheet: clients/uae-developments/campaigns/grove-acres-handover/events/grove-acres-may-reception/run-sheet.md
 attendance:
   invited: 411
   accepted: 248

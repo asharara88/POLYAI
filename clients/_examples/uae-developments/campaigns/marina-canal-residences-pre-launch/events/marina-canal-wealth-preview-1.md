@@ -1,6 +1,6 @@
 # Event — West Marina Canal wealth-channel preview (Sept 14)
 
-> **Worked example — illustrative.** Fictional event record; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional event record; illustrative data only.
 >
 > Owned by `wealth-channel-enablement`. Conforms to the Phase 20 launch-event schema.
 

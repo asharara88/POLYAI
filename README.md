@@ -42,11 +42,11 @@ Four pods, one CCO. The chief-commercial-officer agent orchestrates; pod manager
 The pack a UAE master-developer engagement activates on top of the core team. Folder: `verticals/real-estate-uae/`. See `verticals/real-estate-uae/pack-manifest.md` for the canonical activation list — pack-specific agents, skills, runbooks, compliance flags, and approval-gate defaults.
 
 Highlights:
-- **14 pack runbooks** at `verticals/real-estate-uae/runbooks/`: RERA exposure, Trakheesi permit lifecycle, NOC resale, PEP/sanctions hit, broker collapse, construction delay, handover snagging, UHNW press-sensitive, AML/KYC integration go-live, international roadshow, regulator inquiry, project safety crisis, inbound HNW private bank, broker onboarding to first deal.
+- **25 pack runbooks** at `verticals/real-estate-uae/runbooks/`: CCO daily / weekly / monthly / quarterly / annual cadence, regulatory + counterparty crisis (RERA exposure, Trakheesi permit lifecycle, NOC resale, PEP/sanctions hit), operational crisis (broker collapse, construction delay, handover snagging, project safety, key-RM departure), customer + channel lifecycle (UHNW press-sensitive, international roadshow, inbound HNW private bank, broker onboarding), strategic-bet evaluation, four integration go-lives.
 - **12 pack skills** at `verticals/real-estate-uae/skills/`: UAE real-estate regulatory framework, AML/KYC UAE real-estate, broker operations, wealth-channel operations, VVIP protocol UAE, off-plan launch mechanics, payment-plan structures, dispute resolution UAE, regulatory disclosure language, diaspora corridor marketing, project fact pack, owner community governance.
-- **One sub-vertical today** — `developer/`. Brokerage and portal sub-verticals are on the roadmap.
+- **One sub-vertical today** — `developer/`. Brokerage and portal sub-verticals are not yet shipping.
 
-Packs on the roadmap but not built: `auto-retail`, `professional-services`, `f-and-b-multi-unit`, `b2b-saas`.
+The architecture supports additional packs (`auto-retail`, `professional-services`, `f-and-b-multi-unit`, `b2b-saas` as scaffolded placeholders) but none of them are built. Until a second pack ships, treat Flow as a single-pack product.
 
 ## Multi-client architecture
 
@@ -116,7 +116,7 @@ Open the web surface and walk:
 1. `/` — positioning + pod structure
 2. `/cco` — morning brief, top decision in the queue
 3. `/launches` — pick the active Q3 launch, click into events & brokers depth
-4. `/clients/uae-developments` — three macro-tabs (Workspace / Inventory & launches / Channels)
+4. `/clients/uae-developments` — three macro-tabs (Setup / Daily operations / Channels & inventory)
 5. `/approvals` — inline sign-off with scope filtering
 6. `/chat` — the CCO agent scoped to the active workspace
 7. `/agents` — the full team by pod with hand-off matrices

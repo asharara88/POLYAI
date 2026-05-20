@@ -1,6 +1,6 @@
 # Campaign brief — Grove Acres — Handover & loyalty
 
-> **Worked example — illustrative.** Fictional campaign brief; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional campaign brief; illustrative data only.
 >
 > Owned by `crm-manager`. Conforms to `schemas/campaign-brief.md`.
 

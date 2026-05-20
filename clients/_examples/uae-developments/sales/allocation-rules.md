@@ -1,6 +1,6 @@
 # Allocation rules — UAE Developments / Coastal Reserve Phase 1
 
-> **Worked example — illustrative.** Not real UAE Developments data.
+> **Worked example — illustrative.** Illustrative data only.
 >
 > Owned by `broker-enablement` (per-tier eligibility logic) and `sales-operations` (commercial sign-off).
 > Source of truth for whether a broker allocation request is approved, declined, or countered.

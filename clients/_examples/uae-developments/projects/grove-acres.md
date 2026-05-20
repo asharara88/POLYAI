@@ -1,6 +1,6 @@
 # Grove Acres
 
-> **Worked example — illustrative.** Fictional Yas Island sub-development; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional Yas Island sub-development; illustrative data only.
 
 ```yaml
 id: grove-acres

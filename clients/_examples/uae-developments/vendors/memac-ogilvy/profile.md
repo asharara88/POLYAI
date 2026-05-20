@@ -1,6 +1,6 @@
 # Vendor profile — Memac Ogilvy
 
-> **Worked example — illustrative.** Real agency name; not real UAE Developments relationship data.
+> **Worked example — illustrative.** Real agency name; no real commercial relationship implied.
 >
 > Owned by `marketing-procurement`. Extended profile beyond the registry summary at `vendors/registry.md`.
 

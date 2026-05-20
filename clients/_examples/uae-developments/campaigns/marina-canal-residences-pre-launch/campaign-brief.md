@@ -1,6 +1,6 @@
 # Campaign brief — Marina Canal Residences — Pre-launch
 
-> **Worked example — illustrative.** Fictional campaign brief; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional campaign brief; illustrative data only.
 >
 > Owned by `marketing-manager`. Conforms to `schemas/campaign-brief.md`.
 

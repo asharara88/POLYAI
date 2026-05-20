@@ -1,6 +1,6 @@
 # Decisions log — UAE Developments
 
-> **Worked example — illustrative.** Fictional decisions log; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional decisions log; illustrative data only.
 
 Append-only. Every strategic decision specific to this client.
 

@@ -1,6 +1,6 @@
 # Protocol library — UAE Developments
 
-> **Worked example — illustrative.** Not real UAE Developments data.
+> **Worked example — illustrative.** Illustrative data only.
 >
 > Owned by `vvip-channel-enablement`. Forms of address, ceremonial precedence, gift / hospitality rules, hosting norms, and calendar — for the markets and counterparty types in scope for this engagement (Abu Dhabi-anchored, multi-emirate, with diaspora-adjacent foreign dignitaries).
 >

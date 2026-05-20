@@ -1,6 +1,6 @@
 # Wealth-channel registry — UAE Developments
 
-> **Worked example — illustrative.** Real institution names appear because they're publicly active in the UAE wealth-management market — references are illustrative of *category*, not actual relationships with UAE Developments.
+> **Worked example — illustrative.** Real institution names appear because they're publicly active in the UAE wealth-management market — references are illustrative of *category*, not actual commercial relationships.
 >
 > Owned by `wealth-channel-enablement`. Source of truth for the wealth side of the channel mix.
 >

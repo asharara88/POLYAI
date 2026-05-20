@@ -1,6 +1,6 @@
 # Coastal Reserve Phase 1
 
-> **Worked example — illustrative.** Fictional project on Abu Dhabi Coast; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional project on Abu Dhabi Coast; illustrative data only.
 
 ```yaml
 id: coastal-reserve-phase-1

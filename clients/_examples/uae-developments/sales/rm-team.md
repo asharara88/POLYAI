@@ -1,6 +1,6 @@
 # In-house RM team — UAE Developments
 
-> **Worked example — illustrative.** Not real UAE Developments data.
+> **Worked example — illustrative.** Illustrative data only.
 >
 > Owned by `inbound-qualifier` (routing) and `account-executive` (deal management). Source of truth for who receives direct-marketing leads.
 

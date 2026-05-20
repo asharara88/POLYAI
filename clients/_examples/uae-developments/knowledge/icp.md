@@ -1,6 +1,6 @@
 # Ideal Customer Profile — UAE Developments
 
-> **Worked example — illustrative.** Fictional ICP for a developer-class engagement; not real UAE Developments data.
+> **Worked example — illustrative.** Fictional ICP for a developer-class engagement; illustrative data only.
 >
 > Seeded by `client-onboarding` from intake + `verticals/real-estate-uae/sub-verticals/developer/playbook.md` (Audience archetypes section). Refine as `voc` and won/lost data come in.
 

@@ -1,6 +1,6 @@
 # Vendor registry — UAE Developments
 
-> **Worked example — illustrative.** Real vendor names appear because they're publicly active in the UAE market — references are illustrative of *category*, not actual relationships with UAE Developments.
+> **Worked example — illustrative.** Real vendor names appear because they're publicly active in the UAE market — references are illustrative of *category*, not actual commercial relationships.
 >
 > Owned by `marketing-procurement`. Source of truth for approved vendors across all categories the marketing function buys.
 
