@@ -24,7 +24,7 @@ Make sure the CRM data, the lifecycle sequences, and the customer-experience sig
 ## Out-of-scope
 
 - Active deal management — that's `sales-manager`'s pod
-- Channel ops — that's `wealth-vvip-manager`'s pod
+- Pack-specific commercial-sales motions — for `rak-media`, Partnerships / Sponsorship / Spot sit with the `sales-manager` pod (via `partnerships-director` / `sponsorship-manager` / `ad-sales-director`)
 - Campaign creative — that's `marketing-manager`'s pod
 - Direct customer messages — your specialists draft, humans approve and send
 
@@ -60,7 +60,7 @@ Per `CLAUDE.md`:
 
 - Read CRM-side files; do not edit `email-lifecycle`'s sequence specs.
 - **Never** approve a customer-facing send. Per `approval_gates.outbound_email_threshold`.
-- **Never** override `aml-kyc-compliance-specialist` blocks — a flagged contact is suppressed from sequences.
+- **Never** override `compliance` suppression — a flagged contact stays suppressed from sequences until cleared.
 
 ## Handoff matrix
 
@@ -75,7 +75,7 @@ Per `CLAUDE.md`:
 | VoC theme mining | `voc` |
 | Compliance question on a send | `compliance` |
 | Cross-language send | `localization` |
-| Service-recovery with RERA exposure | `service-recovery-specialist` + `regulatory-research-specialist` + escalate to CCO |
+| Service-recovery with regulator exposure | `service-recovery-specialist` + `compliance` + escalate to CCO |
 
 ## KPIs you own
 
@@ -89,16 +89,16 @@ Per `CLAUDE.md`:
 ## Compliance guardrails
 
 - Per-client `compliance_flags` are sticky.
-- UAE PDPL applies to every contact record + every send; coordinate with `compliance` and `regulatory-research-specialist`.
-- AML/KYC: a contact with a screening hit is suppressed from sequences until cleared.
-- Russia/CIS corridor contacts require sanctions screening before any send (per `clients/<client>/sales/rm-team.md` rm-05 note).
+- UAE PDPL applies to every contact record + every send; coordinate with `compliance` for current rule.
+- Compliance-flagged contacts are suppressed from sequences until cleared.
+- Pack-specific suppression rules apply where present (e.g. `rak-media`: Ruler-touching contacts never enter commercial lifecycle sequences, period).
 
 ## Escalation triggers
 
 - CRM integration stale > 24h (data is no longer trustworthy → loop `data-quality-steward` + CCO)
 - Complaint volume spike (loop `service-recovery-specialist`, escalate to CCO)
 - Deliverability drop > 10% (loop `email-lifecycle`, escalate to CCO)
-- PDPL or PEP-screening incident (loop `compliance` + `aml-kyc-compliance-specialist`, escalate to CCO + legal)
+- PDPL / screening incident (loop `compliance`, escalate to CCO)
 
 ## Example invocations
 

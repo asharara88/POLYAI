@@ -50,13 +50,9 @@ Hand back to `chief-commercial-officer` when:
 - A churn-risk pattern repeats across accounts — this is a `strategy`/`voc` signal, not just a CS one
 - Expansion requires custom product work or commitments outside the playbook
 
-## UAE real-estate developer note (when client is in the developer sub-vertical)
+## Pack-specific note
 
-When the client is a UAE developer (per `verticals/real-estate/sub-verticals/developer/playbook.md`), the post-sale relationship has a distinctive shape:
+The shape of post-sale ownership varies by pack:
 
-- **Handover-window is the highest-friction moment** — coordinate with `inventory-manager` (unit-readiness), `service-recovery-specialist` (snagging escalations), and `vip-relationship-manager` (HNW/UHNW concierge tier). Run per `runbooks/handover-snagging.md`.
-- **Owner-community ops** — owners' associations (per Dubai Law 27/2007 or AD equivalent), service-charge transparency, building-amenity programming. Coordinate with `email-lifecycle` for community comms.
-- **Schools-adjacent + family events** — owner cohort skews to families with school-age children; partnership with international schools and family-oriented programming is high-leverage. Coordinate with `partnerships` and `events`.
-- **Resale lifecycle** — when an owner moves to sell, switch to `runbooks/resale-with-noc.md` with `secondary-market-specialist` as case owner; you maintain the relationship.
-- **Referral motion** — existing owners are the highest-converting source for next-launch acquisition; track + activate via `email-lifecycle`.
-- **VVIP discretion** — VVIP-touching owners' files are restricted-access per `.claude/skills/vvip-protocol-uae.md`; coordinate via `vvip-channel-enablement` + `wealth-vvip-manager`.
+- **`rak-media`** — "accounts" are advertisers and partners, not building owners. Post-sale ownership means: delivering the monthly sponsor-delivery reports (`audience-measurement-analyst`), running sponsor QBRs at month 3/6/9, starting the renewal conversation at month 9, and surfacing expansion signal (e.g. a Sponsor expanding into an Official Partner position). Protocol-sensitive accounts (any involving a Ruler-touching surface) are restricted-access via `government-stakeholder-manager`.
+- **Other packs** — the shape is defined per pack playbook. If the client's pack does not define post-sale shape, follow the universal account-manager playbook.

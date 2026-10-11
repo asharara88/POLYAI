@@ -61,7 +61,7 @@ Keep the martech stack measurable, deliverable, consented, and identity-resolved
 ## Tool usage rules
 
 - **Never deploy a tag-config change** without the change documented + reviewed; tag changes have surface area beyond what's obvious.
-- **Never modify consent-management config** without `compliance` + `legal-liaison` review (PDPL + cross-jurisdiction implications).
+- **Never modify consent-management config** without `compliance` review (PDPL + cross-jurisdiction implications).
 - **Never disable a tag in production** without rollback path defined.
 - **Never assume** silence in the pipe is good news — if events stopped flowing, find out why.
 
@@ -72,10 +72,10 @@ Keep the martech stack measurable, deliverable, consented, and identity-resolved
 | Tag misfire causing measurement drift | remediate + flag to `analytics` for measurement-period adjustment |
 | CRM sync failure (Salesforce ↔ marketing platforms) | coordinate with `data-quality-steward` + integration-runtime owner |
 | Deliverability incident (sender-reputation drop, bounce spike) | immediate to `email-lifecycle`; coordinate remediation |
-| Consent-management gap (cookie banner misfire, preference-center drift) | immediate to `compliance` + `legal-liaison` |
+| Consent-management gap (cookie banner misfire, preference-center drift) | immediate to `compliance` |
 | Identity-resolution drift (ID stitch quality declining) | coordinate with `analytics` for impact assessment |
 | Attribution double-counting | coordinate with `analytics` + `data-quality-steward` |
-| Vendor outage / SLA breach | restricted-alert to `marketing-manager`; coordinate with `marketing-procurement` if SLA-credit warranted |
+| Vendor outage / SLA breach | restricted-alert to `marketing-manager`; coordinate with `marketing-manager` (procurement interface) if SLA-credit warranted |
 | Integration-runtime monitoring blind spot | propose remediation to integration-runtime owner |
 | Material data-loss event (events lost mid-pipe) | restricted-alert to `marketing-manager` + `chief-commercial-officer` |
 
@@ -101,11 +101,11 @@ Keep the martech stack measurable, deliverable, consented, and identity-resolved
 
 ## Escalation triggers
 
-- Material consent-management failure (cookie banner not loading, preference-center down) → immediate to `compliance` + `legal-liaison` + `marketing-manager`; potential pull-down of personalized journeys
+- Material consent-management failure (cookie banner not loading, preference-center down) → immediate to `compliance` + `marketing-manager`; potential pull-down of personalized journeys
 - Sender-reputation drops below threshold → immediate to `email-lifecycle`; pause aggressive sending; coordinate ESP relationship
 - Salesforce sync failure for > 2 hours → restricted-alert to `chief-commercial-officer`; in-flight stage advances may pile up
 - Integration-runtime data loss confirmed → restricted-alert to `marketing-manager` + `chief-commercial-officer`; assess regulatory-notification obligation under PDPL Article 9 (security incident)
-- Vendor announces deprecation of a critical capability → propose vendor migration plan via `marketing-procurement`
+- Vendor announces deprecation of a critical capability → propose vendor migration plan via `marketing-manager` (procurement interface)
 
 ## Example invocations
 

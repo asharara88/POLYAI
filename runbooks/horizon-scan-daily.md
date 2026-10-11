@@ -8,7 +8,7 @@ Daily at 06:00 client-local time (scheduler) — or on-demand when a known event
 
 ## Owner
 
-`horizon-scanner` agent end-to-end. Coordinates with `regulatory-research-specialist` for currency confirmation on flagged regulator items, `aml-kyc-compliance-specialist` for sanctions-list deltas, `competitive-intel` for material competitive-launch follow-up.
+`horizon-scanner` agent end-to-end. Coordinates with `compliance` for currency confirmation on flagged regulator items, `compliance` for sanctions-list deltas, `competitive-intel` for material competitive-launch follow-up.
 
 ## Pre-flight
 
@@ -36,8 +36,8 @@ Daily at 06:00 client-local time (scheduler) — or on-demand when a known event
 
 | From → To | Trigger | Failure mode if no ack |
 |---|---|---|
-| `horizon-scanner` → `regulatory-research-specialist` | Regulator item flagged for action-relevance | If currency confirmation ≥ 4h, route to watchlist with note |
-| `horizon-scanner` → `aml-kyc-compliance-specialist` | Sanctions delta affects active counterparty | Immediate per `runbooks/pep-sanctions-hit.md` |
+| `horizon-scanner` → `compliance` | Regulator item flagged for action-relevance | If currency confirmation ≥ 4h, route to watchlist with note |
+| `horizon-scanner` → `compliance` | Sanctions delta affects active counterparty | Immediate per `runbooks/pep-sanctions-hit.md` |
 | `horizon-scanner` → `content-pr-specialist` | Press item names developer or counterparty | Immediate; do not wait for next-morning brief |
 | `horizon-scanner` → `competitive-intel` | Material competitive-launch info | Within same business day |
 | `horizon-scanner` → `cco-morning-brief` | scan.md emitted | If scan.md missing by 06:30, brief notes "horizon scan unavailable" |
@@ -46,15 +46,15 @@ Daily at 06:00 client-local time (scheduler) — or on-demand when a known event
 
 1. **No fabrication** — every cited item carries verifiable URL + retrieval timestamp
 2. **No paraphrase of regulator quotes** — extract verbatim and link
-3. **VVIP discretion** — items that touch VVIP counterparties route via `wealth-vvip-manager` for discretion check before surfacing
+3. **VVIP discretion** — items that touch VVIP counterparties route via `chief-commercial-officer` for discretion check before surfacing
 4. **PDPL** — counterparty identities in scan items handled per retention rules
 5. **No-tipping-off** — sanctions-related items handled via restricted channel
 
 ## Out-of-scope
 
 - Deep competitive analysis — `competitive-intel` per its own SOP
-- Per-request regulator-rule confirmation — `regulatory-research-specialist`
-- Operational AML/KYC screening — `aml-kyc-compliance-specialist`
+- Per-request regulator-rule confirmation — `compliance`
+- Operational AML/KYC screening — `compliance`
 - Press posture / response — `content-pr-specialist`
 - General market research — `research`
 

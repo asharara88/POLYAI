@@ -36,7 +36,7 @@ If you don't know something about the client, leave a `# TODO: <what's missing>`
 
 ## 7. Skills are framework, not current truth
 
-When a skill in `.claude/skills/` carries a regulatory citation (DLD circular number, RERA Trakheesi requirement, ADREC clause, CBUAE LTV cap, sanctions list cadence, FATF status, Golden Visa threshold), treat it as **framework-level reference** — not as today's truth. For any artifact that depends on the current rule, route to `regulatory-research-specialist` for per-request confirmation. The skill describes *what the regulator regulates and how the rule generally works*; the agent confirms *what the rule says today*.
+When a skill in `.claude/skills/` carries a regulatory citation (UAE Media Council circular, advertising-standards clause, licensing threshold, panel-audit methodology, FATF status, sanctions list cadence), treat it as **framework-level reference** — not as today's truth. For any artifact that depends on the current rule, route to a per-request confirmation agent — for `rak-media` clients, that is typically `rights-licensing-coordinator` for licensing + commercial-attachment rules, `compliance` for advertising standards, and ad-hoc live research for anything the pack skills don't own. The skill describes *what the regulator regulates and how the rule generally works*; the confirming agent establishes *what the rule says today*.
 
 ## 8. Runbooks have a single owner
 
@@ -44,7 +44,7 @@ When you reference a runbook in `runbooks/`, the named owner agent runs the case
 
 ## 9. Pod-manager routing
 
-Specialists route their day-to-day handoffs through their pod manager (`marketing-manager`, `sales-manager`, `crm-manager`, `wealth-vvip-manager`). Cross-pod handoffs and escalations go through the `chief-commercial-officer`. Do not bypass the manager tier for routine work; do bypass for true escalations.
+Specialists route their day-to-day handoffs through their pod manager (`marketing-manager`, `sales-manager`, `crm-manager`). Cross-pod handoffs and escalations go through the `chief-commercial-officer`. Pack-specific manager tiers may exist for a pack (none today for `rak-media` — its specialists report directly to a core pod manager or to the CCO where the stakeholder surface is cross-cutting). Do not bypass the manager tier for routine work; do bypass for true escalations.
 
 ## 11. Pack-only agents refuse out-of-pack work
 
@@ -52,4 +52,4 @@ Agents that belong to an industry pack (declared via a `## Pack scope` section i
 
 ## 10. Discretion stance
 
-For VVIP-touching artifacts and any matter referencing the per-client `vvip-channel/no-mention-list.md`, restricted-access discipline applies: case files in restricted folders, Salesforce records under restricted-access sharing rules, no general-team visibility, no press reference (ever). Discretion is the contract, not a suggestion.
+For protocol-sensitive artifacts — anything referencing a Ruler, cabinet minister, senior judiciary, visiting foreign dignitary, or any principal on the per-client restricted-access list (for `rak-media` clients that list lives at `clients/<client>/government/no-mention-list.md`) — restricted-access discipline applies: case files in restricted folders, CRM records under restricted-access sharing rules, no general-team visibility, no press reference (ever). For `rak-media` clients the `government-stakeholder-manager` owns this gate; no artifact in this class ships without their sign-off. Discretion is the contract, not a suggestion.

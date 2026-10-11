@@ -8,11 +8,11 @@ CCO opts in (personal consent). May happen at engagement start or later. Re-cons
 
 ## Owner
 
-`chief-commercial-officer` (the CCO themselves) charters consent; named human MarTech lead owns OAuth implementation; `legal-liaison` validates PDPL + corridor data-protection (calendar contains personal data); `martech-ops-specialist` (when added) owns runtime.
+`chief-commercial-officer` (the CCO themselves) charters consent; named human MarTech lead owns OAuth implementation; `compliance` validates PDPL + corridor data-protection (calendar contains personal data); `martech-ops-specialist` (when added) owns runtime.
 
 ## Pre-flight
 
-- CCO consents in writing per `legal-liaison` template
+- CCO consents in writing per `compliance` template
 - Scope-limit defined: read-only; calendar of named work email only; redact private events; redact calendar entries marked "Private"
 - Token storage in Vercel env (encrypted; per-CCO; rotates per OAuth refresh)
 - Per-client config at `clients/<slug>/integrations/calendar/config.md` (CCO email, calendar IDs in scope, default redaction rules)
@@ -24,9 +24,9 @@ CCO opts in (personal consent). May happen at engagement start or later. Re-cons
 
 | Step | Who | What |
 |---|---|---|
-| 1 | CCO + `legal-liaison` | Consent written + signed; scope-limit + redaction-rules acknowledged |
+| 1 | CCO + `compliance` | Consent written + signed; scope-limit + redaction-rules acknowledged |
 | 2 | Named human MarTech lead | OAuth flow implementation; sandbox first |
-| 3 | `legal-liaison` | PDPL + GDPR-equivalent posture verified for the CCO's home jurisdiction |
+| 3 | `compliance` | PDPL + GDPR-equivalent posture verified for the CCO's home jurisdiction |
 | 4 | Named human MarTech lead | Sandbox OAuth tested with CCO's test calendar; redaction rules tested (private events excluded) |
 
 ### Phase 2: Production go-live
@@ -54,7 +54,7 @@ CCO opts in (personal consent). May happen at engagement start or later. Re-cons
 4. **Redaction** — events marked "Private" excluded; counterparty PII in event titles redacted unless directly engagement-relevant
 5. **Auto-revoke on CCO-departure** — per `runbooks/key-rm-departure.md` Phase 1 step 3 trigger
 6. **PDPL** — calendar data per retention rules; not shared beyond named team
-7. **Cross-jurisdiction** — if CCO is in a GDPR jurisdiction, additional posture per `legal-liaison`
+7. **Cross-jurisdiction** — if CCO is in a GDPR jurisdiction, additional posture per `compliance`
 
 ## Rollback path
 
@@ -85,4 +85,4 @@ Phase 3 (continuous) → token corruption / OAuth failure → daily job degrades
 
 ## Sign-off
 
-CCO personal consent + `chief-commercial-officer` decision-memo + `legal-liaison` PDPL posture verification.
+CCO personal consent + `chief-commercial-officer` decision-memo + `compliance` PDPL posture verification.

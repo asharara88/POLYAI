@@ -4,16 +4,16 @@
 
 ## Trigger
 
-Calendar — typically the first Wednesday of each month (per Aldar's `clients/_examples/aldar-developments/cco/calendar.md`). Cadence may differ per engagement.
+Calendar — typically the first Wednesday of each month (per Aldar's `clients/_examples/rak-media/cco/calendar.md`). Cadence may differ per engagement.
 
 ## Owner
 
-`chief-commercial-officer` charters and presents. `marketing-manager` orchestrates assembly. The four pod managers each contribute their pod's monthly summary. `forecasting` produces the commercial summary. `marketing-financial-manager` produces the financial summary. `risk-register-curator` produces the risks summary.
+`chief-commercial-officer` charters and presents. `marketing-manager` orchestrates assembly. The four pod managers each contribute their pod's monthly summary. `forecasting` produces the commercial summary. `chief-commercial-officer` produces the financial summary. `risk-register-curator` produces the risks summary.
 
 ## Pre-flight
 
 - Month-end commercial data current (closed-won, pipeline, conversion)
-- Marketing-budget month-close per `marketing-financial-manager`
+- Marketing-budget month-close per `chief-commercial-officer`
 - Risk-register monthly review complete
 - Material events of the month catalogued
 - Decision-asks for the board surfaced via `decision-router`
@@ -25,7 +25,7 @@ Calendar — typically the first Wednesday of each month (per Aldar's `clients/_
 | Day -7 (Wed prior to board) | `chief-commercial-officer` | Charter: confirm format, decision-asks, focus areas | Charter | T-7 |
 | Day -7 to -5 | Pod managers | Pod-level monthly summaries | Per-pod summaries | T-5 |
 | Day -5 | `forecasting` | Commercial summary: month-actuals vs. plan, pipeline shape, calibration | Commercial summary | T-5 |
-| Day -5 | `marketing-financial-manager` | Financial summary: spend vs. plan, variance, accruals | Financial summary | T-5 |
+| Day -5 | `chief-commercial-officer` | Financial summary: spend vs. plan, variance, accruals | Financial summary | T-5 |
 | Day -5 | `risk-register-curator` | Risks summary: open + closed-this-month + new + watchlist | Risks summary | T-5 |
 | Day -3 | `marketing-manager` | Brief assembly per template (below) | Brief draft | T-3 |
 | Day -2 | `compliance` + `data-quality-steward` | Compliance + data-quality audit | Audit verdicts | T-2 |
@@ -41,7 +41,7 @@ Owner: `chief-commercial-officer`.
 - Decision-asks for the board (typically 1-3)
 - Any material risks crossing thresholds since last month
 
-### 2. Commercial — owned by `forecasting` + `marketing-financial-manager`
+### 2. Commercial — owned by `forecasting` + `chief-commercial-officer`
 - Month actuals vs. plan: bookings, revenue-recognized, cash-collected
 - Pipeline shape (period-end snapshot)
 - Channel-mix this month vs. last month vs. plan
@@ -53,12 +53,12 @@ Owner: `chief-commercial-officer`.
 - Channel ROI delta vs. last month
 - Marketing-budget burn this month vs. plan
 
-### 4. Channel + customer — owned by `wealth-vvip-manager` + `crm-manager`
+### 4. Channel + customer — owned by `chief-commercial-officer` + `crm-manager`
 - Channel-development this month: new firms / intermediaries; tier movements; reactivations
 - Owner-community + service-recovery summary: complaint count, NPS movement, snagging-resolution rate
 - VoC themes emerging this month
 
-### 5. Compliance + risk — owned by `aml-kyc-compliance-specialist` + `risk-register-curator` + `legal-liaison`
+### 5. Compliance + risk — owned by `compliance` + `risk-register-curator` + `compliance`
 - AML/KYC throughput this month
 - Risk-register: red + amber count; closed this month
 - Open regulator interactions

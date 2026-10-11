@@ -23,7 +23,7 @@ alternatives_considered: # 1-3 alternatives the emitting agent ruled out + why
 sla:                     # decision required by <date + time>
 approval:
   policy:                # per-client approval_gates resolved value
-  required_role:         # CCO | sales-manager | wealth-vvip-manager | etc.
+  required_role:         # CCO | sales-manager | marketing-manager | crm-manager | pack-specialist | etc.
   approver:              # populated when signed
   signed_at:             # ISO timestamp when signed
   decision:              # approve | approve-with-modifications | decline | send-back

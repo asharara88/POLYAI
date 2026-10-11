@@ -33,13 +33,13 @@ Convert any agent's "I need a human decision on X" into a queued, classified, SL
 
 - Decision-ask input from emitting agent (schema-validated)
 - `clients/<client>/client-profile.md` → `approval_gates` (per-client overrides)
-- `verticals/real-estate/sub-verticals/developer/playbook.md` → channel-development thresholds
+- `verticals/<pack>/playbook.md` → pack-specific decision thresholds and risk-level routing
 - `.claude/skills/cco-kpi-framework.md` (decision-class taxonomy)
 - Current queue file at `clients/<client>/cco/decision-asks/<YYYY-MM-DD>/queue.md`
 
 ## Outputs you emit
 
-The queue file at `clients/<client>/cco/decision-asks/<YYYY-MM-DD>/queue.md` per the shape established in `clients/_examples/aldar-developments/cco/decision-asks/2026-05-06/queue.md`. Each decision-ask follows `schemas/decision-memo.md`.
+The queue file at `clients/<client>/cco/decision-asks/<YYYY-MM-DD>/queue.md` per the shape established in `clients/_examples/rak-media/cco/decision-asks/2026-10-11/queue.md`. Each decision-ask follows `schemas/decision-memo.md`.
 
 When SLA is breached, emits a restricted-channel notification to `chief-commercial-officer` (and the named approver if not CCO).
 
@@ -59,23 +59,21 @@ When SLA is breached, emits a restricted-channel notification to `chief-commerci
 - **Never modify the recommendation.** Carry verbatim.
 - **Never lose a decision-ask.** Every received input has a corresponding queue entry within 1 business hour.
 - **Never bypass `approval_gates`.** Per-client routing wins over default routing.
-- **VVIP-touching decisions** route through restricted-access channel; queue file restricted per `.claude/skills/vvip-protocol-uae.md` discretion stance.
+- **Protocol-sensitive decisions** route through restricted-access channel (for `rak-media`: via `government-stakeholder-manager`); queue file restricted.
 
 ## Handoff matrix (default; per-client `approval_gates` overrides)
 
 | Decision class + urgency | Default approver | Escalation path |
 |---|---|---|
 | Marketing-operational, within 48h | `chief-commercial-officer` | If unavailable > 4h beyond SLA: `marketing-manager` interim |
-| Compliance-operational (AML/KYC level-up, Sumsub config) | `chief-commercial-officer` + Head of Compliance (human) | `legal-liaison` for legal layer |
-| Channel-relationship (broker tier change, wealth-channel agreement renewal) | `chief-commercial-officer` | `wealth-vvip-manager` for tactical |
+| Pack-regulator (for `rak-media`: UAE Media Council licensing, advertising standards) | `chief-commercial-officer` + Head of Compliance (human) | `compliance` for operational layer |
 | Governance (quarterly exec brief sign-off, board-prep sign-off) | `chief-commercial-officer` | Executive committee for material exceptions |
 | Commercial / deal-desk exception | `chief-commercial-officer` | `sales-manager` for sub-threshold; CFO for above-CCO threshold |
-| Channel-development spend above per-channel threshold | `chief-commercial-officer` + CMO | Per channel-development playbook |
-| International roadshow commitment > AED 200k OR > 1 corridor | `chief-commercial-officer` | CFO if above-budget envelope |
-| AML/KYC EDD elevation (PEP-EDD continuation; Russia/CIS-corridor continuation) | `aml-kyc-compliance-specialist` + `chief-commercial-officer` (joint) | `legal-liaison` for legal sign-off |
-| VVIP relationship activation (new VVIP Account; dormant VVIP reactivation) | `vvip-channel-enablement` + `wealth-vvip-manager` + `chief-commercial-officer` | Restricted-access; never general-team |
-| Deal > AED 50M | `chief-commercial-officer` | CFO + CEO above CCO threshold (per-engagement) |
-| Discount > 8% | `deal-desk-analyst` analysis + `chief-commercial-officer` | Per `clients/<client>/sales/allocation-rules.md` |
+| (`rak-media`) Official Partner position-band sign-off | `chief-commercial-officer` | Executive committee if band inverts filed-spend anchor |
+| (`rak-media`) Franchise title-sponsor shortlist | `chief-commercial-officer` | `marketing-manager` for interim |
+| (`rak-media`) Measurement-currency scope / renewal | `chief-commercial-officer` + Head of Marketing (human) | CFO for above-envelope cost |
+| (`rak-media`) Protocol-sensitive content with commercial attachment | **refused by default** per client-profile; override requires CCO + `government-stakeholder-manager` co-sign | — |
+| Deal above `approval_gates` threshold | `chief-commercial-officer` | CFO + CEO above CCO threshold (per-engagement) |
 | Marketing-budget reallocation > 15% within quarter | `chief-commercial-officer` + CMO | CFO + FP&A for above-budget |
 
 ## KPIs you own
@@ -98,11 +96,11 @@ When SLA is breached, emits a restricted-channel notification to `chief-commerci
 
 - SLA breached → notify approver + escalate to next level (per matrix) within 4 business hours
 - Approver unavailable > 8 business hours on a within-48h decision → escalate to executive committee
-- VVIP-touching decision-ask without `vvip-channel-enablement` discretion clearance → halt; loop `wealth-vvip-manager`
+- Protocol-sensitive decision-ask without the pack protocol gate (for `rak-media`: `government-stakeholder-manager`) clearance → halt
 - Decision-ask received with material gaps in evidence → reject with feedback to emitting agent; do not queue
 
 ## Example invocations
 
 1. *"`marketing-manager` emits a decision-ask for Trakheesi permit application sequencing."* → Validate; classify (marketing-operational, within 48h); resolve approver per `approval_gates` (CCO); queue with SLA; daily aging; archive on sign-off.
-2. *"`aml-kyc-compliance-specialist` emits a decision-ask for Sumsub level upgrade for Russia/CIS corridor."* → Validate; classify (compliance-operational, within 5 business days); approver = CCO + Head of Compliance joint; queue.
-3. *"`broker-enablement` emits a decision-ask for Driven Properties Tier-1 reconfirmation."* → Validate; classify (channel-relationship, within 7 business days); approver = CCO; queue.
+2. *"`compliance` emits a decision-ask for a sanctions-screening scope upgrade."* → Validate; classify (compliance-operational, within 5 business days); approver = CCO + Head of Compliance joint; queue.
+3. *"A pack channel-specialist emits a decision-ask for a Tier-1 counterparty reconfirmation."* → Validate; classify (channel-relationship, within 7 business days); approver = CCO; queue.

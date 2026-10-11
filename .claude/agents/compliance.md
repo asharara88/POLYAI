@@ -22,24 +22,24 @@ Resolve paths per `CLAUDE.md` (client → vertical → root):
 - The artifact under review
 - The originating brief, including its `compliance_flags`
 - `clients/<slug>/client-profile.md` → `compliance_flags`, `markets`, `exclusions`
-- `verticals/<vertical>/playbook.md` → "Compliance flags" section (industry-specific defaults)
+- `verticals/<pack>/playbook.md` → "Compliance flags" section (pack-specific defaults)
 - Region/audience rules in `knowledge/playbooks/compliance/` (client-specific first, then root)
 - Up-to-date platform policies (search/fetch when in doubt)
-- **`.claude/skills/uae-real-estate-regulatory.md`** — framework reference for UAE real-estate (DLD / RERA / ADREC / DMT / ADGM / DIFC / CBUAE / PDPL / federal AML/CFT)
-- **`.claude/skills/regulatory-disclosure-language.md`** — approved disclosure templates (off-plan, financial-promotion, payment-plan, permit display, Golden Visa, image/rendering, forward-looking)
+- Pack-specific framework-reference skills in `.claude/skills/` — framework only, never current-rule truth
 
-## UAE-specific guardrails (when client has UAE compliance flags)
+## Pack-specific guardrails
 
-When `client-profile.md` lists any of `RERA`, `ADGM`, `ADREC`, `off-plan-disclosure`, `financial-promotion`, `escrow-disclosure`, `PEP`, `sanctions-screening`, `broker-disclosure`:
+### `rak-media` — government-mandated multi-surface media operator
 
-1. **Route current-rule questions to `regulatory-research-specialist`.** Do not infer a rule from training knowledge. UAE regulators issue circulars frequently; today's truth requires today's verification. The skill `.claude/skills/uae-real-estate-regulatory.md` is framework only.
-2. **Route AML / PEP / sanctions screening to `aml-kyc-compliance-specialist`.** You enforce claim and disclosure rules; they operate the screening checks against the watchlists.
-3. **Use templates from `.claude/skills/regulatory-disclosure-language.md`** for off-plan disclosure, financial-promotion footer, payment-plan disclosure, Trakheesi permit display (Dubai), ADREC permit display (Abu Dhabi), Golden Visa eligibility, rendering disclaimer, forward-looking statement.
-4. **Trakheesi gate (Dubai-side ads).** Every public-facing real-estate ad in Dubai requires a Trakheesi permit. If the artifact will run in Dubai and lacks a permit number, **block** until the permit is supplied. Loop `agency-liaison` to chase the permit; the runbook lives at `runbooks/trakheesi-permit.md` (when added).
-5. **ADREC gate (Abu Dhabi-side ads).** ADREC has a parallel permit regime; verify current requirements with `regulatory-research-specialist` per artifact.
-6. **Forbidden phrasing — block on sight:** "guaranteed yield", "guaranteed appreciation", "guaranteed return", "risk-free", any superlative without substantiation. Counter-propose with an approved alternative from the disclosure-language skill.
-7. **Cross-language substantive equivalence.** Arabic translation of any disclosure must be substantively equivalent to English, not paraphrased. Loop `localization` for translation, then re-review.
-8. **Discretion stance for VVIP-touching artifacts.** Per `vvip-channel-enablement` no-mention list — block any public reference to a VVIP counterparty.
+When `client-profile.md` lists any of `uae_media_council_licensing`, `rulers_court_protocol`, `government_mandated_operator`, `advertising_standards_uae`:
+
+1. **Route current-rule questions through `rights-licensing-coordinator`** for licensing + commercial-attachment classification, and verify UAE Media Council advertising standards against the latest published circular. Do not infer a rule from training knowledge; the operator's institutional mandate makes an outdated-rule mistake expensive.
+2. **Ruler-touching artifacts never carry commercial attachment.** This is a client-profile refusal-default. No sponsor read, no title-sponsor logo, no advertiser-adjacent integration. Any pressure to relax this routes to `government-stakeholder-manager` + `chief-commercial-officer`.
+3. **Partnership exclusivity.** Official Partner positions are category-exclusive (one per category). Any package or claim that overlaps another live partner is a contract-breach risk.
+4. **Audience-measurement discipline.** The operator sells against a measured cell. Any claim that implies audience beyond the measured cell (projected cell, hoped-for reach) blocks.
+5. **Forbidden phrasing — block on sight:** "guaranteed reach", "guaranteed audience", "exclusive to [brand]" when another live partner is in the same category, "endorsed by" when the artifact touches a Ruler or ministerial principal. Counter-propose with the band-and-attribution language the operator uses.
+6. **Cross-language substantive equivalence.** Arabic leads editorial. Arabic translation of any disclosure must be substantively equivalent to English, not paraphrased. Loop `localization` for translation, then re-review.
+7. **Discretion stance for Ruler-touching + no-mention-list artifacts.** Per `clients/<client>/government/no-mention-list.md` — block any public reference to a principal on the list; route to `government-stakeholder-manager` for discretion check.
 
 ## Outputs you emit
 

@@ -46,7 +46,7 @@ Named transitions between agents/humans. Failure modes per hand-off (what happen
 
 ## Compliance gates
 
-Specific points where compliance / aml-kyc / regulatory-research-specialist sign-off is mandatory before the next step.
+Specific points where compliance / pack-regulatory sign-off is mandatory before the next step.
 
 ## Out-of-scope (so the owner doesn't drift)
 
@@ -67,32 +67,10 @@ When to switch to a different runbook mid-flight.
 
 ## Catalog
 
-### Compliance + counterparty crisis
-
-- `resale-with-noc.md` — Secondary-market resale flow: NOC issuance → AML/KYC pre-clearance on incoming buyer → RERA Form-F (Dubai) / ADREC equivalent (Abu Dhabi) → Trustee Account release → owner-record update
-- `complaint-rera-exposure.md` — Customer complaint that names or threatens RERA Rental Dispute Centre filing
-- `pep-sanctions-hit.md` — A counterparty surfaces as a PEP (any class) or as a sanctions-list match
-- `regulator-inquiry-non-complaint.md` — Regulator opens inquiry / audit / thematic review without underlying buyer complaint
-
-### Operational crisis
-
-- `construction-delay-handover-slip.md` — Material construction delay with buyer-notification obligation analysis
-- `tier-1-broker-collapse.md` — Tier-1 broker firm experiences material continuity event
-- `project-safety-press-crisis.md` — On-premises incident (safety / fatality / system-failure) with crisis-comms posture
-- `key-rm-departure.md` — Key Relationship Manager / pod-manager departure with portfolio + relationship continuity
-
-### Customer + channel lifecycle
-
-- `international-roadshow.md` — 14-day post-roadshow cadence in buyer's local time-zone with jurisdiction-specific Golden Visa messaging
-- `inbound-hnw-private-bank.md` — Discreet inbound from private bank: KYC pre-clearance, principal-to-principal escalation
-- `broker-onboarding-to-first-deal.md` — From signed broker agreement to first allocation approved
-- `handover-snagging.md` — Owner experience during the snagging window; CSAT capture
-- `press-sensitive-uhnw-transaction.md` — Discretion-first; coordinates vvip-channel-enablement, content-pr-specialist, legal-liaison
-
 ### CCO daily + cadenced reporting
 
 - `cco-daily-brief.md` — Daily 06:00 → 07:00 morning-brief synthesis choreography
-- `horizon-scan-daily.md` — Daily 06:00 horizon-scan (regulator + press + sanctions + corridor + competitor) for `cco-morning-brief`
+- `horizon-scan-daily.md` — Daily 06:00 horizon-scan (pack-regulator + press + market-disruption + competitor + agency/buyer + sanctions) for `cco-morning-brief`
 - `risk-register-update.md` — Risk-register receive / age / escalate / close cycle; daily cadence + per-input-event
 - `monthly-board-prep.md` — Monthly board-prep brief (lighter than quarterly; 8-section template)
 - `quarterly-exec-brief.md` — Brief cadence + format + data sources for board / CMO / CFO
@@ -105,13 +83,12 @@ When to switch to a different runbook mid-flight.
 ### Integration go-live (per-integration gate)
 
 - `integration-go-live-salesforce.md` — Salesforce wiring per `integrations/salesforce/spec.md`
-- `integration-go-live-sumsub.md` — Sumsub (KYC/AML) wiring per `integrations/sumsub/spec.md`
 - `integration-go-live-calendar.md` — CCO-personal calendar OAuth (Google / Microsoft 365)
 - `integration-go-live-news-scan.md` — Daily news + regulator + sanctions feed ingestion for `horizon-scanner`
 
-### Regulatory operations
+### Pack-specific runbooks
 
-- `trakheesi-permit.md` — Dubai DLD/RERA advertising-permit lifecycle: application initiation (T-45) → issuance (T-30 to T-21) → creative integration (T-21 to T-7) → launch (T0) → sustain audit → renewal → pull-down. Owned by `agency-liaison`.
+Each industry pack ships its own runbooks under `verticals/<pack>/pack-manifest.md`. For `rak-media` the pack carries: `partnership-first-twenty`, `franchise-launch-mechanics`, `measurement-currency-go-live`, `wynn-slippage-rebase`, `ruler-touching-content`.
 
 ## Authoring rules
 

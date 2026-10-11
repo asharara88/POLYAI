@@ -26,7 +26,7 @@ Maintain a single live risk register at `clients/<client>/risk-register.md`. Rec
 - Specific incident response — relevant runbooks own that (`complaint-rera-exposure`, `pep-sanctions-hit`, etc.)
 - Per-deal slip detection — `forecasting`
 - Per-complaint resolution — `service-recovery-specialist`
-- Per-counterparty AML/KYC tracking — `aml-kyc-compliance-specialist`
+- Per-counterparty compliance tracking — `compliance`
 - Strategic risk analysis (multi-quarter scenarios) — `chief-commercial-officer` + `marketing-manager` strategic-planning cycles
 
 ## Inputs you read
@@ -118,10 +118,10 @@ The single live risk register at `clients/<client>/risk-register.md` with this f
 | Condition | Target |
 |---|---|
 | Risk crossed amber → red | immediate to `chief-commercial-officer`; surfaces in next morning brief |
-| Risk involves regulator | route to `legal-liaison` + `regulatory-research-specialist` |
-| Risk involves sanctions / PEP | `aml-kyc-compliance-specialist` per `runbooks/pep-sanctions-hit.md` |
+| Risk involves regulator | route to `compliance` (for `rak-media`: + `rights-licensing-coordinator`) |
+| Risk involves sanctions / PEP | `compliance` per the pack's sanctions runbook (where present) |
 | Risk involves press | `content-pr-specialist` |
-| Risk involves VVIP counterparty | restricted-access; `wealth-vvip-manager` + `vvip-channel-enablement` |
+| Risk involves protocol-sensitive counterparty | restricted-access; (for `rak-media`) `government-stakeholder-manager` |
 | Closure proposed | `chief-commercial-officer` for sign-off |
 | Pattern across multiple risks (3+ same class in a quarter) | `chief-commercial-officer` for systemic review |
 
@@ -149,6 +149,8 @@ The single live risk register at `clients/<client>/risk-register.md` with this f
 
 ## Example invocations
 
-1. *"Construction-progress report shows MEP delay of 6 weeks on Tower B."* → Open commercial-risk entry with severity material; threshold: > AED 80M revenue-at-risk if handover slips beyond Q4; owner: `inventory-manager` + named operational human.
-2. *"Tier-1 broker firm announced restructuring."* → Open counterparty-risk entry; severity significant; threshold: license-status change OR > 14 days uncertainty; owner: `broker-enablement`.
-3. *"OFAC sanctioned a Russia-corridor intermediary that referred 3 active prospects to us."* → Open counterparty-risk entry red-immediate; trigger `runbooks/pep-sanctions-hit.md`; owner: `aml-kyc-compliance-specialist` + `legal-liaison`.
+1. *"(`rak-media`) Wynn Resorts Q3 earnings update slips the opening to Q1 2028."* → Open commercial-risk entry with severity material; threshold: material revenue-at-risk on Partner banding; owner: `chief-commercial-officer`; mitigation: trigger the `wynn-slippage-rebase` runbook.
+2. *"Audience currency vendor misses the PwC attestation window."* → Open currency-risk entry with severity low-manageable; threshold: Tier-3 book repricing delayed by 1 quarter; owner: `audience-measurement-analyst`.
+3. *"OFAC sanctioned an intermediary tied to an active commercial counterparty."* → Open counterparty-risk entry red-immediate; owner: `compliance`.
+2. *"A Tier-1 counterparty announced restructuring."* → Open counterparty-risk entry; severity significant; threshold: license-status change OR > 14 days uncertainty; owner: the owning channel agent.
+3. *"OFAC sanctioned a Russia-corridor intermediary that referred 3 active prospects to us."* → Open counterparty-risk entry red-immediate; trigger the pack's sanctions runbook (where present); owner: `compliance`.

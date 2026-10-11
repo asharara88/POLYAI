@@ -8,7 +8,7 @@ Per-engagement greenlight to wire Salesforce read or write actions.
 
 ## Owner
 
-`chief-commercial-officer` charters and sign-off; `data-quality-steward` owns CRM-side integrity; `martech-ops-specialist` (when added) or named human MarTech lead owns runtime; `legal-liaison` validates audit-retention; `compliance` validates PDPL handling.
+`chief-commercial-officer` charters and sign-off; `data-quality-steward` owns CRM-side integrity; `martech-ops-specialist` (when added) or named human MarTech lead owns runtime; `compliance` validates audit-retention; `compliance` validates PDPL handling.
 
 ## Pre-flight
 

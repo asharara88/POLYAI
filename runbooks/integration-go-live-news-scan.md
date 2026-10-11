@@ -8,7 +8,7 @@ Per-engagement greenlight to activate horizon-scan ingestion at production caden
 
 ## Owner
 
-`chief-commercial-officer` charters; `horizon-scanner` agent is the consumer; named human MarTech lead owns ingestion runtime; `legal-liaison` validates source-licensing (paid subscriptions vs. open access); `regulatory-research-specialist` validates regulator-source-list completeness.
+`chief-commercial-officer` charters; `horizon-scanner` agent is the consumer; named human MarTech lead owns ingestion runtime; `compliance` validates source-licensing (paid subscriptions vs. open access); `compliance` validates regulator-source-list completeness.
 
 ## Pre-flight
 
@@ -28,8 +28,8 @@ Per-engagement greenlight to activate horizon-scan ingestion at production caden
 |---|---|---|
 | 1 | `horizon-scanner` (sandbox) | First scan against full source list; emit; review for noise vs. signal |
 | 2 | `chief-commercial-officer` + `marketing-manager` | Calibrate: which sources surfaced action-relevant items, which were pure noise; trim source list accordingly |
-| 3 | `regulatory-research-specialist` | Verify regulator-source-list completeness; add any missed regulators; verify URL stability |
-| 4 | `aml-kyc-compliance-specialist` | Verify sanctions-source-list coverage; confirm regime-currency |
+| 3 | `compliance` | Verify regulator-source-list completeness; add any missed regulators; verify URL stability |
+| 4 | `compliance` | Verify sanctions-source-list coverage; confirm regime-currency |
 
 ### Phase 2: Production go-live (gated on Phase 1 calibration)
 
@@ -46,15 +46,15 @@ Per-engagement greenlight to activate horizon-scan ingestion at production caden
 |---|---|---|---|
 | 9 | `horizon-scanner` | Daily scan → curated items → daily brief feed | Daily 05:30 |
 | 10 | `chief-commercial-officer` | Quarterly: pattern review of "discarded as noise" vs. "missed events"; adjust source list | Quarterly |
-| 11 | `regulatory-research-specialist` | Annual: regulator-source-list refresh (new regulators, deprecated sources) | Annually |
-| 12 | `aml-kyc-compliance-specialist` | Quarterly: sanctions-source-list refresh (regime updates, new authorities) | Quarterly |
+| 11 | `compliance` | Annual: regulator-source-list refresh (new regulators, deprecated sources) | Annually |
+| 12 | `compliance` | Quarterly: sanctions-source-list refresh (regime updates, new authorities) | Quarterly |
 
 ## Compliance gates
 
 1. **Source-licensing** — paid sources (FT, Bloomberg) require active subscription; never scrape unauthorized
 2. **No fabrication** — every cited item has verifiable URL + retrieval timestamp per `.claude/agents/horizon-scanner.md`
 3. **No regulator paraphrase** — extract verbatim and link
-4. **VVIP discretion** — items touching VVIP counterparties route via `wealth-vvip-manager` for discretion check before surfacing
+4. **VVIP discretion** — items touching VVIP counterparties route via `chief-commercial-officer` for discretion check before surfacing
 5. **No-tipping-off** on sanctions-related items
 6. **PDPL** — counterparty identities in scan items per retention rules
 7. **Same-day-effective regulator action** triggers immediate escalation off-cadence per `runbooks/horizon-scan-daily.md`
@@ -68,8 +68,8 @@ Phase 3 (continuous) → if specific source becomes unreliable or paid-sub lapse
 ## Out-of-scope
 
 - Deep competitive analysis on surfaced items — `competitive-intel`
-- Per-request regulator-rule confirmation — `regulatory-research-specialist`
-- Operational AML/KYC screening — `aml-kyc-compliance-specialist`
+- Per-request regulator-rule confirmation — `compliance`
+- Operational AML/KYC screening — `compliance`
 - Press posture / response — `content-pr-specialist`
 - General market research — `research`
 
@@ -92,4 +92,4 @@ Phase 3 (continuous) → if specific source becomes unreliable or paid-sub lapse
 
 ## Sign-off
 
-`chief-commercial-officer` decision-memo + named human MarTech lead concurrence + `legal-liaison` source-licensing verification.
+`chief-commercial-officer` decision-memo + named human MarTech lead concurrence + `compliance` source-licensing verification.

@@ -180,4 +180,4 @@ Runbooks are multi-agent choreography for recurring scenarios — the off-the-sh
 
 ## Pod managers (manager tier between CCO and specialists)
 
-Above the pod-specialist agents but below the `chief-commercial-officer`, four pod managers orchestrate within their pod and route exceptions to the CCO: `marketing-manager`, `sales-manager`, `crm-manager`, `wealth-vvip-manager`. Specialists' day-to-day handoffs go through their pod manager; cross-pod or escalation paths go through the CCO. This was added to manage the agent-count load on the CCO without compromising single-point-of-truth orchestration.
+Above the pod-specialist agents but below the `chief-commercial-officer`, three pod managers orchestrate within their pod and route exceptions to the CCO: `marketing-manager`, `sales-manager`, `crm-manager`. Specialists' day-to-day handoffs go through their pod manager; cross-pod or escalation paths go through the CCO. Pack-specific manager tiers may be added by future packs if the pack's agent count justifies one. This was added to manage the agent-count load on the CCO without compromising single-point-of-truth orchestration.

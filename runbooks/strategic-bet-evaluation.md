@@ -12,7 +12,7 @@ Any of:
 
 ## Owner
 
-`chief-commercial-officer` charters end-to-end. `marketing-manager` orchestrates analysis. `deal-desk-analyst` runs commercial-structure analysis. `marketing-financial-manager` runs financial modeling. `regulatory-research-specialist` runs regulatory-overlay analysis. `legal-liaison` runs contractual + risk analysis. `partnerships` (if partnership-class) handles BD interface. `wealth-vvip-manager` (if channel-class) handles channel-implications. `data-room-curator` scaffolds the evaluation document surface.
+`chief-commercial-officer` charters end-to-end. `marketing-manager` orchestrates analysis. `deal-desk-analyst` runs commercial-structure analysis. `chief-commercial-officer` runs financial modeling. `compliance` runs regulatory-overlay analysis. `compliance` runs contractual + risk analysis. `partnerships` (if partnership-class) handles BD interface. `chief-commercial-officer` (if channel-class) handles channel-implications. `compliance` scaffolds the evaluation document surface.
 
 ## Pre-flight
 
@@ -30,7 +30,7 @@ Any of:
 |---|---|---|---|---|
 | 1 | `chief-commercial-officer` | Charter the evaluation: scope, decision-by date, participants, expected output format | Charter at `clients/<client>/strategic-bets/<slug>/charter.md` | T-30 to T-21 |
 | 2 | `marketing-manager` | Evaluation framework: what questions need answering, what evidence required, what alternatives in scope | Framework | T-28 |
-| 3 | `data-room-curator` | Document surface scaffold; access policy; counterparty Q&A log if applicable | Data room | T-25 |
+| 3 | `compliance` | Document surface scaffold; access policy; counterparty Q&A log if applicable | Data room | T-25 |
 
 ### Phase 2: Analysis (2-4 weeks)
 
@@ -40,13 +40,13 @@ Each strand runs in parallel; specialist agents produce per-strand memos.
 | Step | Who | What | Emits |
 |---|---|---|---|
 | 4a | `deal-desk-analyst` | Commercial-structure proposal: revenue model, margin shape, precedent comparison, sensitivity | Commercial memo |
-| 5a | `marketing-financial-manager` | Financial modeling: P&L, cash-flow, IRR, sensitivity to corridor / channel / pricing assumptions | Financial model |
+| 5a | `chief-commercial-officer` | Financial modeling: P&L, cash-flow, IRR, sensitivity to corridor / channel / pricing assumptions | Financial model |
 
 #### Regulatory + legal analysis
 | Step | Who | What | Emits |
 |---|---|---|---|
-| 4b | `regulatory-research-specialist` | Regulatory overlay: applicable regimes, current rules, projected changes affecting decision | Regulatory memo |
-| 5b | `legal-liaison` | Contract + dispute analysis: agreement terms, jurisdiction, exit provisions, IP, dispute mechanism, regulator consents required | Legal memo |
+| 4b | `compliance` | Regulatory overlay: applicable regimes, current rules, projected changes affecting decision | Regulatory memo |
+| 5b | `compliance` | Contract + dispute analysis: agreement terms, jurisdiction, exit provisions, IP, dispute mechanism, regulator consents required | Legal memo |
 
 #### Market + competitive analysis
 | Step | Who | What | Emits |
@@ -58,16 +58,16 @@ Each strand runs in parallel; specialist agents produce per-strand memos.
 #### Channel + relationship analysis
 | Step | Who | What | Emits |
 |---|---|---|---|
-| 4d | `wealth-vvip-manager` | Channel-implications: broker / wealth / VVIP impact (positive or negative); conflicts to manage | Channel memo |
+| 4d | `chief-commercial-officer` | Channel-implications: broker / wealth / VVIP impact (positive or negative); conflicts to manage | Channel memo |
 | 5d | `partnerships` (if partnership-class) | Partnership-specifics: fit / willingness / capacity / mutual incentive per partnership-qualification framework | Partnership memo |
-| 6d | `vvip-channel-enablement` (if VVIP-touching) | VVIP-protocol implications; restricted-access overlay | Restricted memo |
+| 6d | `government-stakeholder-manager` (if VVIP-touching) | VVIP-protocol implications; restricted-access overlay | Restricted memo |
 
 #### Risk + compliance analysis
 | Step | Who | What | Emits |
 |---|---|---|---|
 | 4e | `risk-register-curator` | Risk implications: new risks introduced, existing risks affected | Risk memo |
 | 5e | `compliance` | Compliance posture: forbidden-phrasing in any externalization, claim review on any positioning | Compliance verdict |
-| 6e | `aml-kyc-compliance-specialist` (if counterparty-touching) | AML/KYC framework: counterparty screening, corridor risk, structural-AML implications | AML memo |
+| 6e | `compliance` (if counterparty-touching) | AML/KYC framework: counterparty screening, corridor risk, structural-AML implications | AML memo |
 
 ### Phase 3: Synthesis + recommendation (1 week)
 
@@ -103,11 +103,11 @@ Each strand runs in parallel; specialist agents produce per-strand memos.
 
 1. **Forbidden phrasing** in any externalization
 2. **Forward-looking framing** on projections
-3. **Regulatory currency** per `regulatory-research-specialist`
+3. **Regulatory currency** per `compliance`
 4. **VVIP discretion** if VVIP-touching — restricted-access throughout
 5. **Privilege** — legal memos restricted-access
 6. **PDPL + corridor data-protection** if corridor-expansion
-7. **Counterparty AML/KYC** if external party — `aml-kyc-compliance-specialist`-cleared before commitment
+7. **Counterparty AML/KYC** if external party — `compliance`-cleared before commitment
 8. **Decision-memo discipline** per `schemas/decision-memo.md` — material bets always go through formal memo
 
 ## Out-of-scope
@@ -116,7 +116,7 @@ Each strand runs in parallel; specialist agents produce per-strand memos.
 - Annual plan-year setting — `runbooks/annual-commercial-plan.md`
 - Quarterly review — `runbooks/quarterly-exec-brief.md`
 - Operational decisions within an existing strategy — pod-managers
-- Litigation if dispute on terms — `legal-liaison` + external counsel
+- Litigation if dispute on terms — `compliance` + external counsel
 
 ## KPIs
 

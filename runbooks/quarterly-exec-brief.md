@@ -8,7 +8,7 @@ Quarter-end (T-0 = last business day of the quarter). The runbook spans T-21 to 
 
 ## Owner
 
-`chief-commercial-officer` charters and presents. `marketing-manager` orchestrates assembly. `forecasting`, `analytics`, `marketing-financial-manager`, `marketing-manager`, `crm-manager`, `wealth-vvip-manager`, `service-recovery-specialist`, `aml-kyc-compliance-specialist`, `regulatory-research-specialist`, and (where applicable) `legal-liaison` each contribute their section.
+`chief-commercial-officer` charters and presents. `marketing-manager` orchestrates assembly. `forecasting`, `analytics`, `chief-commercial-officer`, `marketing-manager`, `crm-manager`, `chief-commercial-officer`, `service-recovery-specialist`, `compliance`, `compliance`, and (where applicable) `compliance` each contribute their section.
 
 ## Pre-flight
 
@@ -29,7 +29,7 @@ Quarter-end (T-0 = last business day of the quarter). The runbook spans T-21 to 
 | T-14 | `marketing-manager` | Sections received + reviewed for completeness + cross-section consistency | Review notes |
 | T-10 | `data-quality-steward` | Data-quality audit on every numeric in the brief — sources cited, calculations verified | Audit log |
 | T-7 | `compliance` | Compliance check on any forward-looking language (per `.claude/skills/regulatory-disclosure-language.md` Template 7); forbidden-phrasing block | Compliance verdict |
-| T-7 | `regulatory-research-specialist` | Currency check on any regulatory citation in the brief | Currency verdict |
+| T-7 | `compliance` | Currency check on any regulatory citation in the brief | Currency verdict |
 | T-5 | `marketing-manager` | First full draft assembled; brief structured per audience preference | Full draft |
 | T-3 | `chief-commercial-officer` | CCO review + revision | Revised draft |
 | T-1 | `chief-commercial-officer` + executive presenter | Final review; rehearsal of decision-ask narrative | Final brief |
@@ -44,7 +44,7 @@ Owner: `chief-commercial-officer` writes the cover.
 - 3-5 key takeaways
 - Decision-asks (if any)
 
-### 2. Commercial performance — owned by `forecasting` + `marketing-financial-manager`
+### 2. Commercial performance — owned by `forecasting` + `chief-commercial-officer`
 - Quarter actuals vs. plan: bookings, revenue-recognized, cash collected
 - Pipeline-end-of-quarter: by stage, by channel, by emirate, by project
 - Channel mix: direct / broker / wealth-channel / VVIP-channel split
@@ -59,7 +59,7 @@ Owner: `chief-commercial-officer` writes the cover.
 - Marketing-budget burn vs. plan
 - Channel-mix recommendations for next quarter
 
-### 4. Channel-development — owned by `wealth-vvip-manager`
+### 4. Channel-development — owned by `chief-commercial-officer`
 - Broker-channel: active firms, new firms onboarded, dormant firms reactivated, disengaged firms (per `runbooks/broker-onboarding-to-first-deal.md` framework)
 - Wealth-channel: active intermediaries, new intermediaries signed, performance per intermediary
 - VVIP-channel: aggregated activity (no individual-counterparty detail per discretion)
@@ -72,7 +72,7 @@ Owner: `chief-commercial-officer` writes the cover.
 - Service-recovery activity (count by severity, regulator-exposure incidents per `runbooks/complaint-rera-exposure.md`)
 - Snagging metrics for projects in handover-window
 
-### 6. Compliance + risk — owned by `aml-kyc-compliance-specialist` + `regulatory-research-specialist` + `legal-liaison`
+### 6. Compliance + risk — owned by `compliance` + `compliance` + `compliance`
 - AML/KYC throughput: pre-clearance volume, EDD volume, PEP-flagged accounts active, sanctions-screening activity
 - Material regulatory developments in the quarter (DLD / RERA / ADREC / ADGM / DIFC / federal)
 - Active regulator inquiries (anonymized count)
@@ -98,7 +98,7 @@ Owner: `chief-commercial-officer` writes the cover.
 | Section owners → `marketing-manager` (drafts) | T-14 | Escalate to `chief-commercial-officer` if any section missing or materially incomplete |
 | `marketing-manager` → `data-quality-steward` (audit) | T-10 | Audit must complete before T-7 compliance review |
 | `marketing-manager` → `compliance` (review) | T-7 | Block on any forbidden phrasing; `compliance` may demand revisions; cycle back |
-| `marketing-manager` → `regulatory-research-specialist` (currency) | T-7 | Block on any stale citation |
+| `marketing-manager` → `compliance` (currency) | T-7 | Block on any stale citation |
 | `chief-commercial-officer` → executive audience | T+0 to T+14 | Per leadership calendar |
 | `chief-commercial-officer` → relevant pods (decisions) | T+14 | Decisions logged; action items assigned |
 
@@ -110,7 +110,7 @@ Owner: `chief-commercial-officer` writes the cover.
 4. **AML/KYC restricted detail** — pattern-level statistics only; no individual-counterparty PII; restricted-access detail in legal-privileged appendix where needed.
 5. **Legal-privileged content** — flagged at the file-level; restricted access to named human team.
 6. **Numeric integrity** — every number in the brief has a verified source citation. `data-quality-steward` audits.
-7. **Regulatory currency** — every regulatory citation is current per `regulatory-research-specialist` confirmation as of T-7.
+7. **Regulatory currency** — every regulatory citation is current per `compliance` confirmation as of T-7.
 
 ## Out-of-scope
 

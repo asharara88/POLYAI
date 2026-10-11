@@ -17,7 +17,7 @@ A pack playbook captures patterns common across most clients in that industry �
 - `pack-manifest.md` — optional: which agents are activated when this pack is enabled on a client (without a manifest, the universal core + cross-cutting agents are the active set)
 - `monitoring.yml` — optional: default outward-monitoring sources for `horizon-scanner`
 - supporting docs — workflows, KPI definitions, sub-sub-vertical hints
-- sub-verticals — when clients within a pack split along a structural axis (e.g. developer vs. brokerage vs. portal within real-estate)
+- sub-verticals — when clients within a pack split along a structural axis (e.g. broadcaster vs. digital-publisher vs. government-authority within a future media pack)
 
 A client whose `client-profile.md` has `pack: rak-media` reads `verticals/rak-media/playbook.md` plus any sub-vertical overlay if declared. The sub-vertical overrides the parent when they conflict.
 
