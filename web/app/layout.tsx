@@ -40,7 +40,7 @@ const themeInitScript = `
     html.dataset.advanced = adv ? 'true' : 'false';
     // Workspace cookie default — middleware uses this to rewrite /workspace/* → /clients/<slug>/*
     if (!document.cookie.split('; ').some(function(c){return c.indexOf('flow-workspace=')===0;})) {
-      document.cookie = 'flow-workspace=aldar-developments; path=/; max-age=31536000; SameSite=Lax';
+      document.cookie = 'flow-workspace=rak-media; path=/; max-age=31536000; SameSite=Lax';
     }
   } catch (_) {}
 })();

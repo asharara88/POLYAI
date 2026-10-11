@@ -4,7 +4,7 @@ How Flow's agents are wired together.
 
 ## Design principles
 
-1. **Core + packs.** A universal marketing/sales/CRM core ships with every deployment. Industry packs (e.g. `real-estate-uae`) snap on per client to add specialist agents, skills, and runbooks. The product is the core; packs sharpen it.
+1. **Core + packs.** A universal marketing/sales/CRM core ships with every deployment. Industry packs (e.g. `rak-media`) snap on per client to add specialist agents, skills, and runbooks. The product is the core; packs sharpen it.
 2. **Multi-tenant by default.** Flow runs as a service for many clients across multiple packs. Every artifact is tied to a `client` slug and a `pack` (formerly "vertical").
 3. **Three-layer context, resolved most-specific first.** Client overrides → pack defaults → team baseline. See "Context resolution" below.
 3. **Structured handoffs over prose.** Every agent-to-agent transfer is a populated template (`schemas/`). No "here's a paragraph, please figure it out."
@@ -164,7 +164,7 @@ The Orchestrator can author a new agent file in `.claude/agents/` when a recurri
 
 When the second client in a new industry needs different defaults than the universal core or any existing pack:
 
-1. Author `verticals/<pack-name>/playbook.md` to the same shape as the `real-estate-uae` pack — audience archetypes, trigger events, sales motion, channel mix, KPIs, compliance flags, voice notes, VoC sources, common pitfalls, sub-vertical hints.
+1. Author `verticals/<pack-name>/playbook.md` to the same shape as the `rak-media` pack — audience segments, revenue lines, trigger events, sales motion, channel mix, KPIs, compliance flags, voice notes, VoC sources, common pitfalls, sub-vertical hints.
 2. Declare which agents the pack activates (`pack-manifest.md`) — `client-onboarding` only loads the pack's agents for clients on that pack.
 3. Add the pack to `README.md` "Industry packs" section and `verticals/README.md`.
 4. Author the pack-specific skills under `.claude/skills/` and runbooks under `runbooks/` if needed.
@@ -172,7 +172,7 @@ When the second client in a new industry needs different defaults than the unive
 
 ## Skills directory (`.claude/skills/`)
 
-Skills are framework references loaded by multiple agents — they capture the *shape* of a domain (UAE real-estate regulatory framework, AML/KYC operational mechanics, approved disclosure templates, broker operations, attribution doctrine, project-fact-pack assembly, VVIP protocol). Skills are deliberately framework-only: specific current rules, current circular numbers, current thresholds route through `regulatory-research-specialist` for per-request confirmation. Skills are written by domain-owner agents (e.g., `regulatory-research-specialist` proposes regulatory-skill updates) and curated through the `knowledge` agent with `chief-commercial-officer` approval. Per-client overrides live at `clients/<slug>/skills-overrides/<skill>.md`.
+Skills are framework references loaded by multiple agents — they capture the *shape* of a domain (UAE Media Council licensing, PwC-verified audience currency, partnership-position pricing, franchise IP mechanics, government-stakeholder protocol, ADM/DMI structural lessons, Wynn-opening run-in sequencing). Skills are deliberately framework-only: specific current rules, current circular numbers, and current thresholds route through live research or a per-request-confirmation agent. Skills are written by domain-owner agents and curated through the `knowledge` agent with `chief-commercial-officer` approval. Per-client overrides live at `clients/<slug>/skills-overrides/<skill>.md`.
 
 ## Runbooks directory (`runbooks/`)
 

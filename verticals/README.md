@@ -4,10 +4,9 @@ Industry packs add the specialist agents, skills, runbooks, and defaults that a 
 
 ```
 verticals/
-  real-estate/              # `real-estate-uae` pack — shipping today
+  rak-media/                # `rak-media` pack — shipping today
     playbook.md
-    sub-verticals/
-      developer/            # off-plan developers (Aldar / Emaar class)
+    pack-manifest.md
 ```
 
 A pack playbook captures patterns common across most clients in that industry — audience archetypes, trigger events, channel mix, compliance flags, KPI norms, voice notes, common pitfalls. The client's own `clients/<slug>/knowledge/` overrides anything here.
@@ -20,7 +19,7 @@ A pack playbook captures patterns common across most clients in that industry �
 - supporting docs — workflows, KPI definitions, sub-sub-vertical hints
 - sub-verticals — when clients within a pack split along a structural axis (e.g. developer vs. brokerage vs. portal within real-estate)
 
-A client whose `client-profile.md` has `pack: real-estate-uae, sub_vertical: developer` reads both `verticals/real-estate/playbook.md` and `verticals/real-estate/sub-verticals/developer/playbook.md`. The sub-vertical overrides the parent when they conflict.
+A client whose `client-profile.md` has `pack: rak-media` reads `verticals/rak-media/playbook.md` plus any sub-vertical overlay if declared. The sub-vertical overrides the parent when they conflict.
 
 ## When to add a new pack
 

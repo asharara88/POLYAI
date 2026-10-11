@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 // Single-tenant deployment — workspace pinned to Aldar. The runtime cookie
 // stays the source of truth for non-static surfaces.
-const WORKSPACE = "aldar-developments";
+const WORKSPACE = "rak-media";
 
 export default function LaunchesPage() {
   const launches = getLaunches(WORKSPACE);

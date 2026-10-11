@@ -154,14 +154,14 @@ function CorePack() {
         <div className="rounded-card border border-ink-200/70 dark:border-ink-800 bg-white dark:bg-ink-900 p-6 space-y-3 shadow-card">
           <div className="inline-flex items-center gap-2 text-label-xs font-mono uppercase tracking-wider text-ink-500 dark:text-ink-400">
             <Building2 className="w-3.5 h-3.5" />
-            Pack — real-estate-uae
+            Pack — rak-media
           </div>
-          <h3 className="text-xl font-semibold tracking-tight">UAE master-developer pack</h3>
+          <h3 className="text-xl font-semibold tracking-tight">Multi-surface media operator pack</h3>
           <ul className="text-body-sm text-ink-600 dark:text-ink-300 space-y-1.5">
-            <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" /><span>Channels: broker-enablement, wealth-channel, VVIP, VIP-concierge (managed by <code className="font-mono text-body-xs">wealth-vvip-manager</code>)</span></li>
-            <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" /><span>Regulatory + compliance: DLD / RERA / ADREC / CBUAE / AML-KYC / legal-liaison</span></li>
-            <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" /><span>Inventory, deal-desk, secondary-market, events, marketing-procurement, data-room-curator</span></li>
-            <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" /><span>12 framework skills loaded with the pack (off-plan launch, payment plans, VVIP protocol, etc.)</span></li>
+            <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" /><span>Commercial sales: <code className="font-mono text-body-xs">partnerships-director</code>, <code className="font-mono text-body-xs">sponsorship-manager</code>, <code className="font-mono text-body-xs">ad-sales-director</code>, <code className="font-mono text-body-xs">commercial-intelligence-analyst</code></span></li>
+            <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" /><span>Content + IP: <code className="font-mono text-body-xs">franchise-ip-manager</code>, <code className="font-mono text-body-xs">multi-platform-producer</code>, <code className="font-mono text-body-xs">rights-licensing-coordinator</code></span></li>
+            <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" /><span>Audience + stakeholder: <code className="font-mono text-body-xs">audience-measurement-analyst</code>, <code className="font-mono text-body-xs">government-stakeholder-manager</code></span></li>
+            <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" /><span>7 framework skills: UAE media regulation, media-sales currency, partnership-position pricing, franchise IP mechanics, government-stakeholder protocol, ADM/DMI structural lessons, Wynn-opening run-in</span></li>
           </ul>
         </div>
       </div>
@@ -207,7 +207,7 @@ function Surfaces() {
 
 function Roadmap() {
   const packs = [
-    { name: "real-estate-uae", state: "Shipping", note: "Master-developer engagements (Aldar / Emaar / Damac / Sobha class)" },
+    { name: "rak-media", state: "Shipping", note: "Government-mandated multi-surface media operator (RAK Media class)" },
     { name: "auto-retail", state: "Next", note: "Dealer-network enablement, F&I desk, test-drive orchestration" },
     { name: "professional-services", state: "Roadmap", note: "Proposal-led sales, partner-managed funnels, fee-realization" },
     { name: "f-and-b-multi-unit", state: "Roadmap", note: "Local-marketing, loyalty, franchisee enablement" },
@@ -271,7 +271,7 @@ function CTA() {
           href="/cco"
           className="inline-flex items-center gap-2 rounded-md border border-ink-200 dark:border-ink-800 px-4 py-2.5 text-body-sm font-medium text-ink-800 dark:text-ink-100 hover:bg-ink-50 dark:hover:bg-ink-900 transition-colors"
         >
-          Walk through the Aldar demo
+          Walk through the RAK Media demo
         </Link>
       </div>
     </section>

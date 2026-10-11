@@ -30,7 +30,7 @@ const groups: {
     blurb: "Manager tier between the CCO and pod specialists. Route, escalate, run the pod cadence.",
     kind: "core",
     match: (n) =>
-      ["marketing-manager", "sales-manager", "crm-manager", "wealth-vvip-manager"].includes(n),
+      ["marketing-manager", "sales-manager", "crm-manager"].includes(n),
   },
   {
     label: "Marketing pod",
@@ -93,51 +93,42 @@ const groups: {
       ].includes(n),
   },
   {
-    label: "Pack — real-estate-uae · Channels",
+    label: "Pack — rak-media · Commercial sales",
     blurb:
-      "Broker, wealth, VVIP-protocol, VIP-concierge channel agents. Active only for clients on the real-estate-uae pack.",
+      "Partnership, sponsorship, spot, and commercial-intel specialists for a government-mandated multi-surface media operator. Active only for clients on the rak-media pack.",
     kind: "pack",
-    pack: "real-estate-uae",
+    pack: "rak-media",
     match: (n) =>
       [
-        "broker-enablement",
-        "wealth-channel-enablement",
-        "vvip-channel-enablement",
-        "vip-relationship-manager",
-        "agency-liaison",
+        "partnerships-director",
+        "sponsorship-manager",
+        "ad-sales-director",
+        "commercial-intelligence-analyst",
       ].includes(n),
   },
   {
-    label: "Pack — real-estate-uae · Inventory & commercial structure",
-    blurb: "Inventory truth, non-standard commercial structures, secondary-market resale.",
+    label: "Pack — rak-media · Content + IP",
+    blurb:
+      "Named IP franchises, one-engine-four-surfaces production, rights-licensing gating for every commercial package.",
     kind: "pack",
-    pack: "real-estate-uae",
-    match: (n) =>
-      ["inventory-manager", "secondary-market-specialist"].includes(n),
-  },
-  {
-    label: "Pack — real-estate-uae · Regulatory, compliance & legal",
-    blurb: "DLD / RERA / ADREC / CBUAE / AML-KYC / panel-counsel interface.",
-    kind: "pack",
-    pack: "real-estate-uae",
+    pack: "rak-media",
     match: (n) =>
       [
-        "regulatory-research-specialist",
-        "aml-kyc-compliance-specialist",
-        "legal-liaison",
+        "franchise-ip-manager",
+        "multi-platform-producer",
+        "rights-licensing-coordinator",
       ].includes(n),
   },
   {
-    label: "Pack — real-estate-uae · Events, procurement & finance",
-    blurb: "Sales-gallery launches, vendor procurement, marketing-budget governance, data-room curation.",
+    label: "Pack — rak-media · Audience + stakeholder",
+    blurb:
+      "The currency the book sells against + the stakeholder surface protecting the operator's institutional mandate.",
     kind: "pack",
-    pack: "real-estate-uae",
+    pack: "rak-media",
     match: (n) =>
       [
-        "events",
-        "marketing-procurement",
-        "marketing-financial-manager",
-        "data-room-curator",
+        "audience-measurement-analyst",
+        "government-stakeholder-manager",
       ].includes(n),
   },
 ];
@@ -168,7 +159,7 @@ export default function Page() {
       <header className="space-y-3">
         <h1 className="text-2xl font-semibold tracking-tight">Agent team</h1>
         <p className="text-ink-600 dark:text-ink-300 max-w-3xl">
-          Flow ships a universal marketing/sales/CRM core that every deployment runs. Industry packs add specialist agents per client — they're activated by the client&apos;s <code className="font-mono text-body-xs bg-ink-100 dark:bg-ink-800 px-1 py-0.5 rounded">pack</code> field and stay dormant otherwise. Briefs flow between agents via structured handoffs (see{" "}
+          Flow ships a universal marketing/sales/CRM core that every deployment runs. Industry packs add specialist agents per client — they&apos;re activated by the client&apos;s <code className="font-mono text-body-xs bg-ink-100 dark:bg-ink-800 px-1 py-0.5 rounded">pack</code> field and stay dormant otherwise. Today the shipping pack is <code className="font-mono text-body-xs bg-ink-100 dark:bg-ink-800 px-1 py-0.5 rounded">rak-media</code>. Briefs flow between agents via structured handoffs (see{" "}
           <a href="/schemas" className="text-accent hover:underline">schemas</a>).
         </p>
       </header>
