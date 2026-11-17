@@ -50,6 +50,12 @@ Framework-level references loaded with the pack (framework, not current truth �
 - `wynn-slippage-rebase` — responding when the catalyst opening moves
 - `ruler-touching-content` — the gating path for content that includes the Ruler or ministerial principals
 
+## Pack integrations
+
+Integrations that activate with the pack — each declared under `integrations/<name>/`:
+
+- `open-meteo-marine` — free, no-auth marine-weather signal (wave height, period, swell, SST, current) at per-client declared locations (Marjan coast, RAK Corniche, Jebel Jais offshore). Tier A read-only. Feeds `horizon-scanner`, `multi-platform-producer`, `franchise-ip-manager`, `government-stakeholder-manager`. Attribution-bearing (Open-Meteo CC BY 4.0).
+
 ## Deactivated
 
 Core-only agents remain active across all packs. No core agent is deactivated by `rak-media`.

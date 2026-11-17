@@ -103,6 +103,15 @@ Six Official Partner positions is a **product limit** (one per category), not a 
 - **Ruler's calendar** — National Day, cultural moments, major policy announcements
 - **Ratings currency go-live** — the moment Northern Emirates becomes individually sellable
 
+## Operational signals (continuous, machine-readable)
+
+These feed `horizon-scanner` and `multi-platform-producer` as programming inputs, not scheduled events:
+
+- **Marine weather** (via `integrations/open-meteo-marine`) — wave height, period, swell, SST, ocean current at declared points (Marjan coast, RAK Corniche, Jebel Jais offshore proxy). Drives coastal segment scheduling, event-day protocol checks, "end of swim season" editorial moments, Jebel Jais event-prep wind checks. Attribution: "Marine data: Open-Meteo (CC BY 4.0)".
+- **Catalyst cadence** — Wynn earnings-call calendar, hotel-wave operator announcements (surfaced by `commercial-intelligence-analyst` + `horizon-scanner`).
+- **Agency / buyer moves** — PHD / OMD / GroupM / Dentsu / Starcom media-planner movements affecting national-budget routing (`commercial-intelligence-analyst`).
+- **Measurement-currency state** — monthly audience report + PwC attestation status (`audience-measurement-analyst`).
+
 ## Compliance flags
 
 Every externally-facing artifact for a `rak-media` client must respect these constraints:

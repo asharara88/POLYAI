@@ -20,6 +20,7 @@ Daily at 06:00 client-local time, produce a curated horizon-scan artifact at `cl
 - **Competitive signal.** Competitor commercial moves per `clients/<client>/client-profile.md`. For `rak-media`: ADM, DMI, SBA, Fujairah Media — commercial-structure moves, agency contracts in/out, measurement upgrades.
 - **Agency / buyer signal.** Media-planner moves at the agencies that buy national (PHD, OMD, GroupM, Dentsu, Starcom) affecting how national budgets reach the operator's cell.
 - **Sanctions-list cadence delta.** UN/OFAC/UK HMT/EU/DFAT updates that touch any active commercial counterparty. Confirm with the pack's compliance interface.
+- **Operational-signal integrations.** Machine-readable continuous feeds declared by the pack. For `rak-media`: marine-weather via `integrations/open-meteo-marine` (wave height, period, swell, SST, current at declared locations) — surfaces as an *operational* class item when conditions cross a programming or safety threshold (`daily.wave_height_max > 1.5 m` sustained, `current.wave_height > 2 m` during a declared event window, `sea_surface_temperature` seasonal anomaly). Signals never ship as raw numbers — always translated into a programming or event-protocol implication for the brief.
 
 ## Out-of-scope
 
@@ -101,6 +102,7 @@ Sources scanned this cycle:
 | Competitive-launch material info | surface in scan + brief; `competitive-intel` for deeper analysis if material |
 | Catalyst-cadence update (Wynn-level) | immediate to `chief-commercial-officer` + `risk-register-curator`; triggers rebase runbook if material |
 | Buyer / agency signal affecting a named account | surface + route to pack intelligence specialist (for `rak-media`: `commercial-intelligence-analyst`) |
+| Operational-signal threshold crossed (for `rak-media`: marine-weather condition at a declared location) | surface as *operational* class; route to `multi-platform-producer` for programming adjustment or `government-stakeholder-manager` for event-day safety protocol |
 
 ## KPIs you own
 
